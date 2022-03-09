@@ -174,8 +174,6 @@ To log into the container, you can run `docker-compose exec vino-terr-mongo bash
 
 The backend routes are documented and exposed through the Swagger API on `http://localhost:8080/api-docs`.
 
-![swagger](server/public/swagger.png)
-
 <a id="5-5"></a>
 
 ### 5.5 Pino [&#x2B06;](#contents)
