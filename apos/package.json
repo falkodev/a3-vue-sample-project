@@ -1,0 +1,48 @@
+{
+  "name": "apos",
+  "version": "1.0.0",
+  "description": "Apostrophe CMS platform for Vinoways Territoire",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "NODE_ENV=development nodemon --no-deprecation",
+    "build": "NODE_ENV=production node app @apostrophecms/asset:build && npm run sw",
+    "sw": "workbox injectManifest modules/asset/workbox-config.js",
+    "serve": "NODE_ENV=production node app",
+    "release": "npm install && npm run build && node app @apostrophecms/migration:migrate",
+    "lint": "prettier --write '**/*.{js,css,scss}' --config ../package.json --ignore-path ../.prettierignore"
+  },
+  "nodemonConfig": {
+    "delay": 1000,
+    "verbose": true,
+    "watch": [
+      "./app.js",
+      "./modules/**/*",
+      "./public/vue/**/*"
+    ],
+    "ignoreRoot": [
+      ".git"
+    ],
+    "ignore": [
+      "locales/*.json",
+      "public/uploads",
+      "public/apos-frontend/*.js",
+      "data"
+    ],
+    "ext": "json, js, html, scss, vue"
+  },
+  "author": "Vinovibes Team",
+  "dependencies": {
+    "apostrophe": "^3.0.0",
+    "copyfiles": "^2.4.1",
+    "express-oas-generator": "^1.0.41",
+    "normalize.css": "^8.0.1",
+    "pino": "^7.8.0",
+    "pino-pretty": "^7.5.3",
+    "workbox-cli": "^6.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "prettier": "^2.5.1"
+  }
+}

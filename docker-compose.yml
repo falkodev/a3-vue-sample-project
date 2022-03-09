@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+  vino-terr-mongo:
+    container_name: vino-terr-mongo
+    build: mongo
+    init: true
+    ports:
+      - 27018:27017
+    volumes:
+      - ./mongo/data/db:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: vino-terr
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD:
+      MONGO_INITDB_USER_USERNAME: app-admin
+      MONGO_INITDB_USER_PASSWORD:
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+
+  vino-terr-apos:
+    container_name: vino-terr-apos
+    build: apos
+    init: true
+    volumes:
+      - ./apos/app.js:/app/app.js
+      - ./apos/modules:/app/modules
+      - ./apos/public:/app/public
+      - ./apos/package.json:/app/package.json
+      - ./vue/dist:/app/public/vue
+    ports:
+      - 8080:8080
+    depends_on:
+      - vino-terr-mongo
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      NODE_APP_INSTANCE: docker
+      MONGO_DB:
+      WAIT_HOSTS: vino-terr-mongo:27017
+    healthcheck:
+      test: node healthcheck
+
+  vino-terr-vue:
+    container_name: vino-terr-vue
+    build: vue
+    init: true
+    depends_on:
+      - vino-terr-apos
+    volumes:
+      - ./vue:/app
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      NODE_APP_INSTANCE: docker
+      API_URL: http://vino-terr-apos:8080
+      HOST: 0.0.0.0
+      PORT: 3000
+    healthcheck:
+      test: node healthcheck
