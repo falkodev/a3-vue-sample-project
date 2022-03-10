@@ -33,7 +33,7 @@ This app contains backend and frontend for Vinoways Territoire.
 
 ## 2 Architecture [&#x2B06;](#contents)
 
-ApostropheCMS was chosen on the backend because it is an open-source CMS, enabling multisite management, models definition by developers while content edited by non-technical users is displayed in rendered templates. It is using MongoDB as database.
+ApostropheCMS was chosen on the backend because it is an open-source CMS, enabling user management, models definition by developers while content edited by non-technical users is displayed in rendered templates. It is using MongoDB as database.
 
 Vue is used for the frontend interactions in some pages. State management is Pinia, VueX successor.
 
@@ -57,7 +57,7 @@ First, you need to have docker and docker-compose installed and launched on your
 
 The first time you run `docker-compose up`, all Docker images will be downloaded and built.
 
-There is a dependency between the containers `vino-terr-apos` and `vino-terr-mongo`: the DB needs to be started to enable the server to start (otherwise, Apostrophe does not have acces to Mongo and is stuck). However, on the first run, some time is spent to create database users. Apostrophe tries to connect to Mongo during a certain period of time, but on the first run, this timeout expires before Mongo is ready to accept connections. So, read the logs and wait for the user `app-admin` to be created. When it is done, the DB is ready. You can now kill the docker containers by hitting `Ctrl + c` in your terminal or run `docker-compose stop` in another one. And run again `docker-compose up` or `make dev-logs` as explained below. This time, the DB will start quickly, enabling the server to start correctly.
+There is a dependency between the containers `vino-terr-apos` and `vino-terr-mongo`: the DB needs to be started to enable the server to start (otherwise, Apostrophe does not have access to Mongo and is stuck). However, on the first run, some time is spent to create database users. Apostrophe tries to connect to Mongo during a certain period of time, but on the first run, this timeout expires before Mongo is ready to accept connections. So, read the logs and wait for the user `app-admin` to be created. When it is done, the DB is ready. You can now kill the docker containers by hitting `Ctrl + c` in your terminal or run `docker-compose stop` in another one. And run again `docker-compose up` or `make dev-logs` as explained below. This time, the DB will start quickly, enabling the server to start correctly.
 
 <a id="3-2"></a>
 
@@ -187,7 +187,7 @@ The backend routes are documented and exposed through the Swagger API on `http:/
 Example of usage:
 
 ```js
-  self.apos.util.logself.apos.util.log('ready')self.apos.util.log('ready')self.apos.util.log('ready')self.apos.util.log('ready')self.apos.util.log('ready')self.apos.util.log('ready')self.apos.util.log('ready')self.apos.util.log('ready')('Backend application started on http://%s:%d', host, port)
+self.apos.util.log('Backend application started on http://%s:%d', host, port)
 ```
 
 <a id="6"></a>
