@@ -57,13 +57,13 @@ First, you need to have docker and docker-compose installed and launched on your
 
 The first time you run `docker-compose up`, all Docker images will be downloaded and built.
 
-There is a dependency between the containers `vino-terr-apos` and `vino-terr-mongo`: the DB needs to be started to enable the server to start (otherwise, Feathers does not have a Mongo connection and is stuck). However, the first time, database users will be created, it takes time, and the timeout on Feathers side expires. So, read the logs and wait for the user `app-admin` to be created. When it is done, the DB is ready. You can now kill the docker containers by hitting `Ctrl + c` in your terminal or run `docker-compose stop` in another one. And run again `docker-compose up` or `make` as explained below. This time, the DB will start quickly, enabling the server to start correctly.
+There is a dependency between the containers `vino-terr-apos` and `vino-terr-mongo`: the DB needs to be started to enable the server to start (otherwise, Apostrophe does not have acces to Mongo and is stuck). However, on the first run, some time is spent to create database users. Apostrophe tries to connect to Mongo during a certain period of time, but on the first run, this timeout expires before Mongo is ready to accept connections. So, read the logs and wait for the user `app-admin` to be created. When it is done, the DB is ready. You can now kill the docker containers by hitting `Ctrl + c` in your terminal or run `docker-compose stop` in another one. And run again `docker-compose up` or `make dev-logs` as explained below. This time, the DB will start quickly, enabling the server to start correctly.
 
 <a id="3-2"></a>
 
 ### 3.2 Usual process [&#x2B06;](#contents)
 
-Run simply `make` to start on development mode. The CMS part is accessible on `http://localhost:8080`. The Vue app on `http://localhost:3000` when running with `npm run dev`. However, by default, the npm script is `npm run build:watch` to serve Vue files as static assets for the CMS.
+Run simply `make` to start on development mode. The CMS part is accessible on `http://localhost:8080`. For Vue, by default, the npm script is `npm run build:watch` to serve Vue files as static assets for the CMS. As a consequence, there is no Vue app available on localhost. However, when running with `npm run dev` in the `vue`, folder the Vue app is launched on `http://localhost:3000` .
 
 You can also look at the Makefile for other possible commands. The next section explains what commands to run.
 
@@ -84,9 +84,13 @@ Run `docker-compose up` for production in Docker
 
 Additionally, there is a Makefile. Therefore, these commands are available:
 
-- `make` will run a `docker-compose up` with NODE_ENV=development and display logs from all containers
+- `make` will run a `docker-compose up` with NODE_ENV=development and hide logs
+- `make dev-logs` will run a `docker-compose up` with NODE_ENV=development and display logs from Mongo, Apostrophe and Vue
+- `make kill` will shutdown all containers quickly
 - `make build` is also available to build containers after a new package is added in a package.json file (for server and client containers)
 - `make rebuild` will force to download all images again, starting from scratch before building containers
+
+Mongo outputs a lot of logs, and while this can be necessary to read them sometimes, most of the time it is too much useless information. An advice is too run `make && make logs-back & make logs-front` in a terminal.
 
 <a id="4-2"></a>
 
