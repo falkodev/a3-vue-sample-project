@@ -37,8 +37,6 @@ services:
       NODE_APP_INSTANCE: docker
       MONGO_DB:
       WAIT_HOSTS: vino-terr-mongo:27017
-      VITE_BASE_URL: vue-app/
-      VITE_TEST: test
     healthcheck:
       test: node healthcheck
 
@@ -53,6 +51,6 @@ services:
       - ./vue/vite.config.js:/app/vite.config.js
     environment:
       NODE_ENV: ${NODE_ENV:-production}
-      VITE_BASE_URL: vue-app/
+      VITE_BASE_URL: /vue-app/
     healthcheck:
       test: node healthcheck

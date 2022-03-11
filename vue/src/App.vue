@@ -21,7 +21,7 @@ const src = (import.meta.env.VITE_BASE_URL || '') + logo
   </main>
 </template>
 
-<style>
+<style scoped>
 @import './assets/base.css';
 
 #app {
