@@ -14,15 +14,9 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  // root: '/views/',
   build: {
     // generate manifest.json in outDir
     manifest: true,
-    rollupOptions: {
-      // overwrite default .html entry
-      input: './src/main.js',
-    },
-    polyfillModulePreload: false,
     outDir: './dist',
   },
 })

@@ -1,5 +1,6 @@
 require('apostrophe')({
   shortName: 'vino-terr',
+  // autoBuild: false,
   modules: {
     // Apostrophe module configuration
     // *******************************
@@ -13,7 +14,7 @@ require('apostrophe')({
     // `className` options set custom CSS classes for Apostrophe core widgets.
     '@apostrophecms/db': {
       options: {
-        uri: process.env.MONGO_DB || 'mongodb://127.0.0.1::27017/vino-terr',
+        uri: process.env.MONGO_DB || 'mongodb://127.0.0.1:27017/vino-terr',
       },
     },
     '@apostrophecms/rich-text-widget': {

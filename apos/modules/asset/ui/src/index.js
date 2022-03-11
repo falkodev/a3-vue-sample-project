@@ -17,19 +17,32 @@ export default async () => {
     })
   }
 
-  const vueFolder = 'vue/'
+  const vueFolder = 'vue-app/'
   const manifest = await fetch(`/${vueFolder}manifest.json`).then((response) =>
     response.json(),
   )
 
-  const jsFile = document.createElement('script')
-  jsFile.setAttribute('src', vueFolder + manifest['src/main.js'].file)
-  jsFile.setAttribute('type', 'module')
-  document.body.appendChild(jsFile)
+  for (const prop of Object.keys(manifest)) {
+    for (const cssFile of manifest[prop].css) {
+      const css = document.createElement('link')
+      css.setAttribute('rel', 'stylesheet')
+      css.setAttribute('type', 'text/css')
+      css.setAttribute('href', vueFolder + cssFile)
+      document.head.appendChild(css)
+    }
 
-  const cssFile = document.createElement('link')
-  cssFile.setAttribute('rel', 'stylesheet')
-  cssFile.setAttribute('type', 'text/css')
-  cssFile.setAttribute('href', vueFolder + manifest['src/main.js'].css[0])
-  document.head.appendChild(cssFile)
+    for (const importFile of manifest[prop].imports) {
+      const link = document.createElement('link')
+      link.setAttribute('rel', 'modulepreload')
+      link.setAttribute('type', 'text/css')
+      link.setAttribute('href', vueFolder + manifest[importFile].file)
+      document.head.appendChild(link)
+    }
+
+    const jsFile = document.createElement('script')
+    jsFile.setAttribute('src', vueFolder + manifest[prop].file)
+    jsFile.setAttribute('type', 'module')
+    jsFile.setAttribute('crossOrigin', 'anonymous')
+    document.head.appendChild(jsFile)
+  }
 }
