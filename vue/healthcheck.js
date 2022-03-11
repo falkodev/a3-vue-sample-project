@@ -1,8 +1,20 @@
 const http = require('http')
 
+const port = process.env.PORT || 4000
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200)
+  res.setHeader('Content-Type', 'text/plain')
+  res.end('Vite working!')
+})
+
+server.listen(port, () => {
+  console.log(`Server running at port ${port}`)
+})
+
 const options = {
-  host: 'localhost',
-  port: '3000',
+  port,
+  host: '0.0.0.0',
   timeout: 2000,
 }
 
