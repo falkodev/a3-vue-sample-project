@@ -1,6 +1,6 @@
 require('apostrophe')({
   shortName: 'vino-terr',
-  // autoBuild: false,
+  autoBuild: false,
   modules: {
     // Apostrophe module configuration
     // *******************************
