@@ -16,7 +16,6 @@ module.exports = {
     },
     group: {
       basics: {
-        label: 'Basics',
         fields: ['_events', '_customers'],
       },
     },

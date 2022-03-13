@@ -1,20 +1,54 @@
 module.exports = {
   fields: {
     add: {
-      groupType: {
-        type: 'select',
+      role: {
+        label: 'apostrophe:role',
+        type: 'role',
         choices: [
           {
-            label: 'Syndicat',
-            value: 'syndicat',
+            label: 'apostrophe:guest',
+            value: 'guest',
           },
           {
-            label: 'Vignoble',
-            value: 'vignoble',
+            label: 'apostrophe:contributor',
+            value: 'contributor',
+          },
+          {
+            label: 'apostrophe:editor',
+            value: 'editor',
+          },
+          {
+            label: 'apostrophe:admin',
+            value: 'admin',
           },
         ],
-        def: 'vignoble',
+        def: 'guest',
         required: true,
+      },
+      groupType: {
+        label: 'apostrophe:groupType',
+        type: 'select',
+        if: {
+          $or: [{ role: 'guest' }, { role: 'contributor' }, { role: 'editor' }],
+        },
+        choices: [
+          {
+            label: 'apostrophe:syndicate',
+            value: 'syndicate',
+          },
+          {
+            label: 'apostrophe:domain',
+            value: 'domain',
+          },
+        ],
+        def: 'domain',
+        required: true,
+      },
+    },
+
+    group: {
+      basics: {
+        fields: ['title', 'disabled', 'groupType', 'role'],
       },
     },
   },

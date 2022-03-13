@@ -35,7 +35,6 @@ module.exports = {
     },
     group: {
       basics: {
-        label: 'Basics',
         fields: ['_event', '_customer', 'date', 'originalPrice', 'paidPrice'],
       },
     },
