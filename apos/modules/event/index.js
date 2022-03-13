@@ -22,7 +22,6 @@ module.exports = {
     },
     group: {
       basics: {
-        label: 'Basics',
         fields: ['date', 'description', 'price'],
       },
     },

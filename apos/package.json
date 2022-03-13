@@ -13,8 +13,8 @@
     "lint": "prettier --write '**/*.{js,css,scss}' --config ../package.json --ignore-path ../.prettierignore"
   },
   "nodemonConfig": {
-    "delay": 1000,
-    "verbose": true,
+    "delay": 100,
+    "verbose": false,
     "watch": [
       "./app.js",
       "./modules/**/*",

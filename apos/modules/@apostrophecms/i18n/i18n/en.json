@@ -409,5 +409,8 @@
   "order": "order",
   "orders": "orders",
   "domain": "domain",
-  "domains": "domains"
+  "domains": "domains",
+  "syndicate": "syndicate",
+  "groupType": "type",
+  "role": "role"
 }

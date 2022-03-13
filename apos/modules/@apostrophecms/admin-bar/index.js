@@ -10,7 +10,7 @@ module.exports = {
 
           if (
             req.user &&
-            (req.user.groupType !== 'syndicat' || req.user.role !== 'admin')
+            (req.user.groupType !== 'syndicate' || req.user.role !== 'admin')
           ) {
             adminBar.items = adminBar.items.filter(
               (item) => item.name !== '@apostrophecms/file',
