@@ -1,7 +1,9 @@
 module.exports = {
   extend: '@apostrophecms/piece-type',
   options: {
+    alias: 'customer',
     label: 'apostrophe:customer',
+    localized: false,
   },
   fields: {
     add: {

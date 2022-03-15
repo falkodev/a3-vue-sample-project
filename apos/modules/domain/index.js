@@ -20,4 +20,13 @@ module.exports = {
       },
     },
   },
+  handlers(self) {
+    return {
+      '@apostrophecms/db:fixtures': {
+        async domainFixtures(req) {
+          self.apos.util.log('Starting domain fixtures')
+        },
+      },
+    }
+  },
 }
