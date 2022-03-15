@@ -6,50 +6,65 @@ module.exports = {
         type: 'role',
         choices: [
           {
-            label: 'apostrophe:guest',
+            label: 'apostrophe:customer',
             value: 'guest',
           },
           {
-            label: 'apostrophe:contributor',
-            value: 'contributor',
-          },
-          {
-            label: 'apostrophe:editor',
+            label: 'apostrophe:domain',
             value: 'editor',
           },
           {
-            label: 'apostrophe:admin',
+            label: 'apostrophe:syndicate',
             value: 'admin',
           },
         ],
         def: 'guest',
         required: true,
       },
-      groupType: {
-        label: 'apostrophe:groupType',
-        type: 'select',
-        if: {
-          $or: [{ role: 'guest' }, { role: 'contributor' }, { role: 'editor' }],
-        },
-        choices: [
-          {
-            label: 'apostrophe:syndicate',
-            value: 'syndicate',
-          },
-          {
-            label: 'apostrophe:domain',
-            value: 'domain',
-          },
-        ],
-        def: 'domain',
-        required: true,
-      },
     },
+  },
+  handlers(self) {
+    return {
+      '@apostrophecms/db:fixtures': {
+        async userFixtures(req) {
+          try {
+            self.apos.util.log('Starting user fixtures')
 
-    group: {
-      basics: {
-        fields: ['title', 'disabled', 'groupType', 'role'],
+            const userTypes = [
+              { role: 'admin', title: 'Syndicat', username: 'syndicat' },
+              {
+                role: 'editor',
+                title: 'Domaine 1',
+                username: 'domaine1',
+              },
+              {
+                role: 'guest',
+                title: 'Client 1',
+                username: 'client1',
+              },
+            ]
+
+            const usersCollection = self.apos.db.collection('aposUsersSafe')
+            await usersCollection.deleteMany({
+              username: { $in: userTypes.map((userType) => userType.username) },
+            })
+            await Promise.all(
+              userTypes.map((userType) =>
+                self.insert(req, {
+                  ...self.newInstance(),
+                  ...userType,
+                  fixtures: true,
+                  password: 'vino01',
+                }),
+              ),
+            )
+
+            self.apos.util.log('User fixtures done')
+          } catch (error) {
+            self.apos.util.error(`User fixtures error: ${error}`)
+          }
+        },
       },
-    },
+    }
   },
 }

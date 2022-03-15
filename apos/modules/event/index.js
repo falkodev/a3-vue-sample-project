@@ -1,7 +1,9 @@
 module.exports = {
   extend: '@apostrophecms/piece-type',
   options: {
+    alias: 'event',
     label: 'apostrophe:event',
+    localized: false,
   },
   fields: {
     add: {

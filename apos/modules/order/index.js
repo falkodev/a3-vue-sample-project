@@ -1,6 +1,7 @@
 module.exports = {
   extend: '@apostrophecms/piece-type',
   options: {
+    alias: 'order',
     label: 'apostrophe:order',
     localized: false,
   },
