@@ -1,8 +1,67 @@
 @import url('~normalize.css');
-// NOTE: We're using a `.bp-` namespace to indicate these are the boilerplate
-// styles.
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
 @import './scss/_settings';
 @import './scss/_type';
 @import './scss/_layout';
 @import './scss/_welcome';
 @import './scss/_widgets';
+
+.t-header {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  padding: 25px;
+  position: fixed;
+  top: 0;
+  width: calc(100% - 50px);
+  background: white;
+  z-index: 1;
+  box-shadow: 0px 8px 10px -1px rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
+  color: $color-orange;
+
+  @media (min-width: map-get($breakpoints, 'sm')) {
+    padding: 15px 25px;
+  }
+
+  &__geoloc {
+    width: 30px;
+    height: 30px;
+    justify-self: left;
+    display: inline-block;
+    background: $color-orange;
+    mask: url('/modules/asset/images/geoloc.png') center/contain no-repeat;
+  }
+
+  &__logo {
+    text-align: center;
+    max-width: 120px;
+    padding-left: 30px;
+  }
+
+  &__search {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    justify-self: right;
+    background: $color-orange;
+    mask: url('/modules/asset/images/search.svg') center/contain no-repeat;
+  }
+
+  &__menu {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    justify-self: right;
+    background: $color-orange;
+    mask: url('/modules/asset/images/menu.png') center/contain no-repeat;
+  }
+}
+
+.bp-main {
+  position: relative;
+  top: 124px;
+}

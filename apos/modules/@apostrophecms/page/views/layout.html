@@ -10,13 +10,16 @@
 {% endblock %}
 
 {% block beforeMain %}
-<div class="bp-wrapper">
-  <header class="bp-header">
-    <img class="bp-header__logo" src="{{ apos.asset.url('/modules/asset/logo.png') }}" alt="logo">
-    <nav class="bp-nav"></nav>
-    {% if not data.user %}
+<div class="t-wrapper">
+  <header class="t-header">
+    <div class="t-header__geoloc"></div>
+    <div class="t-header__logo">Votre logo ici</div>
+    <div class="t-header__search"></div>
+    <nav class="t-header__menu t-menu">
+    {% if data.isDev and not data.user %}
       <a class="bp-button bp-header__login" href="/login">Login</a>
     {% endif %}
+    </nav>
   </header>
   <main class="bp-main">
 {% endblock %}
