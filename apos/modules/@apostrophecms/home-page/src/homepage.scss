@@ -1,0 +1,12 @@
+.t-background {
+  background-image: url('/modules/asset/images/bg.png');
+  min-height: 50vh;
+  background-attachment: fixed;
+  background-position: 100% 15%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
+  }
+}
