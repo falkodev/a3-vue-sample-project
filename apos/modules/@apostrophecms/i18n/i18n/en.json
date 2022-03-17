@@ -412,5 +412,8 @@
   "domains": "domains",
   "syndicate": "syndicate",
   "groupType": "type",
-  "role": "role"
+  "role": "role",
+  "layout": {
+    "logoPlaceholder": "Your logo here"
+  }
 }

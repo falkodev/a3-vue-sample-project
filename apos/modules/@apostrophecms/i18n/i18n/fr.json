@@ -412,5 +412,8 @@
   "orders": "commandes",
   "syndicate": "syndicat",
   "groupType": "type",
-  "role": "rôle"
+  "role": "rôle",
+  "layout": {
+    "logoPlaceholder": "Votre logo ici"
+  }
 }
