@@ -12,7 +12,7 @@ export default async () => {
     })
 
     document.body.addEventListener('click', (evt) => {
-      if (!evt.target.className.match(/t-menu/)) {
+      if (!evt.target?.className?.match?.(/t-menu/)) {
         menuList.classList.remove('t-menu__list--open')
         menuIcon.classList.remove('t-menu__icon--close')
       }

@@ -7,8 +7,9 @@ module.exports = {
   },
   fields: {
     add: {
-      _events: {
+      _itineraries: {
         type: 'relationship',
+        withType: 'itinerary',
       },
       _customers: {
         type: 'relationship',
@@ -16,7 +17,7 @@ module.exports = {
     },
     group: {
       basics: {
-        fields: ['_events', '_customers'],
+        fields: ['_itineraries', '_customers'],
       },
     },
   },

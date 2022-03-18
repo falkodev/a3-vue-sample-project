@@ -404,6 +404,14 @@
   "contents": "contents",
   "event": "event",
   "events": "events",
+  "itinerary": {
+    "label": "itinerary",
+    "pluralLabel": "itineraries",
+    "type": "itinerary type",
+    "event": "event",
+    "theme": "theme",
+    "syndicate": "syndicate route"
+  },
   "customer": "customer",
   "customers": "customers",
   "order": "order",
@@ -415,5 +423,16 @@
   "role": "role",
   "layout": {
     "logoPlaceholder": "Your logo here"
-  }
+  },
+  "startDate": "start date",
+  "endDate": "end date",
+  "startTime": "start time",
+  "endTime": "end time",
+  "duration": "duration",
+  "mileage": "mileage in km",
+  "price": "price",
+  "steps": "Steps",
+  "scheduling": "Scheduling",
+  "place": "Place",
+  "places": "Places"
 }

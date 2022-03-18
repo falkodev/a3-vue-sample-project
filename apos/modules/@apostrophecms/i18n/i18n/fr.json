@@ -105,7 +105,7 @@
   "editRelationshipFor": "Edit Relationship for {{ title }}",
   "editWidget": "Edit Widget",
   "editWidgetForeignTooltip": "Click to edit this content in its natural context",
-  "editWidgetType": "Edit {{ label }}",
+  "editWidgetType": "Éditer {{ label }}",
   "email": "Email",
   "emptyRichTextWidget": "Empty Rich Text Widget",
   "enabled": "Enabled",
@@ -406,6 +406,14 @@
   "youTookControl": "You took control of this document in another tab or window. A document can only be edited in one place at a time.",
   "event": "événement",
   "events": "événements",
+  "itinerary": {
+    "label": "itinéraire",
+    "pluralLabel": "itinéraires",
+    "type": "type itinéraire",
+    "event": "événement",
+    "theme": "thématique",
+    "syndicate": "route syndicale"
+  },
   "customer": "client",
   "customers": "clients",
   "order": "commande",
@@ -415,5 +423,16 @@
   "role": "rôle",
   "layout": {
     "logoPlaceholder": "Votre logo ici"
-  }
+  },
+  "startDate": "date début",
+  "endDate": "date fin",
+  "startTime": "heure début",
+  "endTime": "heure fin",
+  "duration": "durée",
+  "mileage": "longueur en km",
+  "price": "prix",
+  "steps": "Étapes",
+  "scheduling": "Planification",
+  "place": "Lieu",
+  "places": "Lieux"
 }

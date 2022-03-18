@@ -38,7 +38,7 @@ require('apostrophe')({
     'default-page': {},
     content: {},
     domain: {},
-    event: {},
+    itinerary: {},
     customer: {},
     order: {},
   },

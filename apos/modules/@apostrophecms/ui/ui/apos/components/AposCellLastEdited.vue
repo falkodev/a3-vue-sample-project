@@ -1,14 +1,11 @@
 <script>
-import AposCellLastEditedVue from 'apostrophe/modules/@apostrophecms/ui/ui/apos/components/AposCellLastEdited.vue'
+import AposCellLastEdited from 'apostrophe/modules/@apostrophecms/ui/ui/apos/components/AposCellLastEdited.vue'
 
 export default {
-  extends: AposCellLastEditedVue,
+  extends: AposCellLastEdited,
   methods: {
     getRelativeTime(value) {
-      let result = AposCellLastEditedVue.methods.getRelativeTime.call(
-        this,
-        value,
-      )
+      let result = AposCellLastEdited.methods.getRelativeTime.call(this, value)
 
       if (apos.locale === 'fr') {
         const val = result.split(' ago')[0]

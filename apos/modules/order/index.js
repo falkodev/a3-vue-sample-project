@@ -7,7 +7,7 @@ module.exports = {
   },
   fields: {
     add: {
-      _event: {
+      _itinerary: {
         type: 'relationship',
         min: 1,
         max: 1,
@@ -19,9 +19,8 @@ module.exports = {
         max: 1,
         required: true,
       },
-      _domain: {
+      _domains: {
         type: 'relationship',
-        max: 1,
         readOnly: true,
       },
       date: {
@@ -36,7 +35,14 @@ module.exports = {
     },
     group: {
       basics: {
-        fields: ['_event', '_customer', 'date', 'originalPrice', 'paidPrice'],
+        fields: [
+          '_itinerary',
+          '_customer',
+          '_domains',
+          'date',
+          'originalPrice',
+          'paidPrice',
+        ],
       },
     },
   },
@@ -56,13 +62,23 @@ module.exports = {
       beforeSave: {
         async addCustomerToDomain(req, doc) {
           if (doc.aposDocId) {
-            const domain = await self.apos.domain
-              .find(req, { aposDocId: doc._event[0].domainIds[0] })
-              .toObject()
-            const _customers = new Set(domain._customers)
-            _customers.add(doc._customer[0])
-            await self.apos.domain.update(req, { ...domain, _customers })
-            doc._domain = [domain]
+            const domains = await self.apos.domain
+              .find(req, { aposDocId: { $in: doc._itinerary[0].domainIds } })
+              .toArray()
+
+            const customersDomains = domains.map((domain) => {
+              const _customers = new Set(domain._customers)
+              _customers.add(doc._customer[0])
+
+              return { ...domain, _customers }
+            })
+
+            await Promise.all(
+              customersDomains.map((customersDomain) =>
+                self.apos.domain.update(req, customersDomain),
+              ),
+            )
+            doc._domains = customersDomains
           }
         },
       },
