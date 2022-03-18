@@ -15,10 +15,22 @@
     <div class="t-header__geoloc t-header__icon"></div>
     <div class="t-header__logo">{{ __t('apostrophe:layout.logoPlaceholder') }}</div>
     <div class="t-header__search  t-header__icon"></div>
-    <nav class="t-header__menu t-header__icon t-menu">
-    {% if data.isDev and not data.user %}
-      <a class="bp-button bp-header__login" href="/login">{{ __t('apostrophe:login') }}</a>
-    {% endif %}
+    <nav class="t-header__menu t-menu">
+      <div class="t-menu__icon" data-menu-icon>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="t-menu__list" data-menu-list>
+        {% if not data.user %}
+          <li class="t-menu__element"><a href="/login">{{ __t('apostrophe:login') }}</a></li>
+        {% else %}
+          <li class="t-menu__element"><a href="#">{{ __t('apostrophe:layout.profile') }}</a></li>
+          <li class="t-menu__element"><a href="#">{{ __t('apostrophe:layout.tours') }}</a></li>
+          <li class="t-menu__element"><a href="#">{{ __t('apostrophe:layout.orders') }}</a></li>
+          <li class="t-menu__element"><a href="#">{{ __t('apostrophe:layout.favorites') }}</a></li>
+        {% endif %}
+      </ul>
     </nav>
   </header>
   <main class="t-main">
@@ -38,7 +50,7 @@
 
   <footer class="bp-footer">
   </footer>
-</div>{# Close .bp-wrapper #}
+</div>{# Close .t-wrapper #}
 {% endblock %}
 
 {% block afterAposScripts %}
