@@ -17,4 +17,14 @@ module.exports = {
       },
     },
   },
+  handlers(self) {
+    return {
+      beforeInsert: {
+        updateTitle(doc) {
+          doc.title = doc.firstName + ' ' + doc.lastName
+          return doc
+        },
+      },
+    }
+  },
 }
