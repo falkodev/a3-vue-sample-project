@@ -13,6 +13,7 @@
     "release": "npm install && npm run build && node app @apostrophecms/migration:migrate",
     "lint": "prettier --write '**/*.{js,css,scss}' --config ../package.json --ignore-path ../.prettierignore",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "nodemonConfig": {
