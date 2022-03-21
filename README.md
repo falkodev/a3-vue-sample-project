@@ -90,7 +90,7 @@ Additionally, there is a Makefile. Therefore, these commands are available:
 - `make build` is also available to build containers after a new package is added in a package.json file (for server and client containers)
 - `make rebuild` will force to download all images again, starting from scratch before building containers
 
-Mongo outputs a lot of logs, and while this can be necessary to read them sometimes, most of the time it is too much useless information. An advice is too run `make && make logs-back & make logs-front` in a terminal.
+Mongo outputs a lot of logs, and while this can be necessary to read them sometimes, most of the time it is too much useless information. An advice is too run `make && make logs-apos & make logs-vue` in a terminal.
 
 <a id="4-2"></a>
 
@@ -200,13 +200,13 @@ They can be launched locally by running `npm run test` on root level or through 
 
 For a specific service:
 
-- backend: run `make test-backend`
-- frontend: run `make test-frontend`
+- backend: run `make test-apos`
+- frontend: run `make test-vue`
 
 If a watch mode is needed during development:
 
-- for backend: `docker-compose exec vino-terr-apos npm run jest:watch` or `cd server && npm run jest:watch`
-- for frontend: `docker-compose exec vino-terr-vue npm run jest:watch` or `cd client && npm run jest:watch`
+- for backend: `docker-compose exec vino-terr-apos npm run test:watch` or `cd server && npm run test:watch`
+- for frontend: `docker-compose exec vino-terr-vue npm run test:watch` or `cd client && npm run test:watch`
 
 <a id="7"></a>
 
@@ -216,5 +216,3 @@ A set of fixtures has been configured to start the application with fake data.
 
 Locally, you can run `cd server && npm run fixtures`.
 Through Docker (after the containers have started with `make`), the command is `docker-compose exec vino-terr-apos npm run fixtures`.
-
-For a specific fixtures to be launched, you can run `docker-compose exec vino-terr-apos npm run fixtures:users` for example, or `node -e 'require(\"./modules/@apostrophecms/user/fixtures\").main()'`.
