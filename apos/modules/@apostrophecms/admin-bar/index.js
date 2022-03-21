@@ -8,13 +8,16 @@ module.exports = {
             (item) => !item.name.includes('-tag'),
           )
 
-          if (
-            req.user &&
-            (req.user.groupType !== 'syndicate' || req.user.role !== 'admin')
-          ) {
-            adminBar.items = adminBar.items.filter(
-              (item) => item.name !== '@apostrophecms/file',
-            )
+          if (req?.user?.role) {
+            if (req.user.role !== 'admin') {
+              if (req.user.role === 'guest') {
+                return null
+              } else {
+                adminBar.items = adminBar.items.filter(
+                  (item) => item.name !== '@apostrophecms/file',
+                )
+              }
+            }
           }
         }
 

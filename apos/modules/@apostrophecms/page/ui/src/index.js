@@ -1,9 +1,10 @@
-export default async () => {
+export default () => {
   /**
    * Open and close nav menu in header
    */
   const menuIcon = document.querySelector('[data-menu-icon]')
   const menuList = document.querySelector('[data-menu-list]')
+  const logoutLink = document.querySelector('[data-logout]')
 
   if (menuIcon && menuList) {
     menuIcon.addEventListener('click', () => {
@@ -16,6 +17,12 @@ export default async () => {
         menuList.classList.remove('t-menu__list--open')
         menuIcon.classList.remove('t-menu__icon--close')
       }
+    })
+  }
+
+  if (logoutLink) {
+    logoutLink.addEventListener('click', async () => {
+      apos.bus.$emit('admin-menu-click', '@apostrophecms/login-logout')
     })
   }
 }
