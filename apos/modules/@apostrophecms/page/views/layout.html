@@ -4,9 +4,9 @@
 {% set title = data.piece.title or data.page.title %}
 {% block title %}
   {{ title }}
-  {% if not title %}
-    {{ apos.log('Looks like you forgot to override the title block in a template that does not have access to an Apostrophe page or piece.') }}
-  {% endif %}
+{% if not title %}
+  {{ apos.log('Looks like you forgot to override the title block in a template that does not have access to an Apostrophe page or piece.') }}
+{% endif %}
 {% endblock %}
 
 {% block beforeMain %}
@@ -38,9 +38,9 @@
 
 {% block main %}
   {#
-    Usually, your page templates in the @apostrophecms/pages module will override
-    this block. It is safe to assume this is where your page-specific content
-    should go.
+  Usually, your page templates in the @apostrophecms/pages module will override
+  this block. It is safe to assume this is where your page-specific content
+  should go.
   #}
 {% endblock %}
 
@@ -48,11 +48,34 @@
   </main>
   <div id="app"></div>
 
-  <footer class="bp-footer">
+  <footer class="t-footer">
+    <a class="t-footer__icon__wrapper" href="/">
+      <div class="t-footer__roads t-footer__icon {{ 't-footer__icon--active' if data.page.slug === '/roads' }}"></div>
+      <p class="t-footer__icon-text">{{ __t('apostrophe:layout.textRoads') }}</p>
+    </a>
+    <a class="t-footer__icon__wrapper" href="/">
+      <div class="t-footer__places t-footer__icon {{ 't-footer__icon--active' if data.page.slug === '/places' }}"></div>
+      <p class="t-footer__icon-text">{{ __t('apostrophe:layout.textPlaces') }}</p>
+    </a>
+    <a class="t-footer__icon__wrapper" href="/">
+      <div class="t-footer__home t-footer__icon {{ 't-footer__icon--active' if data.page.slug === '/' }}"></div>
+      <p class="t-footer__icon-text">{{ __t('apostrophe:layout.textHome') }}</p>
+    </a>
+    <a class="t-footer__icon__wrapper" href="/">
+      <div class="t-footer__events t-footer__icon {{ 't-footer__icon--active' if data.page.slug === '/events' }}"></div>
+      <p class="t-footer__icon-text">{{ __t('apostrophe:layout.textEvents') }}</p>
+    </a>
+    <a class="t-footer__icon__wrapper" href="/">
+      <div class="t-footer__favorites t-footer__icon {{ 't-footer__icon--active' if data.page.slug === '/favorites' }}">
+      </div>
+      <p class="t-footer__icon-text">{{ __t('apostrophe:layout.textFavorites') }}</p>
+    </a>
   </footer>
+
 </div>{# Close .t-wrapper #}
+
 {% endblock %}
 
 {% block afterAposScripts %}
-  <script>apos.mode = "{{ 'development' if data.isDev else 'production' }}";</script>
+<script>apos.mode = "{{ 'development' if data.isDev else 'production' }}";</script>
 {% endblock %}

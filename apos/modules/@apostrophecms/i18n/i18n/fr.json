@@ -422,7 +422,12 @@
   "groupType": "type",
   "role": "rôle",
   "layout": {
-    "logoPlaceholder": "Votre logo ici"
+    "logoPlaceholder": "Votre logo ici",
+    "textRoads": "Routes",
+    "textPlaces": "Lieux",
+    "textHome": "Accueil",
+    "textEvents": "Evénements",
+    "textFavorites": "Favoris"
   },
   "startDate": "date début",
   "endDate": "date fin",
