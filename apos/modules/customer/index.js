@@ -55,7 +55,7 @@ module.exports = {
         },
 
         createUser(req, doc) {
-          self.apos.user.insert(req, {
+          return self.apos.user.insert(req, {
             role: 'guest',
             title: doc.title,
             password: doc.password,
