@@ -31,16 +31,15 @@ module.exports = {
             self.apos.util.log('Starting user fixtures')
 
             const userTypes = [
-              { role: 'admin', title: 'Syndicat', username: 'syndicat' },
+              {
+                role: 'admin',
+                title: 'Syndicat',
+                username: 'syndicat',
+              },
               {
                 role: 'editor',
                 title: 'Domaine 1',
                 username: 'domaine1',
-              },
-              {
-                role: 'guest',
-                title: 'Client 1',
-                username: 'client1',
               },
             ]
 

@@ -24,17 +24,17 @@ dev-logs:
 prod:
 	NODE_ENV=production docker-compose up -d --build && make logs
 
-logs-db:
+logs-mongo:
 	docker logs vino-terr-mongo -f
 
-logs-back:
+logs-apos:
 	docker logs vino-terr-apos -f
 
-logs-front:
+logs-vue:
 	docker logs vino-terr-vue -f
 
 logs:
-	make logs-db & make logs-back & make logs-front
+	make logs-mongo & make logs-apos & make logs-vue
 
 db-dump:
 	db/scripts/dump.sh
@@ -42,11 +42,6 @@ db-dump:
 db-restore:
 	db/scripts/restore.sh
 
-test-frontend:
-	docker run -it feathers-nuxt-docker-app-2_app-frontend npm run jest
-
-test-backend:
-	docker run -it feathers-nuxt-docker-app-2_app-backend npm run jest
-
 test:
-	make kill && NODE_ENV=test docker-compose up -d && docker-compose exec vino-terr-vue npm run jest && docker-compose exec vino-terr-apos npm run jest && make kill
+	make kill && NODE_ENV=test docker-compose up -d && docker-compose exec vino-terr-apos npm run test && make kill
+

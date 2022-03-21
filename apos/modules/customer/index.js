@@ -1,3 +1,7 @@
+const moment = require('moment')
+const LEGAL_AGE = 18
+module.exports.LEGAL_AGE = LEGAL_AGE
+
 module.exports = {
   extend: '@apostrophecms/piece-type',
   options: {
@@ -7,14 +11,125 @@ module.exports = {
   },
   fields: {
     add: {
+      firstName: {
+        type: 'string',
+        required: true,
+      },
+
+      lastName: {
+        type: 'string',
+        required: true,
+      },
+
       birthDate: {
         type: 'date',
+        required: true,
+      },
+
+      email: {
+        type: 'email',
+        required: true,
       },
     },
     group: {
       basics: {
-        fields: ['birthDate'],
+        fields: ['firstName', 'lastName', 'birthDate', 'email'],
       },
     },
+  },
+
+  handlers(self) {
+    return {
+      beforeInsert: {
+        checkLegalAge(req, doc) {
+          const validAge = moment().diff(doc.birthDate, 'years') >= LEGAL_AGE
+          if (!validAge) {
+            throw new Error('invalid birth date')
+          }
+          return validAge
+        },
+
+        titleCustomer(req, doc) {
+          doc.title = doc.firstName + ' ' + doc.lastName
+          return doc
+        },
+
+        createUser(req, doc) {
+          self.apos.user.insert(req, {
+            role: 'guest',
+            title: doc.title,
+            password: doc.password,
+            email: doc.email,
+            username: doc.email,
+            ...(doc.fixtures && { fixtures: doc.fixtures }), // add "fixtures" prop only if coming from fixtures
+          })
+        },
+
+        removePassword(req, doc) {
+          delete doc.password
+          return doc
+        },
+      },
+
+      '@apostrophecms/db:fixtures': {
+        async customerFixtures(req) {
+          try {
+            self.apos.util.log('Starting customer fixtures')
+
+            const customerTypes = [
+              {
+                email: 'henri@roland-garros.fr',
+                firstName: 'Henri',
+                lastName: 'Cochet',
+                birthDate: '1901-12-14',
+                password: 'vino01',
+              },
+              {
+                email: 'rene@roland-garros.fr',
+                firstName: 'René',
+                lastName: 'Lacoste',
+                birthDate: '1904-07-02',
+                password: 'vino01',
+              },
+              {
+                email: 'jean@roland-garros.fr',
+                firstName: 'Jean',
+                lastName: 'Borotra',
+                birthDate: '1898-08-13',
+                password: 'vino01',
+              },
+              {
+                email: 'jacques@roland-garros.fr',
+                firstName: 'Jacques',
+                lastName: 'Brugnon',
+                birthDate: '1895-05-11',
+                password: 'vino01',
+              },
+            ]
+
+            const usersCollection = self.apos.db.collection('aposUsersSafe')
+            await usersCollection.deleteMany({
+              username: {
+                $in: customerTypes.map((customerType) => customerType.email),
+              },
+            })
+
+            await Promise.all(
+              customerTypes.map((customerType) =>
+                self.insert(req, {
+                  ...self.newInstance(),
+                  ...customerType,
+                  fixtures: true,
+                }),
+              ),
+            )
+
+            self.apos.util.log('Customer fixtures done')
+          } catch (error) {
+            self.apos.util.error(`Customer fixtures error: ${error}`)
+          }
+        },
+      },
+    }
   },
 }
