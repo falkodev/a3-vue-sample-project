@@ -35,12 +35,12 @@
 
   &__geoloc {
     justify-self: left;
-    mask: url('/modules/asset/images/geoloc.png') center/contain no-repeat;
+    mask: url('/modules/asset/icons/geoloc.png') center/contain no-repeat;
   }
 
   &__search {
     justify-self: right;
-    mask: url('/modules/asset/images/search.svg') center/contain no-repeat;
+    mask: url('/modules/asset/icons/search.svg') center/contain no-repeat;
   }
 
   &__menu {
@@ -117,5 +117,65 @@
         color: $color-white;
       }
     }
+  }
+}
+
+.t-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 25px;
+  padding-bottom: 10px;
+  position: fixed;
+  bottom: 0;
+  width: calc(100% - 50px);
+  height: 50px;
+  background: $color-purple;
+  z-index: 1;
+  font-family: 'Montserrat', regular;
+  font-size: 11px;
+  color: $color-white;
+
+  @media (min-width: map-get($breakpoints, 'sm')) {
+    padding: 30px 25px 20px;
+  }
+
+  &__icon__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    width: 36px;
+    height: 36px;
+    background: $color-white;
+  }
+
+  &__icon-text {
+    color: $color-white;
+  }
+
+  &__icon--active {
+    background: $color-orange;
+  }
+
+  &__roads {
+    mask: url('/modules/asset/icons/map.png') center/contain no-repeat;
+  }
+
+  &__places {
+    mask: url('/modules/asset/icons/direction.png') center/contain no-repeat;
+  }
+
+  &__home {
+    mask: url('/modules/asset/icons/Home.png') center/contain no-repeat;
+  }
+  &__events {
+    mask: url('/modules/asset/icons/event.png') center/contain no-repeat;
+  }
+  &__favorites {
+    mask: url('/modules/asset/icons/heart.png') center/contain no-repeat;
   }
 }
