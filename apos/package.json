@@ -11,7 +11,9 @@
     "sw": "workbox injectManifest modules/asset/workbox-config.js",
     "serve": "NODE_ENV=production node app",
     "release": "npm install && npm run build && node app @apostrophecms/migration:migrate",
-    "lint": "prettier --write '**/*.{js,css,scss}' --config ../package.json --ignore-path ../.prettierignore"
+    "lint": "prettier --write '**/*.{js,css,scss}' --config ../package.json --ignore-path ../.prettierignore",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "nodemonConfig": {
     "delay": 100,
@@ -43,6 +45,7 @@
     "workbox-cli": "^6.5.1"
   },
   "devDependencies": {
+    "jest": "^27.5.1",
     "nodemon": "^2.0.7",
     "prettier": "^2.5.1"
   }
