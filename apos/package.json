@@ -14,7 +14,7 @@
     "lint": "prettier --write '**/*.{js,css,scss}' --config ../package.json --ignore-path ../.prettierignore",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watchAll"
   },
   "nodemonConfig": {
     "delay": 100,
