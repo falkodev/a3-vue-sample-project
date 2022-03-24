@@ -71,14 +71,12 @@ module.exports = {
       steps: {
         type: 'array',
         label: 'apostrophe:steps',
-        titleField: '_place.title',
         fields: {
           add: {
             _place: {
-              //TODO: create "place" module for places (wine shop, restaurant, domain, location)
               //TODO: when an order is created, check its matching itinerary, get steps with "domain" place and add them to the order
-              type: 'string',
-              label: 'apostrophe:place',
+              type: 'relationship',
+              label: 'apostrophe:place.label',
             },
           },
         },

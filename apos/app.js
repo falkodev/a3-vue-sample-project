@@ -41,5 +41,6 @@ require('apostrophe')({
     itinerary: {},
     customer: {},
     order: {},
+    place: {},
   },
 })
