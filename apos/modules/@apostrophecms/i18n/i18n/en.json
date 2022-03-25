@@ -442,7 +442,7 @@
     "label": "Place",
     "pluralLabel": "Places",
     "type": "Place Type",
-    "wineShop": "Wine Shop",
+    "wineStore": "Wine Store",
     "restaurant": "Restaurant",
     "poi": "Point Of Interest",
     "domain": "Domain"
