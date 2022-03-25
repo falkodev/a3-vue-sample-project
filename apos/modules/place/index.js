@@ -1,3 +1,6 @@
+const qs = require('qs')
+const config = require('config')
+
 module.exports = {
   extend: '@apostrophecms/piece-type',
   options: {
@@ -17,8 +20,8 @@ module.exports = {
             value: null,
           },
           {
-            label: 'apostrophe:place.wineShop',
-            value: 'wineShop',
+            label: 'apostrophe:place.wineStore',
+            value: 'wineStore',
           },
           {
             label: 'apostrophe:place.restaurant',
@@ -69,13 +72,51 @@ module.exports = {
       },
     },
   },
-  handlers() {
+  handlers(self) {
     return {
       beforeSave: {
         convertCoordinatesToGeoJSONPoint(req, doc) {
           doc.geoLocation = {
             type: 'Point',
             coordinates: [doc.longitude, doc.latitude],
+          }
+        },
+      },
+
+      '@apostrophecms/db:fixtures': {
+        async placeFixtures(req) {
+          try {
+            self.apos.util.log('Starting place fixtures')
+
+            const { url, querystring, headers } = config.get('placesAPI')
+            const urlQuery = qs.stringify(querystring)
+            const finalUrl = `${url}?${urlQuery}`
+            const data = await self.apos.http.get(finalUrl, { headers })
+
+            //TODO: place image
+            await Promise.all(
+              data.results.map((result) => {
+                const place = {
+                  title: result.name,
+                  placeType: 'wineStore',
+                  address: result.location.formatted_address,
+                  longitude: result.geocodes.main.longitude,
+                  latitude: result.geocodes.main.latitude,
+                }
+
+                return self.insert(req, {
+                  ...self.newInstance(),
+                  ...place,
+                  fixtures: true,
+                })
+              }),
+            )
+
+            self.apos.util.log('Place fixtures done')
+          } catch (error) {
+            self.apos.util.error(
+              `Place fixtures error: ${error?.body?.message || error?.message}`,
+            )
           }
         },
       },

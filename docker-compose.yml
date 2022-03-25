@@ -24,6 +24,7 @@ services:
     init: true
     volumes:
       - ./apos/app.js:/app/app.js
+      - ./apos/config:/app/config
       - ./apos/modules:/app/modules
       - ./apos/public:/app/public
       - ./apos/package.json:/app/package.json
@@ -33,8 +34,9 @@ services:
     depends_on:
       - vino-terr-mongo
     environment:
+      APOS_DEV:
       NODE_ENV: ${NODE_ENV:-production}
-      NODE_APP_INSTANCE: docker
+      NODE_APP_INSTANCE: ${NODE_ENV:-larzac}
       MONGO_DB:
       WAIT_HOSTS: vino-terr-mongo:27017
     healthcheck:

@@ -442,7 +442,7 @@
     "label": "lieu",
     "pluralLabel": "lieux",
     "type": "type",
-    "wineShop": "caviste",
+    "wineStore": "caviste",
     "restaurant": "restaurant",
     "poi": "point interêt",
     "domain": "domaine"
