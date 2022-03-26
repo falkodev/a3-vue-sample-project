@@ -57,14 +57,7 @@ describe('customer', () => {
   })
 
   test('the password is removed from the customer', () => {
-    expect(beforeInsert.removePassword({}, doc)).toEqual({
-      email: 'roland@gmail.com',
-      firstName: 'Roland',
-      lastName: 'Garros',
-      birthDate: '1888-10-06',
-      title: 'Roland Garros',
-      fixtures: true,
-    })
+    expect(beforeInsert.removePassword({}, doc)).not.toHaveProperty('password')
   })
 
   test('fixtures are run', async () => {

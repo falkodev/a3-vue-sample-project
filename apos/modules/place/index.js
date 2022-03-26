@@ -80,6 +80,7 @@ module.exports = {
             type: 'Point',
             coordinates: [doc.longitude, doc.latitude],
           }
+          return doc
         },
       },
 
