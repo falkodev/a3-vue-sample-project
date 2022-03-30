@@ -1,5 +1,8 @@
 const qs = require('qs')
+const fs = require('fs')
+const path = require('path')
 const config = require('config')
+const { request } = require('gaxios')
 
 module.exports = {
   extend: '@apostrophecms/piece-type',
@@ -38,6 +41,11 @@ module.exports = {
         ],
         def: null,
         required: true,
+      },
+      image: {
+        type: 'attachment',
+        label: 'apostrophe:image',
+        fileGroup: 'images',
       },
       address: {
         type: 'string',
@@ -89,35 +97,63 @@ module.exports = {
           try {
             self.apos.util.log('Starting place fixtures')
 
-            const { url, querystring, headers } = config.get('placesAPI')
-            const urlQuery = qs.stringify(querystring)
-            const finalUrl = `${url}?${urlQuery}`
-            const data = await self.apos.http.get(finalUrl, { headers })
+            const { url } = config.get('placesAPI')
+            const searchUrlQuery = qs.stringify(url.search.querystring)
+            const searchUrl = `${url.prefix}/${url.search.url}?${searchUrlQuery}`
+            const searchData = await self.apos.http.get(searchUrl)
 
-            //TODO: place image
-            await Promise.all(
-              data.results.map((result) => {
-                const place = {
-                  title: result.name,
-                  placeType: 'wineStore',
-                  address: result.location.formatted_address,
-                  longitude: result.geocodes.main.longitude,
-                  latitude: result.geocodes.main.latitude,
+            for (const result of searchData.results) {
+              const place = {
+                title: result.name,
+                placeType: 'wineStore',
+                address: result.vicinity,
+                longitude: result.geometry.location.lng,
+                latitude: result.geometry.location.lat,
+              }
+
+              const photoRef = result.photos?.[0]?.photo_reference
+              let image
+
+              if (photoRef) {
+                const imageName = `${result.reference}.jpg`
+                const imagePath = path.resolve(__dirname, `./${imageName}`)
+                try {
+                  const photoUrlQuery = qs.stringify({
+                    photo_reference: photoRef,
+                    maxwidth: 800,
+                    key: config.get('placesAPI.url.search.querystring.key'),
+                  })
+                  const photoUrl = `${url.prefix}/${url.photo.url}?${photoUrlQuery}`
+                  const writer = fs.createWriteStream(imagePath)
+                  const file = await request({
+                    method: 'GET',
+                    url: photoUrl,
+                    responseType: 'stream',
+                  })
+                  file.data.pipe(writer)
+
+                  image = await self.apos.attachment.insert(req, {
+                    name: imageName,
+                    path: imagePath,
+                  })
+                } catch (error) {
+                  self.apos.util.error(error, 'Place fixtures image error')
+                } finally {
+                  fs.unlinkSync(imagePath)
                 }
+              }
 
-                return self.insert(req, {
-                  ...self.newInstance(),
-                  ...place,
-                  fixtures: true,
-                })
-              }),
-            )
+              await self.insert(req, {
+                ...self.newInstance(),
+                ...place,
+                ...(image && { image }),
+                fixtures: true,
+              })
+            }
 
             self.apos.util.log('Place fixtures done')
           } catch (error) {
-            self.apos.util.error(
-              `Place fixtures error: ${error?.body?.message || error?.message}`,
-            )
+            self.apos.util.error(error, 'Place fixtures error')
           }
         },
       },

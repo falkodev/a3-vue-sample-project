@@ -9,3 +9,4 @@ nginx/logs
 .nuxt/
 .env
 coverage
+apos/config/local.yml

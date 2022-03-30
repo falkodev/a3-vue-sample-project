@@ -1,3 +1,5 @@
 placesAPI:
-  querystring:
-    ll: 43.683331,3.58333
+  url:
+    search:
+      querystring:
+        location: 43.683331,3.58333

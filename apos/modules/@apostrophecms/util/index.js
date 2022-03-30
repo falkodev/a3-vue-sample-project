@@ -14,20 +14,20 @@ const logger = pino({
 module.exports = {
   methods() {
     return {
-      log(msg) {
-        logger.info(msg)
+      log(msg, customMsg) {
+        logger.info(msg, customMsg)
       },
-      info(msg) {
-        logger.info(msg)
+      info(msg, customMsg) {
+        logger.info(msg, customMsg)
       },
-      debug(msg) {
-        logger.debug(msg)
+      debug(msg, customMsg) {
+        logger.debug(msg, customMsg)
       },
-      warn(msg) {
-        logger.warn(msg)
+      warn(msg, customMsg) {
+        logger.warn(msg, customMsg)
       },
-      error(msg) {
-        logger.error(msg)
+      error(msg, customMsg) {
+        logger.error(msg, customMsg)
       },
     }
   },

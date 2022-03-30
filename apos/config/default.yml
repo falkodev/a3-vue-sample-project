@@ -1,10 +1,12 @@
 placesAPI:
-  name: Foursquare
-  url: https://api.foursquare.com/v3/places/search
-  querystring:
-    categories: 17080 # wine stores
-    radius: 10000
-    limit: 10
-  headers:
-    Accept: 'application/json'
-    Authorization: 'fsq3KIby6493BgddFAGEUv3OggX39YyiJ7LGHy+lItcbyfs='
+  name: Google Places
+  url:
+    prefix: https://maps.googleapis.com/maps/api/place
+    search:
+      url: nearbysearch/json
+      querystring:
+        radius: 10000
+        limit: 10
+        keyword: caviste
+    photo:
+      url: photo
