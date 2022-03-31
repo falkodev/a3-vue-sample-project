@@ -37,10 +37,10 @@ logs:
 	make logs-mongo & make logs-apos & make logs-vue
 
 db-dump:
-	db/scripts/dump.sh
+	mongo/scripts/dump.sh
 
 db-restore:
-	db/scripts/restore.sh
+	mongo/scripts/restore.sh
 
 test:
 	make kill && NODE_ENV=test docker-compose up -d && docker-compose exec vino-terr-apos npm run test && make kill

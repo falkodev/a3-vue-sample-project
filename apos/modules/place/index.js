@@ -119,7 +119,7 @@ module.exports = {
           if (!dataFile || forceFetch) {
             await self.fetchPlaces()
           } else {
-            await self.createPlacesFromData()
+            await self.createPlacesFromData(dataFile)
           }
 
           self.apos.util.log('Places updated')
@@ -214,7 +214,7 @@ module.exports = {
         )
       },
 
-      async createPlacesFromData() {
+      async createPlacesFromData(dataFile) {
         const req = self.apos.task.getReq()
         const existingPlaces = await self.find(req).toArray()
 
