@@ -19,10 +19,10 @@ dev:
 	make kill && NODE_ENV=development docker-compose up -d
 
 dev-logs:
-	make kill && NODE_ENV=development docker-compose up -d && make logs
+	make kill && NODE_ENV=development MONGO_INITDB_DATABASE=vino-terr-larzac docker-compose up -d && make logs
 
 prod:
-	NODE_ENV=production docker-compose up -d --build && make logs
+	NODE_ENV=production MONGO_INITDB_DATABASE=vino-terr-larzac docker-compose up -d --build && make logs
 
 logs-mongo:
 	docker logs vino-terr-mongo -f

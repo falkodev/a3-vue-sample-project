@@ -7,6 +7,5 @@ placesAPI:
       querystring:
         radius: 10000
         limit: 10
-        keyword: caviste
     photo:
       url: photo

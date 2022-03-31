@@ -10,7 +10,7 @@ services:
     volumes:
       - ./mongo/data/db:/data/db
     environment:
-      MONGO_INITDB_DATABASE: vino-terr
+      MONGO_INITDB_DATABASE:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD:
       MONGO_INITDB_USER_USERNAME: app-admin
@@ -36,7 +36,7 @@ services:
     environment:
       APOS_DEV:
       NODE_ENV: ${NODE_ENV:-production}
-      NODE_APP_INSTANCE: ${NODE_ENV:-larzac}
+      NODE_APP_INSTANCE: ${NODE_APP_INSTANCE:-larzac}
       MONGO_DB:
       WAIT_HOSTS: vino-terr-mongo:27017
     healthcheck:
