@@ -42,7 +42,7 @@ module.exports = {
     },
     group: {
       basics: {
-        fields: ['placeType', 'address', 'longitude', 'latitude'],
+        fields: ['placeType', 'address', 'longitude', 'latitude', 'image'],
       },
     },
   },
@@ -68,22 +68,22 @@ module.exports = {
   methods(self) {
     const categories = [
       {
-        label: 'apostrophe:place.wineStore',
+        label: 'apostrophe:wineStore',
         value: 'wineStore',
         searchTerm: 'caviste',
       },
       {
-        label: 'apostrophe:place.wineBar',
+        label: 'apostrophe:wineBar',
         value: 'wineBar',
         searchTerm: 'bar à vins',
       },
       {
-        label: 'apostrophe:place.poi',
+        label: 'apostrophe:poi',
         value: 'poi',
         searchTerm: "lieu d'intérêt",
       },
       {
-        label: 'apostrophe:place.domain',
+        label: 'apostrophe:domain',
         value: 'domain',
         searchTerm: 'vignoble',
       },
@@ -142,76 +142,76 @@ module.exports = {
           await asyncFs.unlink(path.join(imageFolder, existingImage))
         }
 
-        // for (const category of categories) {
-        //   const searchUrlQuery = qs.stringify({
-        //     ...url.search.querystring,
-        //     keyword: category.searchTerm,
-        //   })
-        //   const searchUrl = `${url.prefix}/${url.search.url}?${searchUrlQuery}`
-        //   const searchData = await self.apos.http.get(searchUrl)
-        //   self.apos.util.log(
-        //     `Places fetched for ${category.value}. Saving them in DB...`,
-        //   )
+        for (const category of categories) {
+          const searchUrlQuery = qs.stringify({
+            ...url.search.querystring,
+            keyword: category.searchTerm,
+          })
+          const searchUrl = `${url.prefix}/${url.search.url}?${searchUrlQuery}`
+          const searchData = await self.apos.http.get(searchUrl)
+          self.apos.util.log(
+            `Places fetched for ${category.value}. Saving them in DB...`,
+          )
 
-        //   for (const result of searchData.results) {
-        //     const photoRef = result.photos?.[0]?.photo_reference
-        //     const place = {
-        //       ...self.newInstance(),
-        //       title: result.name,
-        //       placeType: category.value,
-        //       address: result.vicinity,
-        //       longitude: result.geometry.location.lng,
-        //       latitude: result.geometry.location.lat,
-        //       ...(photoRef && { photoRef }),
-        //     }
+          for (const result of searchData.results) {
+            const photoRef = result.photos?.[0]?.photo_reference
+            const place = {
+              ...self.newInstance(),
+              title: result.name,
+              placeType: category.value,
+              address: result.vicinity,
+              longitude: result.geometry.location.lng,
+              latitude: result.geometry.location.lat,
+              ...(photoRef && { photoRef }),
+            }
 
-        //     let image
-        //     if (photoRef) {
-        //       const imageName = `${self.apos.util.slugify(result.name)}.jpg`
-        //       const imagePath = path.resolve(
-        //         __dirname,
-        //         `./domains/${process.env.NODE_APP_INSTANCE}/images/${imageName}`,
-        //       )
-        //       try {
-        //         const photoUrlQuery = qs.stringify({
-        //           photo_reference: photoRef,
-        //           maxwidth: 800,
-        //           key: config.get('placesAPI.url.search.querystring.key'),
-        //         })
-        //         const photoUrl = `${url.prefix}/${url.photo.url}?${photoUrlQuery}`
-        //         const writer = fs.createWriteStream(imagePath)
-        //         const file = await request({
-        //           method: 'GET',
-        //           url: photoUrl,
-        //           responseType: 'stream',
-        //         })
-        //         file.data.pipe(writer)
+            let image
+            if (photoRef) {
+              const imageName = `${self.apos.util.slugify(result.name)}.jpg`
+              const imagePath = path.resolve(
+                __dirname,
+                `./domains/${process.env.NODE_APP_INSTANCE}/images/${imageName}`,
+              )
+              try {
+                const photoUrlQuery = qs.stringify({
+                  photo_reference: photoRef,
+                  maxwidth: 800,
+                  key: config.get('placesAPI.url.search.querystring.key'),
+                })
+                const photoUrl = `${url.prefix}/${url.photo.url}?${photoUrlQuery}`
+                const writer = fs.createWriteStream(imagePath)
+                const file = await request({
+                  method: 'GET',
+                  url: photoUrl,
+                  responseType: 'stream',
+                })
+                file.data.pipe(writer)
 
-        //         image = await self.apos.attachment.insert(req, {
-        //           name: imageName,
-        //           path: imagePath,
-        //         })
+                image = await self.apos.attachment.insert(req, {
+                  name: imageName,
+                  path: imagePath,
+                })
 
-        //         place.image = image
-        //       } catch (error) {
-        //         self.apos.util.error(error, 'Place fixtures image error')
-        //       }
-        //     }
+                place.image = image
+              } catch (error) {
+                self.apos.util.error(error, 'Place fixtures image error')
+              }
+            }
 
-        //     await self.insert(req, place)
-        //     places.push(place)
-        //   }
-        // }
+            await self.insert(req, place)
+            places.push(place)
+          }
+        }
 
-        // self.apos.util.log('Writing data to file')
-        // const data = JSON.stringify(places, null, 2)
-        // await asyncFs.writeFile(
-        //   path.resolve(
-        //     __dirname,
-        //     `./domains/${process.env.NODE_APP_INSTANCE}/data.json`,
-        //   ),
-        //   data,
-        // )
+        self.apos.util.log('Writing data to file')
+        const data = JSON.stringify(places, null, 2)
+        await asyncFs.writeFile(
+          path.resolve(
+            __dirname,
+            `./domains/${process.env.NODE_APP_INSTANCE}/data.json`,
+          ),
+          data,
+        )
       },
 
       async createPlacesFromData() {

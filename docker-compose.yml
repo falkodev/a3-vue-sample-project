@@ -10,7 +10,7 @@ services:
     volumes:
       - ./mongo/data/db:/data/db
     environment:
-      MONGO_INITDB_DATABASE:
+      MONGO_INITDB_DATABASE: vino-terr
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD:
       MONGO_INITDB_USER_USERNAME: app-admin
