@@ -3,7 +3,7 @@ const dbName = process.env.NODE_APP_INSTANCE
   : 'vino-terr'
 
 require('apostrophe')({
-  shortName: process.env.MONGO_INITDB_DATABASE || dbName,
+  shortName: dbName,
   // autoBuild: false,
   modules: {
     // Apostrophe module configuration
