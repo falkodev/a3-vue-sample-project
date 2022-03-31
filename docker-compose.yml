@@ -36,7 +36,8 @@ services:
     environment:
       APOS_DEV:
       NODE_ENV: ${NODE_ENV:-production}
-      NODE_APP_INSTANCE: ${NODE_APP_INSTANCE:-larzac}
+      NODE_APP_INSTANCE: ${NODE_APP_INSTANCE:?NODE_APP_INSTANCE is mandatory}
+      HOST: docker
       MONGO_DB:
       WAIT_HOSTS: vino-terr-mongo:27017
     healthcheck:
