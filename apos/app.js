@@ -1,9 +1,10 @@
-const dbName = process.env.NODE_APP_INSTANCE
+const config = require('config')
+const appName = process.env.NODE_APP_INSTANCE
   ? `vino-terr-${process.env.NODE_APP_INSTANCE}`
   : 'vino-terr'
 
 require('apostrophe')({
-  shortName: dbName,
+  shortName: appName,
   // autoBuild: false,
   modules: {
     // Apostrophe module configuration
@@ -18,7 +19,10 @@ require('apostrophe')({
     // `className` options set custom CSS classes for Apostrophe core widgets.
     '@apostrophecms/db': {
       options: {
-        uri: process.env.MONGO_DB || `mongodb://127.0.0.1:27017/${dbName}`,
+        uri:
+          process.env.HOST === 'docker'
+            ? config.get('mongoDB.dockerUri')
+            : config.get('mongoDB.uri'),
       },
     },
     '@apostrophecms/rich-text-widget': {

@@ -47,8 +47,16 @@ First, you need to have docker and docker-compose installed and launched on your
 
 - run `git clone `
 - copy the file `.env.example` and name it `.env` (this file will contain passwords, and will be git-ignored, so don't try to commit it)
-- in this `.env` file, create a password for `MONGO_INITDB_ROOT_PASSWORD` and another one for `MONGO_INITDB_USER_PASSWORD` (choose whatever you want, it does not matter because it will be only available in your machine)
-- still in this `.env` file, update `MONGO_DB` to match the password in it with `MONGO_INITDB_USER_PASSWORD` (between `mongodb://app-admin:` and `@vino-terr-mongo:27017/app`) and do not modify `MONGO_INITDB_ROOT_USERNAME` and `MONGO_INITDB_USER_USERNAME`
+- in this `.env` file, create a password for `MONGO_INITDB_ROOT_PASSWORD` and another one for `MONGO_INITDB_USER_PASSWORD` (choose whatever you want, it does not matter because it will be only available in your machine) - do not modify `MONGO_INITDB_ROOT_USERNAME` and `MONGO_INITDB_USER_USERNAME`
+- create `apos/config/local.yml` file, and add this content
+
+```yml
+mongoDB:
+  dockerUri: mongodb://root:XXX@vino-terr-mongo:27017/vino-terr-YYY?authSource=admin
+```
+
+`XXX` being the content of `MONGO_INITDB_ROOT_PASSWORD` and `YYY` the syndicate name (most probably `larzac`)
+
 - run `docker-compose up`
 
 <a id="3-1"></a>
