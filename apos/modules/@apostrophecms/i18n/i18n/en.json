@@ -441,11 +441,10 @@
   "place": {
     "label": "Place",
     "pluralLabel": "Places",
-    "type": "Place Type",
-    "wineStore": "Wine Store",
-    "wineBar": "Restaurant & Wine Bars",
-    "poi": "Point Of Interest",
-    "domain": "Domain"
+    "type": "Place Type"
   },
-  "address": "Address"
+  "address": "Address",
+  "wineStore": "Wine Store",
+  "wineBar": "Restaurant & Wine Bars",
+  "poi": "Point Of Interest"
 }
