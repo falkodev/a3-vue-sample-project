@@ -61,6 +61,7 @@ module.exports = {
     },
   },
   init(self) {
+    /* istanbul ignore next */
     self.apos.migration.add('feed-places', () =>
       self.getPlaces({ forceFetch: false }),
     )
@@ -108,35 +109,38 @@ module.exports = {
 
           self.apos.util.log('Getting places')
 
+          const assetsDir = path.resolve(
+            __dirname,
+            `./domains/${process.env.NODE_APP_INSTANCE}`,
+          )
+
+          await asyncFs.mkdir(assetsDir, { recursive: true })
+
           const dataFile = await asyncFs.readFile(
-            path.resolve(
-              __dirname,
-              `./domains/${process.env.NODE_APP_INSTANCE}/data.json`,
-            ),
+            `${assetsDir}/data.json`,
             'utf8',
           )
 
           if (!dataFile || forceFetch) {
-            await self.fetchPlaces()
+            await self.fetchPlaces(assetsDir)
           } else {
-            await self.createPlacesFromData(dataFile)
+            await self.createPlacesFromData(assetsDir, dataFile)
           }
 
+          /* istanbul ignore next */
           self.apos.util.log('Places updated')
         } catch (error) {
           self.apos.util.error(error)
         }
       },
 
-      async fetchPlaces() {
+      async fetchPlaces(assetsDir) {
         const places = []
         const req = self.apos.task.getReq()
         const { url } = config.get('placesAPI')
 
-        const imageFolder = path.resolve(
-          __dirname,
-          `./domains/${process.env.NODE_APP_INSTANCE}/images`,
-        )
+        const imageFolder = `${assetsDir}/images`
+        await asyncFs.mkdir(imageFolder, { recursive: true })
         const existingImages = await asyncFs.readdir(imageFolder)
         for (const existingImage of existingImages) {
           await asyncFs.unlink(path.join(imageFolder, existingImage))
@@ -168,10 +172,8 @@ module.exports = {
             let image
             if (photoRef) {
               const imageName = `${self.apos.util.slugify(result.name)}.jpg`
-              const imagePath = path.resolve(
-                __dirname,
-                `./domains/${process.env.NODE_APP_INSTANCE}/images/${imageName}`,
-              )
+              const imagePath = `${assetsDir}/images/${imageName}`
+
               try {
                 const photoUrlQuery = qs.stringify({
                   photo_reference: photoRef,
@@ -185,13 +187,15 @@ module.exports = {
                   url: photoUrl,
                   responseType: 'stream',
                 })
+                /* istanbul ignore next */
                 file.data.pipe(writer)
 
+                /* istanbul ignore next */
                 image = await self.apos.attachment.insert(req, {
                   name: imageName,
                   path: imagePath,
                 })
-
+                /* istanbul ignore next */
                 place.image = image
               } catch (error) {
                 self.apos.util.error(error, 'Place fixtures image error')
@@ -205,16 +209,10 @@ module.exports = {
 
         self.apos.util.log('Writing data to file')
         const data = JSON.stringify(places, null, 2)
-        await asyncFs.writeFile(
-          path.resolve(
-            __dirname,
-            `./domains/${process.env.NODE_APP_INSTANCE}/data.json`,
-          ),
-          data,
-        )
+        await asyncFs.writeFile(`${assetsDir}/data.json`, data)
       },
 
-      async createPlacesFromData(dataFile) {
+      async createPlacesFromData(assetsDir, dataFile) {
         const req = self.apos.task.getReq()
         const existingPlaces = await self.find(req).toArray()
 
@@ -224,10 +222,7 @@ module.exports = {
           for (const place of places) {
             if (place.image) {
               const imageName = `${place.image.name}.${place.image.extension}`
-              const imagePath = path.resolve(
-                __dirname,
-                `./domains/${process.env.NODE_APP_INSTANCE}/images/${imageName}`,
-              )
+              const imagePath = `${assetsDir}/images/${imageName}`
               const image = await self.apos.attachment.insert(req, {
                 name: imageName,
                 path: imagePath,
@@ -254,6 +249,7 @@ module.exports = {
     }
   },
   tasks(self) {
+    /* istanbul ignore next */
     return {
       fetch: {
         usage: 'npm run task --prefix apos -- place:fetch',

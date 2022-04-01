@@ -5,17 +5,17 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "dev": "export $(cat ../.env | xargs) && nodemon --no-deprecation",
+    "dev": "NODE_ENV=development NODE_APP_INSTANCE=larzac nodemon --no-deprecation",
     "build": "NODE_ENV=production node app @apostrophecms/asset:build && npm run sw",
-    "fixtures": "export $(cat ../.env | xargs) && node --no-deprecation app @apostrophecms/db:fixtures",
+    "fixtures": "NODE_ENV=development NODE_APP_INSTANCE=larzac node --no-deprecation app @apostrophecms/db:fixtures",
     "sw": "workbox injectManifest modules/asset/workbox-config.js",
     "serve": "NODE_ENV=production NODE_APP_INSTANCE=larzac node app",
     "release": "npm install && npm run build && node app @apostrophecms/migration:migrate",
     "lint": "prettier --write '**/*.{js,css,scss}' --config ../package.json --ignore-path ../.prettierignore",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watchAll",
-    "task": "export $(cat ../.env | xargs) && node app"
+    "test": "NODE_ENV=test NODE_APP_INSTANCE=larzac jest",
+    "test:coverage": "NODE_ENV=test NODE_APP_INSTANCE=larzac jest --coverage",
+    "test:watch": "NODE_ENV=test NODE_APP_INSTANCE=larzac jest --watchAll",
+    "task": "NODE_ENV=development NODE_APP_INSTANCE=larzac node app"
   },
   "nodemonConfig": {
     "delay": 100,
@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "jest": "^27.5.1",
+    "mock-fs": "^5.1.2",
     "nodemon": "^2.0.7",
     "prettier": "^2.5.1"
   }
