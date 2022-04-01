@@ -3,13 +3,38 @@ const place = require('./index')
 const qs = require('qs')
 const config = require('config')
 const self = require('apostrophe')
+
 describe('place', () => {
+  asyncFs = {
+    unlink: jest.fn(),
+    readdir: jest.fn(),
+    readFile: jest.fn(),
+    writeFile: jest.fn(),
+  }
+
+  fs = {
+    createWriteStream: jest.fn(),
+  }
+
   self.insert = jest.fn()
+  self.find = () => {
+    return {
+      toArray: jest.fn().mockImplementation(() => []),
+    }
+  }
+  self.methods = {
+    getPlaces: jest.fn(),
+    createPlacesFromData: jest.fn(),
+  }
   self.newInstance = jest.fn()
   self.apos = {
     util: {
       log: jest.fn(),
       error: jest.fn(),
+      slugify: jest.fn().mockImplementationOnce(() => 'wine-store'),
+    },
+    task: {
+      getReq: jest.fn(),
     },
     http: {
       get: jest.fn().mockImplementation(() => {
@@ -38,6 +63,9 @@ describe('place', () => {
     attachment: {
       insert: jest.fn(),
     },
+    migration: {
+      add: jest.fn(),
+    },
   }
 
   const doc = {
@@ -65,22 +93,83 @@ describe('place', () => {
     })
   })
 
-  test('fixtures are run', async () => {
-    const runFixtures = place.handlers(self)['@apostrophecms/db:fixtures']
-    await runFixtures.placeFixtures({})
-    const { url } = config.get('placesAPI')
-    const searchUrlQuery = qs.stringify(url.search.querystring)
-    const searchUrl = `${url.prefix}/${url.search.url}?${searchUrlQuery}`
+  const methods = place.methods(self)
+  test('setChoices', () => {
+    expect(methods.setChoices()).toBeInstanceOf(Array)
+  })
+
+  test('getPlaces', async () => {
+    await methods.getPlaces({ forceFetch: false })
     expect(self.apos.util.log).toHaveBeenCalled()
-    expect(self.apos.http.get).toHaveBeenCalledWith(searchUrl)
+
+    const nodeAppInstance = process.env.NODE_APP_INSTANCE
+
+    process.env.NODE_APP_INSTANCE = ''
+    await methods.getPlaces({ forceFetch: false })
+    expect(self.apos.util.error).toHaveBeenCalled()
+
+    process.env.NODE_APP_INSTANCE = nodeAppInstance
+    await methods.getPlaces({ forceFetch: true })
+  })
+
+  test('createPlacesFromData', async () => {
+    const fakeJSON = JSON.stringify([
+      {
+        title: 'Les Caves Gourmandes',
+        placeType: 'wineStore',
+        address: "10 All. de l'Esplanade, Gignac",
+        longitude: 3.5527339,
+        latitude: 43.6527002,
+        slug: 'les-caves-gourmandes6',
+        visibility: 'public',
+        archived: false,
+        type: 'place',
+        aposDocId: 'cl1f0wdz60004nup5n1qc6sc5',
+        _id: 'cl1f0wdz60004nup5n1qc6sc5',
+        metaType: 'doc',
+        image: null,
+      },
+      {
+        title: 'Grappe',
+        placeType: 'wineStore',
+        address: '125 Av. Pierre Mendès France, Gignac',
+        longitude: 3.54351,
+        latitude: 43.652149,
+        slug: 'grappe2',
+        visibility: 'public',
+        archived: false,
+        image: {
+          _id: 'cl1f0wefk0005nup5js7893sk',
+          group: 'images',
+          createdAt: '2022-03-31T13:18:53.086Z',
+          name: 'grappe',
+          title: 'grappe',
+          extension: 'jpg',
+          type: 'attachment',
+          docIds: [],
+          archivedDocIds: [],
+          length: 0,
+          md5: '80bdfdafcd239483235d25e8bdf895f4',
+          width: 800,
+          height: 532,
+          landscape: true,
+        },
+        type: 'place',
+      },
+    ])
+    const assetsDir = 'mocks'
+    await methods.createPlacesFromData(assetsDir, fakeJSON)
+    expect(self.apos.task.getReq).toHaveBeenCalled()
+    expect(self.apos.util.log).toHaveBeenCalled()
+    expect(self.insert).toHaveBeenCalledTimes(2)
+  })
+
+  test('fetchPlaces', async () => {
+    const assetsDir = require('path').resolve(__dirname, `./mocks`)
+    await methods.fetchPlaces(assetsDir)
+    expect(self.apos.util.log).toHaveBeenCalled()
+    expect(self.apos.http.get).toHaveBeenCalled()
     expect(self.apos.attachment.insert).toHaveBeenCalled()
     expect(self.insert).toHaveBeenCalled()
-
-    self.apos.attachment = {}
-    await runFixtures.placeFixtures({})
-
-    self.apos.http = {}
-    await runFixtures.placeFixtures({})
-    expect(self.apos.util.error).toHaveBeenCalled()
   })
 })

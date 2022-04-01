@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if [ "$NODE_ENV" = "production" ]
+if [ "$NODE_ENV" = "development" ]
 then
-  node app.js
+  nodemon --no-deprecation
 else
-  npm run dev
+  node app.js
 fi
