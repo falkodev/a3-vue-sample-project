@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 module.exports = {
   extend: '@apostrophecms/piece-type',
   options: {
@@ -102,5 +104,108 @@ module.exports = {
         fields: ['steps'],
       },
     },
+  },
+  handlers(self) {
+    return {
+      '@apostrophecms/db:fixtures': {
+        async itineraryFixtures(req) {
+          try {
+            self.apos.util.log('Starting itinerary fixtures')
+
+            const placesIds = await self.apos.place
+              .find(req, {})
+              .project({ _id: 1 })
+              .toArray()
+
+            if (!placesIds.length) {
+              throw new Error(
+                'No places defined. Please, run the task to fetch places through the defined API, most likey "npm run task --prefix apos -- place:fetch"',
+              )
+            }
+
+            const setSteps = (number) => {
+              const steps = []
+              for (let i = 0; i < number; i++) {
+                const place =
+                  placesIds[Math.floor(Math.random() * placesIds.length)]
+                steps.push({
+                  placeIds: [place._id],
+                })
+              }
+              return steps
+            }
+
+            const defaultItinerary = {
+              startTime: '09:00',
+              endTime: '17:00',
+              duration: '02:00',
+              mileage: 2.5,
+              description:
+                'Lorem ipsum dolor sit amet. Vel placeat sint et fugiat ducimus aut eveniet nesciunt ex assumenda neque ea voluptatem asperiores eum voluptas beatae est perferendis cumque?' +
+                'Quo commodi nisi ut dolorem ipsa ut quis molestiae qui recusandae voluptas. Et quae doloremque id iste voluptatem aut voluptate tempore cum reiciendis delectus.' +
+                'Qui consectetur velit non sapiente voluptas eum eligendi fugiat ad aperiam nisi.' +
+                '\n\nQui voluptas praesentium ut laudantium cupiditate aut nesciunt laudantium sit praesentium esse. Sed provident saepe ea enim repellat aut nobis fuga eos amet quam.' +
+                'Et quas unde rem cumque soluta et doloribus earum ut totam magni.' +
+                'Et distinctio nisi eos sunt delectus hic recusandae delectus ex expedita dicta.' +
+                '\n\nEx dolor omnis aut consequatur obcaecati est labore illum ex enim consectetur a quasi atque.' +
+                'Qui architecto ipsam aut facilis saepe et ducimus consequuntur quo consequuntur ipsum.',
+            }
+
+            const itineraries = [
+              {
+                title: 'Itinéraire événement',
+                itineraryType: 'event',
+                startDate: moment().add(1, 'months').format('YYYY-MM-DD'),
+                endDate: moment().add(1, 'months').format('YYYY-MM-DD'),
+                price: 19.9,
+                steps: setSteps(3),
+                ...defaultItinerary,
+              },
+              {
+                title: 'Itinéraire thématique',
+                itineraryType: 'theme',
+                startDate: moment().add(2, 'months').format('YYYY-MM-DD'),
+                endDate: moment().add(2, 'months').format('YYYY-MM-DD'),
+                price: 25,
+                steps: setSteps(5),
+                ...defaultItinerary,
+              },
+              {
+                title: 'Itinéraire syndical',
+                itineraryType: 'syndicate',
+                startDate: moment().add(3, 'months').format('YYYY-MM-DD'),
+                endDate: moment().add(3, 'months').format('YYYY-MM-DD'),
+                price: 50,
+                steps: setSteps(7),
+                ...defaultItinerary,
+              },
+              {
+                title: 'Itinéraire événement 2',
+                itineraryType: 'event',
+                startDate: moment().add(2, 'months').format('YYYY-MM-DD'),
+                endDate: moment().add(2, 'months').format('YYYY-MM-DD'),
+                price: 22,
+                steps: setSteps(4),
+                ...defaultItinerary,
+              },
+            ]
+
+            await Promise.all(
+              itineraries.map((itinerary) =>
+                self.insert(req, {
+                  ...self.newInstance(),
+                  ...itinerary,
+                  fixtures: true,
+                }),
+              ),
+            )
+
+            self.apos.util.log('Itinerary fixtures done')
+          } catch (error) {
+            self.apos.util.error(`Itinerary fixtures error: ${error}`)
+          }
+        },
+      },
+    }
   },
 }
