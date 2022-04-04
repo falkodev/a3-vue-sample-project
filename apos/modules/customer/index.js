@@ -76,7 +76,7 @@ module.exports = {
           try {
             self.apos.util.log('Starting customer fixtures')
 
-            const customerTypes = [
+            const customers = [
               {
                 email: 'henri@roland-garros.fr',
                 firstName: 'Henri',
@@ -110,15 +110,15 @@ module.exports = {
             const usersCollection = self.apos.db.collection('aposUsersSafe')
             await usersCollection.deleteMany({
               username: {
-                $in: customerTypes.map((customerType) => customerType.email),
+                $in: customers.map((customer) => customer.email),
               },
             })
 
             await Promise.all(
-              customerTypes.map((customerType) =>
+              customers.map((customer) =>
                 self.insert(req, {
                   ...self.newInstance(),
-                  ...customerType,
+                  ...customer,
                   fixtures: true,
                 }),
               ),
