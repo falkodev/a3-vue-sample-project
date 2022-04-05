@@ -2,7 +2,7 @@
 
 if [ "$NODE_ENV" = "development" ]
 then
-  nodemon --no-deprecation
+  npx nodemon --no-deprecation
 else
   node app.js
 fi
