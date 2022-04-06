@@ -55,7 +55,7 @@
   }
 }
 
-.t-menu {
+.t-nav {
   &__icon {
     cursor: pointer;
     width: 30px;
@@ -86,8 +86,14 @@
       transition: 0.5s;
     }
   }
+}
+
+.t-menu {
   &__list {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
     background-color: $color-purple;
     position: absolute;
     top: 100%;
@@ -95,7 +101,7 @@
     height: 490px;
     width: calc(100% - 60px);
     padding-left: 60px;
-    padding-top: 100px;
+    padding-top: 60px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     transform: translateY(-1000px);
@@ -106,10 +112,51 @@
     }
   }
 
-  &__element {
-    list-style: none;
-    margin-bottom: 20px;
+  &__icon {
+    width: 36px;
+    height: 36px;
+    background: $color-white;
+    margin-right: 20px;
 
+    &--profile {
+      mask: url('/modules/asset/icons/people.png') center/contain no-repeat;
+      margin-bottom: 2px;
+    }
+
+    &--place {
+      mask: url('/modules/asset/icons/direction.png') center/contain no-repeat;
+      margin-bottom: 1px;
+    }
+
+    &--shop {
+      mask: url('/modules/asset/icons/cart.png') center/contain no-repeat;
+      margin-bottom: 5px;
+      margin-right: 25px;
+      width: 30px;
+      height: 30px;
+    }
+
+    &--favorite {
+      mask: url('/modules/asset/icons/heart.png') center/contain no-repeat;
+      margin-bottom: 1px;
+      margin-left: -1px;
+    }
+
+    &--logout {
+      mask: url('/modules/asset/icons/logout.png') center/contain no-repeat;
+      margin-bottom: 3px;
+      margin-left: 3px;
+      margin-right: 22px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &__element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
     a {
       color: $color-white;
 
@@ -170,7 +217,7 @@
   }
 
   &__home {
-    mask: url('/modules/asset/icons/Home.png') center/contain no-repeat;
+    mask: url('/modules/asset/icons/home.png') center/contain no-repeat;
   }
   &__events {
     mask: url('/modules/asset/icons/event.png') center/contain no-repeat;
