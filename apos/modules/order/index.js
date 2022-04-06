@@ -60,6 +60,13 @@ module.exports = {
   handlers(self) {
     return {
       beforeSave: {
+        checkPermissions(req, doc) {
+          if (req.user.role !== 'admin') {
+            throw new Error('unauthorized')
+          }
+          return doc
+        },
+
         async addDomainsToCustomer(req, doc) {
           if (doc.aposDocId) {
             const domains = new Set(doc._customer[0].domainsIds)

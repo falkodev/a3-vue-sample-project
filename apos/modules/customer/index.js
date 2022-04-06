@@ -45,6 +45,7 @@ module.exports = {
   },
 
   extendMethods() {
+    /* istanbul ignore next */
     return {
       getRestQuery(_super, req) {
         const query = _super(req)
@@ -71,6 +72,12 @@ module.exports = {
   handlers(self) {
     return {
       beforeInsert: {
+        checkPermissions(req, doc) {
+          if (!req.user || req.user.role !== 'admin') {
+            throw new Error('unauthorized')
+          }
+        },
+
         checkLegalAge(req, doc) {
           const validAge = moment().diff(doc.birthDate, 'years') >= LEGAL_AGE
           if (!validAge) {

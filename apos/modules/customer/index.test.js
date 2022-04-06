@@ -31,6 +31,35 @@ describe('customer', () => {
   }
 
   const beforeInsert = customer.handlers(self).beforeInsert
+  test('cannot be created if no user', () => {
+    expect(() => beforeInsert.checkPermissions({}, doc)).toThrow(
+      new Error('unauthorized'),
+    )
+  })
+  test('cannot be created if user is not admin', () => {
+    expect(() =>
+      beforeInsert.checkPermissions(
+        {
+          user: {
+            role: 'editor',
+          },
+        },
+        doc,
+      ),
+    ).toThrow(new Error('unauthorized'))
+  })
+
+  test('is created if user is admin', async () => {
+    await beforeInsert.createUser(
+      {
+        user: {
+          role: 'admin',
+        },
+      },
+      doc,
+    )
+    expect(self.apos.user.insert).toHaveBeenCalled()
+  })
 
   test('legal age should be valid', () => {
     expect(beforeInsert.checkLegalAge({}, doc)).toBe(true)
