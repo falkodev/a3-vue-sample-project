@@ -47,3 +47,6 @@ test:
 
 test-watch:
 	make kill && NODE_ENV=test docker-compose up -d && docker-compose exec vino-terr-apos npm run test:coverage -- --watchAll && make kill
+
+fixtures:
+	docker-compose exec vino-terr-apos npm run fixtures
