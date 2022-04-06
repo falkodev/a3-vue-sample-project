@@ -21,7 +21,7 @@ module.exports = {
       },
       _domains: {
         type: 'relationship',
-        readOnly: true,
+        withType: 'place',
       },
       date: {
         type: 'date',
@@ -50,8 +50,8 @@ module.exports = {
     return {
       getRestQuery(_super, req) {
         const query = _super(req)
-        if (req.user.role === 'contributor') {
-          query.domain('domaine-1')
+        if (req.user.role === 'editor') {
+          query._domains(req.user.domainIds[0])
         }
         return query
       },
@@ -60,25 +60,16 @@ module.exports = {
   handlers(self) {
     return {
       beforeSave: {
-        async addCustomerToDomain(req, doc) {
+        async addDomainsToCustomer(req, doc) {
           if (doc.aposDocId) {
-            const domains = await self.apos.domain
-              .find(req, { aposDocId: { $in: doc._itinerary[0].domainIds } })
-              .toArray()
+            const domains = new Set(doc._customer[0].domainsIds)
+            domains.add(doc.domainsIds[0])
+            const domainsInCustomers = {
+              ...doc._customer[0],
+              domainsIds: [...domains],
+            }
 
-            const customersDomains = domains.map((domain) => {
-              const _customers = new Set(domain._customers)
-              _customers.add(doc._customer[0])
-
-              return { ...domain, _customers }
-            })
-
-            await Promise.all(
-              customersDomains.map((customersDomain) =>
-                self.apos.domain.update(req, customersDomain),
-              ),
-            )
-            doc._domains = customersDomains
+            await self.apos.customer.update(req, domainsInCustomers)
           }
         },
       },

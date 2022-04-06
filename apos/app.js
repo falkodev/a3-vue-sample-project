@@ -45,7 +45,6 @@ require('apostrophe')({
     // The project's first custom page type.
     'default-page': {},
     content: {},
-    domain: {},
     itinerary: {},
     customer: {},
     order: {},
