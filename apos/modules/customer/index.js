@@ -57,7 +57,7 @@ module.exports = {
 
       getBrowserData(_super, req) {
         const browserOptions = _super(req)
-        if (req.user.role === 'editor') {
+        if (req.user?.role === 'editor') {
           browserOptions.batchOperations = []
           browserOptions.quickCreate = false
           browserOptions.showCreate = false
