@@ -67,6 +67,7 @@ module.exports = {
     )
   },
   extendMethods() {
+    /* istanbul ignore next */
     return {
       getRestQuery(_super, req) {
         const query = _super(req)
