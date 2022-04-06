@@ -30,12 +30,42 @@ module.exports = {
         type: 'email',
         required: true,
       },
+
+      _domains: {
+        label: 'apostrophe:domain',
+        type: 'relationship',
+        withType: 'place',
+      },
     },
     group: {
       basics: {
-        fields: ['firstName', 'lastName', 'birthDate', 'email'],
+        fields: ['firstName', 'lastName', 'birthDate', 'email', '_domains'],
       },
     },
+  },
+
+  extendMethods() {
+    return {
+      getRestQuery(_super, req) {
+        const query = _super(req)
+        if (req.user.role === 'editor') {
+          query._domains(req.user.domainIds[0])
+        }
+        return query
+      },
+
+      getBrowserData(_super, req) {
+        const browserOptions = _super(req)
+        if (req.user.role === 'editor') {
+          browserOptions.batchOperations = []
+          browserOptions.quickCreate = false
+          browserOptions.showCreate = false
+          browserOptions.canPublish = false
+        }
+
+        return browserOptions
+      },
+    }
   },
 
   handlers(self) {

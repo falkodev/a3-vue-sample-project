@@ -81,4 +81,5 @@
 
 {% block afterAposScripts %}
 <script>apos.mode = "{{ 'development' if data.isDev else 'production' }}";</script>
+<script>apos.userRole = "{{ data.user.role }}";</script>
 {% endblock %}

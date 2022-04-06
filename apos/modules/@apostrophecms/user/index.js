@@ -21,6 +21,21 @@ module.exports = {
         def: 'guest',
         required: true,
       },
+      _domain: {
+        label: 'apostrophe:domain',
+        type: 'relationship',
+        withType: 'place',
+        max: 1,
+        required: true,
+        if: {
+          role: 'editor',
+        },
+      },
+    },
+    group: {
+      permissions: {
+        fields: ['_domain'],
+      },
     },
   },
   handlers(self) {

@@ -66,6 +66,17 @@ module.exports = {
       self.getPlaces({ forceFetch: false }),
     )
   },
+  extendMethods() {
+    return {
+      getRestQuery(_super, req) {
+        const query = _super(req)
+        if (req.user.role === 'editor') {
+          query._ids([req.user.domainIds[0]])
+        }
+        return query
+      },
+    }
+  },
   methods(self) {
     const categories = [
       {
