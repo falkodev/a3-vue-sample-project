@@ -10,32 +10,57 @@
 {% endblock %}
 
 {% block beforeMain %}
-<div class="t-wrapper">
-  <header class="t-header">
-    <div class="t-header__geoloc t-header__icon"></div>
-    <div class="t-header__logo">{{ __t('apostrophe:layout.logoPlaceholder') }}</div>
-    <div class="t-header__search  t-header__icon"></div>
-    <nav class="t-header__menu t-menu">
-      <div class="t-menu__icon" data-menu-icon>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <ul class="t-menu__list" data-menu-list>
+  <div class="t-wrapper">
+    <header class="t-header">
+      <div class="t-header__geoloc t-header__icon"></div>
+      <div class="t-header__logo">{{ __t('apostrophe:layout.logoPlaceholder') }}</div>
+      <div class="t-header__search  t-header__icon"></div>
+      <nav class="t-header__menu t-menu">
+        <div class="t-nav__icon" data-menu-icon>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul class="t-menu__list" data-menu-list>
+
         {% if not data.user %}
-          <li class="t-menu__element"><a href="/login">{{ __t('apostrophe:login') }}</a></li>
+          <li class="t-menu__element">
+            <div class="t-menu__logout"></div>
+            <div class="t-menu__label"><a href="/login">{{ __t('apostrophe:layout.textLogin') }}</a></div>
+          </li>
         {% else %}
-          <li class="t-menu__element"><a href="#">{{ __t('apostrophe:layout.profile') }}</a></li>
-          <li class="t-menu__element"><a href="#">{{ __t('apostrophe:layout.tours') }}</a></li>
-          <li class="t-menu__element"><a href="#">{{ __t('apostrophe:layout.orders') }}</a></li>
-          <li class="t-menu__element"><a href="#">{{ __t('apostrophe:layout.favorites') }}</a></li>
-          <li class="t-menu__element"><a href="#" data-logout>Logout</a></li>
+          <li class="t-menu__element">
+            <div class="t-menu__icon t-menu__icon--profile"></div>
+            <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textProfile') }}</a></div>
+          </li>
+
+          <li class="t-menu__element">
+            <div class="t-menu__icon t-menu__icon--place"></div>
+            <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textVisits') }}</a></div>
+          </li>
+
+          <li class="t-menu__element">
+            <div class="t-menu__icon t-menu__icon--shop"></div>
+            <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textOrders') }}</a></div>
+          </li>
+
+          <li class="t-menu__element">
+            <div class="t-menu__icon t-menu__icon--favorite"></div>
+            <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textFavorites') }}</a></div>
+          </li>
+
+          <li class="t-menu__element">
+            <div class="t-menu__icon t-menu__icon--logout"></div>
+            <div class="t-menu__label"><a href="#" data-logout  >{{ __t('apostrophe:layout.textLogout') }}</a></div>
+          </li>
         {% endif %}
-      </ul>
-    </nav>
-  </header>
-  <main class="t-main">
+
+        </ul>
+      </nav>
+    </header>
 {% endblock %}
+
+<main class="t-main">
 
 {% block main %}
   {#

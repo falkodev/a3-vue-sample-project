@@ -423,11 +423,15 @@
   "role": "role",
   "layout": {
     "logoPlaceholder": "Your logo here",
-    "textRoads": "Roads",
     "textPlaces": "Places",
     "textHome": "Home",
     "textEvents": "Events",
-    "textFavorites": "Favorites"
+    "textProfile": "My profile",
+    "textFavorites": "My favorites",
+    "textVisits": "My visits",
+    "textOrders": "My orders",
+    "textLogout": "Logout",
+    "textLogin": "Login"
   },
   "startDate": "start date",
   "endDate": "end date",
