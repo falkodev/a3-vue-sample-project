@@ -24,10 +24,7 @@
         <ul class="t-menu__list" data-menu-list>
 
         {% if not data.user %}
-          <li class="t-menu__element">
-            <div class="t-menu__logout"></div>
-            <div class="t-menu__label"><a href="/login">{{ __t('apostrophe:layout.textLogin') }}</a></div>
-          </li>
+          <li class="t-menu__element"><a href="/{{ data.locale }}/login">{{ __t('apostrophe:login') }}</a></li>
         {% else %}
           <li class="t-menu__element">
             <div class="t-menu__icon t-menu__icon--profile"></div>
@@ -51,7 +48,7 @@
 
           <li class="t-menu__element">
             <div class="t-menu__icon t-menu__icon--logout"></div>
-            <div class="t-menu__label"><a href="#" data-logout  >{{ __t('apostrophe:layout.textLogout') }}</a></div>
+            <div class="t-menu__label"><a href="#" data-logout  >{{ __t('apostrophe:logOut') }}</a></div>
           </li>
         {% endif %}
 
