@@ -231,6 +231,7 @@
   "pages": "Pages",
   "piecePermissionsIntro": "Pieces are structured content. They are often used for content like articles, events, products, categories, etc.",
   "piecePermissionsPieceTypeList": "Pieces for this site include:",
+  "register": "I create my account",
   "richTextAlignCenter": "Align Center",
   "richTextAlignJustify": "Align Justify",
   "richTextAlignLeft": "Align Left",
@@ -429,9 +430,26 @@
     "textProfile": "My profile",
     "textFavorites": "My favorites",
     "textVisits": "My visits",
-    "textOrders": "My orders",
-    "textLogout": "Logout",
-    "textLogin": "Login"
+    "textOrders": "My orders"
+  },
+  "loginPage": {
+    "forgotPassword": "Forgot your password?",
+    "noAccount": "No account yet? Sign up here!",
+    "alcoholWarning": "Excessive alcohol consumption can be damaging to your health",
+    "username": "Username",
+    "password": "Password",
+    "required": "Required field"
+  },
+  "registerPage": {
+    "accountCreation": "Account creation",
+    "email": "E-mail",
+    "personnalDatas": "Personnal datas",
+    "name": "Name",
+    "firstName": "First name",
+    "birthdate": "Birthdate",
+    "warning": "I must be an adult...",
+    "newsletter": "I agree to receive the newsletter",
+    "permission": "I authorize this site to keep my data transmitted via this form"
   },
   "startDate": "start date",
   "endDate": "end date",
