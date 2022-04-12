@@ -8,9 +8,13 @@ module.exports = {
         name: 'default-page',
         label: 'Default',
       },
+    ],
+    park: [
       {
-        name: '@apostrophecms/home-page',
-        label: 'Home',
+        slug: '/',
+        parkedId: 'home',
+        type: '@apostrophecms/home-page',
+        title: 'Home',
       },
     ],
   },
