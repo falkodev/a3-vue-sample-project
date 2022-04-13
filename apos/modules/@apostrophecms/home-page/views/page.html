@@ -1,7 +1,12 @@
 {% extends "@apostrophecms/page:layout.html" %}
 
 {% block main %}
-  <div class="t-background"></div>
+  <div class="t-background"
+    {% if data.global.backgroundImage -%}
+      style="background-image: url('{{  apos.attachment.url(data.global.backgroundImage) }}');"
+    {% endif -%}>
+  </div>
+
   <section class="bp-welcome">
     <div class="bp-welcome__verson-wrapper">
       <span class="bp-welcome__version">alpha</span>
