@@ -13,7 +13,13 @@
   <div class="t-wrapper">
     <header class="t-header">
       <div class="t-header__geoloc t-header__icon"></div>
-      <div class="t-header__logo">{{ __t('apostrophe:layout.logoPlaceholder') }}</div>
+      <div class="t-header__logo">
+        {% if data.global.logo %}
+          <img src="{{ apos.attachment.url(data.global.logo) }}" alt="logo-site">
+        {% else %}
+          {{ __t('apostrophe:layout.logoPlaceholder') }}
+        {% endif %}
+      </div>
       <div class="t-header__search  t-header__icon"></div>
       <nav class="t-header__menu t-menu">
         <div class="t-nav__icon" data-menu-icon>
