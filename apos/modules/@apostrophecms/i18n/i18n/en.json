@@ -168,6 +168,8 @@
   "localizeAllRelated": "Localize all related documents and overwrite existing documents",
   "localizeNewRelated": "Localize new related documents",
   "localizingBusy": "Localizing Content",
+  "loggedInMsg": "Successful login",
+  "loggedOutMsg": "Successful logout",
   "login": "Login",
   "loginErrorGeneric": "An error occurred. Please try again.",
   "loginDisabled": "Login Disabled",
@@ -427,6 +429,7 @@
   "role": "role",
   "layout": {
     "logoPlaceholder": "Your logo here",
+    "textRoads": "Roads",
     "textPlaces": "Places",
     "textHome": "Home",
     "textEvents": "Events",
