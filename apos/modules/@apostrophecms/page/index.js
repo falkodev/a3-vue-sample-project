@@ -17,5 +17,19 @@ module.exports = {
         title: 'Home',
       },
     ],
+
+    templateData: {
+      loggedInMsg: 'loggedInMsg',
+      loggedOutMsg: 'loggedOutMsg',
+    },
+  },
+
+  helpers(self) {
+    return {
+      translate(locale, label) {
+        const req = self.apos.task.getReq({ locale })
+        return req.t(`apostrophe:${label}`)
+      },
+    }
   },
 }
