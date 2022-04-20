@@ -172,6 +172,8 @@
   "localizeAllRelated": "Localize all related documents and overwrite existing documents",
   "localizeNewRelated": "Localize new related documents",
   "localizingBusy": "Localizing Content",
+  "loggedInMsg": "Connexion réussie",
+  "loggedOutMsg": "Déconnexion réussie",
   "login": "Se connecter",
   "loginErrorGeneric": "Une erreur s'est produite. Merci de réessayer.",
   "loginDisabled": "Désactivé",
@@ -427,6 +429,7 @@
   "role": "Rôle",
   "layout": {
     "logoPlaceholder": "Votre logo ici",
+    "textRoads": "Routes",
     "textPlaces": "Lieux",
     "textHome": "Accueil",
     "textEvents": "Evénements",
