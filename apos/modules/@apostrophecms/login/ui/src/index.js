@@ -64,6 +64,7 @@ export default () => {
 
         window.sessionStorage.setItem('aposStateChange', Date.now())
         window.sessionStorage.setItem('aposStateChangeSeen', '{}')
+        window.sessionStorage.setItem('aposLoadAfterLogin', true)
         location.assign(`${apos.prefix}/`)
       } catch (e) {
         const error =
