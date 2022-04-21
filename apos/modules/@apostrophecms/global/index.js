@@ -1,4 +1,7 @@
 module.exports = {
+  options: {
+    localized: false,
+  },
   fields: {
     add: {
       logo: {
