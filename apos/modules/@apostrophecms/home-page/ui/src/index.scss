@@ -1,13 +1,25 @@
 @import '~/modules/asset/ui/src/scss/_settings.scss';
 
 .t-background {
-  min-height: 50vh;
+  min-height: 35vh;
   background-attachment: fixed;
   background-position: 100% 15%;
   background-repeat: no-repeat;
   background-size: 100%;
 
-  @media (min-width: map-get($breakpoints, 'md')) {
+  @media (min-width: map-get($breakpoints, 'sm')) {
     min-height: 60vh;
   }
+}
+
+.t-places-categories {
+  padding: 16px 0 16px 16px;
+}
+
+.t-partnerships {
+  margin-bottom: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
 }
