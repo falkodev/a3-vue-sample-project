@@ -1,0 +1,46 @@
+{% for result in data.result %}
+  <div class="t-place-category">
+    {% if result[0] %}
+      {% set item = result[0] %}
+      <div class="t-place-category__heading">
+        {% if item.placeType === 'wineStore' %}
+          <img src="{{ apos.asset.url('/modules/asset/icons/wine-bottle.png') }}" alt="category heading">
+        {% elseif item.placeType === 'wineBar' %}
+          <img src="{{ apos.asset.url('/modules/asset/icons/glass.png') }}" alt="category heading">
+        {% elseif item.placeType === 'poi' %}
+          <img src="{{ apos.asset.url('/modules/asset/icons/binoculars.png') }}" alt="category heading">
+        {% else %}
+          <img src="{{ apos.asset.url('/modules/asset/icons/grap.png') }}" alt="category heading">
+        {% endif %}
+        <div class="t-place-category__title">{{ __t('apostrophe:homePage.' + item.placeType) }}</div>
+      </div>
+    {% endif %}
+
+    <div class="t-place-category__items">
+      {% for item in result %}
+        <a href="" class="t-place-category__item t-place">
+          {% set image = apos.attachment.url(item.image) if item.image else apos.asset.url('/modules/asset/images/default-domain.jpg') %}
+          <div class="t-place__img" style="background-image: url({{ image }})">
+            <div class="t-place__title">{{ item.title }}</div>
+          </div>
+
+          {% if item.placeType === "domain" %}
+            <div class="t-place__tags">
+              {% for label in item.labels %}
+                <div class="t-place__tag t-place__tag--{{ label.name.toLowerCase() }}">
+                  {{ __t('apostrophe:' + label.name.toLowerCase()) }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </a>
+      {% endfor%}
+
+      {% if result.length >= 5 %}
+        <a href="" class="t-place-category__more">
+          {{ __t('apostrophe:seeMore') }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+{% endfor%}
