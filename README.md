@@ -144,6 +144,45 @@ If you need a custom route, you could add 2 sorts of routes:
 
 There is also a `renderRoutes` function to feed Nunjucks templates with data returned by custom functions (https://v3.docs.apostrophecms.org/reference/module-api/module-overview.html#renderroutes-self).
 
+You can also "extend" existing routes or even functions(https://v3.docs.apostrophecms.org/reference/module-api/module-overview.html#the-extension-pattern). For example, the customer register process was lacking some meaningful error messages on the POST request: trying to create an account with an existing email address or being minor would be rejected by Apostrophe with the same error message.
+
+This was added to customize error messages:
+
+```js
+// in apos/modules/customer/index.js
+extendRestApiRoutes(self) { // override existing default restApiRoutes made by Apostrophe
+  return {
+    // accessible on POST /api/v1/customer
+    async post(_super, req) { // "_super" is the default function run by Apostrophe
+      try {
+        const { user } = self.apos.task.getAdminReq()
+        req.user = user
+
+        const newCustomer = await _super(req) // run the default function if no error
+        return newCustomer
+      } catch (error) {
+        // catch and customize response for specific cases
+        const err = error.message || error
+        if (err.includes('E11000')) {
+          throw self.apos.error(
+            'invalid',
+            req.t('apostrophe:registerPage.existingAccount'),
+          )
+        } else if (err.includes('birth')) {
+          throw self.apos.error(
+            'invalid',
+            req.t('apostrophe:registerPage.invalidBirthDate'),
+          )
+        } else {
+          // for other cases, reject with the same generic message used by Apostrophe
+          throw self.apos.error('invalid')
+        }
+      }
+    },
+  }
+},
+```
+
 <a id="5-2"></a>
 
 ### 5.2 Docker [&#x2B06;](#contents)
