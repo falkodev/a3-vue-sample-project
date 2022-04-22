@@ -16,6 +16,12 @@ module.exports = {
         type: '@apostrophecms/home-page',
         title: 'Home',
       },
+      {
+        slug: '/itinerary',
+        parkedId: 'itinerary',
+        type: 'itinerary-page',
+        title: 'Itinerary',
+      },
     ],
 
     templateData: {

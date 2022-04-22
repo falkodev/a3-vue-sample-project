@@ -46,6 +46,12 @@ require('apostrophe')({
     'default-page': {},
     content: {},
     itinerary: {},
+    'itinerary-page': {
+      extend: '@apostrophecms/page-type',
+      options: {
+        label: 'Itinerary Page',
+      },
+    },
     customer: {},
     order: {},
     place: {},
