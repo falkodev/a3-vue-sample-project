@@ -25,6 +25,7 @@ export default async () => {
 
   if (manifest) {
     const vueBundle = manifest['index.html']
+    console.log(vueBundle)
     for (const cssFile of vueBundle.css) {
       const css = document.createElement('link')
       css.setAttribute('rel', 'stylesheet')
@@ -32,13 +33,15 @@ export default async () => {
       css.setAttribute('href', vueFolder + cssFile)
       document.head.appendChild(css)
     }
-
-    for (const importFile of vueBundle.imports) {
-      const link = document.createElement('link')
-      link.setAttribute('rel', 'modulepreload')
-      link.setAttribute('type', 'text/css')
-      link.setAttribute('href', vueFolder + manifest[importFile].file)
-      document.head.appendChild(link)
+    // console.log(vueBundle.imports)
+    if (vueBundle.imports) {
+      for (const importFile of vueBundle.imports) {
+        const link = document.createElement('link')
+        link.setAttribute('rel', 'modulepreload')
+        link.setAttribute('type', 'text/css')
+        link.setAttribute('href', vueFolder + manifest[importFile].file)
+        document.head.appendChild(link)
+      }
     }
 
     const jsFile = document.createElement('script')
