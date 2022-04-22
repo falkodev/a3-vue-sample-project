@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import App from './App.vue'
+import App_Itinerary from './AppItinerary.vue'
 
-const app = createApp(App)
+const app_itinerary = createApp(App_Itinerary)
 
-app.use(createPinia())
+app_itinerary.use(createPinia())
 
-app.mount('#app')
+app_itinerary.mount('#app_itinerary')
