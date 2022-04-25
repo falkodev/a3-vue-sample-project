@@ -12,3 +12,6 @@ placesAPI:
 
 mongoDB:
   uri: mongodb://127.0.0.1:27017/vino-terr-larzac
+
+register:
+  minPasswordLength: 6

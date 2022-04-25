@@ -1,0 +1,94 @@
+@import '~/modules/asset/ui/src/scss/_settings.scss';
+
+.t-place-category {
+  &__heading {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    color: $color-purple;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 4px;
+    margin-top: 4px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    overflow-x: auto;
+    margin: 20px 0 40px 0;
+    gap: 24px;
+  }
+
+  &__more {
+    display: flex;
+    align-items: center;
+    color: $color-purple;
+    font-size: 20px;
+    margin-right: 16px;
+  }
+}
+
+.t-place {
+  width: 110px;
+
+  &__img {
+    width: inherit;
+    height: 180px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    color: white;
+    white-space: normal;
+    text-align: center;
+    padding: 0 8px 0 8px;
+    word-break: break-word;
+  }
+
+  &__tags {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3px;
+  }
+
+  &__tag {
+    padding: 2px 4px;
+    border-radius: 40px;
+    font-size: 9px;
+    color: $color-white;
+
+    &--bio {
+      background-color: $color-green-10;
+    }
+
+    &--biodynamique {
+      background-color: $color-green-50;
+    }
+
+    &--hve {
+      background-color: $color-pink;
+    }
+
+    &--conversion {
+      background-color: $color-orange;
+    }
+
+    &--terravitis {
+      background-color: $color-purple-light;
+    }
+  }
+}
