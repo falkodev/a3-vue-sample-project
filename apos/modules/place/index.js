@@ -5,6 +5,29 @@ const config = require('config')
 const { request } = require('gaxios')
 const asyncFs = require('fs/promises')
 
+const categories = [
+  {
+    label: 'apostrophe:domain',
+    value: 'domain',
+    searchTerm: 'vignoble',
+  },
+  {
+    label: 'apostrophe:wineStore',
+    value: 'wineStore',
+    searchTerm: 'caviste',
+  },
+  {
+    label: 'apostrophe:wineBar',
+    value: 'wineBar',
+    searchTerm: 'bar à vins',
+  },
+  {
+    label: 'apostrophe:poi',
+    value: 'poi',
+    searchTerm: "lieu d'intérêt",
+  },
+]
+
 module.exports = {
   extend: '@apostrophecms/piece-type',
   options: {
@@ -12,6 +35,18 @@ module.exports = {
     label: 'apostrophe:place.label',
     pluralLabel: 'apostrophe:place.pluralLabel',
     localized: false,
+  },
+  components(self) {
+    return {
+      async categories(req, data) {
+        const result = await Promise.all(
+          categories.map((category) =>
+            self.find(req, { placeType: category.value }).limit(5).toArray(),
+          ),
+        )
+        return { result }
+      },
+    }
   },
   fields: {
     add: {
@@ -39,10 +74,28 @@ module.exports = {
         type: 'float',
         required: true,
       },
+      labels: {
+        type: 'array',
+        titleField: 'name',
+        fields: {
+          add: {
+            name: {
+              type: 'string',
+            },
+          },
+        },
+      },
     },
     group: {
       basics: {
-        fields: ['placeType', 'address', 'longitude', 'latitude', 'image'],
+        fields: [
+          'placeType',
+          'address',
+          'longitude',
+          'latitude',
+          'image',
+          'labels',
+        ],
       },
     },
   },
@@ -79,29 +132,6 @@ module.exports = {
     }
   },
   methods(self) {
-    const categories = [
-      {
-        label: 'apostrophe:wineStore',
-        value: 'wineStore',
-        searchTerm: 'caviste',
-      },
-      {
-        label: 'apostrophe:wineBar',
-        value: 'wineBar',
-        searchTerm: 'bar à vins',
-      },
-      {
-        label: 'apostrophe:poi',
-        value: 'poi',
-        searchTerm: "lieu d'intérêt",
-      },
-      {
-        label: 'apostrophe:domain',
-        value: 'domain',
-        searchTerm: 'vignoble',
-      },
-    ]
-
     return {
       setChoices() {
         return [

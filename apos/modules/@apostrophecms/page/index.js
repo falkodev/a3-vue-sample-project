@@ -1,6 +1,6 @@
 // This configures the @apostrophecms/pages module to add a "home" page type to the
 // pages menu
-
+const config = require('config')
 module.exports = {
   options: {
     types: [
@@ -32,9 +32,9 @@ module.exports = {
 
   helpers(self) {
     return {
-      translate(locale, label) {
+      translate(locale, label, options) {
         const req = self.apos.task.getReq({ locale })
-        return req.t(`apostrophe:${label}`)
+        return req.t(`apostrophe:${label}`, options)
       },
     }
   },
