@@ -43,10 +43,10 @@ db-restore:
 	mongo/scripts/restore.sh
 
 test:
-	make kill && NODE_ENV=test docker-compose up -d && docker-compose exec vino-terr-apos npm run test:coverage && make kill
+	make kill && docker-compose up -d && docker-compose exec vino-terr-apos npm run test:coverage && make kill
 
 test-watch:
-	make kill && NODE_ENV=test docker-compose up -d && docker-compose exec vino-terr-apos npm run test:coverage -- --watchAll && make kill
+	make kill && docker-compose up -d && docker-compose exec vino-terr-apos npm run test:coverage -- --watchAll && make kill
 
 fixtures:
 	docker-compose exec vino-terr-apos npm run fixtures
