@@ -243,7 +243,9 @@ self.apos.util.log('Backend application started on http://%s:%d', host, port)
 
 Tests are a mix of Jest on backend and frontend and E2E tests with Cypress on frontend.
 
-They can be launched locally by running `npm run test` on root level or through Docker by running `make test`
+They can be launched locally by running `npm run test` on root level or through Docker by running `make test`.
+
+For cypress, run `npm run cy:open` to visualize tests. The CI version is available with `npm run cy:run`.
 
 For a specific service:
 
