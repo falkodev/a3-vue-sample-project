@@ -57,7 +57,25 @@
             <div class="t-menu__label"><a href="#" data-logout>{{ __t('apostrophe:logOut') }}</a></div>
           </li>
         {% endif %}
+
+        {% if data.global.socialNetworks %}
+          <ul class="t-menu__element t-social">
+            {% for network in data.global.socialNetworks %}
+              {% set propertyName = 'socialUrl' + network | capitalize %}
+              <li class="t-social__item">
+                <a
+                  class="t-social__link"
+                  href="{{ data.global[propertyName] }}"
+                  target="_blank"
+                >
+                  <span class="t-social__icon t-social__icon--{{ network }}"></span>
+                </a>
+              </li>
+            {% endfor%}
+          </ul>
+        {% endif %}
         </ul>
+
       </nav>
     </header>
 {% endblock %}
@@ -113,8 +131,8 @@
 {% endblock %}
 
 {% block afterAposScripts %}
-<script>apos.mode = "{{ 'development' if data.isDev else 'production' }}";</script>
-<script>apos.userRole = "{{ data.user.role }}";</script>
+  <script>apos.mode = "{{ 'development' if data.isDev else 'production' }}";</script>
+  <script>apos.userRole = "{{ data.user.role }}";</script>
 {% endblock %}
 
 {% block extraBody %}
