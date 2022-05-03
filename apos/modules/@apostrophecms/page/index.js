@@ -36,6 +36,9 @@ module.exports = {
         const req = self.apos.task.getReq({ locale })
         return req.t(`apostrophe:${label}`, options)
       },
+      stringify(label) {
+        return JSON.stringify(label)
+      },
     }
   },
 }

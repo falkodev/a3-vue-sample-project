@@ -47,7 +47,7 @@ require('apostrophe')({
     content: {},
     itinerary: {},
     'itinerary-page': {
-      extend: '@apostrophecms/page-type',
+      extend: '@apostrophecms/piece-page-type',
       options: {
         label: 'Itinerary Page',
       },
