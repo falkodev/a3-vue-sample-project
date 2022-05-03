@@ -25,7 +25,6 @@ export default async () => {
 
   if (manifest) {
     const vueBundle = manifest['index.html']
-    console.log(vueBundle)
     for (const cssFile of vueBundle.css) {
       const css = document.createElement('link')
       css.setAttribute('rel', 'stylesheet')
