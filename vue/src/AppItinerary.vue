@@ -8,7 +8,7 @@ const props = defineProps({
   piece: Object,
 })
 const data = JSON.parse(props.piece)
-var description = false
+let description = false
 // Functions
 
 function dataDescription() {
@@ -25,10 +25,10 @@ function dataPrice(price) {
     return price + '€'
   }
 }
-function openDescription() {
-  description = !description
-  console.log(description)
-}
+// function openDescription() {
+//   description = !description
+//   console.log(description)
+// }
 function dataMileAge(mileage) {
   return mileage + 'km'
 }

@@ -62,7 +62,6 @@ export default {
   },
   props: {
     step: Object,
-    key: String,
   },
   created() {},
   methods: {
