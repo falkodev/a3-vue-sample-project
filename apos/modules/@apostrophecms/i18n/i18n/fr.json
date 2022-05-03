@@ -484,6 +484,13 @@
   "price": "Prix",
   "steps": "Étapes",
   "scheduling": "Planification",
+  "socialNetworks": {
+    "label": "Sélectionnez vos réseaux sociaux",
+    "urlLabelInstagram": "Entrez l'URL de votre profil Instagram",
+    "urlLabelFacebook": "Entrez l'URL de votre profil Facebook",
+    "urlLabelLinkedin": "Entrez l'URL de votre profil LinkedIn",
+    "tabLabel": "Réseaux sociaux"
+  },
   "place": {
     "label": "Lieu",
     "pluralLabel": "Lieux",

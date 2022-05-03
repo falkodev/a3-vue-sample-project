@@ -480,6 +480,13 @@
   "price": "price",
   "steps": "Steps",
   "scheduling": "Scheduling",
+  "socialNetworks": {
+    "label": "Select your social networks",
+    "urlLabelInstagram": "Enter your Instagram profile URL",
+    "urlLabelFacebook": "Enter your Facebook profile URL",
+    "urlLabelLinkedin": "Enter your LinkedIn profile URL",
+    "tabLabel": "Social networks"
+  },
   "place": {
     "label": "Place",
     "pluralLabel": "Places",
