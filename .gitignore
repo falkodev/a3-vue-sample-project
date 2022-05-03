@@ -11,3 +11,6 @@ nginx/logs
 coverage
 apos/config/local.yml
 mocks
+cypress/screenshots
+cypress/videos
+cypress/fixtures/example.json
