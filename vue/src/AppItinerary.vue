@@ -11,6 +11,7 @@ const props = defineProps({
 const data = JSON.parse(props.piece)
 let description = ref(false)
 
+// Methods
 function dataDescription() {
   if (description.value === true) {
     return data.description

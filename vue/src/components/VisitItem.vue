@@ -72,16 +72,11 @@
 <script>
 export default {
   name: 'VisitItem',
-  data() {
-    return {}
-  },
   props: {
     step: Object,
     id: Number,
     status: Boolean,
   },
-  created() {},
-  methods: {},
   emits: ['delItem'],
 }
 </script>
