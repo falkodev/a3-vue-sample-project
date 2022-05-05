@@ -1,6 +1,7 @@
 <script setup>
 // Imports
 import VisitsContainer from './components/VisitsContainer.vue'
+import { ref } from 'vue'
 console.log('ready!')
 
 // Data
@@ -8,11 +9,10 @@ const props = defineProps({
   piece: Object,
 })
 const data = JSON.parse(props.piece)
-let description = false
-// Functions
+let description = ref(false)
 
 function dataDescription() {
-  if (description) {
+  if (description.value === true) {
     return data.description
   } else {
     return data.description.substr(0, 150)
@@ -25,31 +25,30 @@ function dataPrice(price) {
     return price + '€'
   }
 }
-// function openDescription() {
-//   description = !description
-//   console.log(description)
-// }
+
 function dataMileAge(mileage) {
   return mileage + 'km'
 }
+
+// Map
+
+// Hooks
 </script>
 
 <template>
   <div class="t-app-itinenary">
+    <div class="t-app-itinetary__map" id="map"></div>
     <div class="t-app-itinetary__title">{{ data.title }}</div>
     <div class="t-app-itinetary__description">
       {{ dataDescription() }}..
       <span class="bold" @click="description = !description"
-        >Afficher <span class="bold" v-if="description === true">moins..</span>
-        <span class="bold" v-if="description === false">plus..</span>
+        >Afficher <span class="bold" v-if="description">moins..</span>
+        <span class="bold" v-else>plus..</span>
       </span>
     </div>
 
     <div class="t-app-itinetary__infos t-infos">
-      <div class="t-infos__title">
-        <!-- {{ __t('apostrophe:globalInformations').upperCase() }} -->
-        INFOS GENÉRALES
-      </div>
+      <div class="t-infos__title">INFOS GENÉRALES</div>
       <div class="t-infos__container">
         <div class="t-info-tier">
           <div class="t-info-tier__logo"></div>
@@ -140,6 +139,10 @@ function dataMileAge(mileage) {
   margin-top: 15vh;
 }
 
+.t-app-itinetary__map {
+  height: 20vh;
+}
+
 .t-app-itinetary__title {
   font-size: 25px;
   color: #5357c1;
@@ -211,11 +214,3 @@ function dataMileAge(mileage) {
   font-size: 12px;
 }
 </style>
-
-<script>
-export default {
-  components: {
-    VisitsContainer,
-  },
-}
-</script>

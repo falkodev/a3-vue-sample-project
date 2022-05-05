@@ -32,7 +32,6 @@ export default async () => {
       css.setAttribute('href', vueFolder + cssFile)
       document.head.appendChild(css)
     }
-    // console.log(vueBundle.imports)
     if (vueBundle.imports) {
       for (const importFile of vueBundle.imports) {
         const link = document.createElement('link')
