@@ -1,3 +1,11 @@
+<script setup>
+// Imports
+
+// Data
+
+// Methods
+</script>
+
 <template>
   <div class="t-steps">
     <div class="t-steps__loaded t-loaded" v-if="itinetary.steps != ''">
