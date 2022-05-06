@@ -38,8 +38,8 @@ function dataMileAge(mileage) {
 
 <template>
   <div class="t-app-itinenary">
-    <div class="t-app-itinetary__spacer"></div>
-    <div class="t-app-itinetary__map">
+    <div class="t-app-itinerary__spacer"></div>
+    <div class="t-app-itinerary__map">
       <l-map
         v-model="zoom"
         :zoom="zoom"
@@ -59,8 +59,8 @@ function dataMileAge(mileage) {
         </l-marker>
       </l-map>
     </div>
-    <div class="t-app-itinetary__title">{{ data.title }}</div>
-    <div class="t-app-itinetary__description">
+    <div class="t-app-itinerary__title">{{ data.title }}</div>
+    <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
       <span class="bold" @click="description = !description"
         >Afficher <span class="bold" v-if="description">moins..</span>
@@ -68,7 +68,7 @@ function dataMileAge(mileage) {
       </span>
     </div>
 
-    <div class="t-app-itinetary__infos t-infos">
+    <div class="t-app-itinerary__infos t-infos">
       <div class="t-infos__title">INFOS GENÉRALES</div>
       <div class="t-infos__container">
         <div class="t-info-tier">
@@ -160,11 +160,11 @@ function dataMileAge(mileage) {
   margin-top: 15vh;
 }
 
-.t-app-itinetary__spacer {
+.t-app-itinerary__spacer {
   margin-top: 20vh;
 }
 
-.t-app-itinetary__map {
+.t-app-itinerary__map {
   position: fixed;
   top: 12vh;
   right: 0;
@@ -174,13 +174,13 @@ function dataMileAge(mileage) {
   z-index: 99;
 }
 
-.t-app-itinetary__title {
+.t-app-itinerary__title {
   font-size: 25px;
   color: #5357c1;
   font-weight: bold;
 }
 
-.t-app-itinetary__description {
+.t-app-itinerary__description {
   margin-top: 36px;
   font-size: 15px;
   line-height: 25px;
