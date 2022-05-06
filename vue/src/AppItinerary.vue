@@ -38,7 +38,27 @@ function dataMileAge(mileage) {
 
 <template>
   <div class="t-app-itinenary">
-    <div class="t-app-itinetary__map" id="map"></div>
+    <div class="t-app-itinetary__spacer"></div>
+    <div class="t-app-itinetary__map">
+      <l-map
+        v-model="zoom"
+        :zoom="zoom"
+        :center="[44.41322, 4.219482]"
+        @move="log('move')"
+      >
+        <l-tile-layer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        ></l-tile-layer>
+
+        <l-marker
+          v-for="marker in data.steps"
+          :key="marker"
+          :lat-lng="[marker._place[0].latitude, marker._place[0].longitude]"
+        >
+          <l-icon />
+        </l-marker>
+      </l-map>
+    </div>
     <div class="t-app-itinetary__title">{{ data.title }}</div>
     <div class="t-app-itinetary__description">
       {{ dataDescription() }}..
@@ -140,8 +160,18 @@ function dataMileAge(mileage) {
   margin-top: 15vh;
 }
 
+.t-app-itinetary__spacer {
+  margin-top: 20vh;
+}
+
 .t-app-itinetary__map {
+  position: fixed;
+  top: 12vh;
+  right: 0;
+  left: 0;
   height: 20vh;
+  width: 100vw;
+  z-index: 99;
 }
 
 .t-app-itinetary__title {
@@ -215,3 +245,26 @@ function dataMileAge(mileage) {
   font-size: 12px;
 }
 </style>
+
+<script>
+import { LMap, LIcon, LMarker } from '@vue-leaflet/vue-leaflet'
+import 'leaflet/dist/leaflet.css'
+
+export default {
+  components: {
+    LMap,
+    LIcon,
+    LMarker,
+  },
+  data() {
+    return {
+      zoom: 7,
+    }
+  },
+  methods: {
+    log(a) {
+      console.log(a)
+    },
+  },
+}
+</script>

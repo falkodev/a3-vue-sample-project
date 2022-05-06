@@ -2,7 +2,10 @@
   <div class="t-visit">
     <div class="t-visit__image"></div>
 
-    <div class="t-visit__infos t-infos">
+    <div
+      class="t-visit__infos t-infos"
+      :class="{ 't-visit__infos-domain': this.step._place[0].type == 'domain' }"
+    >
       <div class="t-infos__title">{{ this.step._place[0].title }}</div>
       <div class="t-infos__description">
         <div class="t-infos__type">
@@ -102,6 +105,15 @@ export default {
   border-radius: 15px;
 }
 .t-visit__infos {
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  border-radius: 15px;
+  border: 1px solid #5357c145;
+  background-color: white;
+}
+.t-visit__infos-domain {
   padding: 10px 16px;
   display: flex;
   flex-direction: column;
