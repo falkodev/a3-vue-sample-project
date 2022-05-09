@@ -490,6 +490,12 @@
     "pluralLabel": "Places",
     "type": "Place Type"
   },
+  "visit": {
+    "label": "Visit",
+    "pluralLabel": "Visits",
+    "labelTitle": "Edit visit",
+    "sublabel": "Milestone"
+  },
   "address": "Address",
   "wineStore": "Wine Store",
   "wineBar": "Restaurant & Wine Bars",

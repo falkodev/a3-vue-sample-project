@@ -1,85 +1,64 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-import logo from './assets/logo.svg'
+<script>
+import { computed } from 'vue'
+import { onMounted } from 'vue'
 
-// for docker environment, add specific prefix path
-const src = (import.meta.env.VITE_BASE_URL || '') + logo
+export default {
+  props: {
+    piece: Object,
+    pieceImage: Object,
+  },
+  setup(props) {
+    // 1.fullName depends on firstName,lastName.
+    // 2.computed takes a getter function and returns an immutable reactive ref object
+    // for the returned value from the getter.
+    const domain = computed(() => {
+      return JSON.parse(props.piece)
+    })
+    const domainPicture = computed(() => {
+      return JSON.parse(props.pieceImage)
+    })
+    onMounted(() => {
+      console.log('mounted hook // domain = \r \n', domain.value)
+      console.log('mounted hook // domainPicture = \r \n', domainPicture.value)
+    })
+    return {
+      domain,
+      domainPicture,
+    }
+  },
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" :src="src" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div class="t-domain">
+    <div class="t-domain__fixed">
+      <h2 class="t-domain__title">{{ domain.title }}</h2>
+      <div
+        class="t-domain__map"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80');
+        "
+      ></div>
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <div class="t-domain__content">
+      <div
+        class="t-domain__image"
+        :style="`
+          background-image: url(${domainPicture})`"
+      ></div>
+      <div class="t-etape__container">
+        <div
+          class="t-etape__item"
+          v-for="(etape, etapeIndex) in domain.visit"
+          :key="`etape-${etapeIndex}`"
+        >
+          <p class="t-etape__name">
+            <b>Etape {{ etapeIndex + 1 }} :</b> {{ etape.name }}
+          </p>
+          <span class="t-etape__icon"></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
-
-<style scoped>
-@import './assets/base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
-}
-
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-}
-</style>

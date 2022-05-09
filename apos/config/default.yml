@@ -15,3 +15,17 @@ mongoDB:
 
 register:
   minPasswordLength: 6
+
+categories:
+  - label: apostrophe:wineStore
+    value: wineStore
+    searchTerm: caviste
+  - label: apostrophe:wineBar
+    value: wineBar
+    searchTerm: bar a vins
+  - label: apostrophe:poi
+    value: poi
+    searchTerm: lieu dintérêt
+  - label: apostrophe:domain
+    value: domain
+    searchTerm: vignoble
