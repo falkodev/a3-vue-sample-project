@@ -76,10 +76,11 @@
     &__icon {
       width: 40px;
       height: 40px;
-      background-color: $color-purple;
+      mask-image: url('/modules/asset/icons/arrow-right.svg');
+      background-color: $color-purple !important;
       background-repeat: no-repeat;
       background-size: contain;
-      mask-image: url('/modules/asset/icons/arrow-right.svg');
+      background-position: center;
     }
   }
 }
