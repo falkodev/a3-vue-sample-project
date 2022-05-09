@@ -49,5 +49,11 @@ require('apostrophe')({
     customer: {},
     order: {},
     place: {},
+    'place-page': {
+      extend: '@apostrophecms/piece-page-type',
+      options: {
+        label: 'Place Page',
+      },
+    },
   },
 })

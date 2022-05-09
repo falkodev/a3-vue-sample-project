@@ -494,6 +494,12 @@
     "pluralLabel": "Lieux",
     "type": "Type"
   },
+  "visit": {
+    "label": "Visite",
+    "pluralLabel": "Visites",
+    "labelTitle": "Editer la visite",
+    "sublabel": "Etape"
+  },
   "address": "Adresse",
   "wineStore": "Caviste",
   "wineBar": "Restaurant & bar à vins",

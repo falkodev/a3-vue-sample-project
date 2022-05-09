@@ -36,20 +36,6 @@ module.exports = {
     pluralLabel: 'apostrophe:place.pluralLabel',
     localized: false,
   },
-  components(self) {
-    return {
-      async categories(req, data) {
-        const result = await Promise.all([
-          ...categories.map((category) =>
-            self.find(req, { placeType: category.value }).limit(5).toArray(),
-          ),
-          self.apos.itinerary.find(req).limit(5).toArray(),
-        ])
-
-        return { result }
-      },
-    }
-  },
   fields: {
     add: {
       placeType: {
@@ -58,6 +44,22 @@ module.exports = {
         choices: 'setChoices',
         def: null,
         required: true,
+      },
+      visit: {
+        type: 'array',
+        label: 'apostrophe:visit.label',
+        min: 1,
+        if: {
+          placeType: 'domain',
+        },
+        fields: {
+          add: {
+            name: {
+              type: 'string',
+              label: 'apostrophe:visit.sublabel',
+            },
+          },
+        },
       },
       image: {
         type: 'attachment',
@@ -99,6 +101,10 @@ module.exports = {
           'labels',
         ],
       },
+      visit: {
+        label: 'apostrophe:visit.label',
+        fields: ['visit'],
+      },
     },
   },
   columns: {
@@ -133,6 +139,22 @@ module.exports = {
       },
     }
   },
+
+  components(self) {
+    return {
+      async categories(req, data) {
+        const result = await Promise.all([
+          ...categories.map((category) =>
+            self.find(req, { placeType: category.value }).limit(5).toArray(),
+          ),
+          self.apos.itinerary.find(req).limit(5).toArray(),
+        ])
+
+        return { result }
+      },
+    }
+  },
+
   methods(self) {
     return {
       setChoices() {

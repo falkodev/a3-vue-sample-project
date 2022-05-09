@@ -16,8 +16,13 @@ module.exports = {
         type: '@apostrophecms/home-page',
         title: 'Home',
       },
+      {
+        slug: '/place',
+        parkedId: 'place',
+        type: 'place-page',
+        title: 'Place',
+      },
     ],
-
     templateData: {
       loggedInMsg: 'loggedInMsg',
       loggedOutMsg: 'loggedOutMsg',
@@ -29,6 +34,9 @@ module.exports = {
       translate(locale, label, options) {
         const req = self.apos.task.getReq({ locale })
         return req.t(`apostrophe:${label}`, options)
+      },
+      stringify(label) {
+        return JSON.stringify(label)
       },
     }
   },
