@@ -74,13 +74,13 @@
       color: $color-purple;
     }
     &__icon {
-      width: 40px;
-      height: 40px;
+      width: 24px;
+      height: 24px;
       mask-image: url('/modules/asset/icons/arrow-right.svg');
-      background-color: $color-purple !important;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
+      background-color: $color-purple;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      mask-position: center;
     }
   }
 }
