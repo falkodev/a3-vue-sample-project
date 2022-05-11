@@ -1,4 +1,4 @@
-import displaySnackbar from './snackbar'
+import displaySnackbar from '@/snackbar'
 
 export default () => {
   apos.util.onReady(() => {
@@ -32,16 +32,20 @@ export default () => {
 
     const justLoggedIn = sessionStorage.getItem('aposLoadAfterLogin')
     if (JSON.parse(justLoggedIn)) {
-      const { innerText } = document.querySelector('[data-logged-in-msg]')
       sessionStorage.setItem('aposLoadAfterLogin', false)
-      displaySnackbar(innerText, { type: 'success', dismiss: true })
+      displaySnackbar(apos.page.labels.loggedInMsg, {
+        type: 'success',
+        dismiss: true,
+      })
     }
 
     const justLoggedOut = sessionStorage.getItem('aposLoadAfterLogout')
     if (JSON.parse(justLoggedOut)) {
-      const { innerText } = document.querySelector('[data-logged-out-msg]')
       sessionStorage.setItem('aposLoadAfterLogout', false)
-      displaySnackbar(innerText, { type: 'success', dismiss: true })
+      displaySnackbar(apos.page.labels.loggedOutMsg, {
+        type: 'success',
+        dismiss: true,
+      })
     }
   })
 }

@@ -1,7 +1,4 @@
 const place = require('./index')
-
-const qs = require('qs')
-const config = require('config')
 const self = require('apostrophe')
 
 describe('place', () => {
@@ -99,17 +96,17 @@ describe('place', () => {
   })
 
   test('getPlaces', async () => {
-    await methods.getPlaces({ forceFetch: false })
+    await methods.getPlaces({ force: false })
     expect(self.apos.util.log).toHaveBeenCalled()
 
     const nodeAppInstance = process.env.NODE_APP_INSTANCE
 
     process.env.NODE_APP_INSTANCE = ''
-    await methods.getPlaces({ forceFetch: false })
+    await methods.getPlaces({ force: false })
     expect(self.apos.util.error).toHaveBeenCalled()
 
     process.env.NODE_APP_INSTANCE = nodeAppInstance
-    await methods.getPlaces({ forceFetch: true })
+    await methods.getPlaces({ force: true })
   })
 
   test('createPlacesFromData', async () => {
@@ -157,7 +154,7 @@ describe('place', () => {
         type: 'place',
       },
     ])
-    const assetsDir = 'mocks'
+    const assetsDir = 'domains/test'
     await methods.createPlacesFromData(assetsDir, fakeJSON)
     expect(self.apos.task.getReq).toHaveBeenCalled()
     expect(self.apos.util.log).toHaveBeenCalled()
@@ -165,7 +162,7 @@ describe('place', () => {
   })
 
   test('fetchPlaces', async () => {
-    const assetsDir = require('path').resolve(__dirname, `./mocks`)
+    const assetsDir = require('path').resolve(__dirname, `./domains/test`)
     await methods.fetchPlaces(assetsDir)
     expect(self.apos.util.log).toHaveBeenCalled()
     expect(self.apos.http.get).toHaveBeenCalled()
