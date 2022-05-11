@@ -491,6 +491,17 @@
     "urlLabelLinkedin": "Entrez l'URL de votre profil LinkedIn",
     "tabLabel": "Réseaux sociaux"
   },
+  "theme": {
+    "see": "Voir",
+    "more": "plus",
+    "less": "moins",
+    "globalInfos": "Infos générales",
+    "visitList": "Liste des visites",
+    "add": "Ajouter",
+    "takeAppointment": "Prendre RDV",
+    "favorite": "Favoris",
+    "SelfGuidedTour": "Visite auto-guidée"
+  },
   "place": {
     "label": "Lieu",
     "pluralLabel": "Lieux",

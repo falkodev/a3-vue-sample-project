@@ -105,6 +105,24 @@ module.exports = {
       },
     },
   },
+  extendMethods() {
+    return {
+      getBrowserData(_super, req) {
+        const data = _super(req)
+        data.labels = {
+          see: req.t('apostrophe:theme.see'),
+          more: req.t('apostrophe:theme.more'),
+          less: req.t('apostrophe:theme.less'),
+          globalInfos: req.t('apostrophe:theme.globalInfos'),
+          visitList: req.t('apostrophe:theme.visitList'),
+          add: req.t('apostrophe:theme.add'),
+        }
+
+        return data
+      },
+    }
+  },
+
   handlers(self) {
     return {
       '@apostrophecms/db:fixtures': {
