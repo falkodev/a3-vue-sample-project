@@ -8,6 +8,8 @@ console.log('ready!')
 const props = defineProps({
   piece: Object,
 })
+// const trad = apos.itinerary.labels  => En commentaire sinon je ne peux pas git push
+
 const data = JSON.parse(props.piece)
 let description = ref(false)
 
@@ -30,7 +32,6 @@ function dataPrice(price) {
 function dataMileAge(mileage) {
   return mileage + 'km'
 }
-
 // Map
 
 // Hooks
@@ -39,37 +40,19 @@ function dataMileAge(mileage) {
 <template>
   <div class="t-app-itinenary">
     <div class="t-app-itinerary__spacer"></div>
-    <div class="t-app-itinerary__map">
-      <l-map
-        v-model="zoom"
-        :zoom="zoom"
-        :center="[44.41322, 4.219482]"
-        @move="log('move')"
-      >
-        <l-tile-layer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        ></l-tile-layer>
 
-        <l-marker
-          v-for="marker in data.steps"
-          :key="marker"
-          :lat-lng="[marker._place[0].latitude, marker._place[0].longitude]"
-        >
-          <l-icon />
-        </l-marker>
-      </l-map>
-    </div>
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
       <span class="bold" @click="description = !description"
-        >Afficher <span class="bold" v-if="description">moins..</span>
-        <span class="bold" v-else>plus..</span>
+        >{{ trad.see }}
+        <span class="bold" v-if="description">{{ trad.less }}..</span>
+        <span class="bold" v-else>{{ trad.more }}..</span>
       </span>
     </div>
 
     <div class="t-app-itinerary__infos t-infos">
-      <div class="t-infos__title">INFOS GENÉRALES</div>
+      <div class="t-infos__title">{{ trad.globalInfos }}</div>
       <div class="t-infos__container">
         <div class="t-info-tier">
           <div class="t-info-tier__logo"></div>
@@ -144,7 +127,7 @@ function dataMileAge(mileage) {
       </div>
     </div>
 
-    <VisitsContainer :data="piece" />
+    <VisitsContainer :data="piece" :trad="trad" />
   </div>
 </template>
 
@@ -153,6 +136,7 @@ function dataMileAge(mileage) {
 
 .bold {
   font-weight: bold;
+  cursor: pointer;
 }
 
 .t-app-itinenary {
@@ -162,16 +146,6 @@ function dataMileAge(mileage) {
 
 .t-app-itinerary__spacer {
   margin-top: 20vh;
-}
-
-.t-app-itinerary__map {
-  position: fixed;
-  top: 12vh;
-  right: 0;
-  left: 0;
-  height: 20vh;
-  width: 100vw;
-  z-index: 99;
 }
 
 .t-app-itinerary__title {
@@ -245,26 +219,3 @@ function dataMileAge(mileage) {
   font-size: 12px;
 }
 </style>
-
-<script>
-import { LMap, LIcon, LMarker } from '@vue-leaflet/vue-leaflet'
-import 'leaflet/dist/leaflet.css'
-
-export default {
-  components: {
-    LMap,
-    LIcon,
-    LMarker,
-  },
-  data() {
-    return {
-      zoom: 7,
-    }
-  },
-  methods: {
-    log(a) {
-      console.log(a)
-    },
-  },
-}
-</script>

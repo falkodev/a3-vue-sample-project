@@ -1,22 +1,29 @@
 <template>
   <div class="t-visit">
-    <div class="t-visit__image"></div>
+    <div class="t-visit__image">
+      <img
+        :src="`@/assets/${this.step._place[0].image.name}.${this.step._place[0].image.extension}`"
+        alt=""
+      />
+    </div>
 
     <div
       class="t-visit__infos t-infos"
-      :class="{ 't-visit__infos-domain': this.step._place[0].type == 'domain' }"
+      :class="{
+        't-visit__infos-domain': this.step._place[0].placeType == 'domain',
+      }"
     >
       <div class="t-infos__title">{{ this.step._place[0].title }}</div>
       <div class="t-infos__description">
         <div class="t-infos__type">
           <img src="" alt="" />
-          {{ this.step._place[0].type }}
+          {{ this.step._place[0].placeType }}
         </div>
-        <div class="t-infos__visit">・ Visite auto-guidée</div>
+        <div class="t-infos__visit">・ {{ trad.SelfGuidedTour }}</div>
       </div>
       <div class="t-infos__footer">
         <div class="">
-          <div class="t-infos__status">Prendre RDV</div>
+          <div class="t-infos__status">{{ trad.takeAppointment }}</div>
         </div>
         <div class="t-infos__fav">
           <div class="t-infos__heart-container">
@@ -79,6 +86,7 @@ export default {
     step: Object,
     id: Number,
     status: Boolean,
+    trad: Object,
   },
   emits: ['delItem'],
 }
@@ -91,11 +99,6 @@ export default {
   flex-direction: row;
   align-items: center;
   width: 100%;
-}
-
-.t-visit-del {
-  color: gray !important;
-  border-color: red !important;
 }
 
 .t-visit__image {
