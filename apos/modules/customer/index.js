@@ -1,6 +1,10 @@
 const moment = require('moment')
+const config = require('config')
+
 const LEGAL_AGE = 18
+const MIN_PASSWORD_LENGTH = config.get('register.minPasswordLength')
 module.exports.LEGAL_AGE = LEGAL_AGE
+module.exports.MIN_PASSWORD_LENGTH = MIN_PASSWORD_LENGTH
 
 module.exports = {
   extend: '@apostrophecms/piece-type',
@@ -31,6 +35,10 @@ module.exports = {
         required: true,
       },
 
+      newsletter: {
+        type: 'boolean',
+      },
+
       _domains: {
         label: 'apostrophe:domain',
         type: 'relationship',
@@ -39,9 +47,45 @@ module.exports = {
     },
     group: {
       basics: {
-        fields: ['firstName', 'lastName', 'birthDate', 'email', '_domains'],
+        fields: [
+          'firstName',
+          'lastName',
+          'birthDate',
+          'email',
+          'newsletter',
+          '_domains',
+        ],
       },
     },
+  },
+
+  extendRestApiRoutes(self) {
+    return {
+      async post(_super, req) {
+        try {
+          const { user } = self.apos.task.getAdminReq()
+          req.user = user
+
+          const newCustomer = await _super(req)
+          return newCustomer
+        } catch (error) {
+          const err = error.message || error
+          if (err.includes('E11000')) {
+            throw self.apos.error(
+              'invalid',
+              req.t('apostrophe:registerPage.existingAccount'),
+            )
+          } else if (err.includes('birth')) {
+            throw self.apos.error(
+              'invalid',
+              req.t('apostrophe:registerPage.invalidBirthDate'),
+            )
+          } else {
+            throw self.apos.error('invalid')
+          }
+        }
+      },
+    }
   },
 
   extendMethods() {
@@ -76,6 +120,16 @@ module.exports = {
           if (!req.user || req.user.role !== 'admin') {
             throw new Error('unauthorized')
           }
+        },
+
+        checkPasswordLength(req, doc) {
+          if (req.body?.password) {
+            doc.password = req.body.password
+          }
+          if (!doc.password || doc.password.length < MIN_PASSWORD_LENGTH) {
+            throw new Error('invalid password')
+          }
+          return true
         },
 
         checkLegalAge(req, doc) {
