@@ -21,6 +21,7 @@ module.exports = {
         def: 'guest',
         required: true,
       },
+
       _domain: {
         label: 'apostrophe:domain',
         type: 'relationship',
@@ -38,6 +39,7 @@ module.exports = {
       },
     },
   },
+
   handlers(self) {
     return {
       '@apostrophecms/db:fixtures': {

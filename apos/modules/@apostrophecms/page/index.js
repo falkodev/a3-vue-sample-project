@@ -1,6 +1,5 @@
 // This configures the @apostrophecms/pages module to add a "home" page type to the
 // pages menu
-const config = require('config')
 module.exports = {
   options: {
     types: [
@@ -16,19 +15,34 @@ module.exports = {
         type: '@apostrophecms/home-page',
         title: 'Home',
       },
+      {
+        slug: '/register',
+        parkedId: 'register',
+        type: 'register-page',
+        title: 'Register',
+      },
     ],
-
-    templateData: {
-      loggedInMsg: 'loggedInMsg',
-      loggedOutMsg: 'loggedOutMsg',
-    },
   },
 
-  helpers(self) {
+  init(self) {
+    self.enableBrowserData('public')
+  },
+
+  extendMethods() {
     return {
-      translate(locale, label, options) {
-        const req = self.apos.task.getReq({ locale })
-        return req.t(`apostrophe:${label}`, options)
+      getBrowserData(_super, req) {
+        let data = {}
+
+        if (req.user) {
+          data = _super(req)
+        }
+
+        data.labels = {
+          loggedInMsg: req.t('apostrophe:loggedInMsg'),
+          loggedOutMsg: req.t('apostrophe:loggedOutMsg'),
+        }
+
+        return data
       },
     }
   },

@@ -31,6 +31,7 @@
         <ul class="t-menu__list" data-menu-list>
         {% if not data.user %}
           <li class="t-menu__element"><a href="/{{ data.locale }}/login">{{ __t('apostrophe:login') }}</a></li>
+          <li class="t-menu__element"><a href="/{{ data.locale }}/register">{{ __t('apostrophe:registerPage.register') }}</a></li>
         {% else %}
           <li class="t-menu__element">
             <div class="t-menu__icon t-menu__icon--profile"></div>
@@ -118,13 +119,6 @@
       <p class="t-footer__icon-text">{{ __t('apostrophe:layout.textFavorites') }}</p>
     </a>
   </footer>
-
-  <div class="hidden" data-logged-out-msg>
-    {{ apos.page.translate(data.locale, data.loggedOutMsg) }}
-  </div>
-  <div class="hidden" data-logged-in-msg>
-    {{ apos.page.translate(data.locale, data.loggedInMsg) }}
-  </div>
 
 </div>{# Close .t-wrapper #}
 

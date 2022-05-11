@@ -5,13 +5,13 @@
         {% set item = result[0] %}
         <div class="t-place-category__heading">
           {% if item.placeType === 'wineStore' %}
-            <img src="{{ apos.asset.url('/modules/asset/icons/wine-bottle.png') }}" alt="category heading">
+            <img src="{{ apos.asset.url('/modules/content/icons/wine-bottle.png') }}" alt="category heading">
           {% elseif item.placeType === 'wineBar' %}
-            <img src="{{ apos.asset.url('/modules/asset/icons/glass.png') }}" alt="category heading">
+            <img src="{{ apos.asset.url('/modules/content/icons/glass.png') }}" alt="category heading">
           {% elseif item.placeType === 'poi' %}
-            <img src="{{ apos.asset.url('/modules/asset/icons/binoculars.png') }}" alt="category heading">
+            <img src="{{ apos.asset.url('/modules/content/icons/binoculars.png') }}" alt="category heading">
           {% else %}
-            <img src="{{ apos.asset.url('/modules/asset/icons/grap.png') }}" alt="category heading">
+            <img src="{{ apos.asset.url('/modules/content/icons/grap.png') }}" alt="category heading">
           {% endif %}
           <div class="t-place-category__title">{{ __t('apostrophe:homePage.' + item.placeType) }}</div>
         </div>
@@ -20,7 +20,7 @@
       <div class="t-place-category__items">
         {% for item in result %}
           <a href="" class="t-place-category__item t-place">
-            {% set image = apos.attachment.url(item.image) if item.image else apos.asset.url('/modules/asset/images/default-domain.jpg') %}
+            {% set image = apos.attachment.url(item.image) if item.image else apos.asset.url('/modules/content/images/default-domain.jpg') %}
             <div class="t-place__img" style="background-image: url({{ image }})">
               <div class="t-place__title">{{ item.title }}</div>
             </div>
@@ -49,13 +49,13 @@
     {% if item.placeType === 'domain' %}
       <div class="t-place-category">
         <div class="t-place-category__heading">
-          <img src="{{ apos.asset.url('/modules/asset/icons/purple-map.png') }}" alt="category heading">
+          <img src="{{ apos.asset.url('/modules/content/icons/purple-map.png') }}" alt="category heading">
           <div class="t-place-category__title">{{ __t('apostrophe:homePage.wineRoute') }}</div>
         </div>
         <div class="t-place-category__items">
           {% for item in data.result[loop.length - 1] %}
             <a href="" class="t-place-category__item t-place">
-              {% set image = apos.attachment.url(item.image) if item.image else apos.asset.url('/modules/asset/images/default-domain.jpg') %}
+              {% set image = apos.attachment.url(item.image) if item.image else apos.asset.url('/modules/content/images/default-domain.jpg') %}
               <div class="t-place__img" style="background-image: url({{ image }})">
                 <div class="t-place__title">{{ item.title }}</div>
               </div>

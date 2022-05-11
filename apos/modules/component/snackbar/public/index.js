@@ -44,6 +44,8 @@ export default (message, { type = 'info', dismiss } = {}) => {
     setTimeout(() => (snackbar.style.display = 'none'), delay)
   }
 
-  closeIcon.addEventListener('click', () => (snackbar.style.display = 'none'))
+  closeIcon.addEventListener('click', () => {
+    snackbar.style.display = 'none'
+  })
   snackbars.appendChild(snackbar)
 }

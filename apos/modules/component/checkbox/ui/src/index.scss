@@ -1,0 +1,49 @@
+@import '/modules/content/ui/src/scss/_settings';
+
+.t-checkbox {
+  display: flex;
+  gap: 12px;
+  position: relative;
+  cursor: pointer;
+  color: $color-white;
+  font-size: 0.8rem;
+
+  &__input {
+    display: none;
+
+    &:checked ~ span:after {
+      display: block;
+    }
+  }
+
+  &__label {
+    line-height: 25px;
+    pointer-events: none;
+  }
+
+  &__mark {
+    flex: 0 0 auto;
+    height: 22px;
+    width: 22px;
+    box-sizing: border-box;
+    border-radius: 7px;
+    background-color: $color-white;
+
+    &:after {
+      display: none;
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
+      border: solid $color-black;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+
+    &--error {
+      border: 3px red solid;
+    }
+  }
+}
