@@ -229,7 +229,7 @@
   "notFound": "Not found.",
   "notFoundPageMessage": "We can't seem to find the page you're looking for.",
   "notFoundPageStatusCode": "404",
-  "notFoundPageTitle": "404 - Page not found",
+  "notFoundPageTitle": "404 error: The page cannot be found or no longer exists.",
   "notInLocale": "The current page doesn’t exist in {{ label }}. Localize the version from {{ currentLocale }}?",
   "notificationClearEventError": "There was an error clearing a registered notification event.",
   "noTypeFound": "No {{ type }} Found",
