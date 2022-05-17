@@ -8,9 +8,12 @@ console.log('ready!')
 const props = defineProps({
   piece: Object,
 })
-// const trad = apos.itinerary.labels  => En commentaire sinon je ne peux pas git push
-
 const data = JSON.parse(props.piece)
+// if (!apos.user) {
+//   location.assign('/login?redirect=itinerary/' + data.slug)
+// }
+// const translation = apos.itinerary.labels
+// Impossible de commit ou push sans le mettre en commentaire ('apos' is not defined )
 let description = ref(false)
 
 // Methods
@@ -39,20 +42,18 @@ function dataMileAge(mileage) {
 
 <template>
   <div class="t-app-itinenary">
-    <div class="t-app-itinerary__spacer"></div>
-
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
       <span class="bold" @click="description = !description"
-        >{{ trad.see }}
-        <span class="bold" v-if="description">{{ trad.less }}..</span>
-        <span class="bold" v-else>{{ trad.more }}..</span>
+        >{{ translation.see }}
+        <span class="bold" v-if="description">{{ translation.less }}..</span>
+        <span class="bold" v-else>{{ translation.more }}..</span>
       </span>
     </div>
 
     <div class="t-app-itinerary__infos t-infos">
-      <div class="t-infos__title">{{ trad.globalInfos }}</div>
+      <div class="t-infos__title">{{ translation.globalInfos }}</div>
       <div class="t-infos__container">
         <div class="t-info-tier">
           <div class="t-info-tier__logo"></div>
@@ -127,7 +128,7 @@ function dataMileAge(mileage) {
       </div>
     </div>
 
-    <VisitsContainer :data="piece" :trad="trad" />
+    <VisitsContainer :data="piece" :translationData="translation" />
   </div>
 </template>
 
@@ -142,10 +143,6 @@ function dataMileAge(mileage) {
 .t-app-itinenary {
   padding: 32px;
   margin-top: 15vh;
-}
-
-.t-app-itinerary__spacer {
-  margin-top: 20vh;
 }
 
 .t-app-itinerary__title {
