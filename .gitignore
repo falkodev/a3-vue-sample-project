@@ -5,6 +5,7 @@ build
 logs
 .jshintrc
 .DS_Store
+.idea
 nginx/logs
 .nuxt/
 .env
