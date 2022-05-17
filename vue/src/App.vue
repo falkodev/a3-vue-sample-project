@@ -1,30 +1,47 @@
 <script>
-import { computed } from 'vue'
-import { onMounted } from 'vue'
+// import {
+//   LMap,
+//   LIcon,
+//   LTileLayer,
+//   LMarker,
+//   LControlLayers,
+//   LTooltip,
+//   LPopup,
+//   LPolyline,
+//   LPolygon,
+//   LRectangle,
+// } from '@vue-leaflet/vue-leaflet'
+// import 'leaflet/dist/leaflet.css'
 
 export default {
-  props: {
-    piece: Object,
-    pieceImage: Object,
+  components: {
+    // LMap,
+    // LIcon,
+    // LTileLayer,
+    // LMarker,
+    // LControlLayers,
+    // LTooltip,
+    // LPopup,
+    // LPolyline,
+    // LPolygon,
+    // LRectangle,
   },
-  setup(props) {
-    // 1.fullName depends on firstName,lastName.
-    // 2.computed takes a getter function and returns an immutable reactive ref object
-    // for the returned value from the getter.
-    const domain = computed(() => {
-      return JSON.parse(props.piece)
-    })
-    const domainPicture = computed(() => {
-      return JSON.parse(props.pieceImage)
-    })
-    onMounted(() => {
-      console.log('mounted hook // domain = \r \n', domain.value)
-      console.log('mounted hook // domainPicture = \r \n', domainPicture.value)
-    })
+  props: ['piece', 'pieceImage'],
+  data() {
     return {
-      domain,
-      domainPicture,
+      zoom: 7,
     }
+  },
+  computed: {
+    domain() {
+      return JSON.parse(this.piece)
+    },
+    domainPicture() {
+      return JSON.parse(this.pieceImage)
+    },
+  },
+  mounted() {
+    console.log(this.domain)
   },
 }
 </script>
@@ -38,7 +55,9 @@ export default {
         style="
           background-image: url('https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80');
         "
-      ></div>
+      >
+        {{ domain.latitude }} , {{ domain.longitude }}
+      </div>
     </div>
 
     <div class="t-domain__content">
