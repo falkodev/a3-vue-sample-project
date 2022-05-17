@@ -509,7 +509,7 @@
     "add": "Ajouter",
     "takeAppointment": "Prendre RDV",
     "favorite": "Favoris",
-    "SelfGuidedTour": "Visite auto-guidée"
+    "selfGuidedTour": "Visite auto-guidée"
   },
   "place": {
     "label": "Lieu",
