@@ -2,7 +2,6 @@
 // Imports
 import VisitsContainer from './components/VisitsContainer.vue'
 import { ref } from 'vue'
-console.log('ready!')
 
 // Data
 const props = defineProps({
@@ -14,11 +13,11 @@ const data = JSON.parse(props.piece)
 // }
 // const translation = apos.itinerary.labels
 // Impossible de commit ou push sans le mettre en commentaire ('apos' is not defined )
-let description = ref(false)
+let descriptionRef = ref(false)
 
 // Methods
 function dataDescription() {
-  if (description.value === true) {
+  if (descriptionRef.value) {
     return data.description
   } else {
     return data.description.substr(0, 150)
@@ -35,7 +34,6 @@ function dataPrice(price) {
 function dataMileAge(mileage) {
   return mileage + 'km'
 }
-// Map
 
 // Hooks
 </script>
@@ -45,9 +43,9 @@ function dataMileAge(mileage) {
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
-      <span class="bold" @click="description = !description"
+      <span class="bold" @click="descriptionRef = !descriptionRef"
         >{{ translation.see }}
-        <span class="bold" v-if="description">{{ translation.less }}..</span>
+        <span class="bold" v-if="descriptionRef">{{ translation.less }}..</span>
         <span class="bold" v-else>{{ translation.more }}..</span>
       </span>
     </div>

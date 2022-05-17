@@ -506,7 +506,7 @@
     "add": "Add",
     "takeAppointment": "Take appointment",
     "favorite": "Favorite",
-    "SelfGuidedTour": "Self-guided tour"
+    "selfGuidedTour": "Self-guided tour"
   },
   "place": {
     "label": "Place",
