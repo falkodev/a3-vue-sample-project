@@ -9,6 +9,9 @@ describe('itinerary', () => {
       log: jest.fn(),
       error: jest.fn(),
     },
+    attachment: {
+      insert: jest.fn(),
+    },
     place: {
       find: jest.fn().mockImplementation(() => {
         return {
@@ -36,6 +39,7 @@ describe('itinerary', () => {
     await runFixtures.itineraryFixtures({})
     expect(self.apos.util.log).toHaveBeenCalled()
     expect(self.apos.place.find).toHaveBeenCalled()
+    expect(self.apos.attachment.insert).toHaveBeenCalled()
     expect(self.insert).toHaveBeenCalled()
 
     self.apos.place = {
