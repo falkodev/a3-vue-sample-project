@@ -5,7 +5,7 @@ const appName = process.env.NODE_APP_INSTANCE
 
 require('apostrophe')({
   shortName: appName,
-  // autoBuild: false,
+  nestedModuleSubdirs: true,
   modules: {
     // Apostrophe module configuration
     // *******************************
@@ -40,10 +40,9 @@ require('apostrophe')({
         className: 'bp-video-widget',
       },
     },
-    // `asset` supports the project's webpack build for client-side assets.
-    asset: {},
     // The project's first custom page type.
     'default-page': {},
+    'register-page': {},
     content: {},
     itinerary: {},
     'itinerary-page': {

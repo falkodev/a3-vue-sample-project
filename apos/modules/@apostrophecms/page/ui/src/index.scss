@@ -1,5 +1,4 @@
-@import '~/modules/asset/ui/src/scss/_settings.scss';
-@import '~/modules/@apostrophecms/page/ui/src/snackbar.scss';
+@import '~/modules/content/ui/src/scss/_settings.scss';
 
 .apos-admin-bar-wrapper ~ [data-apos-refreshable] {
   .t-header {
@@ -36,12 +35,12 @@
 
   &__geoloc {
     justify-self: left;
-    mask: url('/modules/asset/icons/geoloc.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/geoloc.png') center/contain no-repeat;
   }
 
   &__search {
     justify-self: right;
-    mask: url('/modules/asset/icons/search.svg') center/contain no-repeat;
+    mask: url('/modules/content/icons/search.svg') center/contain no-repeat;
   }
 
   &__menu {
@@ -125,17 +124,17 @@
     margin-right: 20px;
 
     &--profile {
-      mask: url('/modules/asset/icons/people.png') center/contain no-repeat;
+      mask: url('/modules/content/icons/people.png') center/contain no-repeat;
       margin-bottom: 2px;
     }
 
     &--place {
-      mask: url('/modules/asset/icons/direction.png') center/contain no-repeat;
+      mask: url('/modules/content/icons/direction.png') center/contain no-repeat;
       margin-bottom: 1px;
     }
 
     &--shop {
-      mask: url('/modules/asset/icons/cart.png') center/contain no-repeat;
+      mask: url('/modules/content/icons/cart.png') center/contain no-repeat;
       margin-bottom: 5px;
       margin-right: 25px;
       width: 30px;
@@ -143,13 +142,13 @@
     }
 
     &--favorite {
-      mask: url('/modules/asset/icons/heart.png') center/contain no-repeat;
+      mask: url('/modules/content/icons/heart.png') center/contain no-repeat;
       margin-bottom: 1px;
       margin-left: -1px;
     }
 
     &--logout {
-      mask: url('/modules/asset/icons/logout.png') center/contain no-repeat;
+      mask: url('/modules/content/icons/logout.png') center/contain no-repeat;
       margin-bottom: 3px;
       margin-left: 3px;
       margin-right: 22px;
@@ -194,15 +193,15 @@
     background-size: contain;
 
     &--instagram {
-      mask-image: url('/modules/asset/icons/instagram.svg');
+      mask-image: url('/modules/content/icons/instagram.svg');
     }
 
     &--facebook {
-      mask-image: url('/modules/asset/icons/facebook.svg');
+      mask-image: url('/modules/content/icons/facebook.svg');
     }
 
     &--linkedin {
-      mask-image: url('/modules/asset/icons/linkedin.svg');
+      mask-image: url('/modules/content/icons/linkedin.svg');
     }
   }
 }
@@ -253,21 +252,21 @@
   }
 
   &__roads {
-    mask: url('/modules/asset/icons/map.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/map.png') center/contain no-repeat;
   }
 
   &__places {
-    mask: url('/modules/asset/icons/direction.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/direction.png') center/contain no-repeat;
   }
 
   &__home {
-    mask: url('/modules/asset/icons/home.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/home.png') center/contain no-repeat;
   }
   &__events {
-    mask: url('/modules/asset/icons/event.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/event.png') center/contain no-repeat;
   }
   &__favorites {
-    mask: url('/modules/asset/icons/heart.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/heart.png') center/contain no-repeat;
   }
 }
 

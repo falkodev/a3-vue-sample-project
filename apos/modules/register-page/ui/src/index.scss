@@ -1,0 +1,11 @@
+@import '/modules/content/ui/src/scss/_settings';
+
+.t-register {
+  &__logo {
+    margin: 95px auto 60px;
+  }
+
+  &__button {
+    margin-top: 15px;
+  }
+}

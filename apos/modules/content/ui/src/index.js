@@ -25,12 +25,14 @@ export default async () => {
 
   if (manifest) {
     const vueBundle = manifest['index.html']
-    for (const cssFile of vueBundle.css) {
-      const css = document.createElement('link')
-      css.setAttribute('rel', 'stylesheet')
-      css.setAttribute('type', 'text/css')
-      css.setAttribute('href', vueFolder + cssFile)
-      document.head.appendChild(css)
+    if (vueBundle.css) {
+      for (const cssFile of vueBundle.css) {
+        const css = document.createElement('link')
+        css.setAttribute('rel', 'stylesheet')
+        css.setAttribute('type', 'text/css')
+        css.setAttribute('href', vueFolder + cssFile)
+        document.head.appendChild(css)
+      }
     }
     if (vueBundle.imports) {
       for (const importFile of vueBundle.imports) {

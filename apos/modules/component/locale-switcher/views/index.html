@@ -1,0 +1,26 @@
+{% macro displayFlags(currentLocale, url) %}
+  {% set locales = apos.i18n.locales() %}
+
+  <section class="t-locale-switcher">
+    <button data-locale-switcher>
+      <img
+        src="{{ apos.asset.url('/modules/content/icons/flag-' + currentLocale + '.png') }}"
+        alt="flag {{ currentLocale }}"
+      />
+    </button>
+    <ul data-locale-list>
+      {% for locale in locales %}
+        {% if locale.name !== currentLocale %}
+          <li>
+            <a href="{{ locale.prefix }}/{{ url }}">
+              <img
+                src="{{ apos.asset.url('/modules/content/icons/flag-' + locale.name + '.png') }}"
+                alt="flag {{ locale.name }}"
+              />
+            </a>
+          </li>
+        {% endif %}
+      {% endfor%}
+    </ul>
+  </section>
+{% endmacro %}

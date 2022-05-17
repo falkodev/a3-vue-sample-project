@@ -1,4 +1,6 @@
+const path = require('path')
 const moment = require('moment')
+const asyncFs = require('fs/promises')
 
 module.exports = {
   extend: '@apostrophecms/piece-type',
@@ -70,6 +72,11 @@ module.exports = {
         required: true,
         label: 'apostrophe:price',
       },
+      image: {
+        type: 'attachment',
+        label: 'apostrophe:image',
+        fileGroup: 'images',
+      },
       steps: {
         type: 'array',
         label: 'apostrophe:steps',
@@ -86,7 +93,7 @@ module.exports = {
     },
     group: {
       basics: {
-        fields: ['itineraryType', 'description', 'price'],
+        fields: ['itineraryType', 'description', 'price', 'image'],
       },
       scheduling: {
         label: 'apostrophe:scheduling',
@@ -156,6 +163,19 @@ module.exports = {
               return steps
             }
 
+            const imagesFolder = path.resolve(__dirname, './images/')
+            const imagesNames = await asyncFs.readdir(imagesFolder)
+            const uploadedImages = await Promise.all(
+              imagesNames.map((imageName) => {
+                const imagePath = `${imagesFolder}/${imageName}`
+                return self.apos.attachment.insert(req, {
+                  name: imageName,
+                  path: imagePath,
+                  fixtures: true,
+                })
+              }),
+            )
+
             const defaultItinerary = {
               startTime: '09:00',
               endTime: '17:00',
@@ -180,6 +200,7 @@ module.exports = {
                 endDate: moment().add(1, 'months').format('YYYY-MM-DD'),
                 price: 19.9,
                 steps: setSteps(3),
+                image: uploadedImages[0],
                 ...defaultItinerary,
               },
               {
@@ -189,6 +210,7 @@ module.exports = {
                 endDate: moment().add(2, 'months').format('YYYY-MM-DD'),
                 price: 25,
                 steps: setSteps(5),
+                image: uploadedImages[1],
                 ...defaultItinerary,
               },
               {
@@ -198,6 +220,7 @@ module.exports = {
                 endDate: moment().add(3, 'months').format('YYYY-MM-DD'),
                 price: 50,
                 steps: setSteps(7),
+                image: uploadedImages[2],
                 ...defaultItinerary,
               },
               {
@@ -207,6 +230,7 @@ module.exports = {
                 endDate: moment().add(2, 'months').format('YYYY-MM-DD'),
                 price: 22,
                 steps: setSteps(4),
+                image: uploadedImages[3],
                 ...defaultItinerary,
               },
             ]

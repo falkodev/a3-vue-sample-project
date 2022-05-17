@@ -12,6 +12,10 @@ module.exports = {
         type: 'attachment',
         label: 'apostrophe:backgroundImageLabel',
       },
+      backgroundImageLogin: {
+        type: 'attachment',
+        label: 'apostrophe:backgroundImageLoginLabel',
+      },
       socialNetworks: {
         label: 'apostrophe:socialNetworks.label',
         type: 'checkboxes',
@@ -61,7 +65,7 @@ module.exports = {
     group: {
       basics: {
         label: 'apostrophe:customImagesLabel',
-        fields: ['logo', 'backgroundImage'],
+        fields: ['logo', 'backgroundImage', 'backgroundImageLogin'],
       },
       socialNetworks: {
         label: 'apostrophe:socialNetworks.tabLabel',
