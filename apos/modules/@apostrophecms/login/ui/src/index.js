@@ -65,7 +65,12 @@ export default () => {
         window.sessionStorage.setItem('aposStateChange', Date.now())
         window.sessionStorage.setItem('aposStateChangeSeen', '{}')
         window.sessionStorage.setItem('aposLoadAfterLogin', true)
-        location.assign(`${apos.prefix}/`)
+        const params = new URL(location.href).searchParams
+        if (params.get('redirect')) {
+          location.assign(`${apos.prefix}/${params.get('redirect')}`)
+        } else {
+          location.assign(`${apos.prefix}/`)
+        }
       } catch (e) {
         const error =
           e.message || apos.i18n.i18n[apos.locale].apostrophe.loginErrorGeneric

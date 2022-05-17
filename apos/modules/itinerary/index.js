@@ -116,6 +116,9 @@ module.exports = {
           globalInfos: req.t('apostrophe:theme.globalInfos'),
           visitList: req.t('apostrophe:theme.visitList'),
           add: req.t('apostrophe:theme.add'),
+          takeAppointment: req.t('apostrophe:theme.takeAppointment'),
+          favorite: req.t('apostrophe:theme.favorite'),
+          SelfGuidedTour: req.t('apostrophe:theme.SelfGuidedTour'),
         }
 
         return data

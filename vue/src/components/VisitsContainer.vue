@@ -1,11 +1,3 @@
-<script setup>
-// Imports
-
-// Data
-
-// Methods
-</script>
-
 <template>
   <div class="t-steps">
     <div class="t-app-itinerary__map" v-if="centerLoaded">
@@ -24,7 +16,7 @@
       </l-map>
     </div>
     <div class="t-steps__loaded t-loaded" v-if="itinerary.steps != ''">
-      <div class="t-loaded__title">{{ trad.visitList }}</div>
+      <div class="t-loaded__title">{{ translation.visitList }}</div>
       <div class="t-loaded__steps">
         <VisitItem
           v-for="(step, index) in itinerary.steps"
@@ -32,13 +24,13 @@
           :id="index"
           :step="step"
           :status="true"
-          :trad="trad"
+          :translation="translation"
           @delItem="del"
         />
       </div>
     </div>
     <div class="t-steps__loaded t-loaded" v-if="delSteps != ''">
-      <div class="t-loaded__title">{{ trad.add }}</div>
+      <div class="t-loaded__title">{{ translation.add }}</div>
       <div class="t-loaded__steps">
         <VisitItem
           v-for="(step, index) in delSteps"
@@ -46,7 +38,7 @@
           :id="index"
           :step="step"
           :status="false"
-          :trad="trad"
+          :translation="translation"
           @addItem="add"
         />
       </div>
@@ -82,7 +74,7 @@ import VisitItem from './VisitItem.vue'
 import {
   LMap,
   LIcon,
-  // LTileLayer,
+  LTileLayer,
   LMarker,
   // LControlLayers,
   // LTooltip,
@@ -101,13 +93,13 @@ export default {
       zoom: 9,
       center: {},
       centerLoaded: false,
-      traduction: {},
+      translation: {},
     }
   },
   name: 'VisitsContainer',
   props: {
     data: Object,
-    trad: Object,
+    translationData: Object,
   },
   methods: {
     del(delIndex) {
@@ -118,10 +110,16 @@ export default {
     add(addIndex) {
       let temp = this.delSteps.splice(addIndex, 1)
       this.itinerary.steps.push(temp[0])
+      this.itinerary.steps.sort((a, b) => a.order - b.order)
       this.updateCenter()
     },
     log(a) {
       console.log(a)
+    },
+    attributeId() {
+      for (let index = 0; index < this.itinerary.steps.length; index++) {
+        this.itinerary.steps[index].order = index
+      }
     },
     updateCenter() {
       let tempCenter = {
@@ -155,7 +153,7 @@ export default {
     VisitItem,
     LMap,
     LIcon,
-    // LTileLayer,
+    LTileLayer,
     LMarker,
     // LControlLayers,
     // LTooltip,
@@ -165,8 +163,9 @@ export default {
     // LRectangle,
   },
   mounted() {
-    this.traduction = this.trad
+    this.translation = this.translationData
     this.itinerary = JSON.parse(this.data)
+    this.attributeId()
     this.updateCenter()
   },
 }

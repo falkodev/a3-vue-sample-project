@@ -1,10 +1,7 @@
 <template>
   <div class="t-visit">
     <div class="t-visit__image">
-      <img
-        :src="`@/assets/${this.step._place[0].image.name}.${this.step._place[0].image.extension}`"
-        alt=""
-      />
+      <img alt="" />
     </div>
 
     <div
@@ -16,14 +13,42 @@
       <div class="t-infos__title">{{ this.step._place[0].title }}</div>
       <div class="t-infos__description">
         <div class="t-infos__type">
-          <img src="" alt="" />
+          <!-- <img
+            v-if="this.step._place[0].placeType == 'wineStore'"
+            src="/modules/asset/icons/wine-bottle.png"
+            alt="category heading"
+          />
+          <img
+            v-if="this.step._place[0].placeType == 'wineBar'"
+            src="/modules/asset/icons/glass.png"
+            alt="category heading"
+          />
+          <img
+            v-if="this.step._place[0].placeType == 'poi'"
+            src="/modules/asset/icons/binoculars.png"
+            alt="category heading"
+          />
+          <img
+            v-else
+            src="{{
+            apos.asset.url('/modules/asset/icons/grap.png')
+          }}"
+            alt="category heading"
+          /> -->
           {{ this.step._place[0].placeType }}
         </div>
-        <div class="t-infos__visit">・ {{ trad.SelfGuidedTour }}</div>
+        <div class="t-infos__visit">
+          ・ {{ this.translation.SelfGuidedTour }}
+        </div>
       </div>
       <div class="t-infos__footer">
         <div class="">
-          <div class="t-infos__status">{{ trad.takeAppointment }}</div>
+          <div
+            v-if="this.step._place[0].placeType == 'domain'"
+            class="t-infos__status"
+          >
+            {{ this.translation.takeAppointment }}
+          </div>
         </div>
         <div class="t-infos__fav">
           <div class="t-infos__heart-container">
@@ -86,7 +111,7 @@ export default {
     step: Object,
     id: Number,
     status: Boolean,
-    trad: Object,
+    translation: Object,
   },
   emits: ['delItem'],
 }
