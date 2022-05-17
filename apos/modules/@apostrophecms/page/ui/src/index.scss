@@ -273,3 +273,33 @@
 .hidden {
   display: none;
 }
+
+.t-background-404 {
+  background-image: url('/modules/content/images/404-background-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 95vh;
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    margin-top: 30vh;
+    width: 368px;
+    height: 330px;
+  }
+
+  &__text {
+    color: $color-white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+  }
+}

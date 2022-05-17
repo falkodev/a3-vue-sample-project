@@ -8,5 +8,12 @@
 {% block title %}404 - Page not found{% endblock %}
 
 {% block main %}
-  We're sorry. We couldn't find the page you're looking for.
+  <div class="t-background-404">
+    <div class="t-background-404__container">
+      <div class="t-background-404__text">{{ __t('apostrophe:notFoundPageTitle') }}</div>
+      <a href="/{{ data.locale }}/">
+        <button class="t-button t-button--empty">{{ __t('apostrophe:backToHome') }}</button>
+      </a>
+    </div>
+  </div>
 {% endblock %}
