@@ -50,9 +50,6 @@ module.exports = {
 
         return data
       },
-      stringify(label) {
-        return JSON.stringify(label)
-      },
     }
   },
 }

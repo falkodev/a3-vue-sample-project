@@ -20,6 +20,9 @@ module.exports = {
           name: key,
         }))
       },
+      stringify(label) {
+        return JSON.stringify(label)
+      },
     }
   },
 }

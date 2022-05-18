@@ -8,10 +8,10 @@ const props = defineProps({
   piece: Object,
 })
 const data = JSON.parse(props.piece)
-// if (!apos.user) {
+// if (!window.apos.user) {
 //   location.assign('/login?redirect=itinerary/' + data.slug)
 // }
-// const translation = apos.itinerary.labels
+// const translation = window.apos.itinerary.labels
 // Impossible de commit ou push sans le mettre en commentaire ('apos' is not defined )
 let descriptionRef = ref(false)
 
@@ -39,7 +39,8 @@ function dataMileAge(mileage) {
 </script>
 
 <template>
-  <div class="t-app-itinenary">
+  <div class="t-app-itinerary">
+    <div class="t-spacer"></div>
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
@@ -73,19 +74,19 @@ function dataMileAge(mileage) {
         </div>
       </div>
       <div class="t-infos__container">
-        <div class="t-info-demi">
-          <div class="t-info-demi__logo"></div>
-          <div class="t-info-demi__title">
+        <div class="t-info-half">
+          <div class="t-info-half__logo"></div>
+          <div class="t-info-half__title">
             {{ data.steps[0]._place[0].title }}
           </div>
-          <div class="t-info-demi__value">
+          <div class="t-info-half__value">
             {{
               data.steps[0]._place[0].address.substring(
                 data.steps[0]._place[0].address.indexOf(',') + 1,
               )
             }}
           </div>
-          <div class="t-info-demi__value">
+          <div class="t-info-half__value">
             {{
               data.steps[0]._place[0].address.slice(
                 0,
@@ -96,12 +97,12 @@ function dataMileAge(mileage) {
             }}
           </div>
         </div>
-        <div class="t-info-demi">
-          <div class="t-info-demi__logo"></div>
-          <div class="t-info-demi__title">
+        <div class="t-info-half">
+          <div class="t-info-half__logo"></div>
+          <div class="t-info-half__title">
             {{ data.steps[data.steps.length - 1]._place[0].title }}
           </div>
-          <div class="t-info-demi__value">
+          <div class="t-info-half__value">
             {{
               data.steps[data.steps.length - 1]._place[0].address.substring(
                 data.steps[data.steps.length - 1]._place[0].address.indexOf(
@@ -110,7 +111,7 @@ function dataMileAge(mileage) {
               )
             }}
           </div>
-          <div class="t-info-demi__value">
+          <div class="t-info-half__value">
             {{
               data.steps[data.steps.length - 1]._place[0].address.slice(
                 0,
@@ -130,87 +131,95 @@ function dataMileAge(mileage) {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 @import './assets/base.css';
+
+.t-spacer {
+  height: 20vh;
+}
 
 .bold {
   font-weight: bold;
   cursor: pointer;
 }
 
-.t-app-itinenary {
+.t-app-itinerary {
   padding: 32px;
   margin-top: 15vh;
-}
 
-.t-app-itinerary__title {
-  font-size: 25px;
-  color: #5357c1;
-  font-weight: bold;
-}
+  &__title {
+    font-size: 25px;
+    color: #5357c1;
+    font-weight: bold;
+  }
 
-.t-app-itinerary__description {
-  margin-top: 36px;
-  font-size: 15px;
-  line-height: 25px;
+  &__description {
+    margin-top: 36px;
+    font-size: 15px;
+    line-height: 25px;
+  }
 }
 
 .t-infos {
   margin-top: 36px;
 }
 
-.t-infos__title {
-  color: #ff8317;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 17px;
+.t-infos {
+  &__title {
+    color: #ff8317;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+  &__container {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
-.t-infos__container {
-  width: 100%;
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
+.t-info {
+  &-tier {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #ff831775;
+    height: 100px;
+    width: 32%;
+    border-radius: 15px;
 
-.t-info-tier {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background-color: #ff831775;
-  height: 100px;
-  width: 32%;
-  border-radius: 15px;
-}
+    &__value {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
 
-.t-info-demi {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background-color: #ff831775;
-  height: 100px;
-  width: 49%;
-  border-radius: 15px;
-}
+  &-half {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #ff831775;
+    height: 100px;
+    width: 49%;
+    border-radius: 15px;
 
-.t-info-tier__value {
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-}
+    &__title {
+      color: white;
+      font-size: 13px;
+      font-weight: bold;
+    }
 
-.t-info-demi__title {
-  color: white;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.t-info-demi__value {
-  color: white;
-  font-size: 12px;
+    &__value {
+      color: white;
+      font-size: 12px;
+    }
+  }
 }
 </style>
