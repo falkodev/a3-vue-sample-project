@@ -1,7 +1,6 @@
 export default async () => {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      console.log('apos.mode ====> ', apos.mode)
       if (apos.mode === 'production') {
         navigator.serviceWorker
           .register('/sw.js')
@@ -21,7 +20,7 @@ export default async () => {
   const manifest = await fetch(`${vueFolder}manifest.json`)
     .then((response) => response.json())
     .catch(() => {})
-  console.log('manifest ====> ', manifest)
+
   if (manifest) {
     const vueBundle = manifest['index.html']
     if (vueBundle.css) {
