@@ -125,7 +125,8 @@ module.exports = {
           add: req.t('apostrophe:theme.add'),
           takeAppointment: req.t('apostrophe:theme.takeAppointment'),
           favorite: req.t('apostrophe:theme.favorite'),
-          SelfGuidedTour: req.t('apostrophe:theme.SelfGuidedTour'),
+          selfGuidedTour: req.t('apostrophe:theme.selfGuidedTour'),
+          validateItinerary: req.t('apostrophe:theme.validateItinerary'),
         }
 
         return data
