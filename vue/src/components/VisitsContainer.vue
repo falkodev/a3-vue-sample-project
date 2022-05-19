@@ -16,7 +16,7 @@
       </l-map>
     </div>
     <div class="t-steps__loaded t-loaded" v-if="itinerary.steps != ''">
-      <div class="t-loaded__title">{{ translation.visitList }}</div>
+      <div class="t-loaded__title">{{ $t.visitList }}</div>
       <div class="t-loaded__steps">
         <VisitItem
           v-for="(step, index) in itinerary.steps"
@@ -24,13 +24,13 @@
           :id="index"
           :step="step"
           :status="true"
-          :translation="translation"
+          :translation="$t"
           @delItem="del"
         />
       </div>
     </div>
     <div class="t-steps__loaded t-loaded" v-if="delSteps != ''">
-      <div class="t-loaded__title">{{ translation.add }}</div>
+      <div class="t-loaded__title">{{ $t.add }}</div>
       <div class="t-loaded__steps">
         <VisitItem
           v-for="(step, index) in delSteps"
@@ -38,7 +38,7 @@
           :id="index"
           :step="step"
           :status="false"
-          :translation="translation"
+          :translation="$t"
           @addItem="add"
         />
       </div>
@@ -76,12 +76,12 @@ import {
   LIcon,
   LTileLayer,
   LMarker,
-  // LControlLayers,
-  // LTooltip,
-  // LPopup,
-  // LPolyline,
-  // LPolygon,
-  // LRectangle,
+  LControlLayers,
+  LTooltip,
+  LPopup,
+  LPolyline,
+  LPolygon,
+  LRectangle,
 } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
 export default {
@@ -93,7 +93,7 @@ export default {
       zoom: 9,
       center: {},
       centerLoaded: false,
-      translation: {},
+      $t: {},
     }
   },
   name: 'VisitsContainer',
@@ -155,15 +155,15 @@ export default {
     LIcon,
     LTileLayer,
     LMarker,
-    // LControlLayers,
-    // LTooltip,
-    // LPopup,
-    // LPolyline,
-    // LPolygon,
-    // LRectangle,
+    LControlLayers,
+    LTooltip,
+    LPopup,
+    LPolyline,
+    LPolygon,
+    LRectangle,
   },
   mounted() {
-    this.translation = this.translationData
+    this.$t = this.translationData
     this.itinerary = JSON.parse(this.data)
     this.attributeId()
     this.updateCenter()

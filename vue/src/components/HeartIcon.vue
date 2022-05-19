@@ -4,7 +4,7 @@
       xmlns="http://www.w3.org/2000/svg"
       class="t-heart"
       viewBox="0 0 20 20"
-      fill="currendColor"
+      fill="currentColor"
     >
       <path
         fill-rule="evenodd"
@@ -32,5 +32,6 @@ t-heart {
   color: transparent;
   fill: transparent;
   height: 10px;
+  width: 10px;
 }
 </style>

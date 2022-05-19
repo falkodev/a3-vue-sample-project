@@ -1,6 +1,7 @@
 <script setup>
 // Imports
 import VisitsContainer from './components/VisitsContainer.vue'
+import ValidateItinerary from './components/ValidateItinerary.vue'
 import { ref } from 'vue'
 
 // Data
@@ -8,10 +9,10 @@ const props = defineProps({
   piece: Object,
 })
 const data = JSON.parse(props.piece)
-// if (!window.apos.user) {
-//   location.assign('/login?redirect=itinerary/' + data.slug)
-// }
-// const translation = window.apos.itinerary.labels
+if (!window.apos.user) {
+  location.assign('/login?redirect=itinerary/' + data.slug)
+}
+const translation = window.apos.itinerary.labels
 // Impossible de commit ou push sans le mettre en commentaire ('apos' is not defined )
 let descriptionRef = ref(false)
 
@@ -126,7 +127,7 @@ function dataMileAge(mileage) {
         </div>
       </div>
     </div>
-
+    <ValidateItinerary :translationData="translation" />
     <VisitsContainer :data="piece" :translationData="translation" />
   </div>
 </template>
