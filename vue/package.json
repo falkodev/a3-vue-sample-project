@@ -15,7 +15,9 @@
   },
   "author": "Vinovibes Team",
   "dependencies": {
+    "@types/leaflet": "^1.7.10",
     "@vitejs/plugin-vue": "^2.2.4",
+    "leaflet": "^1.8.0",
     "pinia": "^2.0.11",
     "vite": "^2.8.6",
     "vitest": "^0.6.0",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
+    "@vue-leaflet/vue-leaflet": "^0.6.1",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/test-utils": "^2.0.0-rc.17",
     "cypress": "^9.6.0",
