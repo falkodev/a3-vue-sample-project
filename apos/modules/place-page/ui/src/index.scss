@@ -3,10 +3,11 @@
   box-sizing: border-box;
 }
 .t-domain {
+  $map-height: 40vh;
+
   &__fixed {
     position: fixed;
-    z-index: 900;
-    top: calc(112px + 116px); /* admin + header heights */
+    top: calc(112px + 102px); /* admin + header heights */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,28 +31,21 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 120px;
-    width: 100%;
+    height: auto;
+    height: $map-height;
   }
   &__content {
     position: relative;
-    top: calc(116px + 102px + 120px); /* header + title + map heights */
+    top: calc(112px + 102px + $map-height); /* header + title + map heights */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    padding-bottom: 85px; /* footer-height */
+    padding-bottom: calc(120px + 85px);
     background-color: $color-white;
   }
-  &__image {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 640px;
-    width: 100%;
-  }
 
-  .t-etape {
+  .t-step {
     &__container {
       position: relative;
       display: flex;
