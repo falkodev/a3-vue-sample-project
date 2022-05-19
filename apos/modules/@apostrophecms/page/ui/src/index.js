@@ -16,7 +16,10 @@ export default () => {
       })
 
       document.body.addEventListener('click', (evt) => {
-        if (!evt.target?.className?.match?.(/t-menu/) && !evt.target?.className?.match?.(/t-nav/)) {
+        if (
+          !evt.target?.className?.match?.(/t-menu/) &&
+          !evt.target?.className?.match?.(/t-nav/)
+        ) {
           menuList.classList.remove('t-menu__list--open')
           menuIcon.classList.remove('t-nav__icon--close')
         }
