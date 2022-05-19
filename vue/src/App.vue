@@ -1,24 +1,24 @@
 <script>
-// import {
-//   LMap,
-//   LIcon,
-//   LTileLayer,
-//   LMarker,
-//   LControlLayers,
-//   LTooltip,
-//   LPopup,
-//   LPolyline,
-//   LPolygon,
-//   LRectangle,
-// } from '@vue-leaflet/vue-leaflet'
-// import 'leaflet/dist/leaflet.css'
+import {
+  LMap,
+  LTileLayer,
+  LMarker,
+  // LIcon,
+  // LControlLayers,
+  // LTooltip,
+  // LPopup,
+  // LPolyline,
+  // LPolygon,
+  // LRectangle,
+} from '@vue-leaflet/vue-leaflet'
+import 'leaflet/dist/leaflet.css'
 
 export default {
   components: {
-    // LMap,
+    LMap,
+    LTileLayer,
+    LMarker,
     // LIcon,
-    // LTileLayer,
-    // LMarker,
     // LControlLayers,
     // LTooltip,
     // LPopup,
@@ -41,7 +41,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.domain)
+    console.log('this.domain ===>', this.domain, 'LMap ===>', LMap)
   },
 }
 </script>
@@ -50,22 +50,24 @@ export default {
   <div class="t-domain">
     <div class="t-domain__fixed">
       <h2 class="t-domain__title">{{ domain.title }}</h2>
-      <div
-        class="t-domain__map"
-        style="
-          background-image: url('https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80');
-        "
-      >
-        {{ domain.latitude }} , {{ domain.longitude }}
+      <div class="t-domain__map t-map__container">
+        <!-- {{ domain.latitude }} , {{ domain.longitude }} -->
+        <l-map
+          dragging="false"
+          v-model="zoom"
+          :zoom="zoom"
+          :center="[domain.latitude, domain.longitude]"
+        >
+          <l-tile-layer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          ></l-tile-layer>
+          <l-marker :lat-lng="[domain.latitude, domain.longitude]"> </l-marker>
+        </l-map>
       </div>
     </div>
 
     <div class="t-domain__content">
-      <div
-        class="t-domain__image"
-        :style="`
-          background-image: url(${domainPicture})`"
-      ></div>
+      <div class="t-domain__image"></div>
       <div class="t-etape__container">
         <div
           class="t-etape__item"
