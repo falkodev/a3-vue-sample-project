@@ -76,12 +76,12 @@ import {
   LIcon,
   LTileLayer,
   LMarker,
-  LControlLayers,
-  LTooltip,
-  LPopup,
-  LPolyline,
-  LPolygon,
-  LRectangle,
+  // LControlLayers,
+  // LTooltip,
+  // LPopup,
+  // LPolyline,
+  // LPolygon,
+  // LRectangle,
 } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
 export default {
@@ -155,12 +155,12 @@ export default {
     LIcon,
     LTileLayer,
     LMarker,
-    LControlLayers,
-    LTooltip,
-    LPopup,
-    LPolyline,
-    LPolygon,
-    LRectangle,
+    // LControlLayers,
+    // LTooltip,
+    // LPopup,
+    // LPolyline,
+    // LPolygon,
+    // LRectangle,
   },
   mounted() {
     this.$t = this.translationData
