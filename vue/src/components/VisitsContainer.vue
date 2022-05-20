@@ -11,7 +11,6 @@
           :key="marker"
           :lat-lng="[marker._place[0].latitude, marker._place[0].longitude]"
         >
-          <l-icon />
         </l-marker>
       </l-map>
     </div>
@@ -73,7 +72,7 @@
 import VisitItem from './VisitItem.vue'
 import {
   LMap,
-  LIcon,
+  // LIcon,
   LTileLayer,
   LMarker,
   // LControlLayers,
@@ -152,7 +151,7 @@ export default {
   components: {
     VisitItem,
     LMap,
-    LIcon,
+    // LIcon,
     LTileLayer,
     LMarker,
     // LControlLayers,

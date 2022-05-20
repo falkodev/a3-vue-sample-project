@@ -1,6 +1,6 @@
 FROM node:16-alpine
 
-RUN apk add --no-cache imagemagick gcc libc-dev make
+RUN apk add --no-cache imagemagick gcc libc-dev make git
 
 # Create app directory
 RUN mkdir -p /app

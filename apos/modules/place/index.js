@@ -34,7 +34,8 @@ module.exports = {
     alias: 'place',
     label: 'apostrophe:place.label',
     pluralLabel: 'apostrophe:place.pluralLabel',
-    localized: false,
+    localized: true,
+    replicate: true,
   },
   fields: {
     add: {

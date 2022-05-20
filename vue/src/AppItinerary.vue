@@ -146,7 +146,7 @@ function dataMileAge(mileage) {
 
 .t-app-itinerary {
   padding: 32px;
-  margin-top: 15vh;
+  margin: 15vh 0 15vh 0;
 
   &__title {
     font-size: 25px;
@@ -201,6 +201,7 @@ function dataMileAge(mileage) {
   }
 
   &-half {
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;

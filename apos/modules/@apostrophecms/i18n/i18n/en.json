@@ -507,6 +507,9 @@
     "takeAppointment": "Take appointment",
     "favorite": "Favorite",
     "selfGuidedTour": "Self-guided tour",
+    "wineStore": "Wine store",
+    "wineBar": "Wine bar",
+    "domain": "Domain",
     "validateItinerary": "Validate my itinerary"
   },
   "place": {
