@@ -12,71 +12,75 @@
 {% block beforeMain %}
   <div class="t-wrapper">
     <header class="t-header">
-      <div class="t-header__geoloc t-header__icon"></div>
-      <div class="t-header__logo">
-        {% if data.global.logo %}
-          <img src="{{ apos.attachment.url(data.global.logo) }}" alt="logo-site">
-        {% else %}
-          {{ __t('apostrophe:layout.logoPlaceholder') }}
-        {% endif %}
-      </div>
-      <div class="t-header__search t-header__icon"></div>
-      <nav class="t-header__menu t-menu">
-        <div class="t-nav__icon" data-menu-icon>
-          <div></div>
-          <div></div>
-          <div></div>
+      <div class="t-header__container">
+        <div class="t-header__geoloc t-header__icon"></div>
+        <div class="t-header__logo">
+          {% if data.global.logo %}
+            <img src="{{ apos.attachment.url(data.global.logo) }}" alt="logo-site">
+          {% else %}
+            {{ __t('apostrophe:layout.logoPlaceholder') }}
+          {% endif %}
         </div>
-
+        <div class="t-header__right">
+          <div class="t-header__search  t-header__icon"></div>
+          <div class="t-header__menu t-menu">
+            <div class="t-nav__icon" data-menu-icon>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
         <ul class="t-menu__list" data-menu-list>
-        {% if not data.user %}
-          <li class="t-menu__element"><a href="/{{ data.locale }}/login">{{ __t('apostrophe:login') }}</a></li>
-          <li class="t-menu__element"><a href="/{{ data.locale }}/register">{{ __t('apostrophe:registerPage.register') }}</a></li>
-        {% else %}
-          <li class="t-menu__element">
-            <div class="t-menu__icon t-menu__icon--profile"></div>
-            <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textProfile') }}</a></div>
-          </li>
-
-          <li class="t-menu__element">
-            <div class="t-menu__icon t-menu__icon--place"></div>
-            <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textVisits') }}</a></div>
-          </li>
-
-          <li class="t-menu__element">
-            <div class="t-menu__icon t-menu__icon--shop"></div>
-            <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textOrders') }}</a></div>
-          </li>
-
-          <li class="t-menu__element">
-            <div class="t-menu__icon t-menu__icon--favorite"></div>
-            <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textFavorites') }}</a></div>
-          </li>
-
-          <li class="t-menu__element">
-            <div class="t-menu__icon t-menu__icon--logout"></div>
-            <div class="t-menu__label"><a href="#" data-logout>{{ __t('apostrophe:logOut') }}</a></div>
-          </li>
-        {% endif %}
-
-        {% if data.global.socialNetworks %}
-          <ul class="t-menu__element t-social">
-            {% for network in data.global.socialNetworks %}
-              {% set propertyName = 'socialUrl' + network | capitalize %}
-              <li class="t-social__item">
-                <a
-                  class="t-social__link"
-                  href="{{ data.global[propertyName] }}"
-                  target="_blank"
-                >
-                  <span class="t-social__icon t-social__icon--{{ network }}"></span>
-                </a>
+            {% if not data.user %}
+              <li class="t-menu__element"><a href="/{{ data.locale }}/login">{{ __t('apostrophe:login') }}</a></li>
+              <li class="t-menu__element"><a href="/{{ data.locale }}/register">{{ __t('apostrophe:registerPage.register') }}</a></li>
+            {% else %}
+              <li class="t-menu__element">
+                <div class="t-menu__icon t-menu__icon--profile"></div>
+                <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textProfile') }}</a></div>
               </li>
-            {% endfor%}
-          </ul>
-        {% endif %}
-        </ul>
 
+              <li class="t-menu__element">
+                <div class="t-menu__icon t-menu__icon--place"></div>
+                <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textVisits') }}</a></div>
+              </li>
+
+              <li class="t-menu__element">
+                <div class="t-menu__icon t-menu__icon--shop"></div>
+                <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textOrders') }}</a></div>
+              </li>
+
+              <li class="t-menu__element">
+                <div class="t-menu__icon t-menu__icon--favorite"></div>
+                <div class="t-menu__label"><a href="#">{{ __t('apostrophe:layout.textFavorites') }}</a></div>
+              </li>
+
+              <li class="t-menu__element">
+                <div class="t-menu__icon t-menu__icon--logout"></div>
+                <div class="t-menu__label"><a href="#" data-logout>{{ __t('apostrophe:logOut') }}</a></div>
+              </li>
+            {% endif %}
+
+            {% if data.global.socialNetworks %}
+              <ul class="t-menu__element t-social">
+                {% for network in data.global.socialNetworks %}
+                  {% set propertyName = 'socialUrl' + network | capitalize %}
+                  <li class="t-social__item">
+                    <a
+                      class="t-social__link"
+                      href="{{ data.global[propertyName] }}"
+                      target="_blank"
+                    >
+                      <span class="t-social__icon t-social__icon--{{ network }}"></span>
+                    </a>
+                  </li>
+                {% endfor%}
+              </ul>
+            {% endif %}
+        </ul>
       </nav>
     </header>
 {% endblock %}
