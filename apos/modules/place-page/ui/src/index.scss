@@ -41,8 +41,10 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
+    padding: 32px;
     padding-bottom: calc(120px + 85px);
     background-color: $color-white;
+    border-radius: 24px 24px 0 0;
   }
 
   .t-step {
@@ -53,7 +55,6 @@
       justify-content: center;
       row-gap: 24px;
       width: 100%;
-      padding: 32px;
     }
     &__item {
       display: flex;

@@ -3,11 +3,12 @@ import {
   LMap,
   LTileLayer,
   LMarker,
+  // LControlScale,
   // LIcon,
   // LControlLayers,
   // LTooltip,
   // LPopup,
-  // LPolyline,
+  LPolyline,
   // LPolygon,
   // LRectangle,
 } from '@vue-leaflet/vue-leaflet'
@@ -18,18 +19,24 @@ export default {
     LMap,
     LTileLayer,
     LMarker,
+    // LControlScale,
     // LIcon,
     // LControlLayers,
     // LTooltip,
     // LPopup,
-    // LPolyline,
+    LPolyline,
     // LPolygon,
     // LRectangle,
   },
   props: ['piece', 'pieceImage'],
   data() {
     return {
-      zoom: 7,
+      allowZoom: false,
+      zoom: 14,
+      userCoords: {
+        latitude: 43.6285,
+        longitude: 3.8694,
+      },
     }
   },
   computed: {
@@ -39,10 +46,45 @@ export default {
     pictureUrl() {
       return JSON.parse(this.pieceImage)
     },
+    userLat() {
+      return this.userCoords.latitude
+    },
+    userLong() {
+      return this.userCoords.longitude
+    },
+  },
+  methods: {
+    setPosition(pos) {
+      let time = new Date().toUTCString()
+      console.log(pos.coords, time)
+      this.userCoords.latitude = pos.coords.latitude
+      this.userCoords.longitude = pos.coords.longitude
+    },
+    errorGettingPos(e) {
+      console.log('error getting position ===>', e)
+    },
+    getUserPos() {
+      navigator.geolocation.getCurrentPosition(
+        this.setPosition,
+        this.errorGettingPos,
+      )
+    },
+    watchUserPos() {
+      if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(
+          this.setPosition,
+          this.errorGettingPos,
+        )
+      }
+    },
+  },
+  beforeMount() {
+    this.watchUserPos()
   },
   mounted() {
     console.log('this.domain ===>', this.domain)
   },
+  updated() {},
 }
 </script>
 
@@ -52,21 +94,45 @@ export default {
       <h2 class="t-domain__title">{{ domain.title }}</h2>
       <div class="t-domain__map t-map__container">
         <l-map
-          dragging="false"
-          v-model="zoom"
-          :zoom="zoom"
-          :center="[domain.latitude, domain.longitude]"
+          draggable="false"
+          :minZoom="zoom"
+          :maxZoom="zoom"
+          v-model:zoom="zoom"
+          :center="[userLat, userLong]"
+          bounceAtZoomLimits="true"
+          zoomControl="false"
+          @moveend="getUserPos"
         >
           <l-tile-layer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           ></l-tile-layer>
-          <l-marker :lat-lng="[domain.latitude, domain.longitude]"> </l-marker>
+
+          <!-- User Marker -->
+          <l-marker
+            :lat-lng="[userLat, userLong]"
+            @moveend="console.log('moveend')"
+          >
+          </l-marker>
+
+          <l-marker :lat-lng="[userLat + 0.007, userLong - 0.002]"> </l-marker>
+          <l-marker :lat-lng="[userLat - 0.003, userLong - 0.001]"> </l-marker>
+          <l-marker :lat-lng="[userLat + 0.002, userLong + 0.004]"> </l-marker>
+
+          <l-polyline
+            :lat-lngs="[
+              [userLat + 0.007, userLong - 0.002],
+              [userLat - 0.003, userLong - 0.001],
+              [userLat + 0.002, userLong + 0.004],
+              [userLat + 0.007, userLong - 0.002],
+            ]"
+            color="green"
+          ></l-polyline>
         </l-map>
       </div>
     </div>
 
     <div class="t-domain__content">
-      <div class="t-domain__image"></div>
+      <!-- <div class="t-domain__image"></div> -->
       <div class="t-step__container">
         <div
           class="t-step__item"
@@ -74,7 +140,7 @@ export default {
           :key="stepIndex"
         >
           <p class="t-step__name">
-            <b>Etape {{ step + 1 }} :</b> {{ step.name }}
+            <b>Etape {{ stepIndex + 1 }} :</b> {{ step.name }}
           </p>
           <span class="t-step__icon"></span>
         </div>
