@@ -8,7 +8,7 @@ module.exports = {
     alias: 'itinerary',
     label: 'apostrophe:itinerary.label',
     pluralLabel: 'apostrophe:itinerary.pluralLabel',
-    localized: false,
+    localized: true,
   },
   fields: {
     add: {
@@ -123,6 +123,9 @@ module.exports = {
           globalInfos: req.t('apostrophe:theme.globalInfos'),
           visitList: req.t('apostrophe:theme.visitList'),
           add: req.t('apostrophe:theme.add'),
+          wineStore: req.t('apostrophe:theme.wineStore'),
+          wineBar: req.t('apostrophe:theme.wineBar'),
+          domain: req.t('apostrophe:theme.domain'),
           takeAppointment: req.t('apostrophe:theme.takeAppointment'),
           favorite: req.t('apostrophe:theme.favorite'),
           selfGuidedTour: req.t('apostrophe:theme.selfGuidedTour'),

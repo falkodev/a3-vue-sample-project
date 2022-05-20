@@ -510,6 +510,9 @@
     "takeAppointment": "Prendre RDV",
     "favorite": "Favoris",
     "selfGuidedTour": "Visite auto-guidée",
+    "wineStore": "Caviste",
+    "wineBar": "Bar à vin",
+    "domain": "Domaine",
     "validateItinerary": "Valider mon itinéraire"
   },
   "place": {
