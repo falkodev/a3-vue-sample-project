@@ -506,5 +506,10 @@
   "address": "Adresse",
   "wineStore": "Caviste",
   "wineBar": "Restaurant & bar à vins",
-  "poi": "Point d'interêt"
+  "poi": "Point d'interêt",
+  "locales": {
+    "fr": "Français",
+    "en": "English"
+  },
+  "languages": "Langues"
 }
