@@ -32,6 +32,7 @@
   "assetTypeBuilding": "🧑‍💻 Building the {{ label }}...",
   "back": "Back",
   "backgroundImageLabel": "Background image",
+  "backgroundImageLoginLabel": "Background image Login/Register",
   "backToHome": "Back to Home",
   "basics": "Basics",
   "bio": "Bio",
@@ -184,6 +185,7 @@
   "login": "Login",
   "loginErrorGeneric": "An error occurred. Please try again.",
   "loginDisabled": "Login Disabled",
+  "loginMaxAttemptsReached": "Too many attempts. You may try again in a minute.",
   "loginPageBothRequired": "Both the username and the password are required.",
   "loginPageBadCredentials": "Your credentials are incorrect, or there is no such user",
   "loginPageTitle": "Login",
@@ -227,7 +229,7 @@
   "notFound": "Not found.",
   "notFoundPageMessage": "We can't seem to find the page you're looking for.",
   "notFoundPageStatusCode": "404",
-  "notFoundPageTitle": "404 - Page not found",
+  "notFoundPageTitle": "404 error: The page cannot be found or no longer exists.",
   "notInLocale": "The current page doesn’t exist in {{ label }}. Localize the version from {{ currentLocale }}?",
   "notificationClearEventError": "There was an error clearing a registered notification event.",
   "noTypeFound": "No {{ type }} Found",
@@ -441,8 +443,8 @@
   "role": "role",
   "layout": {
     "logoPlaceholder": "Your logo here",
-    "textRoads": "Roads",
     "textPlaces": "Places",
+    "textRoads": "Roads",
     "textHome": "Home",
     "textEvents": "Events",
     "textProfile": "My profile",
@@ -456,18 +458,26 @@
     "alcoholWarning": "Excessive alcohol consumption can be damaging to your health",
     "username": "Username",
     "password": "Password",
-    "required": "Required field"
+    "required": "Required field",
+    "signupDone": "Successful registration!"
   },
   "registerPage": {
     "accountCreation": "Account creation",
     "email": "E-mail",
-    "personnalDatas": "Personnal datas",
-    "name": "Name",
+    "personalData": "Personal data",
+    "lastName": "Last name",
     "firstName": "First name",
     "birthdate": "Birthdate",
+    "register": "Create my account",
     "warning": "I must be an adult...",
     "newsletter": "I agree to receive the newsletter",
-    "permission": "I authorize this site to keep my data transmitted via this form"
+    "permission": "I authorize this site to keep my data transmitted via this form",
+    "invalidEmail": "Invalid Email",
+    "acceptConditions": "you must agree to our terms",
+    "passwordLength": "min {{ nb }} characters",
+    "existingAccount": "Email address already used",
+    "invalidBirthDate": "You must be over 18",
+    "account": "I already have an account"
   },
   "startDate": "start date",
   "endDate": "end date",
@@ -499,5 +509,10 @@
   "address": "Address",
   "wineStore": "Wine Store",
   "wineBar": "Restaurant & Wine Bars",
-  "poi": "Point Of Interest"
+  "poi": "Point Of Interest",
+  "locales": {
+    "fr": "Français",
+    "en": "English"
+  },
+  "languages": "Languages"
 }

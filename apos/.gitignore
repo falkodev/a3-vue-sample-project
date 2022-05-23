@@ -12,7 +12,7 @@ node_modules
 # Don't commit build files
 /apos-build
 /public/apos-frontend
-/modules/asset/ui/public/site.js
+/modules/content/ui/public/site.js
 # Don't commit masters generated on the fly at startup, these import all the rest
 /public/css/master-*.less
 .jshintrc

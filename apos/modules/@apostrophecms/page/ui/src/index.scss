@@ -1,31 +1,43 @@
-@import '~/modules/asset/ui/src/scss/_settings.scss';
-@import '~/modules/@apostrophecms/page/ui/src/snackbar.scss';
+@import '~/modules/content/ui/src/scss/_settings.scss';
 
 .apos-admin-bar-wrapper ~ [data-apos-refreshable] {
   .t-header {
-    top: 112px;
+    top: $admin-height;
   }
 }
 
 .t-header {
-  display: grid;
-  grid-template-columns: 1fr 5fr 1fr 1fr;
-  align-items: center;
-  justify-items: center;
-  grid-gap: 10px;
-  padding: 25px;
   position: fixed;
+  z-index: 50;
   top: 0;
-  width: calc(100% - 50px);
+  width: 100%;
+  height: $header-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: $color-white;
   box-shadow: 0px 8px 10px -1px rgba(0, 0, 0, 0.1);
   font-family: 'Montserrat', sans-serif;
   font-size: 25px;
   color: $color-orange;
-  z-index: 1;
 
-  @media (min-width: map-get($breakpoints, 'sm')) {
-    padding: 15px 25px;
+  .t-header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 24px;
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      background-color: $color-white;
+    }
   }
 
   &__icon {
@@ -35,27 +47,36 @@
   }
 
   &__geoloc {
-    justify-self: left;
-    mask: url('/modules/asset/icons/geoloc.png') center/contain no-repeat;
+    z-index: 1;
+    mask: url('/modules/content/icons/geoloc.png') center/contain no-repeat;
   }
-
+  &__right {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+  }
   &__search {
-    justify-self: right;
-    mask: url('/modules/asset/icons/search.svg') center/contain no-repeat;
+    transform: scale(0.86);
+    mask: url('/modules/content/icons/search.svg') center/contain no-repeat;
   }
 
   &__menu {
     cursor: pointer;
-    justify-self: right;
   }
 
   &__logo {
-    text-align: center;
-    max-width: 90px;
-    padding-left: 30px;
-
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0;
+    height: $header-height;
+    width: auto;
+    max-height: $header-height;
     img {
-      max-width: 100%;
+      height: 100%;
       max-height: 100%;
     }
   }
@@ -96,25 +117,25 @@
 
 .t-menu {
   &__list {
+    position: absolute;
+    z-index: -1;
+    top: $header-height;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 104px 64px 32px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    row-gap: 10px;
+    row-gap: 16px;
     background-color: $color-purple;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    height: 490px;
-    width: calc(100% - 60px);
-    padding-left: 60px;
-    padding-top: 100px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    transform: translateY(-1000px);
-    transition: 0.5s;
+    transform: translateY(calc(-100% - $header-height));
+    transition: 0.32s;
 
     &--open {
-      transform: translateY(-30px);
+      transform: translateY(0px);
     }
   }
 
@@ -125,36 +146,23 @@
     margin-right: 20px;
 
     &--profile {
-      mask: url('/modules/asset/icons/people.png') center/contain no-repeat;
-      margin-bottom: 2px;
+      mask: url('/modules/content/icons/people.png') center/contain no-repeat;
     }
 
     &--place {
-      mask: url('/modules/asset/icons/direction.png') center/contain no-repeat;
-      margin-bottom: 1px;
+      mask: url('/modules/content/icons/direction.png') center/contain no-repeat;
     }
 
     &--shop {
-      mask: url('/modules/asset/icons/cart.png') center/contain no-repeat;
-      margin-bottom: 5px;
-      margin-right: 25px;
-      width: 30px;
-      height: 30px;
+      mask: url('/modules/content/icons/cart.png') center/contain no-repeat;
     }
 
     &--favorite {
-      mask: url('/modules/asset/icons/heart.png') center/contain no-repeat;
-      margin-bottom: 1px;
-      margin-left: -1px;
+      mask: url('/modules/content/icons/heart.png') center/contain no-repeat;
     }
 
     &--logout {
-      mask: url('/modules/asset/icons/logout.png') center/contain no-repeat;
-      margin-bottom: 3px;
-      margin-left: 3px;
-      margin-right: 22px;
-      width: 30px;
-      height: 30px;
+      mask: url('/modules/content/icons/logout.png') center/contain no-repeat;
     }
   }
 
@@ -163,6 +171,7 @@
     align-items: center;
     justify-content: center;
     list-style: none;
+
     a {
       color: $color-white;
 
@@ -174,13 +183,10 @@
 }
 
 .t-social {
-  position: absolute;
-  bottom: 120px;
   column-gap: 40px;
-  padding: 0;
-  margin-top: 40px;
-  width: calc(100% - 120px);
-
+  padding-left: 0;
+  padding-top: 32px;
+  width: 100%;
   &__link {
     color: $color-white !important;
     display: flex;
@@ -194,40 +200,38 @@
     background-size: contain;
 
     &--instagram {
-      mask-image: url('/modules/asset/icons/instagram.svg');
+      mask-image: url('/modules/content/icons/instagram.svg');
     }
 
     &--facebook {
-      mask-image: url('/modules/asset/icons/facebook.svg');
+      mask-image: url('/modules/content/icons/facebook.svg');
     }
 
     &--linkedin {
-      mask-image: url('/modules/asset/icons/linkedin.svg');
+      mask-image: url('/modules/content/icons/linkedin.svg');
     }
   }
 }
 
 .t-footer {
+  position: fixed;
+  z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: 8px;
-  padding: 25px;
-  padding-bottom: 10px;
-  position: fixed;
+  justify-content: space-between;
   bottom: 0;
   right: 0;
   left: 0;
-  width: calc(100% - 50px);
-  height: 50px;
-  background: $color-purple;
-  z-index: 1;
-  font-family: 'Montserrat', regular;
+  width: 100%;
+  height: $footer-height;
+  padding: 0 25px;
   font-size: 11px;
+  font-family: 'Montserrat', regular;
+  background: $color-purple;
   color: $color-white;
 
   @media (min-width: map-get($breakpoints, 'sm')) {
-    padding: 30px 25px 20px;
+    padding: 0 25px;
   }
 
   &__icon-wrapper {
@@ -235,17 +239,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 70px;
+    max-width: 70px;
   }
 
   &__icon {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     background: $color-white;
   }
 
   &__icon-text {
     color: $color-white;
+    margin-top: 4px;
+    margin-bottom: 0;
   }
 
   &__icon--active {
@@ -253,24 +259,54 @@
   }
 
   &__roads {
-    mask: url('/modules/asset/icons/map.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/map.png') center/contain no-repeat;
   }
 
   &__places {
-    mask: url('/modules/asset/icons/direction.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/direction.png') center/contain no-repeat;
   }
 
   &__home {
-    mask: url('/modules/asset/icons/home.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/home.png') center/contain no-repeat;
   }
   &__events {
-    mask: url('/modules/asset/icons/event.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/event.png') center/contain no-repeat;
   }
   &__favorites {
-    mask: url('/modules/asset/icons/heart.png') center/contain no-repeat;
+    mask: url('/modules/content/icons/heart.png') center/contain no-repeat;
   }
 }
 
 .hidden {
   display: none;
+}
+
+.t-background-404 {
+  background-image: url('/modules/content/images/404-background-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 95vh;
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    margin-top: 30vh;
+    width: 368px;
+    height: 330px;
+  }
+
+  &__text {
+    color: $color-white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+  }
 }

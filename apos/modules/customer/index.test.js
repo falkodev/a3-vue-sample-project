@@ -12,10 +12,18 @@ describe('customer', () => {
       log: jest.fn(),
       error: jest.fn(),
     },
+    error: jest.fn(),
     db: {
       collection: jest.fn().mockImplementation(() => {
         return {
           deleteMany: jest.fn(),
+        }
+      }),
+    },
+    task: {
+      getAdminReq: jest.fn().mockImplementation(() => {
+        return {
+          user: jest.fn(),
         }
       }),
     },
@@ -31,11 +39,14 @@ describe('customer', () => {
   }
 
   const beforeInsert = customer.handlers(self).beforeInsert
+  const httpPost = customer.extendRestApiRoutes(self).post
+
   test('cannot be created if no user', () => {
     expect(() => beforeInsert.checkPermissions({}, doc)).toThrow(
       new Error('unauthorized'),
     )
   })
+
   test('cannot be created if user is not admin', () => {
     expect(() =>
       beforeInsert.checkPermissions(
@@ -73,6 +84,31 @@ describe('customer', () => {
     )
   })
 
+  test('user is created if coming from form submission', () => {
+    expect(
+      beforeInsert.checkPasswordLength(
+        {
+          body: {
+            password: 'test123',
+          },
+        },
+        doc,
+      ),
+    ).toBe(true)
+  })
+
+  test('cannot be created if password is not long enough', () => {
+    const newDoc = { ...doc }
+    newDoc.password = '12'
+    expect(() => beforeInsert.checkPasswordLength({}, newDoc)).toThrow(
+      new Error('invalid password'),
+    )
+  })
+
+  test('user is created if password is long enough', () => {
+    expect(beforeInsert.checkPasswordLength({}, doc)).toBe(true)
+  })
+
   test('title is inferred from first and last names', () => {
     expect(beforeInsert.titleCustomer({}, doc)).toEqual({
       ...doc,
@@ -99,5 +135,44 @@ describe('customer', () => {
     self.apos.db = {}
     await runFixtures.customerFixtures({})
     expect(self.apos.util.error).toHaveBeenCalled()
+  })
+
+  test('http POST user creation', async () => {
+    const originalPost = () => ({})
+    await httpPost(originalPost, {})
+    expect(self.apos.task.getAdminReq).toHaveBeenCalled()
+  })
+
+  test('http POST user rejection with generic message', async () => {
+    const originalPost = () => {
+      throw new Error('invalid')
+    }
+
+    try {
+      await httpPost(originalPost, {})
+      expect(self.apos.error).toHaveBeenCalled()
+    } catch (error) {}
+  })
+
+  test('http POST user rejection for duplicate', async () => {
+    const originalPost = () => {
+      throw new Error('E11000')
+    }
+
+    try {
+      await httpPost(originalPost, {})
+      expect(self.apos.error).toHaveBeenCalled()
+    } catch (error) {}
+  })
+
+  test('http POST user rejection if invalid legal age', async () => {
+    const originalPost = () => {
+      throw new Error('birth')
+    }
+
+    try {
+      await httpPost(originalPost, {})
+      expect(self.apos.error).toHaveBeenCalled()
+    } catch (error) {}
   })
 })

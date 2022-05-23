@@ -1,40 +1,31 @@
 {% extends data.outerLayout %}
+{% import "component/locale-switcher:index.html" as localeSwitcher with context %}
+{% set fileBackground = apos.attachment.url(data.global.backgroundImageLogin) %}
 
 {% block main %}
-<div class="t-login__background">
+<div class="t-login__background" style="background-image: url('{{ fileBackground }}');">
   <div class="t-login">
 
-    {% set locales = apos.i18n.locales() %}
-    <section class="t-login__locale-switcher">
-      <button data-locale-switcher>
-        <img src="{{ apos.asset.url('/modules/asset/icons/flag-' + data.locale + '.png') }}" alt="flag {{ data.locale }}" />
-      </button>
+    {% include "component/home-redirect:index.html" %}
 
-      <ul data-locale-list>
-        {% for locale in locales %}
-          {% if locale.name !== data.locale %}
-            <li>
-              <a href="{{ locale.prefix }}/login">
-                <img src="{{ apos.asset.url('/modules/asset/icons/flag-' + locale.name + '.png') }}" alt="flag {{ locale.name }}" />
-              </a>
-            </li>
-          {% endif %}
-        {% endfor%}
-      </ul>
-    </section>
+    {{ localeSwitcher.displayFlags('login') }}
 
+    <div class="t-login__logo">
+      {% if data.global.logo %}
+      <img alt="logo-site" src="{{ apos.attachment.url(data.global.logo) }}">
+      {% else %}
+      {{ __t('apostrophe:layout.logoPlaceholder') }}
+      {% endif %}
+    </div>
 
-    <div class="t-login__logo">{{ __t('apostrophe:layout.logoPlaceholder') }}</div>
-
-    <form data-login-form class="t-login__form t-form" action="/login">
+    <form action="/login" class="t-form" data-login-form>
       <div class="t-form__field">
         <input
-          type="text"
-          name="username"
           class="t-form__input"
-          placeholder="{{ __t('apostrophe:loginPage.username') }}"
           data-input-username
-        />
+          name="username"
+          placeholder="{{ __t('apostrophe:loginPage.username') }}"
+          type="text"/>
         <label class="t-form__label t-form__label--error" data-label-username>
           {{ __t('apostrophe:loginPage.required') }}
         </label>
@@ -42,28 +33,27 @@
 
       <div>
         <input
-          type="password"
-          name="password"
           class="t-form__input"
-          placeholder="{{ __t('apostrophe:loginPage.password') }}"
           data-input-password
-        />
+          name="password"
+          placeholder="{{ __t('apostrophe:loginPage.password') }}"
+          type="password"/>
         <label class="t-form__label t-form__label--error" data-label-password>
           {{ __t('apostrophe:loginPage.required') }}
         </label>
       </div>
 
-      <a href="#" class="t-form__link">{{ __t('apostrophe:loginPage.forgotPassword') }}</a>
+      <a class="t-form__link" href="#">{{ __t('apostrophe:loginPage.forgotPassword') }}</a>
 
-      <input type="submit" class="t-button" value="{{ __t('apostrophe:login') }}" />
+      <input class="t-button t-button--full" type="submit" value="{{ __t('apostrophe:login') }}"/>
 
       <div class="t-form__errors"></div>
     </form>
 
-    <div class="t-login__register t-register">
-      <span class="t-register__sentence">{{ __t('apostrophe:loginPage.noAccount') }}</span>
-      <a class="t-register__link" href='/register'>
-        <button class="t-register__button">{{ __t('apostrophe:register') }}</button>
+    <div class="t-account">
+      <span class="t-account__sentence">{{ __t('apostrophe:loginPage.noAccount') }}</span>
+      <a class="t-account__link" href="/{{ data.locale }}/register">
+        <button class="t-button  t-button--empty">{{ __t('apostrophe:register') }}</button>
       </a>
     </div>
 
@@ -73,4 +63,8 @@
     {{ __t('apostrophe:loginPage.alcoholWarning') }}
   </p>
 </div>
+{% endblock %}
+
+{% block extraBody %}
+<div class="t-snackbars" data-snackbars></div>
 {% endblock %}

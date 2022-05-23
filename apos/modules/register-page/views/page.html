@@ -1,0 +1,100 @@
+{% extends data.outerLayout %}
+{% import "component/locale-switcher:index.html" as localeSwitcher with context %}
+{% import "component/checkbox:index.html" as checkbox %}
+{% set fileBackground = apos.attachment.url(data.global.backgroundImageLogin) %}
+
+{% block main %}
+<div class="t-login__background" style="background-image: url('{{ fileBackground }}');">
+  <div class="t-login">
+
+    {% include "component/home-redirect:index.html" %}
+
+    {{ localeSwitcher.displayFlags('register') }}
+
+    <div class="t-login__logo t-register__logo">
+      {% if data.global.logo %}
+      <img alt="logo-site" src="{{ apos.attachment.url(data.global.logo) }}">
+      {% else %}
+      {{ __t('apostrophe:layout.logoPlaceholder') }}
+      {% endif %}
+    </div>
+    <form action="/register" class="t-form" data-register-form>
+
+      <p class="t-form__title">{{ __t('apostrophe:registerPage.accountCreation') }}</p>
+      <div class="t-form__field">
+        <input
+          class="t-form__input"
+          data-input-email
+          placeholder="{{__t('apostrophe:registerPage.email')}}"
+          type="text">
+        <label class="t-form__label t-form__label--error" data-label-email>
+          {{ __t('apostrophe:loginPage.required') }}
+        </label>
+      </div>
+      <div>
+        <input
+          class="t-form__input"
+          data-input-password
+          placeholder="{{__t('apostrophe:loginPage.password')}}"
+          type="password">
+        <label class="t-form__label t-form__label--error" data-label-password>
+          {{ __t('apostrophe:loginPage.required') }}
+        </label>
+      </div>
+
+      <p class="t-form__title">{{ __t('apostrophe:registerPage.personalData') }}</p>
+      <div>
+        <input
+          class="t-form__input"
+          data-input-lastname
+          placeholder="{{__t('apostrophe:registerPage.lastName')}}"
+          type="text">
+        <label class="t-form__label t-form__label--error" data-label-lastname>
+          {{ __t('apostrophe:loginPage.required') }}
+        </label>
+      </div>
+      <div>
+        <input
+          class="t-form__input"
+          data-input-firstname
+          placeholder="{{__t('apostrophe:registerPage.firstName')}}"
+          type="text">
+        <label class="t-form__label t-form__label--error" data-label-firstname>
+          {{ __t('apostrophe:loginPage.required') }}
+        </label>
+      </div>
+      <div>
+        <input class="t-form__input" data-input-birthdate placeholder="{{__t('apostrophe:registerPage.birthdate')}}">
+        <label class="t-form__label t-form__label--error" data-label-birthdate>
+          {{ __t('apostrophe:loginPage.required') }}
+        </label>
+      </div>
+
+      <p class="t-form__warning-minor">
+        {{ __t('apostrophe:registerPage.warning') }}
+      </p>
+
+      {{ checkbox.render('newsletter', 'newsletter', __t('apostrophe:registerPage.newsletter')) }}
+      {{ checkbox.render('personalData', 'personal-data', __t('apostrophe:registerPage.permission')) }}
+
+      <label class="t-form__errors" data-label-accept-conditions>
+        {{ __t('apostrophe:loginPage.required') }}
+      </label>
+
+      <input
+        class="t-button t-button--full t-register__button"
+        type="submit"
+        value="{{__t('apostrophe:registerPage.register')}}"/>
+
+    </form>
+
+    <div class="t-account">
+      <span class="t-account__sentence">{{ __t('apostrophe:registerPage.account') }}</span>
+      <a class="t-account__link" href="/{{ data.locale }}/login">
+        <button class="t-button t-button--empty">{{ __t('apostrophe:login') }}</button>
+      </a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

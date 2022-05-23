@@ -124,8 +124,23 @@ module.exports = {
   init(self) {
     /* istanbul ignore next */
     self.apos.migration.add('feed-places', () =>
-      self.getPlaces({ forceFetch: false }),
+      self.getPlaces({ force: false }),
     )
+  },
+  components(self) {
+    /* istanbul ignore next */
+    return {
+      async categories(req, data) {
+        const result = await Promise.all([
+          ...categories.map((category) =>
+            self.find(req, { placeType: category.value }).limit(5).toArray(),
+          ),
+          self.apos.itinerary.find(req).limit(5).toArray(),
+        ])
+
+        return { result }
+      },
+    }
   },
   extendMethods() {
     /* istanbul ignore next */
@@ -167,7 +182,7 @@ module.exports = {
         ]
       },
 
-      async getPlaces({ forceFetch }) {
+      async getPlaces({ force }) {
         try {
           if (!process.env.NODE_APP_INSTANCE) {
             throw new Error('Missing NODE_APP_INSTANCE environment variable!')
@@ -187,7 +202,7 @@ module.exports = {
             'utf8',
           )
 
-          if (!dataFile || forceFetch) {
+          if (!dataFile || force) {
             await self.fetchPlaces(assetsDir)
           } else {
             await self.createPlacesFromData(assetsDir, dataFile)
@@ -236,6 +251,7 @@ module.exports = {
             }
 
             let image
+            /* istanbul ignore next */
             if (photoRef) {
               const imageName = `${self.apos.util.slugify(result.name)}.jpg`
               const imagePath = `${assetsDir}/images/${imageName}`
@@ -253,15 +269,13 @@ module.exports = {
                   url: photoUrl,
                   responseType: 'stream',
                 })
-                /* istanbul ignore next */
                 file.data.pipe(writer)
 
-                /* istanbul ignore next */
                 image = await self.apos.attachment.insert(req, {
                   name: imageName,
                   path: imagePath,
                 })
-                /* istanbul ignore next */
+
                 place.image = image
               } catch (error) {
                 self.apos.util.error(error, 'Place fixtures image error')
@@ -318,9 +332,9 @@ module.exports = {
     /* istanbul ignore next */
     return {
       fetch: {
-        usage: 'npm run task --prefix apos -- place:fetch',
-        async task() {
-          await self.getPlaces({ forceFetch: true })
+        usage: 'npm run task --prefix apos -- place:fetch --force=true',
+        async task({ force = false }) {
+          await self.getPlaces({ force })
         },
       },
     }
