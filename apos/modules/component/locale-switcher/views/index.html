@@ -1,0 +1,42 @@
+{% macro displayFlags(url, alwaysDisplay, genericAdditionalClass, linkAdditionalClass) %}
+{% set locales = apos.i18n.locales() %}
+
+{% if alwaysDisplay %}
+<div class="{{ genericAdditionalClass }} t-locale-switcher t-locale-switcher--horizontal">
+  <span class="t-locale-switcher__title">{{ __t('apostrophe:languages') }}</span>
+  <ul class="t-locale-switcher__list">
+    {% for locale in locales %}
+    <li class="t-locale-switcher__item {{ 't-locale-switcher__item--active' if locale.name === data.locale }}">
+      <a class="{{ linkAdditionalClass }}" href="{{ locale.prefix }}/{{ url }}">
+        {{ __t('apostrophe:locales.' + locale.name) }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% else %}
+<section class="t-locale-switcher">
+  <button class="t-locale-switcher__button" data-locale-switcher>
+    <img
+      alt="flag {{ data.locale }}"
+      src="{{ apos.asset.url('/modules/content/icons/flag-' + data.locale + '.png') }}"
+    />
+  </button>
+  <ul class="t-locale-switcher__list" data-locale-list>
+    {% for locale in locales %}
+    {% if locale.name !== data.locale %}
+    <li class="t-locale-switcher__item">
+      <a href="{{ locale.prefix }}/{{ url }}">
+        <img
+          alt="flag {{ locale.name }}"
+          src="{{ apos.asset.url('/modules/content/icons/flag-' + locale.name + '.png') }}"
+        />
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>
+{% endmacro %}

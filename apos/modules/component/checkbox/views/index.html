@@ -1,0 +1,7 @@
+{% macro render(value, attr, label) %}
+  <label class="t-checkbox">
+    <input type="checkbox" class="t-checkbox__input" value="{{ value }}" data-checkbox-{{ attr }} />
+    <span class="t-checkbox__mark" data-checkmark-{{ attr }}></span>
+    <label class="t-checkbox__label">{{ label }}</label>
+  </label>
+{% endmacro %}
