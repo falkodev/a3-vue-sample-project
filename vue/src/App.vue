@@ -64,10 +64,16 @@ export default {
       console.log('error getting position ===>', e)
     },
     getUserPos() {
-      navigator.geolocation.getCurrentPosition(
-        this.setPosition,
-        this.errorGettingPos,
-      )
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          this.setPosition,
+          this.errorGettingPos,
+        )
+      } else {
+        console.log(
+          'Cannot execute getUserPos() ===> navigator.geolocation not available ',
+        )
+      }
     },
     watchUserPos() {
       if (navigator.geolocation) {
@@ -75,16 +81,22 @@ export default {
           this.setPosition,
           this.errorGettingPos,
         )
+      } else {
+        console.log(
+          'Cannot execute watchUserPos() ===> navigator.geolocation not available ',
+        )
       }
     },
   },
-  beforeMount() {
-    this.watchUserPos()
-  },
+  beforeMount() {},
   mounted() {
     console.log('this.domain ===>', this.domain)
+    this.watchUserPos()
+    setInterval(this.getUserPos, 1000)
   },
-  updated() {},
+  updated() {
+    this.getUserPos()
+  },
 }
 </script>
 
