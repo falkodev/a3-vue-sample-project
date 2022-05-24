@@ -133,7 +133,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import url('/apos-frontend/default/modules/content/ui/src/scss/_settings.scss');
+@import '/assets/settings.scss';
 
 .t-visit {
   margin: 16px 0;
@@ -143,7 +143,7 @@ export default {
   width: 100%;
 
   &__image-container {
-    border: 1px solid #5357c1;
+    border: 1px solid $color-purple-light;
     margin-right: 8px;
     height: 90px;
     display: flex;
@@ -166,7 +166,7 @@ export default {
     flex-direction: column;
     width: 60%;
     border-radius: 15px;
-    border: 1px solid #5357c145;
+    border: 1px solid $color-purple;
     background-color: white;
     position: relative;
 
@@ -176,8 +176,8 @@ export default {
       flex-direction: column;
       width: 70%;
       border-radius: 15px;
-      border: 1px solid #5357c145;
-      background-color: #5357c145;
+      background-color: $color-purple;
+      opacity: 45%;
     }
   }
 
@@ -188,12 +188,12 @@ export default {
 
   &__bin {
     width: 10%;
-    fill: #5357c1;
-    color: #5357c1;
+    fill: $color-purple;
+    color: $color-purple;
   }
 }
 .t-infos {
-  color: #5357c1;
+  color: $color-purple;
 
   &__title {
     font-weight: bold;
@@ -219,7 +219,7 @@ export default {
     font-size: 10px;
     padding: 2px 4px;
     display: flex;
-    border: 1px solid #5357c1;
+    border: 1px solid $color-purple;
     border-radius: 20px;
   }
 

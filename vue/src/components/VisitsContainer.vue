@@ -46,7 +46,9 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '/assets/settings.scss';
+
 .t-steps {
   margin-top: 36px;
 }
@@ -62,7 +64,7 @@
 }
 
 .t-loaded__title {
-  color: #5357c1;
+  color: $color-purple;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 17px;

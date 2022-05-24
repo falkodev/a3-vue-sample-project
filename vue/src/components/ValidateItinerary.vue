@@ -20,14 +20,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '/assets/settings.scss';
+
 .t-validate {
   z-index: 99;
   position: fixed;
   bottom: 9vh;
   left: 0;
   right: 0;
-  background: darkorange;
-  color: white;
+  background: $color-orange;
+  color: $color-white;
   text-align: center;
   padding: 20px;
   font-weight: bold;
