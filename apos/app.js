@@ -43,6 +43,11 @@ require('apostrophe')({
     // The project's first custom page type.
     'default-page': {},
     'register-page': {},
+    component: {
+      options: {
+        ignoreNoCodeWarning: true,
+      },
+    },
     content: {},
     itinerary: {},
     'itinerary-page': {
