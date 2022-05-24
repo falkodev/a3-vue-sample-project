@@ -231,7 +231,7 @@
   "notFound": "Not found.",
   "notFoundPageMessage": "We can't seem to find the page you're looking for.",
   "notFoundPageStatusCode": "404",
-  "notFoundPageTitle": "404 - Page not found",
+  "notFoundPageTitle": "404 error: The page cannot be found or no longer exists.",
   "notInLocale": "The current page doesn’t exist in {{ label }}. Localize the version from {{ currentLocale }}?",
   "notificationClearEventError": "There was an error clearing a registered notification event.",
   "noTypeFound": "No {{ type }} Found",
@@ -520,5 +520,10 @@
   "address": "Address",
   "wineStore": "Wine Store",
   "wineBar": "Restaurant & Wine Bars",
-  "poi": "Point Of Interest"
+  "poi": "Point Of Interest",
+  "locales": {
+    "fr": "Français",
+    "en": "English"
+  },
+  "languages": "Languages"
 }

@@ -2,7 +2,11 @@ const path = require('path')
 
 module.exports = {
   'component/checkbox': {},
-  'component/home-redirect': {},
+  'component/home-redirect': {
+    options: {
+      ignoreNoCodeWarning: true,
+    },
+  },
   'component/locale-switcher': {},
   'component/snackbar': {
     webpack: {

@@ -1,4 +1,4 @@
-start: dev
+start: dev-logs
 
 stop:
 	docker-compose stop
@@ -34,7 +34,7 @@ logs-vue:
 	docker logs vino-terr-vue -f
 
 logs:
-	make logs-mongo & make logs-apos & make logs-vue
+	make logs-apos & make logs-vue
 
 db-dump:
 	mongo/scripts/dump.sh
