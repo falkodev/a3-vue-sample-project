@@ -151,6 +151,7 @@ function dataMileAge(mileage) {
 
 <style scoped lang="scss">
 @import './assets/base.css';
+@import '/assets/settings.scss';
 
 .t-spacer {
   height: 20vh;
@@ -167,7 +168,7 @@ function dataMileAge(mileage) {
 
   &__title {
     font-size: 25px;
-    color: #5357c1;
+    color: $color-purple;
     font-weight: bold;
   }
 
@@ -184,7 +185,7 @@ function dataMileAge(mileage) {
 
 .t-infos {
   &__title {
-    color: #ff8317;
+    color: $color-orange;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 17px;
@@ -206,7 +207,8 @@ function dataMileAge(mileage) {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background-color: #ff831775;
+    background-color: $color-orange;
+    opacity: 75%;
     height: 100px;
     width: 32%;
     border-radius: 15px;
@@ -220,7 +222,7 @@ function dataMileAge(mileage) {
     }
 
     &__value {
-      color: white;
+      color: $color-white;
       font-size: 20px;
       font-weight: bold;
     }
@@ -234,13 +236,14 @@ function dataMileAge(mileage) {
     align-items: center;
     justify-content: center;
     padding: 40px 10px 10px 10px;
-    background-color: #ff831775;
+    background-color: $color-orange;
+    opacity: 75%;
     height: 120px;
     width: 49%;
     border-radius: 15px;
 
     &__title {
-      color: white;
+      color: $color-white;
       font-size: 13px;
       font-weight: bold;
     }
@@ -250,7 +253,7 @@ function dataMileAge(mileage) {
       top: 5px;
       right: 5px;
       left: 5px;
-      border-bottom: 3px dashed white;
+      border-bottom: 3px dashed $color-white;
     }
 
     &__logo {
@@ -259,7 +262,7 @@ function dataMileAge(mileage) {
     }
 
     &__value {
-      color: white;
+      color: $color-white;
       font-size: 12px;
     }
   }
