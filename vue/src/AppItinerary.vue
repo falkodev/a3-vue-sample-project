@@ -13,10 +13,8 @@ if (!window.apos.user) {
   location.assign('/login?redirect=itinerary/' + data.slug)
 }
 const translation = window.apos.itinerary.labels
-// Impossible de commit ou push sans le mettre en commentaire ('apos' is not defined )
 let descriptionRef = ref(false)
 
-// Methods
 function dataDescription() {
   if (descriptionRef.value) {
     return data.description
@@ -35,8 +33,6 @@ function dataPrice(price) {
 function dataMileAge(mileage) {
   return mileage + 'km'
 }
-
-// Hooks
 </script>
 
 <template>
@@ -56,19 +52,28 @@ function dataMileAge(mileage) {
       <div class="t-infos__title">{{ translation.globalInfos }}</div>
       <div class="t-infos__container">
         <div class="t-info-tier">
-          <div class="t-info-tier__logo"></div>
+          <img
+            class="t-info-tier__logo"
+            :src="'/apos-frontend/default/modules/content/icons/time.png'"
+          />
           <div class="t-info-tier__value">
             {{ data.duration.replace('00', '').replace(':', 'h') }}
           </div>
         </div>
         <div class="t-info-tier">
-          <div class="t-info-tier__logo"></div>
+          <img
+            class="t-info-tier__logo"
+            :src="'/apos-frontend/default/modules/content/icons/event.png'"
+          />
           <div class="t-info-tier__value">
             {{ dataPrice(data.price) }}
           </div>
         </div>
         <div class="t-info-tier">
-          <div class="t-info-tier__logo"></div>
+          <img
+            class="t-info-tier__logo"
+            :src="'/apos-frontend/default/modules/content/icons/destination.png'"
+          />
           <div class="t-info-tier__value">
             {{ dataMileAge(data.mileage) }}
           </div>
@@ -76,7 +81,13 @@ function dataMileAge(mileage) {
       </div>
       <div class="t-infos__container">
         <div class="t-info-half">
-          <div class="t-info-half__logo"></div>
+          <div class="t-info-half__logo-container">
+            <img
+              class="t-info-half__logo"
+              :src="'/apos-frontend/default/modules/content/icons/whiteMarker.png'"
+            />
+          </div>
+
           <div class="t-info-half__title">
             {{ data.steps[0]._place[0].title }}
           </div>
@@ -99,7 +110,13 @@ function dataMileAge(mileage) {
           </div>
         </div>
         <div class="t-info-half">
-          <div class="t-info-half__logo"></div>
+          <div class="t-info-half__logo-container">
+            <img
+              class="t-info-half__logo"
+              :src="'/apos-frontend/default/modules/content/icons/whiteMarker.png'"
+            />
+          </div>
+
           <div class="t-info-half__title">
             {{ data.steps[data.steps.length - 1]._place[0].title }}
           </div>
@@ -183,6 +200,7 @@ function dataMileAge(mileage) {
 
 .t-info {
   &-tier {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -193,6 +211,14 @@ function dataMileAge(mileage) {
     width: 32%;
     border-radius: 15px;
 
+    &__logo {
+      position: absolute;
+      opacity: 100%;
+      top: 5px;
+      left: 5px;
+      width: 25px;
+    }
+
     &__value {
       color: white;
       font-size: 20px;
@@ -201,14 +227,15 @@ function dataMileAge(mileage) {
   }
 
   &-half {
+    position: relative;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 40px 10px 10px 10px;
     background-color: #ff831775;
-    height: 100px;
+    height: 120px;
     width: 49%;
     border-radius: 15px;
 
@@ -216,6 +243,19 @@ function dataMileAge(mileage) {
       color: white;
       font-size: 13px;
       font-weight: bold;
+    }
+
+    &__logo-container {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      left: 5px;
+      border-bottom: 3px dashed white;
+    }
+
+    &__logo {
+      float: left;
+      width: 25px;
     }
 
     &__value {

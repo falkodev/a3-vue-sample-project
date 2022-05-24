@@ -22,5 +22,6 @@ export default {
 <style scoped>
 .t-heart {
   margin: auto;
+  width: 18px;
 }
 </style>

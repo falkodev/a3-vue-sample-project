@@ -14,7 +14,11 @@
           this.data.image.extension
         "
       />
-      <img v-else class="t-visit__image" src="" alt="" />
+      <img
+        v-else
+        class="t-visit__image"
+        :src="'/apos-frontend/default/modules/content/images/default-domain.jpg'"
+      />
     </div>
 
     <div
@@ -26,26 +30,30 @@
       <div class="t-infos__title">{{ this.data.title }}</div>
       <div class="t-infos__description">
         <div class="t-infos__type">
-          <!-- <img
+          <img
             v-if="this.data.placeType == 'wineStore'"
-            src="/apos-frontend/default/modules/content/icons/binoculars.png"
+            class="t-infos__place-type"
+            :src="'/apos-frontend/default/modules/content/icons/wine-bottle.png'"
             alt="category heading"
           />
           <img
             v-if="this.data.placeType == 'wineBar'"
-            src="/apos-frontend/default/modules/content/icons/glass.png"
+            class="t-infos__place-type"
+            :src="'/apos-frontend/default/modules/content/icons/glass.png'"
             alt="category heading"
           />
           <img
             v-if="this.data.placeType == 'poi'"
-            src="/apos-frontend/default/modules/content/icons/binoculars.png"
+            class="t-infos__place-type"
+            :src="'/apos-frontend/default/modules/content/icons/binoculars.png'"
             alt="category heading"
           />
           <img
-            v-else
-            src="/apos-frontend/default/modules/content/icons/grap.png"
+            v-if="this.data.placeType == 'domain'"
+            class="t-infos__place-type"
+            :src="'/apos-frontend/default/modules/content/icons/grap.png'"
             alt="category heading"
-          /> -->
+          />
           {{ this.translation[this.step._place[0].placeType] }}
         </div>
         <div class="t-infos__visit">
@@ -125,6 +133,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// @import url('/apos-frontend/default/modules/content/ui/src/scss/_settings.scss');
+
 .t-visit {
   margin: 16px 0;
   display: flex;
@@ -134,8 +144,8 @@ export default {
 
   &__image-container {
     border: 1px solid #5357c1;
-    margin-right: 4px;
-    height: 80px;
+    margin-right: 8px;
+    height: 90px;
     display: flex;
     flex-direction: row;
     width: 25%;
@@ -150,14 +160,15 @@ export default {
   }
 
   &__infos {
-    height: 65px;
+    height: 70px;
     padding: 10px 16px;
     display: flex;
     flex-direction: column;
-    width: 65%;
+    width: 60%;
     border-radius: 15px;
     border: 1px solid #5357c145;
     background-color: white;
+    position: relative;
 
     &--domain {
       padding: 10px 16px;
@@ -186,14 +197,22 @@ export default {
 
   &__title {
     font-weight: bold;
+    white-space: normal;
   }
 
   &__type {
+    display: flex;
+    align-items: center;
     font-size: 15px;
   }
 
   &__visit {
     font-size: 12px;
+  }
+
+  &__place-type {
+    width: 15px;
+    margin-right: 4px;
   }
 
   &__status {
@@ -211,13 +230,12 @@ export default {
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
-    position: relative;
   }
 
   &__fav {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 8px;
+    bottom: 3px;
     display: flex;
     flex-direction: column;
     justify-content: center;

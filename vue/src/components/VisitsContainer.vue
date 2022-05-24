@@ -10,6 +10,7 @@
           v-for="marker in itinerary.steps"
           :key="marker"
           :lat-lng="[marker._place[0].latitude, marker._place[0].longitude]"
+          :icon="icon"
         >
         </l-marker>
       </l-map>
@@ -70,18 +71,8 @@
 
 <script>
 import VisitItem from './VisitItem.vue'
-import {
-  LMap,
-  // LIcon,
-  LTileLayer,
-  LMarker,
-  // LControlLayers,
-  // LTooltip,
-  // LPopup,
-  // LPolyline,
-  // LPolygon,
-  // LRectangle,
-} from '@vue-leaflet/vue-leaflet'
+import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet'
+import { icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 export default {
   data() {
@@ -93,6 +84,12 @@ export default {
       center: {},
       centerLoaded: false,
       $t: {},
+      icon: icon({
+        iconUrl:
+          '/apos-frontend/default/modules/content/icons/orangeMarker.png',
+        iconSize: [32, 37],
+        iconAnchor: [16, 37],
+      }),
     }
   },
   name: 'VisitsContainer',
@@ -151,15 +148,8 @@ export default {
   components: {
     VisitItem,
     LMap,
-    // LIcon,
     LTileLayer,
     LMarker,
-    // LControlLayers,
-    // LTooltip,
-    // LPopup,
-    // LPolyline,
-    // LPolygon,
-    // LRectangle,
   },
   mounted() {
     this.$t = this.translationData
