@@ -63,6 +63,11 @@ module.exports = {
         type: 'float',
         required: true,
       },
+      duration: {
+        type: 'float',
+        label: 'apostrophe:duration',
+        required: true,
+      },
       labels: {
         type: 'array',
         titleField: 'name',
@@ -82,6 +87,7 @@ module.exports = {
           'address',
           'longitude',
           'latitude',
+          'duration',
           'image',
           'labels',
         ],
