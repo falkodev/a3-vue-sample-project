@@ -57,6 +57,42 @@ module.exports = {
             name: {
               type: 'string',
               label: 'apostrophe:visit.sublabel',
+              required: true,
+            },
+            latitude: {
+              type: 'float',
+              label: 'apostrophe:visit.latitude',
+            },
+            longitude: {
+              type: 'float',
+              label: 'apostrophe:visit.longitude',
+            },
+            timeLength: {
+              type: 'time',
+              label: 'apostrophe:visit.duration',
+            },
+            media: {
+              type: 'array',
+              label: 'apostrophe:visit.media.label',
+              fields: {
+                add: {
+                  name: {
+                    type: 'string',
+                    help: 'Rentrez le titre de votre media',
+                    label: 'apostrophe:visit.media.title',
+                    required: true,
+                  },
+                  link: {
+                    type: 'url',
+                    label: 'apostrophe:visit.media.link',
+                    required: true,
+                  },
+                  downloadable: {
+                    type: 'boolean',
+                    label: 'apostrophe:visit.media.downloadable',
+                  },
+                },
+              },
             },
           },
         },
