@@ -507,7 +507,17 @@
     "label": "Visite",
     "pluralLabel": "Visites",
     "labelTitle": "Editer la visite",
-    "sublabel": "Etape"
+    "sublabel": "Etape",
+    "sublabelPlural": "Etapes",
+    "duration": "Durée",
+    "longitude": "Longitude",
+    "latitude": "Latitude",
+    "media": {
+      "label": "Liste de medias",
+      "title": "Titre",
+      "link": "Lien (url)",
+      "downloadable": "Téléchargeable"
+    }
   },
   "address": "Adresse",
   "wineStore": "Caviste",

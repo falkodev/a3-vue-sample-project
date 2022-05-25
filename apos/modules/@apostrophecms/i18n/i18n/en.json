@@ -504,7 +504,17 @@
     "label": "Visit",
     "pluralLabel": "Visits",
     "labelTitle": "Edit visit",
-    "sublabel": "Milestone"
+    "sublabel": "Milestone",
+    "sublabelPlural": "Milestones",
+    "duration": "Duration",
+    "longitude": "Longitude",
+    "latitude": "Latitude",
+    "media": {
+      "label": "Media list",
+      "title": "Title",
+      "link": "Link (url)",
+      "downloadable": "Downloadable"
+    }
   },
   "address": "Address",
   "wineStore": "Wine Store",
