@@ -160,7 +160,7 @@ export default {
   }
 
   &__infos {
-    height: 70px;
+    height: 90px;
     padding: 10px 16px;
     display: flex;
     flex-direction: column;
@@ -171,10 +171,8 @@ export default {
     position: relative;
 
     &--domain {
-      padding: 10px 16px;
       display: flex;
       flex-direction: column;
-      width: 70%;
       border-radius: 15px;
       background-color: $color-purple;
       opacity: 45%;
