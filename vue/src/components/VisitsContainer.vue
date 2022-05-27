@@ -89,7 +89,7 @@ export default {
       icon: icon({
         iconUrl:
           '/apos-frontend/default/modules/content/icons/orangeMarker.png',
-        iconSize: [32, 37],
+        iconSize: [20, 20],
         iconAnchor: [16, 37],
       }),
     }

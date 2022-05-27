@@ -83,7 +83,7 @@ function dataMileAge(mileage) {
         <div class="t-info-half">
           <div class="t-info-half__logo-container">
             <img
-              class="t-info-half__logo"
+              class="t-info-half__logo t-info-half__logo--left"
               :src="'/apos-frontend/default/modules/content/icons/whiteMarker.png'"
             />
           </div>
@@ -112,7 +112,7 @@ function dataMileAge(mileage) {
         <div class="t-info-half">
           <div class="t-info-half__logo-container">
             <img
-              class="t-info-half__logo"
+              class="t-info-half__logo t-info-half__logo--right"
               :src="'/apos-frontend/default/modules/content/icons/whiteMarker.png'"
             />
           </div>
@@ -257,8 +257,15 @@ function dataMileAge(mileage) {
     }
 
     &__logo {
-      float: left;
       width: 25px;
+
+      &--left {
+        float: left;
+      }
+
+      &--right {
+        float: right;
+      }
     }
 
     &__value {
