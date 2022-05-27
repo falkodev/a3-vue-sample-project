@@ -512,10 +512,10 @@
     "duration": "Durée",
     "longitude": "Longitude",
     "latitude": "Latitude",
-    "media": {
-      "label": "Liste de medias",
+    "substep": {
+      "label": "Sous-étape",
       "title": "Titre",
-      "link": "Lien (url)",
+      "photo": "Photo",
       "downloadable": "Téléchargeable"
     }
   },

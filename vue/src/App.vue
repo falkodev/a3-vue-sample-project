@@ -28,7 +28,7 @@ export default {
     // LPolygon,
     // LRectangle,
   },
-  props: ['piece', 'pieceImage'],
+  props: ['piece', 'pieceImage', 'pieceSubImages'],
   data() {
     return {
       allowZoom: false,
@@ -45,6 +45,9 @@ export default {
     },
     pictureUrl() {
       return JSON.parse(this.pieceImage)
+    },
+    subImagesUrl() {
+      return JSON.parse(this.pieceSubImages)
     },
     userLat() {
       return this.userCoords.latitude
@@ -173,10 +176,9 @@ export default {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           ></l-tile-layer>
 
-          <!-- User Marker -->
           <l-marker :lat-lng="[userLat, userLong]" @moveend="getUserPos">
             <l-icon
-              iconUrl="/apos-frontend/default/modules/asset/icons/pin-user.svg"
+              iconUrl="/apos-frontend/default/modules/content/icons/pin-user.svg"
               iconSize="[120, 120]"
             />
           </l-marker>
@@ -206,11 +208,11 @@ export default {
         <div class="t-media__container">
           <div
             class="t-media__item"
-            v-for="(media, mediaIndex) in step.media"
-            :key="mediaIndex"
+            v-for="(substep, substepIndex) in step.substep"
+            :key="substepIndex"
           >
-            <p class="t-media__info">{{ media.name }}</p>
-            <span :class="{ 't-media__download': media.downloadable }">
+            <p class="t-media__info">{{ substep.name }}</p>
+            <span :class="{ 't-media__download': substep.downloadable }">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112">
                 <circle
                   cx="56"
