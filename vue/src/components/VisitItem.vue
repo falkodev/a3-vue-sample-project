@@ -171,11 +171,8 @@ export default {
     position: relative;
 
     &--domain {
-      display: flex;
-      flex-direction: column;
-      border-radius: 15px;
-      background-color: $color-purple;
-      opacity: 45%;
+      background-color: $color-purple-transparent;
+      color: $color-purple !important;
     }
   }
 
@@ -194,6 +191,7 @@ export default {
   color: $color-purple;
 
   &__title {
+    font-size: 14px;
     font-weight: bold;
     white-space: normal;
   }
@@ -201,7 +199,7 @@ export default {
   &__type {
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 13px;
   }
 
   &__visit {
