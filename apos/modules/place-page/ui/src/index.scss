@@ -36,7 +36,7 @@
   }
   &__content {
     position: relative;
-    top: calc(48px + $map-height); /* header + title + map heights */
+    top: calc(48px + $map-height);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -80,7 +80,7 @@
     &__icon {
       width: 24px;
       height: 24px;
-      mask-image: url('/modules/asset/icons/arrow-right.svg');
+      mask-image: url('/modules/content/icons/arrow-right.svg');
       background-color: $color-purple;
       mask-repeat: no-repeat;
       mask-size: contain;

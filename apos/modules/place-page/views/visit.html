@@ -1,6 +1,6 @@
 {% extends "@apostrophecms/page:layout.html" %}
 
 {% block main %}
-  <div id="app" data-piece="{{ apos.page.stringify(data.piece) }}" data-piece-image="{{ apos.page.stringify(apos.attachment.url(data.piece.image)) }}">
+  <div id="app" data-piece="{{ apos.page.stringify(data.piece) }}" data-piece-image="{{ apos.page.stringify(apos.attachment.url(data.piece.image)) }}" data-piece-sub-images="{{apos.page.stringify(subImages) }}">
   </div>
 {% endblock %}

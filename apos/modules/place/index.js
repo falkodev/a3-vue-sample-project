@@ -71,25 +71,35 @@ module.exports = {
               type: 'time',
               label: 'apostrophe:visit.duration',
             },
-            media: {
+            substep: {
               type: 'array',
-              label: 'apostrophe:visit.media.label',
+              label: 'apostrophe:visit.substep.label',
               fields: {
                 add: {
                   name: {
                     type: 'string',
-                    help: 'Rentrez le titre de votre media',
-                    label: 'apostrophe:visit.media.title',
+                    help: 'Rentrez le titre de votre sous-étape',
+                    label: 'apostrophe:visit.substep.title',
                     required: true,
                   },
-                  link: {
-                    type: 'url',
-                    label: 'apostrophe:visit.media.link',
-                    required: true,
+                  photo: {
+                    label: 'apostrophe:visit.substep.photo',
+                    type: 'area',
+                    options: {
+                      max: 1,
+                      widgets: {
+                        '@apostrophecms/image': {},
+                      },
+                    },
                   },
+                  // photoUpload: {
+                  //   label: 'apostrophe:visit.substep.photo',
+                  //   type: 'attachment',
+                  //   fileGroup: 'office',
+                  // },
                   downloadable: {
                     type: 'boolean',
-                    label: 'apostrophe:visit.media.downloadable',
+                    label: 'apostrophe:visit.substep.downloadable',
                   },
                 },
               },
