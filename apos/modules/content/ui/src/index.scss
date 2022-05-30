@@ -22,21 +22,34 @@ $form-container: 320px;
   position: relative;
   border-radius: 50px;
   padding: 12px 24px;
-  margin: 0 auto;
   font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
 
-  &--full {
+  cursor: pointer;
+  color: $color-white;
+  text-align: center;
+  align-self: center;
+  width: fit-content;
+
+  &--plain {
     background-color: $color-orange;
     border: none;
-    color: $color-white;
   }
 
-  &--empty {
+  &--outlined {
     background-color: transparent;
     border: 2px solid $color-orange;
-    color: $color-white;
+  }
+
+  &--block {
+    width: auto;
+  }
+
+  &--bold {
+    font-weight: 600;
+  }
+
+  &--color-white {
+    color: $color-white !important;
   }
 }
 
@@ -57,7 +70,7 @@ $form-container: 320px;
     font-size: 15px;
     font-weight: 500;
     padding: 12px;
-    width: 296px;
+    width: 100%;
     color: $color-black;
   }
 
@@ -91,9 +104,11 @@ $form-container: 320px;
     color: $color-white;
     font-size: 12px;
     text-decoration: underline;
+
     &:active {
       color: $color-white;
     }
+
     &:visited {
       color: $color-white;
     }
