@@ -1,0 +1,11 @@
+{% if data.options.className %}
+  {% set className = data.options.className %}
+{% elif data.manager.options.className %}
+  {% set className = data.manager.options.className %}
+{% endif %}
+
+<div data-rich-text data-collapse-rich-text {%- if className %} class="{{ className }}" {% endif %}>
+  <span data-rich-text-content>{{ data.widget.content | safe }}</span>
+  <span data-show-more class="t-rich-text__show t-rich-text__show--more" aria-expanded="false"><b> {{__t('apostrophe:placePage.showMore') }}</b></span>
+  <span data-show-less class="t-rich-text__show t-rich-text__show--less" aria-expanded="true"><b> {{__t('apostrophe:placePage.showLess') }}</b></span>
+</div>

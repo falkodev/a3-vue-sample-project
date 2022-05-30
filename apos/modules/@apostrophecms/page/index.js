@@ -21,6 +21,12 @@ module.exports = {
         type: 'register-page',
         title: 'Register',
       },
+      {
+        slug: '/domain',
+        parkedId: 'domain',
+        type: 'domain-page',
+        title: 'Domain',
+      },
     ],
   },
 

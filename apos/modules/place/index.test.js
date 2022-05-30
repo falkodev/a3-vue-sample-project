@@ -1,4 +1,5 @@
 const place = require('./index')
+const config = require('config')
 const self = require('apostrophe')
 
 describe('place', () => {
@@ -13,7 +14,6 @@ describe('place', () => {
     createWriteStream: jest.fn(),
   }
 
-  self.insert = jest.fn()
   self.find = () => {
     return {
       toArray: jest.fn().mockImplementation(() => []),
@@ -23,8 +23,19 @@ describe('place', () => {
     getPlaces: jest.fn(),
     createPlacesFromData: jest.fn(),
   }
-  self.newInstance = jest.fn()
   self.apos = {
+    i18n: {
+      locales: {
+        fr: {
+          label: 'Français',
+          prefix: '/fr',
+        },
+        en: {
+          label: 'English',
+          prefix: '/en',
+        },
+      },
+    },
     util: {
       log: jest.fn(),
       error: jest.fn(),
@@ -32,6 +43,15 @@ describe('place', () => {
     },
     task: {
       getReq: jest.fn(),
+    },
+    modules: {
+      place: {
+        insert: jest.fn(),
+        find: self.find,
+        newInstance: jest.fn(),
+        localize: jest.fn(),
+        publish: jest.fn(),
+      },
     },
     http: {
       get: jest.fn().mockImplementation(() => {
@@ -155,18 +175,19 @@ describe('place', () => {
       },
     ])
     const assetsDir = 'domains/test'
-    await methods.createPlacesFromData(assetsDir, fakeJSON)
+    await methods.createPlacesFromData('place', assetsDir, fakeJSON)
     expect(self.apos.task.getReq).toHaveBeenCalled()
     expect(self.apos.util.log).toHaveBeenCalled()
-    expect(self.insert).toHaveBeenCalledTimes(2)
+    expect(self.apos.modules.place.insert).toHaveBeenCalledTimes(2)
   })
 
   test('fetchPlaces', async () => {
     const assetsDir = require('path').resolve(__dirname, `./domains/test`)
-    await methods.fetchPlaces(assetsDir)
+    const categories = config.get('categories')
+    await methods.fetchPlaces('place', categories, assetsDir)
     expect(self.apos.util.log).toHaveBeenCalled()
     expect(self.apos.http.get).toHaveBeenCalled()
     expect(self.apos.attachment.insert).toHaveBeenCalled()
-    expect(self.insert).toHaveBeenCalled()
+    expect(self.apos.modules.place.insert).toHaveBeenCalled()
   })
 })

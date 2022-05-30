@@ -8,6 +8,7 @@ module.exports = {
     },
   },
   'component/locale-switcher': {},
+  'component/wine-labels': {},
   'component/snackbar': {
     webpack: {
       extensions: {
