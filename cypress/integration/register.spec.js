@@ -13,12 +13,12 @@ describe('Register', () => {
     cy.get('.t-form__title').eq(0).should('contain', 'Account creation')
     cy.get('.t-form__title').eq(1).should('contain', 'Personal data')
     cy.get('.t-form__warning-minor').should('contain', 'I must be an adult...')
-    cy.get('.t-button--full').should('have.value', 'Create my account')
+    cy.get('.t-button--plain').should('have.value', 'Create my account')
     cy.get('.t-account__sentence').should(
       'contain',
       'I already have an account',
     )
-    cy.get('.t-button--empty').should('contain', 'Login')
+    cy.get('.t-button--outlined').should('contain', 'Login')
   })
 
   it('should enable register if valid credentials', () => {
