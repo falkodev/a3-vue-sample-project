@@ -1,0 +1,33 @@
+@import '/modules/content/ui/src/scss/_settings';
+
+.t-activities {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  &__title {
+    align-self: flex-start;
+    color: $color-purple;
+    margin-bottom: 10px;
+  }
+
+  &__list {
+    list-style-type: none;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    background-color: $color-orange;
+  }
+}

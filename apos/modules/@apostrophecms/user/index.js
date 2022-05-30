@@ -25,7 +25,7 @@ module.exports = {
       _domain: {
         label: 'apostrophe:domain',
         type: 'relationship',
-        withType: 'place',
+        withType: 'domain',
         max: 1,
         required: true,
         if: {
