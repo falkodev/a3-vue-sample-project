@@ -82,21 +82,19 @@ module.exports = {
                     label: 'apostrophe:visit.substep.title',
                     required: true,
                   },
-                  photo: {
-                    label: 'apostrophe:visit.substep.photo',
-                    type: 'area',
-                    options: {
-                      max: 1,
-                      widgets: {
-                        '@apostrophecms/image': {},
-                      },
-                    },
-                  },
                   // photoUpload: {
                   //   label: 'apostrophe:visit.substep.photo',
                   //   type: 'attachment',
-                  //   fileGroup: 'office',
+                  //   _description: 'description',
                   // },
+                  _image: {
+                    label: 'Image',
+                    type: 'relationship',
+                    // Use `@apostrophecms/file` for non-image files
+                    withType: '@apostrophecms/image',
+                    max: 1,
+                    group: ['image'],
+                  },
                   downloadable: {
                     type: 'boolean',
                     label: 'apostrophe:visit.substep.downloadable',
