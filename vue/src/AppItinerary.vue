@@ -92,21 +92,21 @@ function dataMileAge(mileage) {
             {{ data.steps[0]._place[0].title }}
           </div>
           <div class="t-info-half__value">
-            {{
+            <!-- {{
               data.steps[0]._place[0].address.substring(
                 data.steps[0]._place[0].address.indexOf(',') + 1,
               )
-            }}
+            }} -->
           </div>
           <div class="t-info-half__value">
-            {{
+            <!-- {{
               data.steps[0]._place[0].address.slice(
                 0,
                 -data.steps[0]._place[0].address.substring(
                   data.steps[0]._place[0].address.indexOf(','),
                 ).length,
               )
-            }}
+            }} -->
           </div>
         </div>
         <div class="t-info-half">
@@ -121,16 +121,16 @@ function dataMileAge(mileage) {
             {{ data.steps[data.steps.length - 1]._place[0].title }}
           </div>
           <div class="t-info-half__value">
-            {{
+            <!-- {{
               data.steps[data.steps.length - 1]._place[0].address.substring(
                 data.steps[data.steps.length - 1]._place[0].address.indexOf(
                   ',',
                 ) + 1,
               )
-            }}
+            }} -->
           </div>
           <div class="t-info-half__value">
-            {{
+            <!-- {{
               data.steps[data.steps.length - 1]._place[0].address.slice(
                 0,
                 -data.steps[data.steps.length - 1]._place[0].address.substring(
@@ -139,7 +139,7 @@ function dataMileAge(mileage) {
                   ),
                 ).length,
               )
-            }}
+            }} -->
           </div>
         </div>
       </div>

@@ -31,27 +31,8 @@
       <div class="t-infos__description">
         <div class="t-infos__type">
           <img
-            v-if="this.data.placeType == 'wineStore'"
             class="t-infos__place-type"
-            :src="'/apos-frontend/default/modules/content/icons/wine-bottle.png'"
-            alt="category heading"
-          />
-          <img
-            v-if="this.data.placeType == 'wineBar'"
-            class="t-infos__place-type"
-            :src="'/apos-frontend/default/modules/content/icons/glass.png'"
-            alt="category heading"
-          />
-          <img
-            v-if="this.data.placeType == 'poi'"
-            class="t-infos__place-type"
-            :src="'/apos-frontend/default/modules/content/icons/binoculars.png'"
-            alt="category heading"
-          />
-          <img
-            v-if="this.data.placeType == 'domain'"
-            class="t-infos__place-type"
-            :src="'/apos-frontend/default/modules/content/icons/grap.png'"
+            :src="placeTypeIcon(this.data.placeType)"
             alt="category heading"
           />
           {{ this.translation[this.step._place[0].placeType] }}
@@ -115,6 +96,20 @@ export default {
     return {
       data: {},
     }
+  },
+  method: {
+    placeTypeIcon(type) {
+      console.log(type)
+      if (type == 'wineStore') {
+        return '/apos-frontend/default/modules/content/icons/wine-bottle.png'
+      } else if (type == 'wineBar') {
+        return '/apos-frontend/default/modules/content/icons/glass.png'
+      } else if (type == 'poi') {
+        return '/apos-frontend/default/modules/content/icons/binoculars.png'
+      } else {
+        return '/apos-frontend/default/modules/content/icons/grap.png'
+      }
+    },
   },
   props: {
     step: Object,
