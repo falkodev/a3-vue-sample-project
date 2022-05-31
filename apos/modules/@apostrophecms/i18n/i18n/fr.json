@@ -509,7 +509,7 @@
     "labelTitle": "Editer la visite",
     "sublabel": "Etape",
     "sublabelPlural": "Etapes",
-    "duration": "Durée",
+    "duration": "Durée (en minutes)",
     "longitude": "Longitude",
     "latitude": "Latitude",
     "substep": {

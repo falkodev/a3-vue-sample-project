@@ -506,13 +506,13 @@
     "labelTitle": "Edit visit",
     "sublabel": "Milestone",
     "sublabelPlural": "Milestones",
-    "duration": "Duration",
+    "duration": "Duration (in minutes)",
     "longitude": "Longitude",
     "latitude": "Latitude",
-    "media": {
-      "label": "Media list",
+    "substep": {
+      "label": "Sub-Milestone",
       "title": "Title",
-      "link": "Link (url)",
+      "photo": "Photo",
       "downloadable": "Downloadable"
     }
   },
