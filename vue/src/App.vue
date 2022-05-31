@@ -28,7 +28,7 @@ export default {
     // LPolygon,
     // LRectangle,
   },
-  props: ['piece', 'pieceImage', 'pieceSubImages'],
+  props: ['piece', 'images'],
   data() {
     return {
       allowZoom: false,
@@ -37,17 +37,15 @@ export default {
         latitude: 43.6367,
         longitude: 3.5866,
       },
+      domain: {},
     }
   },
   computed: {
-    domain() {
-      return JSON.parse(this.piece)
+    visit() {
+      return this.domain.visit
     },
-    pictureUrl() {
-      return JSON.parse(this.pieceImage)
-    },
-    subImagesUrl() {
-      return JSON.parse(this.pieceSubImages)
+    imagesList() {
+      return JSON.parse(this.images)
     },
     userLat() {
       return this.userCoords.latitude
@@ -64,7 +62,7 @@ export default {
           long: this.userLong - 0.001,
         },
         {
-          type: 'lieu',
+          type: 'place',
           lat: this.userLat + 0.005,
           long: this.userLong - 0.002,
         },
@@ -74,15 +72,15 @@ export default {
           long: this.userLong + 0.004,
         },
         {
-          type: 'lieu',
+          type: 'place',
           lat: this.userLat + 0.002,
           long: this.userLong + 0.004,
         },
         { type: 'end', lat: this.userLat, long: this.userLong },
       ]
     },
-    lieux() {
-      return this.visitPath.filter((x) => x.type == 'lieu')
+    places() {
+      return this.visitPath.filter((x) => x.type == 'place')
     },
     visitPoints() {
       return this.visitPath.reduce((prev, curr) => {
@@ -146,10 +144,14 @@ export default {
   },
   beforeMount() {
     this.watchUserPos()
-  },
-  mounted() {
-    console.log('this.domain ===>', this.domain)
+    this.domain = JSON.parse(this.piece)
+    console.log(
+      'this.domain ===>',
+      this.domain,
+      this.domain.visit[0].substep[0]._image[0].attachment.name,
+    )
     console.log('visit points ===>', this.visitPoints)
+    console.log('imagesList ===>', this.imagesList)
   },
   updated() {
     this.getUserPos()
@@ -184,9 +186,9 @@ export default {
           </l-marker>
 
           <l-marker
-            v-for="(lieu, lieuIndex) in lieux"
-            :key="'lieu-' + lieuIndex"
-            :lat-lng="[lieu.lat, lieu.long]"
+            v-for="(place, placeIndex) in places"
+            :key="'place-' + placeIndex"
+            :lat-lng="[place.lat, place.long]"
           ></l-marker>
 
           <l-polyline :lat-lngs="visitPoints" color="#e6004c"></l-polyline>
@@ -196,7 +198,8 @@ export default {
 
     <div class="t-domain__content">
       <!-- <div class="t-domain__image"></div> -->
-      <template v-for="(step, stepIndex) in domain.visit" :key="stepIndex">
+
+      <div v-for="(step, stepIndex) in visit" :key="stepIndex">
         <div class="t-step__container">
           <div class="t-step__item">
             <p class="t-step__name">
@@ -208,10 +211,13 @@ export default {
         <div class="t-media__container">
           <div
             class="t-media__item"
-            v-for="(substep, substepIndex) in step.substep"
-            :key="substepIndex"
+            v-for="(substep, substepIndex) in visit[stepIndex].substep"
+            :key="'substep' + substepIndex"
           >
-            <p class="t-media__info">{{ substep.name }}</p>
+            <p class="t-media__info">
+              {{ substep.name }}
+              {{ substep._image[0] }}
+            </p>
             <span :class="{ 't-media__download': substep.downloadable }">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112">
                 <circle
@@ -261,7 +267,7 @@ export default {
             </span>
           </div>
         </div>
-      </template>
+      </div>
     </div>
   </div>
 </template>
