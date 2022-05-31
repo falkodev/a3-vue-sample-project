@@ -105,7 +105,8 @@ export default {
         })
     },
     errorGettingPos(e) {
-      console.log('error getting position ===>', e)
+      // console.log('error getting position ===>', e)
+      return e
     },
     getUserPos() {
       if (navigator.geolocation) {
@@ -145,16 +146,9 @@ export default {
   beforeMount() {
     this.watchUserPos()
     this.domain = JSON.parse(this.piece)
-    console.log(
-      'this.domain ===>',
-      this.domain,
-      this.domain.visit[0].substep[0]._image[0].attachment.name,
-    )
-    console.log('visit points ===>', this.visitPoints)
-    console.log('imagesList ===>', this.imagesList)
   },
   updated() {
-    this.getUserPos()
+    this.watchUserPos()
   },
 }
 </script>
@@ -197,9 +191,7 @@ export default {
     </div>
 
     <div class="t-domain__content">
-      <!-- <div class="t-domain__image"></div> -->
-
-      <div v-for="(step, stepIndex) in visit" :key="stepIndex">
+      <div v-for="(step, stepIndex) in this.domain.visit" :key="stepIndex">
         <div class="t-step__container">
           <div class="t-step__item">
             <p class="t-step__name">
@@ -207,17 +199,27 @@ export default {
             </p>
             <span class="t-step__icon"></span>
           </div>
+          <p class="t-step__timing">{{ step.timeLength }} minutes</p>
         </div>
         <div class="t-media__container">
           <div
             class="t-media__item"
-            v-for="(substep, substepIndex) in visit[stepIndex].substep"
+            v-for="(substep, substepIndex) in step.substep"
             :key="'substep' + substepIndex"
           >
-            <p class="t-media__info">
-              {{ substep.name }}
-              {{ substep._image[0] }}
-            </p>
+            <div
+              class="t-media__image"
+              v-for="(image, imageIndex) in substep._image"
+              :key="imageIndex"
+              :style="`background-image: url( ${
+                imagesList.filter((x) => x.name == image.attachment.name)[0]
+                  ._urls.full
+              })`"
+            >
+              <p class="t-media__info">
+                {{ substep.name }}
+              </p>
+            </div>
             <span :class="{ 't-media__download': substep.downloadable }">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112">
                 <circle

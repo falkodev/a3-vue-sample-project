@@ -7,7 +7,7 @@
 
   &__fixed {
     position: fixed;
-    top: calc(/*112px + */ 102px); /* admin + header heights */
+    top: 102px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,7 +55,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      row-gap: 24px;
+      row-gap: 12px;
       padding: 0 32px;
       width: 100%;
     }
@@ -65,8 +65,15 @@
       justify-content: space-between;
       width: 100%;
       padding: 0 12px;
-      background-color: $color-purple-logo;
       border-radius: 4px;
+      background-color: $color-purple-logo;
+    }
+    &__timing {
+      display: flex;
+      margin: 0;
+      padding: 4px 0;
+      font-size: 0.8rem;
+      color: $color-grey-50;
     }
     &__name {
       max-width: 296px;
@@ -94,7 +101,7 @@
       column-gap: 24px;
       overflow-x: scroll;
       margin-bottom: 40px;
-      padding: 32px 32px 0 32px;
+      padding: 12px 32px 0 32px;
     }
     &__item {
       position: relative;
@@ -103,12 +110,37 @@
       align-items: center;
       min-width: 200px;
       height: 200px;
+      border-radius: 8px;
+      overflow: hidden;
       background-color: $color-purple-logo;
       color: $color-purple;
-      border-radius: 8px;
+    }
+    &__image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      &::before {
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(
+          45deg,
+          $color-purple-alpha-20,
+          $color-purple-alpha-30
+        );
+      }
     }
     &__info {
-      margin: 0 auto;
+      z-index: 1;
+      text-align: center;
+      color: $color-white;
     }
     &__download {
       position: absolute;
@@ -117,10 +149,14 @@
       height: 32px;
       width: 32px;
       cursor: pointer;
+      transition: all 0.24s ease;
       svg {
         height: 32px;
         width: 32px;
-        stroke: $color-purple;
+        stroke: $color-white;
+      }
+      &:hover {
+        transform: scale(1.1);
       }
     }
   }

@@ -68,7 +68,7 @@ module.exports = {
               label: 'apostrophe:visit.longitude',
             },
             timeLength: {
-              type: 'time',
+              type: 'integer',
               label: 'apostrophe:visit.duration',
             },
             substep: {
@@ -82,15 +82,9 @@ module.exports = {
                     label: 'apostrophe:visit.substep.title',
                     required: true,
                   },
-                  // photoUpload: {
-                  //   label: 'apostrophe:visit.substep.photo',
-                  //   type: 'attachment',
-                  //   _description: 'description',
-                  // },
                   _image: {
                     label: 'Image',
                     type: 'relationship',
-                    // Use `@apostrophecms/file` for non-image files
                     withType: '@apostrophecms/image',
                     max: 1,
                     group: ['image'],
