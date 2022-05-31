@@ -436,7 +436,8 @@
     "type": "itinerary type",
     "event": "event",
     "theme": "theme",
-    "syndicate": "syndicate route"
+    "syndicate": "syndicate route",
+    "free": "Free"
   },
   "customer": "customer",
   "customers": "customers",

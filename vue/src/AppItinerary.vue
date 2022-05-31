@@ -24,7 +24,7 @@ function dataDescription() {
 }
 function dataPrice(price) {
   if (price == 0) {
-    return 'free'
+    return translation.free
   } else {
     return price + '€'
   }
