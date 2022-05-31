@@ -439,7 +439,8 @@
     "type": "Type itinéraire",
     "event": "Événement",
     "theme": "Thématique",
-    "syndicate": "Route syndicale"
+    "syndicate": "Route syndicale",
+    "free": "Gratuit"
   },
   "customer": "Client",
   "customers": "Clients",
