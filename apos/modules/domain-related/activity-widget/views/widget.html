@@ -1,0 +1,11 @@
+<div class="t-activities">
+  <h3 class="t-activities__title">{{ __t('apostrophe:placePage.choices') }}</h3>
+  <ul class="t-activities__list">
+    {% for activity in data.widget._activities %}
+      <li class="t-activities__item">
+        <div class="t-activities__icon" {% if activity.image -%} style="-webkit-mask-image: url('{{ apos.attachment.url(activity.image) }}'); mask-image: url('{{ apos.attachment.url(activity.image) }}');" {% endif -%}></div>
+        <span class="t-activities__text">{{ activity.title }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

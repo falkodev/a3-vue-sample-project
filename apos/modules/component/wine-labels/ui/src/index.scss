@@ -1,0 +1,28 @@
+@import '/modules/content/ui/src/scss/_settings';
+
+.t-wine {
+  &__tag {
+    border-radius: 40px;
+    color: $color-white;
+    font-weight: bold;
+    width: max-content;
+
+    &--small {
+      padding: 4px 4px;
+      font-size: 6px;
+      margin: 0 1px 0 1px;
+    }
+
+    &--medium {
+      padding: 5px 6px;
+      font-size: 10px;
+      margin: 0 4px 0 4px;
+    }
+
+    &--big {
+      padding: 5px 8px;
+      font-size: 14px;
+      margin: 0 6px 0 6px;
+    }
+  }
+}

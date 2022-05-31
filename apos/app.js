@@ -27,23 +27,39 @@ require('apostrophe')({
     },
     '@apostrophecms/rich-text-widget': {
       options: {
-        className: 'bp-rich-text',
+        className: 't-rich-text',
+        defaultOptions: {
+          styles: [
+            {
+              tag: 'p',
+              label: 'apostrophe:richText',
+            },
+          ],
+        },
       },
     },
     '@apostrophecms/image-widget': {
       options: {
-        className: 'bp-image-widget',
+        className: 't-image-widget',
       },
     },
     '@apostrophecms/video-widget': {
       options: {
-        className: 'bp-video-widget',
+        className: 't-video-widget',
       },
     },
     // The project's first custom page type.
     'default-page': {},
+    place: {},
+    domain: {},
+    'domain-page': {},
     'register-page': {},
     component: {
+      options: {
+        ignoreNoCodeWarning: true,
+      },
+    },
+    'domain-related': {
       options: {
         ignoreNoCodeWarning: true,
       },
@@ -58,6 +74,8 @@ require('apostrophe')({
     },
     customer: {},
     order: {},
-    place: {},
+    'collapse-rich-text-widget': {
+      extend: '@apostrophecms/rich-text-widget',
+    },
   },
 })
