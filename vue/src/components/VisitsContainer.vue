@@ -46,31 +46,6 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-@import '/assets/settings.scss';
-
-.t-steps {
-  margin-top: 36px;
-}
-
-.t-app-itinerary__map {
-  position: fixed;
-  top: 12vh;
-  right: 0;
-  left: 0;
-  height: 20vh;
-  width: 100vw;
-  z-index: 99;
-}
-
-.t-loaded__title {
-  color: $color-purple;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 17px;
-}
-</style>
-
 <script>
 import VisitItem from './VisitItem.vue'
 import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet'
@@ -110,9 +85,6 @@ export default {
       this.itinerary.steps.push(temp[0])
       this.itinerary.steps.sort((a, b) => a.order - b.order)
       this.updateCenter()
-    },
-    log(a) {
-      console.log(a)
     },
     attributeId() {
       for (let index = 0; index < this.itinerary.steps.length; index++) {
@@ -161,3 +133,28 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+@import '/assets/settings.scss';
+
+.t-steps {
+  margin-top: 36px;
+}
+
+.t-app-itinerary__map {
+  position: fixed;
+  top: 12vh;
+  right: 0;
+  left: 0;
+  height: 20vh;
+  width: 100vw;
+  z-index: 99;
+}
+
+.t-loaded__title {
+  color: $color-purple;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 17px;
+}
+</style>
