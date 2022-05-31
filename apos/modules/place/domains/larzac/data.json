@@ -1,1 +1,2528 @@
-[]
+[
+  {
+    "title": "Les Caves Gourmandes",
+    "placeType": "wineStore",
+    "address": "10 All. de l'Esplanade, Gignac",
+    "longitude": 3.5527339,
+    "latitude": 43.6527002,
+    "slug": "les-caves-gourmandes6",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "photoRef": "Aap_uECnp_RPx-4jVmpTTaG3T0IOP4Vq8Aq_nLVOE1DFgzSjjleiONt4n1DfGyD0CPCqXfvGKBEfiKf-CZdxQQz58EwjQHklWhv7a-KNaRoXe6Ns2PzUSFnSp1EViKM1AtUXDrpeZghxC1pI0CEZ9THzh62cYacI4V2zNohDkBH1oVdihRNp",
+    "aposDocId": "cl1f0wdz60004nup5n1qc6sc5",
+    "_id": "cl1f0wdz60004nup5n1qc6sc5",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:52.098Z",
+    "titleSortified": "les caves gourmandes",
+    "updatedAt": "2022-03-31T13:18:52.098Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "les caves gourmandes les caves gourmandes",
+    "highSearchWords": [
+      "les",
+      "caves",
+      "gourmandes"
+    ],
+    "lowSearchText": "les caves gourmandes les caves gourmandes",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5527339,
+        43.6527002
+      ]
+    }
+  },
+  {
+    "title": "Grappe",
+    "placeType": "wineStore",
+    "address": "125 Av. Pierre Mendès France, Gignac",
+    "longitude": 3.54351,
+    "latitude": 43.652149,
+    "slug": "grappe2",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wefk0005nup5js7893sk",
+      "group": "images",
+      "createdAt": "2022-03-31T13:18:53.086Z",
+      "name": "grappe",
+      "title": "grappe",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "80bdfdafcd239483235d25e8bdf895f4",
+      "width": 800,
+      "height": 532,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBc1DL43HBwPOro9IsIFFq_-YvP0z4tD5W69l5_GkgRASUe4F6m7W8VkG7m-3gwD6BhmnrGtuaiTPnBVpc8PdQ2-gJd04YaHwvDjwuD3Sghzd_uKsfcJ7Qj5Ur0WyDcdNj0mt71kJFqFAB8uWifxW2nFC9P4GQnmWWaCVobdRR4pPbs",
+    "aposDocId": "cl1f0wequ0006nup5945mfrzf",
+    "_id": "cl1f0wequ0006nup5945mfrzf",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:53.094Z",
+    "titleSortified": "grappe",
+    "updatedAt": "2022-03-31T13:18:53.094Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "grappe grappe",
+    "highSearchWords": [
+      "grappe"
+    ],
+    "lowSearchText": "grappe grappe",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.54351,
+        43.652149
+      ]
+    }
+  },
+  {
+    "title": "LES PETITS BOUCHONS",
+    "placeType": "wineStore",
+    "address": "28 Bd Saint-Jean, Aniane",
+    "longitude": 3.5854591,
+    "latitude": 43.68542009999999,
+    "slug": "les-petits-bouchons8",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wf7m0007nup542pvxok2",
+      "group": "images",
+      "createdAt": "2022-03-31T13:18:54.349Z",
+      "name": "les-petits-bouchons",
+      "title": "les petits bouchons",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "31df2a570efa54a6215e4392cf6d0a8e",
+      "width": 800,
+      "height": 1067,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBaxroiFeblPG0Q_4uOR12BJDjZaD2Sd9vEPP2BJ5TyzZE3yFEN_vtIGrs7ziA-QaU-cPFAMAMPrfvfecrYqv75pk88UtScoTIQLPG4yjGDsKUQCerF4IW7Vp9M8OoZIcnHeHCVfVff2It3C9MMtU953KoLngx4n3w4p9TqL_QGPbd1",
+    "aposDocId": "cl1f0wfpq0008nup53m3htic3",
+    "_id": "cl1f0wfpq0008nup53m3htic3",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:54.350Z",
+    "titleSortified": "les petits bouchons",
+    "updatedAt": "2022-03-31T13:18:54.351Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "les petits bouchons les petits bouchons",
+    "highSearchWords": [
+      "les",
+      "petits",
+      "bouchons"
+    ],
+    "lowSearchText": "les petits bouchons les petits bouchons",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5854591,
+        43.68542009999999
+      ]
+    }
+  },
+  {
+    "title": "Les Caves d'Aprovin",
+    "placeType": "wineStore",
+    "address": "7 Av. de Saint-Guilhem, Aniane",
+    "longitude": 3.5856695,
+    "latitude": 43.6862354,
+    "slug": "les-caves-d-aprovin1",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0wfq30009nup5v8mqwx6r",
+    "_id": "cl1f0wfq30009nup5v8mqwx6r",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:54.363Z",
+    "titleSortified": "les caves d aprovin",
+    "updatedAt": "2022-03-31T13:18:54.363Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "les caves d aprovin les caves d aprovin",
+    "highSearchWords": [
+      "les",
+      "caves",
+      "d",
+      "aprovin"
+    ],
+    "lowSearchText": "les caves d aprovin les caves d aprovin",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5856695,
+        43.6862354
+      ]
+    }
+  },
+  {
+    "title": "Caves de l'Esplanade",
+    "placeType": "wineStore",
+    "address": "Rue du Moulin À Vent centre commercial l'esplanade, Montarnaud",
+    "longitude": 3.699591,
+    "latitude": 43.6501655,
+    "slug": "caves-de-l-esplanade9",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wg1x000anup5ftbonegu",
+      "group": "images",
+      "createdAt": "2022-03-31T13:18:55.449Z",
+      "name": "caves-de-l-esplanade",
+      "title": "caves de l esplanade",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "381ce27b403722bcdc2467f549f30f20",
+      "width": 800,
+      "height": 1067,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uECVO74bXHJK5PHhVI_6pKsmD8BSLos_BECofpkpBnCW-DEgcasU3El2SdZYgyvOL9xZUybA-uBOM_BwWhoZOI1zL5P4ODNalTu-B4NE-dhpkMyA_CzDmIWiUtoilC842YIjQn6QsCx5XHqpyHgTO25sDRhWgHRRxFkSwXVkfdg0uR5x",
+    "aposDocId": "cl1f0wgkb000bnup5t8dapinm",
+    "_id": "cl1f0wgkb000bnup5t8dapinm",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:55.451Z",
+    "titleSortified": "caves de l esplanade",
+    "updatedAt": "2022-03-31T13:18:55.451Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "caves de l esplanade caves de l esplanade",
+    "highSearchWords": [
+      "caves",
+      "de",
+      "l",
+      "esplanade"
+    ],
+    "lowSearchText": "caves de l esplanade caves de l esplanade",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.699591,
+        43.6501655
+      ]
+    }
+  },
+  {
+    "title": "Loiseau Marie",
+    "placeType": "wineStore",
+    "address": "2 Chem. de la Fontaine, Brignac",
+    "longitude": 3.4753734,
+    "latitude": 43.6223663,
+    "slug": "loiseau-marie3",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0wgko000cnup5hv91sa9j",
+    "_id": "cl1f0wgko000cnup5hv91sa9j",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:55.464Z",
+    "titleSortified": "loiseau marie",
+    "updatedAt": "2022-03-31T13:18:55.464Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "loiseau marie loiseau marie",
+    "highSearchWords": [
+      "loiseau",
+      "marie"
+    ],
+    "lowSearchText": "loiseau marie loiseau marie",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4753734,
+        43.6223663
+      ]
+    }
+  },
+  {
+    "title": "Sarl L'or des vignes",
+    "placeType": "wineStore",
+    "address": "1 rue de la lucques, Saint-André-de-Sangonis",
+    "longitude": 3.5202758,
+    "latitude": 43.6521918,
+    "slug": "sarl-l-or-des-vignes0",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0wgkv000dnup5p4j8092k",
+    "_id": "cl1f0wgkv000dnup5p4j8092k",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:55.471Z",
+    "titleSortified": "sarl l or des vignes",
+    "updatedAt": "2022-03-31T13:18:55.471Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "sarl l or des vignes sarl l or des vignes",
+    "highSearchWords": [
+      "sarl",
+      "l",
+      "or",
+      "des",
+      "vignes"
+    ],
+    "lowSearchText": "sarl l or des vignes sarl l or des vignes",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5202758,
+        43.6521918
+      ]
+    }
+  },
+  {
+    "title": "L'Echansonne",
+    "placeType": "wineStore",
+    "address": "2 Chem. de la Fontaine, Brignac",
+    "longitude": 3.4753734,
+    "latitude": 43.6223664,
+    "slug": "l-echansonne3",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0wgl3000enup5rs4ydjgw",
+    "_id": "cl1f0wgl3000enup5rs4ydjgw",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:55.479Z",
+    "titleSortified": "l echansonne",
+    "updatedAt": "2022-03-31T13:18:55.479Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "l echansonne l echansonne",
+    "highSearchWords": [
+      "l",
+      "echansonne"
+    ],
+    "lowSearchText": "l echansonne l echansonne",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4753734,
+        43.6223664
+      ]
+    }
+  },
+  {
+    "title": "l'Echansonne",
+    "placeType": "wineStore",
+    "address": "Rte de Lagamas, Saint-André-de-Sangonis",
+    "longitude": 3.515766,
+    "latitude": 43.6721337,
+    "slug": "l-echansonne2",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wh5s000fnup5hq61hwzo",
+      "group": "images",
+      "createdAt": "2022-03-31T13:18:56.903Z",
+      "name": "l-echansonne",
+      "title": "l echansonne",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "7cf6da4649024330456c047bc43a1351",
+      "width": 800,
+      "height": 1067,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBFRzWxSwRyQFqd3JU2dR6nYSdoj9ZP-JY-jSc1ZXgWGE6uLjIeSyVTxLuUiRGMhhBSoGiE2snfIPu9WZ3vSaowaWKbFHLvoRSKMvou74ecq5Hhh_cGGnpPROU1DsxCE7aIEwwD3nXhWkLs8sUVjfPtygQtEx1ez2TIPVqsoItIrRQh",
+    "aposDocId": "cl1f0whoo000gnup53m2qs1ny",
+    "_id": "cl1f0whoo000gnup53m2qs1ny",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:56.904Z",
+    "titleSortified": "l echansonne",
+    "updatedAt": "2022-03-31T13:18:56.905Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "l echansonne l echansonne",
+    "highSearchWords": [
+      "l",
+      "echansonne"
+    ],
+    "lowSearchText": "l echansonne l echansonne",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.515766,
+        43.6721337
+      ]
+    }
+  },
+  {
+    "title": "La cave de saint guilhem",
+    "placeType": "wineStore",
+    "address": "21 Rue de la Font du Portal, Saint-Guilhem-le-Désert",
+    "longitude": 3.5520544,
+    "latitude": 43.7337117,
+    "slug": "la-cave-de-saint-guilhem0",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0whp0000hnup5tvjhqul0",
+    "_id": "cl1f0whp0000hnup5tvjhqul0",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:56.916Z",
+    "titleSortified": "la cave de saint guilhem",
+    "updatedAt": "2022-03-31T13:18:56.916Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "la cave de saint guilhem la cave de saint guilhem",
+    "highSearchWords": [
+      "la",
+      "cave",
+      "de",
+      "saint",
+      "guilhem"
+    ],
+    "lowSearchText": "la cave de saint guilhem la cave de saint guilhem",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5520544,
+        43.7337117
+      ]
+    }
+  },
+  {
+    "title": "Vins Caviste",
+    "placeType": "wineStore",
+    "address": "All. de l'Esplanade, Montarnaud",
+    "longitude": 3.699659,
+    "latitude": 43.6501489,
+    "slug": "vins-caviste3",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0whp7000inup5x5cocobr",
+    "_id": "cl1f0whp7000inup5x5cocobr",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:56.923Z",
+    "titleSortified": "vins caviste",
+    "updatedAt": "2022-03-31T13:18:56.923Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "vins caviste vins caviste",
+    "highSearchWords": [
+      "vins",
+      "caviste"
+    ],
+    "lowSearchText": "vins caviste vins caviste",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.699659,
+        43.6501489
+      ]
+    }
+  },
+  {
+    "title": "GARDIENS DU TEMPLE",
+    "placeType": "wineStore",
+    "address": "32 Rue Denis Papin, Montarnaud",
+    "longitude": 3.692357699999999,
+    "latitude": 43.6273775,
+    "slug": "gardiens-du-temple8",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0whph000jnup5kikhbdo1",
+    "_id": "cl1f0whph000jnup5kikhbdo1",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:56.933Z",
+    "titleSortified": "gardiens du temple",
+    "updatedAt": "2022-03-31T13:18:56.934Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "gardiens du temple gardiens du temple",
+    "highSearchWords": [
+      "gardiens",
+      "du",
+      "temple"
+    ],
+    "lowSearchText": "gardiens du temple gardiens du temple",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.692357699999999,
+        43.6273775
+      ]
+    }
+  },
+  {
+    "title": "MAISON LESMALME",
+    "placeType": "wineStore",
+    "address": "Chemin du Moulin De L'hérault -ZAC LES TREILLES - 50, Avenue des Treilles, Aniane",
+    "longitude": 3.578292,
+    "latitude": 43.681674,
+    "slug": "maison-lesmalme7",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wi5c000knup5uijtqrkp",
+      "group": "images",
+      "createdAt": "2022-03-31T13:18:57.835Z",
+      "name": "maison-lesmalme",
+      "title": "maison lesmalme",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "07321a61aee35c0fa4776c013119d41c",
+      "width": 800,
+      "height": 457,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEDh6hWNjJgewTJlVRjYb3o8XZ2_81M2MzxJQGRH9npmYJnBaVRxvaf31tyvxxKVw0wIKZhQWR4a0wK7PduphcbPMfJAf16vK1JIYDWpiXizP7zLswfG4h-tC_5HrEG_pbE_yZFi8_3MbBGUu5r7aljslmS8w_Zx3gXsZSs23R9uRATc",
+    "aposDocId": "cl1f0wiel000lnup51qoribpk",
+    "_id": "cl1f0wiel000lnup51qoribpk",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:57.837Z",
+    "titleSortified": "maison lesmalme",
+    "updatedAt": "2022-03-31T13:18:57.837Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "maison lesmalme maison lesmalme",
+    "highSearchWords": [
+      "maison",
+      "lesmalme"
+    ],
+    "lowSearchText": "maison lesmalme maison lesmalme",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.578292,
+        43.681674
+      ]
+    }
+  },
+  {
+    "title": "Domaine des Conquêtes",
+    "placeType": "wineStore",
+    "address": "376 Chem. des Conquêtes, Aniane",
+    "longitude": 3.5883879,
+    "latitude": 43.6788912,
+    "slug": "domaine-des-conquêtes0",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wj13000mnup5g8gcwa3w",
+      "group": "images",
+      "createdAt": "2022-03-31T13:18:59.183Z",
+      "name": "domaine-des-conquêtes",
+      "title": "domaine des conquêtes",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "7710aeac630e6e72c3ba7a13b61e51dd",
+      "width": 800,
+      "height": 800,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEAT80tv8aHWBZ_SnpbfCmbX98I6MCLOrqX4cfk3sg5iTDoDHdeUg02ybu_TRcDMOc3oOnA-z_pW4qITEaK8uJ_IOqRhTMd2OEOt5T8iZ1LFQHfk-icBbKZs3Ao4H8EwnYbHodI566ZI_ENY9swkOZEltEZdpVe6DZXeGbmhnP-IvoIh",
+    "aposDocId": "cl1f0wjg1000nnup5vl3g4m2g",
+    "_id": "cl1f0wjg1000nnup5vl3g4m2g",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:18:59.185Z",
+    "titleSortified": "domaine des conquêtes",
+    "updatedAt": "2022-03-31T13:18:59.185Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine des conquêtes domaine des conquêtes",
+    "highSearchWords": [
+      "domaine",
+      "des",
+      "conquêtes"
+    ],
+    "lowSearchText": "domaine des conquêtes domaine des conquêtes",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5883879,
+        43.6788912
+      ]
+    }
+  },
+  {
+    "title": "SouKa Restaurant et Caviste",
+    "placeType": "wineStore",
+    "address": "36 Bd Saint-Jean, Aniane",
+    "longitude": 3.5857188,
+    "latitude": 43.6854167,
+    "slug": "souka-restaurant-et-caviste6",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wjsc000onup5bhx233re",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:00.426Z",
+      "name": "souka-restaurant-et-caviste",
+      "title": "souka restaurant et caviste",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "c7678341b573df62509ab07de3fd20d0",
+      "width": 800,
+      "height": 1422,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEDvVHMeTIhyFYvnKn3H7qwDGuhyZrSHkfN10cwHWmLnAeFXt0PdM-gswtrvuXXNpL6Qm87OUa1XflwTsAODmPe5ZrRvIYQdmhOJzF6F_exS-HxJcz1MIOBpYpzretOveeYS6c9vPWfM0MlJO3rNdLL1lbXHzWNq908D1HdC8lOr2E21",
+    "aposDocId": "cl1f0wkej000pnup5z188413q",
+    "_id": "cl1f0wkej000pnup5z188413q",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:00.427Z",
+    "titleSortified": "souka restaurant et caviste",
+    "updatedAt": "2022-03-31T13:19:00.428Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "souka restaurant et caviste souka restaurant et caviste",
+    "highSearchWords": [
+      "souka",
+      "restaurant",
+      "et",
+      "caviste"
+    ],
+    "lowSearchText": "souka restaurant et caviste souka restaurant et caviste",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5857188,
+        43.6854167
+      ]
+    }
+  },
+  {
+    "title": "Domaine Mas des Armes",
+    "placeType": "wineStore",
+    "address": "Ancienne RD 32 Route de Gignac, E2, Aniane",
+    "longitude": 3.5772235,
+    "latitude": 43.6713545,
+    "slug": "domaine-mas-des-armes8",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wkpd000qnup5vcwi6lj6",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:01.189Z",
+      "name": "domaine-mas-des-armes",
+      "title": "domaine mas des armes",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "b0a38bb68d698bf071de562ae49ec240",
+      "width": 800,
+      "height": 533,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEAvV5n3pANvBDicc5SAmH4tebRH0jOP-7QoqT5RaQAzoSGo4Dv7u_zXpdEUve8deHD5_1Cp3IhVSBa3GdvRUyCeo2N3w_RJ9CvrJXpm6HbBE6LiK0M-vDeFsl6FzJKogLKT0o2ACJSkZDNgLsap92wEZu6rtO2Onb_wa_t82URcCk9a",
+    "aposDocId": "cl1f0wkzq000rnup5jsmc8cow",
+    "_id": "cl1f0wkzq000rnup5jsmc8cow",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:01.191Z",
+    "titleSortified": "domaine mas des armes",
+    "updatedAt": "2022-03-31T13:19:01.191Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine mas des armes domaine mas des armes",
+    "highSearchWords": [
+      "domaine",
+      "mas",
+      "des",
+      "armes"
+    ],
+    "lowSearchText": "domaine mas des armes domaine mas des armes",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5772235,
+        43.6713545
+      ]
+    }
+  },
+  {
+    "title": "Domaine Combes",
+    "placeType": "wineStore",
+    "address": "32 Av. de Lodève, Saint-André-de-Sangonis",
+    "longitude": 3.5009014,
+    "latitude": 43.6507732,
+    "slug": "domaine-combes6",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wllv000snup5njacqkzv",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:02.623Z",
+      "name": "domaine-combes",
+      "title": "domaine combes",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "d1c4bca7d5b93f8b43fa798801961d15",
+      "width": 800,
+      "height": 1067,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBcYnVr9bFYu-q-JKwYBDZMv6AubOBN9V8_p8jVPepkKU9nVmpeU424D2V7_gJ7dnE83ZhMikflJ9fBS0PSZl-3lko1-eY1y08KqN91l4V0RRP7Ce5tGj3ivLaEWNt4rifSsJadRR3VzHPExQno_BXzrLYdLR0Kw_P2C4GglQKXbs7u",
+    "aposDocId": "cl1f0wm3m000tnup5o267680q",
+    "_id": "cl1f0wm3m000tnup5o267680q",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:02.626Z",
+    "titleSortified": "domaine combes",
+    "updatedAt": "2022-03-31T13:19:02.626Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine combes domaine combes",
+    "highSearchWords": [
+      "domaine",
+      "combes"
+    ],
+    "lowSearchText": "domaine combes domaine combes",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5009014,
+        43.6507732
+      ]
+    }
+  },
+  {
+    "title": "Embouteillage Services",
+    "placeType": "wineStore",
+    "address": "D2, Le Pouget",
+    "longitude": 3.501704,
+    "latitude": 43.591387,
+    "slug": "embouteillage-services6",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wmfh000unup5d0642tp1",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:03.485Z",
+      "name": "embouteillage-services",
+      "title": "embouteillage services",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "49147d2e57941eb276082313cdcf464a",
+      "width": 800,
+      "height": 600,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uED8fCuxfhnWVy_6Rp6mRGRDwD9ycxV0ZHSewsbWM-I5ks0qv_R2AvoZzL4p1kj52g3msdpyb-S_tTumoqtWcSXEEAPU2oEQyvZc3zHUx2wp_Gje8ruRaAfV0CLLd-_LImVuAT0ld33_4BfNyETeE8nU0daBVokqTWB9AvTFO5y1LYpv",
+    "aposDocId": "cl1f0wmri000vnup52x5ym9uy",
+    "_id": "cl1f0wmri000vnup52x5ym9uy",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:03.486Z",
+    "titleSortified": "embouteillage services",
+    "updatedAt": "2022-03-31T13:19:03.487Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "embouteillage services embouteillage services",
+    "highSearchWords": [
+      "embouteillage",
+      "services"
+    ],
+    "lowSearchText": "embouteillage services embouteillage services",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.501704,
+        43.591387
+      ]
+    }
+  },
+  {
+    "title": "O Mille Vins",
+    "placeType": "wineStore",
+    "address": "Av. Marcellin Albert, Saint-Félix-de-Lodez",
+    "longitude": 3.4687198,
+    "latitude": 43.6589709,
+    "slug": "o-mille-vins3",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wn8l000wnup5j8w9urgi",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:04.500Z",
+      "name": "o-mille-vins",
+      "title": "o mille vins",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "c83fd8b8949f15f09da2cfe004431944",
+      "width": 800,
+      "height": 534,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uECcpQvTIJ5KErH73mdbTAAVGOE7ywZ-EuqAszj5KkH4oz8h-N_hKflE6Dn8TKfW6dCBGjSnFf31o4CMs_LDAzgiCKA1zAkytnYgoMCH1Nni2VZfF8AIbgc48unvbIxBoZmylFIhYHkpwsGHBcVkvO3hlmOJ9uS1TeUK0p7ED1Wx8Rcy",
+    "aposDocId": "cl1f0wnjq000xnup52i6t80tj",
+    "_id": "cl1f0wnjq000xnup52i6t80tj",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:04.502Z",
+    "titleSortified": "o mille vins",
+    "updatedAt": "2022-03-31T13:19:04.502Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "o mille vins o mille vins",
+    "highSearchWords": [
+      "o",
+      "mille",
+      "vins"
+    ],
+    "lowSearchText": "o mille vins o mille vins",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4687198,
+        43.6589709
+      ]
+    }
+  },
+  {
+    "title": "CastelBarry Coopérative Artisanale",
+    "placeType": "wineStore",
+    "address": "5 Pl. François Villon, Montpeyroux",
+    "longitude": 3.507235,
+    "latitude": 43.695624,
+    "slug": "castelbarry-coopérative-artisanale0",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wnr1000ynup5bkfdgbzg",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:05.144Z",
+      "name": "castelbarry-coopérative-artisanale",
+      "title": "castelbarry coopérative artisanale",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "a1cd013bc1209750c43d6fb0330c6531",
+      "width": 779,
+      "height": 448,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBZDxBk6eV3n43609rdbJztPRMrhsA6JRM74hqgN6FLA02xDFXB5yYFUiifTlAJy3flnkZ2z-IXzXPtd-x3In9V8XINu55NcTFUiNMsA8mRAxSVMfKdIr_ZaO9rFxXwUjIisi_krZnFtD4iIz0XKAKaKzsm2Vzhs3WVjL2S-aQ3E0cg",
+    "aposDocId": "cl1f0wo1l000znup5djt5xdf9",
+    "_id": "cl1f0wo1l000znup5djt5xdf9",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:05.145Z",
+    "titleSortified": "castelbarry coopérative artisanale",
+    "updatedAt": "2022-03-31T13:19:05.145Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "castelbarry coopérative artisanale castelbarry coopérative artisanale",
+    "highSearchWords": [
+      "castelbarry",
+      "coopérative",
+      "artisanale"
+    ],
+    "lowSearchText": "castelbarry coopérative artisanale castelbarry coopérative artisanale",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.507235,
+        43.695624
+      ]
+    }
+  },
+  {
+    "title": "MAS DU DETOUR",
+    "placeType": "wineBar",
+    "address": "Mas du Détour 34380, Argelliers",
+    "longitude": 3.6739644,
+    "latitude": 43.6976391,
+    "slug": "mas-du-detour",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0woth0010nup58mv3kxdw",
+    "_id": "cl1f0woth0010nup58mv3kxdw",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:06.149Z",
+    "titleSortified": "mas du detour",
+    "updatedAt": "2022-03-31T13:19:06.149Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "mas du detour mas du detour",
+    "highSearchWords": [
+      "mas",
+      "du",
+      "detour"
+    ],
+    "lowSearchText": "mas du detour mas du detour",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.6739644,
+        43.6976391
+      ]
+    }
+  },
+  {
+    "title": "O Mille Vins",
+    "placeType": "wineBar",
+    "address": "Av. Marcellin Albert, Saint-Félix-de-Lodez",
+    "longitude": 3.4687198,
+    "latitude": 43.6589709,
+    "slug": "o-mille-vins32",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wozz0011nup58rg9fhml",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:07.044Z",
+      "name": "o-mille-vins",
+      "title": "o mille vins",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "c83fd8b8949f15f09da2cfe004431944",
+      "width": 800,
+      "height": 534,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEDAa5lgRwNFjdU9ltseAtKuXS91uYWOA8UK04QxO_r3hYzht0lAFy_sRo2hmG5o5sk4xPAbisekeUVWqYSwHvwcD3ZDIj8vaKA6vZJgPf1AFw4Z2VHM2po_8HYrAAyzv2yQ28nfYPetjjBpXyLUcRSH-Myp5L0AV1Uq7zsuCOEyE1tY",
+    "aposDocId": "cl1f0wpie0012nup5pcpjd0az",
+    "_id": "cl1f0wpie0012nup5pcpjd0az",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:07.046Z",
+    "titleSortified": "o mille vins",
+    "updatedAt": "2022-03-31T13:19:07.046Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "o mille vins o mille vins",
+    "highSearchWords": [
+      "o",
+      "mille",
+      "vins"
+    ],
+    "lowSearchText": "o mille vins o mille vins",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4687198,
+        43.6589709
+      ]
+    }
+  },
+  {
+    "title": "Les Caves Gourmandes",
+    "placeType": "wineBar",
+    "address": "10 All. de l'Esplanade, Gignac",
+    "longitude": 3.5527339,
+    "latitude": 43.6527002,
+    "slug": "les-caves-gourmandes2",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "photoRef": "Aap_uEDKCXELvescJrys6eIQp7qjLPaovH2ooQWVNNxfbt1Zh7pZgBS9BFJ0cdUawtMkPpDIL8CI25fi1Z4_MSzr1uEu0Z-H-6fSMsFneH2pbuDs1aHHBSUvyoBxWkjzbjwQS3NveOLw0ofmk2BQNhWrX5lrj6GOLWVTODIYHa2BIqiwUJg7",
+    "aposDocId": "cl1f0wpqs0014nup5f5qi1k9q",
+    "_id": "cl1f0wpqs0014nup5f5qi1k9q",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:07.348Z",
+    "titleSortified": "les caves gourmandes",
+    "updatedAt": "2022-03-31T13:19:07.348Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "les caves gourmandes les caves gourmandes",
+    "highSearchWords": [
+      "les",
+      "caves",
+      "gourmandes"
+    ],
+    "lowSearchText": "les caves gourmandes les caves gourmandes",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5527339,
+        43.6527002
+      ]
+    }
+  },
+  {
+    "title": "LES PETITS BOUCHONS",
+    "placeType": "wineBar",
+    "address": "28 Bd Saint-Jean, Aniane",
+    "longitude": 3.5854591,
+    "latitude": 43.68542009999999,
+    "slug": "les-petits-bouchons1",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wq3s0015nup5t5j963g6",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:08.532Z",
+      "name": "les-petits-bouchons",
+      "title": "les petits bouchons",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "5493e733b76a10120eb7dac4f51df8d3",
+      "width": 800,
+      "height": 1067,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBw_H2c1AYEiQSs9vzQQX7ebn8RJVF0j_nznfJkwmUJn8ZPboFE8j3SnTv_AVdDDQiz4jv8VmvPRqKpFb9tls7dNQmq_pEN8711hdV9KV1FIW4tjYDZT8Q802r3ieNvkWxJNdgzHVInzeOIEC_fG-7L_AMBqTORZeclWA-PGcHygUwn",
+    "aposDocId": "cl1f0wqnp0016nup5umglzpin",
+    "_id": "cl1f0wqnp0016nup5umglzpin",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:08.533Z",
+    "titleSortified": "les petits bouchons",
+    "updatedAt": "2022-03-31T13:19:08.533Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "les petits bouchons les petits bouchons",
+    "highSearchWords": [
+      "les",
+      "petits",
+      "bouchons"
+    ],
+    "lowSearchText": "les petits bouchons les petits bouchons",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5854591,
+        43.68542009999999
+      ]
+    }
+  },
+  {
+    "title": "Caves de l'Esplanade",
+    "placeType": "wineBar",
+    "address": "Rue du Moulin À Vent centre commercial l'esplanade, Montarnaud",
+    "longitude": 3.699591,
+    "latitude": 43.6501655,
+    "slug": "caves-de-l-esplanade6",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wr120017nup5vzmdz2jl",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:09.689Z",
+      "name": "caves-de-l-esplanade",
+      "title": "caves de l esplanade",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "6102ac0ad7bb3614ffba31f94fee9b63",
+      "width": 800,
+      "height": 1067,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEAiwZI8Xt4c3z_iM4AtMAD4pvQZD-v13FFEArsqVIF8_C7uemr099VSd5oBdazxgsyhoL1F1cjJcCuQUnD7QrD3-9MWIOlhKfXjnoaS-Ekd2AENB_XFaO-_cSSxBRE1xafMHdDV_of1pnmrmk-sTp8qfkI6gjg3DWtE5VfZ1NItmfPB",
+    "aposDocId": "cl1f0wrjv0018nup5jgkgaay4",
+    "_id": "cl1f0wrjv0018nup5jgkgaay4",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:09.692Z",
+    "titleSortified": "caves de l esplanade",
+    "updatedAt": "2022-03-31T13:19:09.692Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "caves de l esplanade caves de l esplanade",
+    "highSearchWords": [
+      "caves",
+      "de",
+      "l",
+      "esplanade"
+    ],
+    "lowSearchText": "caves de l esplanade caves de l esplanade",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.699591,
+        43.6501655
+      ]
+    }
+  },
+  {
+    "title": "Le Midi Vin",
+    "placeType": "wineBar",
+    "address": "All. de l'Esplanade, Montarnaud",
+    "longitude": 3.700034,
+    "latitude": 43.650012,
+    "slug": "le-midi-vin",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wrsu0019nup5tyrm9yn5",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:10.473Z",
+      "name": "le-midi-vin",
+      "title": "le midi vin",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "231d568dddfb086ca4879f8bd5aadbe8",
+      "width": 800,
+      "height": 600,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBDqgJIKWfYl-KEetZ1oukAJRLefmmGIasww_kZkdpIorJD2rAT0cduFTecluwjQkGCPXKkBwNwhqBxHQ0giwJPXk0jW6ipJjoiNuMR4Z6IvT78JmlPLvVyeeHyBtDtH-NyKC6V6uUYXwlmJb1TTv4nsKt3DGA6zDp_dUMMHd78j78w",
+    "aposDocId": "cl1f0ws5n001anup5ag0nnqjp",
+    "_id": "cl1f0ws5n001anup5ag0nnqjp",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:10.475Z",
+    "titleSortified": "le midi vin",
+    "updatedAt": "2022-03-31T13:19:10.475Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "le midi vin le midi vin",
+    "highSearchWords": [
+      "le",
+      "midi",
+      "vin"
+    ],
+    "lowSearchText": "le midi vin le midi vin",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.700034,
+        43.650012
+      ]
+    }
+  },
+  {
+    "title": "Grappe",
+    "placeType": "wineBar",
+    "address": "125 Av. Pierre Mendès France, Gignac",
+    "longitude": 3.54351,
+    "latitude": 43.652149,
+    "slug": "grappe1",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wsbn001bnup5nsm9q9ba",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:11.129Z",
+      "name": "grappe",
+      "title": "grappe",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "ab2e009da3d6540305bc16a3f05c97f2",
+      "width": 800,
+      "height": 532,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEACctwO2tcZvz1OsC12zcmC-ukpEssCrPLEPJHFiKlLKmiMKE3MGQJrkEpft569OWvYGKxl5vriB_wlZ9xZaBdjFi-x9zDM0-hwSanLjgPhOBQ9A_DbKcP7gRNGBMsLxlBWJc7dOYkkzy1oxUNta5EIXDEAzVo9LK2vaAbV4BI2LM4t",
+    "aposDocId": "cl1f0wsnv001cnup5ajhh49ae",
+    "_id": "cl1f0wsnv001cnup5ajhh49ae",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:11.131Z",
+    "titleSortified": "grappe",
+    "updatedAt": "2022-03-31T13:19:11.132Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "grappe grappe",
+    "highSearchWords": [
+      "grappe"
+    ],
+    "lowSearchText": "grappe grappe",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.54351,
+        43.652149
+      ]
+    }
+  },
+  {
+    "title": "Mas Dieu Village",
+    "placeType": "wineBar",
+    "address": "Montarnaud",
+    "longitude": 3.6934202,
+    "latitude": 43.627539,
+    "slug": "mas-dieu-village",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wujz001dnup5z4zn2uxf",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:13.939Z",
+      "name": "mas-dieu-village",
+      "title": "mas dieu village",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 756,
+      "md5": "79fdaab9e616daebb285542d98015a1b",
+      "width": 800,
+      "height": 532,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEDdQD2Ey3NIy6MdxVxhK74DuaOSG76_FJPUQs1VIQ9-F8PIOLTI1Or6_ME0Lx-dXO4b328q8L-pe8rzndTvHbRabc2KSsKYkoJSa5LN87WHdkfG-yC2gAByutRKjd8AxhSlkEWCZ2lN8en90BrxYJmSW5BqnWKyu-qsoQuINqprlRjk",
+    "aposDocId": "cl1f0wutx001enup5hmefge1f",
+    "_id": "cl1f0wutx001enup5hmefge1f",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:13.941Z",
+    "titleSortified": "mas dieu village",
+    "updatedAt": "2022-03-31T13:19:13.941Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "mas dieu village mas dieu village",
+    "highSearchWords": [
+      "mas",
+      "dieu",
+      "village"
+    ],
+    "lowSearchText": "mas dieu village mas dieu village",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.6934202,
+        43.627539
+      ]
+    }
+  },
+  {
+    "title": "La Terrasse du Mimosa",
+    "placeType": "wineBar",
+    "address": "23 Pl. de l'Horloge, Montpeyroux",
+    "longitude": 3.5053592,
+    "latitude": 43.6958959,
+    "slug": "la-terrasse-du-mimosa",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "photoRef": "Aap_uEDErDzrCTUFm4UjtxEGez1GiwqkUSPX4wb3j_dsz9fH_3wSnAaFT7HqUr0bW4R1Viw8SygCA7K4s78hE7LI2xP1AH_AKMLkNtiMAz4tdD32csfcF-DybEOztNZ_EWzFjoIho0Yer0zzM23-y-veVmN1kgOp9lLIMqMfmdWDlkzlJxvT",
+    "aposDocId": "cl1f0wvj5001gnup52yg1u8ht",
+    "_id": "cl1f0wvj5001gnup52yg1u8ht",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:14.849Z",
+    "titleSortified": "la terrasse du mimosa",
+    "updatedAt": "2022-03-31T13:19:14.849Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "la terrasse du mimosa la terrasse du mimosa",
+    "highSearchWords": [
+      "la",
+      "terrasse",
+      "du",
+      "mimosa"
+    ],
+    "lowSearchText": "la terrasse du mimosa la terrasse du mimosa",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5053592,
+        43.6958959
+      ]
+    }
+  },
+  {
+    "title": "Clos de la Barthassade",
+    "placeType": "wineBar",
+    "address": "Chemin du Mas de Cambon, Aniane",
+    "longitude": 3.577745,
+    "latitude": 43.66609,
+    "slug": "clos-de-la-barthassade",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0ww0a001hnup5k3xno9m7",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:15.818Z",
+      "name": "clos-de-la-barthassade",
+      "title": "clos de la barthassade",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "bd18e6dab844b4b9faa94fe679d425b3",
+      "width": 800,
+      "height": 418,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEAPEL1OgbhG5jm8uxaX4upO43GDGJaj8g-9CMPUoMGdcF7NtFrSVmRq9GHrCWdTVimfyZKjA0L9ouWAyFZKngzKzNKWHh1m_aY5EG_6V4NWwFlNF5bQJRGRblOT950Nku1Tr6PEYi84hp_LbdBla6rNFVSP_p0uLrA99I0dlRtQHaxo",
+    "aposDocId": "cl1f0wwa4001inup5mrstviwh",
+    "_id": "cl1f0wwa4001inup5mrstviwh",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:15.820Z",
+    "titleSortified": "clos de la barthassade",
+    "updatedAt": "2022-03-31T13:19:15.820Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "clos de la barthassade clos de la barthassade",
+    "highSearchWords": [
+      "clos",
+      "de",
+      "la",
+      "barthassade"
+    ],
+    "lowSearchText": "clos de la barthassade clos de la barthassade",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.577745,
+        43.66609
+      ]
+    }
+  },
+  {
+    "title": "SouKa Restaurant et Caviste",
+    "placeType": "wineBar",
+    "address": "36 Bd Saint-Jean, Aniane",
+    "longitude": 3.5857188,
+    "latitude": 43.6854167,
+    "slug": "souka-restaurant-et-caviste8",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wwfs001jnup5ytyt53lp",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:16.875Z",
+      "name": "souka-restaurant-et-caviste",
+      "title": "souka restaurant et caviste",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "6f755d4a17c9391d48216f2eeaaa7460",
+      "width": 800,
+      "height": 1422,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBxqYfzKkPVtNaFsVZeJ4S1hc0fpIJNC18goTfgCaHqBWkzbmUxTKZWzU3SUJr4m8GQEXelo_0kgyn919XERcJWyO1Hz3smkVghg1N4kY_39tRP4SUb8OkyOsU9rk846Aa7z__yU9DAR1asmcK23XVmZP09HrH4rgzKJl-xnpEcYO70",
+    "aposDocId": "cl1f0wx3h001knup5mk8t26yt",
+    "_id": "cl1f0wx3h001knup5mk8t26yt",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:16.877Z",
+    "titleSortified": "souka restaurant et caviste",
+    "updatedAt": "2022-03-31T13:19:16.878Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "souka restaurant et caviste souka restaurant et caviste",
+    "highSearchWords": [
+      "souka",
+      "restaurant",
+      "et",
+      "caviste"
+    ],
+    "lowSearchText": "souka restaurant et caviste souka restaurant et caviste",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5857188,
+        43.6854167
+      ]
+    }
+  },
+  {
+    "title": "Clamouse cave",
+    "placeType": "poi",
+    "address": "Départementale 4, Saint-Jean-de-Fos",
+    "longitude": 3.5525314,
+    "latitude": 43.7096765,
+    "slug": "clamouse-cave",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wy6v001lnup5yg9pm00x",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:19.079Z",
+      "name": "clamouse-cave",
+      "title": "clamouse cave",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "8e5639acb8bb653a37b9c1da547ad3dc",
+      "width": 800,
+      "height": 1246,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBv4cQ8G2GGgUl5nGGVmZAaM1wEeKB8aKVwNHD6O-KqC2e7ampSn9VgC0j0v3SV3nJF579BooW_FVVetgfUhPQl1sj3MTiIYpr_iO0nru3W6ZcH7Z7eODlZWhsshs2Qop2EPC5WBEAVv6fn2HfhCtgZscJ_hdAOI2phGG81yWYGRTU9",
+    "aposDocId": "cl1f0wysp001mnup5560sw2tt",
+    "_id": "cl1f0wysp001mnup5560sw2tt",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:19.081Z",
+    "titleSortified": "clamouse cave",
+    "updatedAt": "2022-03-31T13:19:19.081Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "clamouse cave clamouse cave",
+    "highSearchWords": [
+      "clamouse",
+      "cave"
+    ],
+    "lowSearchText": "clamouse cave clamouse cave",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5525314,
+        43.7096765
+      ]
+    }
+  },
+  {
+    "title": "Saint-Jean-de-Fos",
+    "placeType": "poi",
+    "address": "34150 Saint-Jean-de-Fos, France",
+    "longitude": 3.554248,
+    "latitude": 43.7011139,
+    "slug": "saint-jean-de-fos",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0wz25001nnup5xgsxbtje",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:20.169Z",
+      "name": "saint-jean-de-fos",
+      "title": "saint jean de fos",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "d7018435a6e2a97b0554e293f11756e1",
+      "width": 800,
+      "height": 1067,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBmVBZfSKIhF8TOGT3G6cUEeaeFoI9JqWDOHZwuhErH23_qVYiYIPdkmjjG35SLi4ca6fflRLriuxTWQ4nyO6eYidhk7Uuxx41sLj1UrqNZ-cxq8-pKP3kZ_tuF7frRRHtMlhn_tTUhp5lXPsD1TJPCMpwvTZsZej9XhGj9cm5_fELo",
+    "aposDocId": "cl1f0wzmy001onup5691x3khz",
+    "_id": "cl1f0wzmy001onup5691x3khz",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:20.170Z",
+    "titleSortified": "saint jean de fos",
+    "updatedAt": "2022-03-31T13:19:20.170Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "saint jean de fos saint jean de fos",
+    "highSearchWords": [
+      "saint",
+      "jean",
+      "de",
+      "fos"
+    ],
+    "lowSearchText": "saint jean de fos saint jean de fos",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.554248,
+        43.7011139
+      ]
+    }
+  },
+  {
+    "title": "Vignobles Jeanjean",
+    "placeType": "domain",
+    "address": "Av. de l' Enclos, Saint-Félix-de-Lodez",
+    "longitude": 3.461913,
+    "latitude": 43.660825,
+    "slug": "vignobles-jeanjean",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x0m4001pnup5w6rxdt3l",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:21.885Z",
+      "name": "vignobles-jeanjean",
+      "title": "vignobles jeanjean",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "82512155784f8f4021b65d171c6189bf",
+      "width": 800,
+      "height": 533,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEAefkg4S5MdqG4fYtppAC33lEvhx_wKmnPuNhO6h7S_Y1dRVa_GL_BjH72KJYnEC9rlF68VyZa6T2CjnbzWXJ7QbeeiQEWfVntpMsGDeL95GJY1P37Xxo9-NDdIJGturxYhM_DmsGHj3XRTYb2U81FLIPUaAmn32DMDe-wkfciUfnH8",
+    "aposDocId": "cl1f0x0yn001qnup5k3d8mei9",
+    "_id": "cl1f0x0yn001qnup5k3d8mei9",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:21.887Z",
+    "titleSortified": "vignobles jeanjean",
+    "updatedAt": "2022-03-31T13:19:21.887Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "vignobles jeanjean vignobles jeanjean",
+    "highSearchWords": [
+      "vignobles",
+      "jeanjean"
+    ],
+    "lowSearchText": "vignobles jeanjean vignobles jeanjean",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.461913,
+        43.660825
+      ]
+    }
+  },
+  {
+    "title": "Vignobles Vallat",
+    "placeType": "domain",
+    "address": "301 Route de, Saint-Étienne, Montpeyroux",
+    "longitude": 3.5051114,
+    "latitude": 43.6893762,
+    "slug": "vignobles-vallat",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x18i001rnup5eoakie83",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:22.632Z",
+      "name": "vignobles-vallat",
+      "title": "vignobles vallat",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "ea579fd4f998da12a5586552b0e3ddf1",
+      "width": 800,
+      "height": 450,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEA8t52GncaMt5oaDO8L-s-PZBdwDGAWNxJpQKDorv3q1Z3Vi0425Q42Y-CazNlRUBaBH5vHTbS1ZsdglbIVYgDjesa5RDNL7b7OqGk31Po7aqEmiNwykbGIRRowjrRQSSpv7QhvNFCtyIXxYTS-td8LkHSq8kPSq2cqwA5_k3ySpdy1",
+    "aposDocId": "cl1f0x1jd001snup5j77mqqgy",
+    "_id": "cl1f0x1jd001snup5j77mqqgy",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:22.634Z",
+    "titleSortified": "vignobles vallat",
+    "updatedAt": "2022-03-31T13:19:22.634Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "vignobles vallat vignobles vallat",
+    "highSearchWords": [
+      "vignobles",
+      "vallat"
+    ],
+    "lowSearchText": "vignobles vallat vignobles vallat",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5051114,
+        43.6893762
+      ]
+    }
+  },
+  {
+    "title": "Château Saint Jean D'Aumières SCEA",
+    "placeType": "domain",
+    "address": "CHATEAU ST JEAN D AUMIERES, Gignac",
+    "longitude": 3.5758257,
+    "latitude": 43.6412232,
+    "slug": "château-saint-jean-d-aumières-scea",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x1rv001tnup5cqixw85m",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:23.324Z",
+      "name": "château-saint-jean-d-aumières-scea",
+      "title": "château saint jean d aumières scea",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "a233f1f96366ca45dc94f2e1b5dcf3f4",
+      "width": 800,
+      "height": 474,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uECuigfhfA6iFdbfPu92n0hCId_iDDh82B9WfUmYhmLkeT5hnIXYJgll28874y9pGtYVvR5d8xAhYUqe05_yMtWWZkmV609uz1ZdtuDU17rmwrOZ0z77dP2vZaQnvPP3jYodXwwZYU9faTntRLd7_Xnu4XWTjbUBHa2UC5iN0jCyzVxn",
+    "aposDocId": "cl1f0x22l001unup5m7cs6zze",
+    "_id": "cl1f0x22l001unup5m7cs6zze",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:23.325Z",
+    "titleSortified": "château saint jean d aumières scea",
+    "updatedAt": "2022-03-31T13:19:23.325Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "château saint jean d aumières scea château saint jean d aumières scea",
+    "highSearchWords": [
+      "château",
+      "saint",
+      "jean",
+      "d",
+      "aumières",
+      "scea"
+    ],
+    "lowSearchText": "château saint jean d aumières scea château saint jean d aumières scea",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5758257,
+        43.6412232
+      ]
+    }
+  },
+  {
+    "title": "Pourtalie Bernard",
+    "placeType": "domain",
+    "address": "1 Rue de la Grotte, Puéchabon",
+    "longitude": 3.618844299999999,
+    "latitude": 43.7139836,
+    "slug": "pourtalie-bernard",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0x22u001vnup58gg5vn86",
+    "_id": "cl1f0x22u001vnup58gg5vn86",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:23.335Z",
+    "titleSortified": "pourtalie bernard",
+    "updatedAt": "2022-03-31T13:19:23.335Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "pourtalie bernard pourtalie bernard",
+    "highSearchWords": [
+      "pourtalie",
+      "bernard"
+    ],
+    "lowSearchText": "pourtalie bernard pourtalie bernard",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.618844299999999,
+        43.7139836
+      ]
+    }
+  },
+  {
+    "title": "Domaine d'Archimbaud",
+    "placeType": "domain",
+    "address": "12 Av. du Quai, Saint-Saturnin-de-Lucian",
+    "longitude": 3.4706555,
+    "latitude": 43.693522,
+    "slug": "domaine-d-archimbaud",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x2dw001wnup5wt7989z2",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:24.728Z",
+      "name": "domaine-d-archimbaud",
+      "title": "domaine d archimbaud",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "9b3364506635b8055dafe5306b2a12d7",
+      "width": 778,
+      "height": 1600,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBqscOwrTvUwaVTpUbnPguOq0h6RNpMiCfCezYMyNpgKtHm4NOHMKdYTB1ckefq4uwE_BhzmMkvGVgH4UBIk2pmKRBhYiT5DUWQlC_6PCRC1sqo-xIqry7xhLFAHLoVITmdiNFkyE8VvmdjiGVaS_rpDCmuqqwuOQdz9Bv16ORicK_4",
+    "aposDocId": "cl1f0x35l001xnup5jnnujmjw",
+    "_id": "cl1f0x35l001xnup5jnnujmjw",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:24.729Z",
+    "titleSortified": "domaine d archimbaud",
+    "updatedAt": "2022-03-31T13:19:24.729Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine d archimbaud domaine d archimbaud",
+    "highSearchWords": [
+      "domaine",
+      "d",
+      "archimbaud"
+    ],
+    "lowSearchText": "domaine d archimbaud domaine d archimbaud",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4706555,
+        43.693522
+      ]
+    }
+  },
+  {
+    "title": "Domaine la Croix Chaptal",
+    "placeType": "domain",
+    "address": "Hameau de Cambous, Saint-André-de-Sangonis",
+    "longitude": 3.4816066,
+    "latitude": 43.6283302,
+    "slug": "domaine-la-croix-chaptal",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x3pr001ynup553d3rc70",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:26.573Z",
+      "name": "domaine-la-croix-chaptal",
+      "title": "domaine la croix chaptal",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "54c5277acfd731581a8740ff461d8535",
+      "width": 800,
+      "height": 546,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBJUUXygKh1wQEgD6QIyPbGXMlg1EXLRemDv2IGk1v3r9_8kFtqzdbJYp2phcca54y29er6iIr-PGfna4RJrhIO5JMTWOJqePMmpBYbCd7Bhaz_lu-06cOm8-EqWB8UlXtiMN-KnekakDkt8o-qeJYSPMV4H238whfXYY4CFuAxLZ_d",
+    "aposDocId": "cl1f0x4kv001znup5rze6fa2f",
+    "_id": "cl1f0x4kv001znup5rze6fa2f",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:26.575Z",
+    "titleSortified": "domaine la croix chaptal",
+    "updatedAt": "2022-03-31T13:19:26.575Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine la croix chaptal domaine la croix chaptal",
+    "highSearchWords": [
+      "domaine",
+      "la",
+      "croix",
+      "chaptal"
+    ],
+    "lowSearchText": "domaine la croix chaptal domaine la croix chaptal",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4816066,
+        43.6283302
+      ]
+    }
+  },
+  {
+    "title": "Domaine Virgile Joly",
+    "placeType": "domain",
+    "address": "22 Rue Portail, Saint-Saturnin-de-Lucian",
+    "longitude": 3.4709403,
+    "latitude": 43.6946667,
+    "slug": "domaine-virgile-joly",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x51u0020nup59ka7fkv7",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:27.584Z",
+      "name": "domaine-virgile-joly",
+      "title": "domaine virgile joly",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 735,
+      "md5": "a1319d9176c0a35c27012904172cf7a0",
+      "width": 800,
+      "height": 534,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEChxfXx4eucdwz8gPvGKc60D-LRIvJ8QZ-UimYadNK7MhBRRXECC83f1X0svjOed63m22wICZsa3TK-qQBUgu_bgDlED3qvN9PdS3ScOABmWKhyTXuIpQnnj4QRmh6zY5IbteRLBJ-i0OSN6OlejT4nEN1t4lNdMh8fZChJEb18bYYA",
+    "aposDocId": "cl1f0x5cy0021nup5tjjomysy",
+    "_id": "cl1f0x5cy0021nup5tjjomysy",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:27.586Z",
+    "titleSortified": "domaine virgile joly",
+    "updatedAt": "2022-03-31T13:19:27.586Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine virgile joly domaine virgile joly",
+    "highSearchWords": [
+      "domaine",
+      "virgile",
+      "joly"
+    ],
+    "lowSearchText": "domaine virgile joly domaine virgile joly",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4709403,
+        43.6946667
+      ]
+    }
+  },
+  {
+    "title": "SCEA Quinquarlet",
+    "placeType": "domain",
+    "address": "3 Rue Familongue, Saint-André-de-Sangonis",
+    "longitude": 3.4976225,
+    "latitude": 43.6439416,
+    "slug": "scea-quinquarlet",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0x5d90022nup5q9xmn514",
+    "_id": "cl1f0x5d90022nup5q9xmn514",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:27.597Z",
+    "titleSortified": "scea quinquarlet",
+    "updatedAt": "2022-03-31T13:19:27.597Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "scea quinquarlet scea quinquarlet",
+    "highSearchWords": [
+      "scea",
+      "quinquarlet"
+    ],
+    "lowSearchText": "scea quinquarlet scea quinquarlet",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4976225,
+        43.6439416
+      ]
+    }
+  },
+  {
+    "title": "Domaine d'Archimbaud",
+    "placeType": "domain",
+    "address": "D141, Saint-Félix-de-Lodez",
+    "longitude": 3.4629363,
+    "latitude": 43.66292019999999,
+    "slug": "domaine-d-archimbaud1",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0x5dg0023nup5x1ensdd8",
+    "_id": "cl1f0x5dg0023nup5x1ensdd8",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:27.604Z",
+    "titleSortified": "domaine d archimbaud",
+    "updatedAt": "2022-03-31T13:19:27.604Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine d archimbaud domaine d archimbaud",
+    "highSearchWords": [
+      "domaine",
+      "d",
+      "archimbaud"
+    ],
+    "lowSearchText": "domaine d archimbaud domaine d archimbaud",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4629363,
+        43.66292019999999
+      ]
+    }
+  },
+  {
+    "title": "Le Clos du Lucquier",
+    "placeType": "domain",
+    "address": "Rue de la Font du Loup, Jonquières",
+    "longitude": 3.4822304,
+    "latitude": 43.6759433,
+    "slug": "le-clos-du-lucquier",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x5ls0024nup54b7ur7wy",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:28.276Z",
+      "name": "le-clos-du-lucquier",
+      "title": "le clos du lucquier",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "f7fdf42589be82f27a0b97d90fbd83b4",
+      "width": 800,
+      "height": 450,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEANXGKRJV0V4MzEuud82NXBRZW501wza-4MW1aJjpHLeuATHlJjjQODzf0RCCHnovCLsUaS3DOyBbCgHEaMumqjMiwgqYHRudTYkTT47cMNJspXDzWegAtkc4caIicWFKQphgDOb2HlZ4pC6lY2M2ZQneDXvQ_IwK-lEdNgAmJq7J5H",
+    "aposDocId": "cl1f0x5w60025nup5a6jorh0x",
+    "_id": "cl1f0x5w60025nup5a6jorh0x",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:28.278Z",
+    "titleSortified": "le clos du lucquier",
+    "updatedAt": "2022-03-31T13:19:28.278Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "le clos du lucquier le clos du lucquier",
+    "highSearchWords": [
+      "le",
+      "clos",
+      "du",
+      "lucquier"
+    ],
+    "lowSearchText": "le clos du lucquier le clos du lucquier",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4822304,
+        43.6759433
+      ]
+    }
+  },
+  {
+    "title": "Clos Constantin",
+    "placeType": "domain",
+    "address": "Font-Belette route de V-le-Fort, Argelliers",
+    "longitude": 3.6766834,
+    "latitude": 43.7108946,
+    "slug": "clos-constantin",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x66f0026nup5ikx12diw",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:28.980Z",
+      "name": "clos-constantin",
+      "title": "clos constantin",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "b3857af9afae494f616c9d44a9a3bfac",
+      "width": 800,
+      "height": 337,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBFmpM8hb5J3zKTRpcEyZA3n4wwaVq4T1J_CyUzHNKGfI-DNnYt9HIE1U-5tvP5eVF2ZVwd3qa6WfG1NN-j8qNJMQNWuvNqCTs8-oyRnj1WdzGXriUOTNDvB6b05-W9-bqNXnPegg5Dp1vJcSXLvPuisemx78uwYmwg77Ql7_yjS8NL",
+    "aposDocId": "cl1f0x6fp0027nup5xpqk04sx",
+    "_id": "cl1f0x6fp0027nup5xpqk04sx",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:28.981Z",
+    "titleSortified": "clos constantin",
+    "updatedAt": "2022-03-31T13:19:28.981Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "clos constantin clos constantin",
+    "highSearchWords": [
+      "clos",
+      "constantin"
+    ],
+    "lowSearchText": "clos constantin clos constantin",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.6766834,
+        43.7108946
+      ]
+    }
+  },
+  {
+    "title": "Château de Jonquières",
+    "placeType": "domain",
+    "address": "Château de Jonquières, Grand Rue, Jonquières",
+    "longitude": 3.4747951,
+    "latitude": 43.6760228,
+    "slug": "château-de-jonquières",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x74p0028nup5utbbgsic",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:30.341Z",
+      "name": "château-de-jonquières",
+      "title": "château de jonquières",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "17698b726602b0b9aa96dc2879d48c85",
+      "width": 800,
+      "height": 600,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEDYSygRfGFesji0uxmI0fRZF7mNQxjOHn1Vd3NPiGFInsAc_0caTocjM8YcLItTjs-B7FM2bdgDLYXTK8MFNTabz9jgNuTQ0TpD4dGjUZAenHkg79D5y14V6-mWlIqHDw-NPgJpLXvFPwuS0xDL1ICTMSgW5vIV6DIwQkNqnuIEaZKK",
+    "aposDocId": "cl1f0x7hi0029nup5fn8vm87x",
+    "_id": "cl1f0x7hi0029nup5fn8vm87x",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:30.342Z",
+    "titleSortified": "château de jonquières",
+    "updatedAt": "2022-03-31T13:19:30.342Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "château de jonquières château de jonquières",
+    "highSearchWords": [
+      "château",
+      "de",
+      "jonquières"
+    ],
+    "lowSearchText": "château de jonquières château de jonquières",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4747951,
+        43.6760228
+      ]
+    }
+  },
+  {
+    "title": "Le Clos de l'Amandaie",
+    "placeType": "domain",
+    "address": "Route de Montpellier, Aumelas",
+    "longitude": 3.6089415,
+    "latitude": 43.6071824,
+    "slug": "le-clos-de-l-amandaie",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x7rn002anup5ccwfb843",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:31.154Z",
+      "name": "le-clos-de-l-amandaie",
+      "title": "le clos de l amandaie",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "517be035f3e2e8f166acbfa5f5b49dd3",
+      "width": 800,
+      "height": 600,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uECFxQZSHHJ2j5f6ZkxwTcUmfBsQnksIgmO3PfFZdv33vej73Oec4A6yhtwpBAsvLuoUrmVgcZ7fb9m94nZRCTqJq4--rVHhMJORwLp3mo6ArLWmfX0piQKpxDasCxLxq7JZT-N_IdhuFeltBKOg3UeqCgG6vu88cHr6o4uV36ie2jZ1",
+    "aposDocId": "cl1f0x844002bnup5goyeq7yl",
+    "_id": "cl1f0x844002bnup5goyeq7yl",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:31.156Z",
+    "titleSortified": "le clos de l amandaie",
+    "updatedAt": "2022-03-31T13:19:31.156Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "le clos de l amandaie le clos de l amandaie",
+    "highSearchWords": [
+      "le",
+      "clos",
+      "de",
+      "l",
+      "amandaie"
+    ],
+    "lowSearchText": "le clos de l amandaie le clos de l amandaie",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.6089415,
+        43.6071824
+      ]
+    }
+  },
+  {
+    "title": "Braujou Xavier - Domaine La Terrasse d'Élise",
+    "placeType": "domain",
+    "address": "1320 Chemin de Capion, Aniane",
+    "longitude": 3.583900599999999,
+    "latitude": 43.6646324,
+    "slug": "braujou-xavier-domaine-la-terrasse-d-élise",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x8f8002cnup5ooclu8e7",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:31.909Z",
+      "name": "braujou-xavier-domaine-la-terrasse-d-élise",
+      "title": "braujou xavier domaine la terrasse d élise",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "b9b9ebdf98f853e9c96d0fdf260d2e7b",
+      "width": 800,
+      "height": 474,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEDtM6o28a-kiZpFodBrVp60aq9pvCebxZnIZ7Bhodudg83ZeNI6CsMHJjp9fWjv7oK8Jf514gCzt9kPL_vgiNrwpQZyvStwiTBU00LsAd6vWPMpumkPhkG4V3l8iPyPW5RyVHyYxHhpgTB4HjXm7AjEVZxtc8wfCRKig1MX1JiedtQU",
+    "aposDocId": "cl1f0x8p2002dnup5po7qapkv",
+    "_id": "cl1f0x8p2002dnup5po7qapkv",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:31.911Z",
+    "titleSortified": "braujou xavier domaine la terrasse d élise",
+    "updatedAt": "2022-03-31T13:19:31.911Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "braujou xavier domaine la terrasse d élise braujou xavier domaine la terrasse d élise",
+    "highSearchWords": [
+      "braujou",
+      "xavier",
+      "domaine",
+      "la",
+      "terrasse",
+      "d",
+      "élise"
+    ],
+    "lowSearchText": "braujou xavier domaine la terrasse d élise braujou xavier domaine la terrasse d élise",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.583900599999999,
+        43.6646324
+      ]
+    }
+  },
+  {
+    "title": "Domaine de la Chapelle",
+    "placeType": "domain",
+    "address": "A750, Gignac",
+    "longitude": 3.586640799999999,
+    "latitude": 43.6367264,
+    "slug": "domaine-de-la-chapelle",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0x8pe002enup5y3ezquyr",
+    "_id": "cl1f0x8pe002enup5y3ezquyr",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:31.922Z",
+    "titleSortified": "domaine de la chapelle",
+    "updatedAt": "2022-03-31T13:19:31.922Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine de la chapelle domaine de la chapelle",
+    "highSearchWords": [
+      "domaine",
+      "de",
+      "la",
+      "chapelle"
+    ],
+    "lowSearchText": "domaine de la chapelle domaine de la chapelle",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.586640799999999,
+        43.6367264
+      ]
+    }
+  },
+  {
+    "title": "FONJOYA - Cave de Saint Felix",
+    "placeType": "domain",
+    "address": "bis 21, Av. Marcellin Albert, Saint-Félix-de-Lodez",
+    "longitude": 3.4624512,
+    "latitude": 43.6618842,
+    "slug": "fonjoya-cave-de-saint-felix",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x8x5002fnup5h8voq4rg",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:32.414Z",
+      "name": "fonjoya-cave-de-saint-felix",
+      "title": "fonjoya cave de saint felix",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "20d9b79cce4f93633d7ae15416eaa468",
+      "width": 512,
+      "height": 341,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEAEDFrx8QXwQSg5-0ab5W1HYuhg8EW67Ir7DdHjIPlY-dtTLVVc-z7C89o0eIXYY4dvbWe6jPukqyDByqVnwims9UO-1XwlcOiluKrw2FAe4HVl66E63QtzF_Bgcw-V8JwYt6HwDnZlL4KQ0wWODJd9RMzkcgLSvvverwI-_ECaOrGf",
+    "aposDocId": "cl1f0x934002gnup5aopimena",
+    "_id": "cl1f0x934002gnup5aopimena",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:32.416Z",
+    "titleSortified": "fonjoya cave de saint felix",
+    "updatedAt": "2022-03-31T13:19:32.417Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "fonjoya cave de saint felix fonjoya cave de saint felix",
+    "highSearchWords": [
+      "fonjoya",
+      "cave",
+      "de",
+      "saint",
+      "felix"
+    ],
+    "lowSearchText": "fonjoya cave de saint felix fonjoya cave de saint felix",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4624512,
+        43.6618842
+      ]
+    }
+  },
+  {
+    "title": "Dalichoux Domaine de L'arnede",
+    "placeType": "domain",
+    "address": "1 Bis Chem. de Larnede, Saint-André-de-Sangonis",
+    "longitude": 3.5015496,
+    "latitude": 43.6469045,
+    "slug": "dalichoux-domaine-de-l-arnede",
+    "visibility": "public",
+    "archived": false,
+    "image": null,
+    "type": "place",
+    "aposDocId": "cl1f0x93g002hnup56ujyana9",
+    "_id": "cl1f0x93g002hnup56ujyana9",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:32.428Z",
+    "titleSortified": "dalichoux domaine de l arnede",
+    "updatedAt": "2022-03-31T13:19:32.428Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "dalichoux domaine de l arnede dalichoux domaine de l arnede",
+    "highSearchWords": [
+      "dalichoux",
+      "domaine",
+      "de",
+      "l",
+      "arnede"
+    ],
+    "lowSearchText": "dalichoux domaine de l arnede dalichoux domaine de l arnede",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5015496,
+        43.6469045
+      ]
+    }
+  },
+  {
+    "title": "Domaine de l'Argenteille",
+    "placeType": "domain",
+    "address": "171 Chemin de Labiras, Saint-Félix-de-Lodez",
+    "longitude": 3.4719635,
+    "latitude": 43.660306,
+    "slug": "domaine-de-l-argenteille",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0x9ie002inup5baxwqnky",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:33.391Z",
+      "name": "domaine-de-l-argenteille",
+      "title": "domaine de l argenteille",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "dd3fa938f4b926bc6e726e57e8627f60",
+      "width": 800,
+      "height": 534,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEDJenkHq9AZPjllnQzHXfNbTP77h7c9WAQ_xAbw17JY3T2UWrQxQrA27Lb3mR0FyVToVUekhCtcfmSQTnN06JlcsatJ-PTez2QNmlVS81fj3Kp63Y8JoM6S8aXa7eUOhYUgcxsHOwKzdJW6ZSXRNCwg_9JJMMEoR09oDGoWUwtAsGnE",
+    "aposDocId": "cl1f0x9u8002jnup5nmacxdbf",
+    "_id": "cl1f0x9u8002jnup5nmacxdbf",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:33.392Z",
+    "titleSortified": "domaine de l argenteille",
+    "updatedAt": "2022-03-31T13:19:33.392Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine de l argenteille domaine de l argenteille",
+    "highSearchWords": [
+      "domaine",
+      "de",
+      "l",
+      "argenteille"
+    ],
+    "lowSearchText": "domaine de l argenteille domaine de l argenteille",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.4719635,
+        43.660306
+      ]
+    }
+  },
+  {
+    "title": "Domaine Croix de Saint-Privat à Aniane / Vin Bio AOC Terrasses du Larzac",
+    "placeType": "domain",
+    "address": "554 Av. de Saint-Guilhem, Aniane",
+    "longitude": 3.5779749,
+    "latitude": 43.6965941,
+    "slug": "domaine-croix-de-saint-privat-à-aniane-vin-bio-aoc-terrasses-du-larzac",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0xa45002knup5vdpu1vje",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:34.231Z",
+      "name": "domaine-croix-de-saint-privat-à-aniane-vin-bio-aoc-terrasses-du-larzac",
+      "title": "domaine croix de saint privat à aniane vin bio aoc terrasses du larzac",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "dda75c3694b19f74fb5f3ce47ebd45b9",
+      "width": 800,
+      "height": 600,
+      "landscape": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uEBqMF8h9ed6NhMf2FKsO78pklSsKJJH6j6hRF5Q4umEYiZMeQNikgPrqorbvYUgRWgMXz3vUfhGiiO0GhD7S-KFHX8vCPUVGrjbatKNIg3l78K29hISuXuO4yhIFr_sGQ8pQrZHPDYO9VttqaXAAqbG1fFyuA1v_pdTeNuuwBnOe4ZB",
+    "aposDocId": "cl1f0xahk002lnup5ng6xbv75",
+    "_id": "cl1f0xahk002lnup5ng6xbv75",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:34.232Z",
+    "titleSortified": "domaine croix de saint privat à aniane vin bio aoc terrasses du larzac",
+    "updatedAt": "2022-03-31T13:19:34.232Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine croix de saint privat à aniane vin bio aoc terrasses du larzac domaine croix de saint privat à aniane vin bio aoc terrasses du larzac",
+    "highSearchWords": [
+      "domaine",
+      "croix",
+      "de",
+      "saint",
+      "privat",
+      "à",
+      "aniane",
+      "vin",
+      "bio",
+      "aoc",
+      "terrasses",
+      "du",
+      "larzac"
+    ],
+    "lowSearchText": "domaine croix de saint privat à aniane vin bio aoc terrasses du larzac domaine croix de saint privat à aniane vin bio aoc terrasses du larzac",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.5779749,
+        43.6965941
+      ]
+    }
+  },
+  {
+    "title": "Domaine De Montcalmes",
+    "placeType": "domain",
+    "address": "Chem. du Cimetière, Puéchabon",
+    "longitude": 3.6161012,
+    "latitude": 43.7150986,
+    "slug": "domaine-de-montcalmes",
+    "visibility": "public",
+    "archived": false,
+    "image": {
+      "_id": "cl1f0xarb002mnup5wdvvo8p1",
+      "group": "images",
+      "createdAt": "2022-03-31T13:19:35.447Z",
+      "name": "domaine-de-montcalmes",
+      "title": "domaine de montcalmes",
+      "extension": "jpg",
+      "type": "attachment",
+      "docIds": [],
+      "archivedDocIds": [],
+      "length": 0,
+      "md5": "58dc2e26be902c2c332dc2ba78ee49a4",
+      "width": 800,
+      "height": 1422,
+      "portrait": true
+    },
+    "type": "place",
+    "photoRef": "Aap_uECVyE3nOPUPkjBhFYuTkfA14zudV8sVors-kb-8_8UFNHrXMUCp4z9JwXJLIkf1ZYIHuZEJNYuyqyqJiv9EW7Ab-3M4F6gqx-Axf_lXt46q_OM0Zu3dgc3gUNhW9DQDoA-VmqEkBmF6f1th9XBSEf3Cjj8OkJIf_LnKcQm2n6rM5BS5",
+    "aposDocId": "cl1f0xbfd002nnup59pojy4z7",
+    "_id": "cl1f0xbfd002nnup59pojy4z7",
+    "metaType": "doc",
+    "createdAt": "2022-03-31T13:19:35.449Z",
+    "titleSortified": "domaine de montcalmes",
+    "updatedAt": "2022-03-31T13:19:35.449Z",
+    "updatedBy": {
+      "title": "System Task"
+    },
+    "highSearchText": "domaine de montcalmes domaine de montcalmes",
+    "highSearchWords": [
+      "domaine",
+      "de",
+      "montcalmes"
+    ],
+    "lowSearchText": "domaine de montcalmes domaine de montcalmes",
+    "searchSummary": "",
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        3.6161012,
+        43.7150986
+      ]
+    }
+  }
+]
