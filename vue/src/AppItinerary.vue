@@ -3,7 +3,6 @@
 import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateItinerary from './components/ValidateItinerary.vue'
 import { ref } from 'vue'
-import { onMounted } from 'vue'
 
 // Data
 const props = defineProps({
@@ -13,7 +12,7 @@ const data = JSON.parse(props.piece)
 if (!window.apos.user) {
   location.assign('/login?redirect=itinerary/' + data.slug)
 }
-const translation = window.apos.itinerary.labels
+const $t = window.apos.itinerary.labels
 let descriptionRef = ref(false)
 
 function dataDescription() {
@@ -25,19 +24,21 @@ function dataDescription() {
 }
 function dataPrice(price) {
   if (price == 0) {
-    return translation.free
+    return $t.free
   } else {
     return price + '€'
   }
 }
 
+function removeTags(str) {
+  if (str === null || str === '') return false
+  else str = str.toString()
+  return str.replace(/(<([^>]+)>)/gi, '')
+}
+
 function dataMileAge(mileage) {
   return mileage + 'km'
 }
-
-onMounted(() => {
-  console.log(data.steps[0]._place[0].address.items)
-})
 </script>
 
 <template>
@@ -47,14 +48,14 @@ onMounted(() => {
     <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
       <span class="bold" @click="descriptionRef = !descriptionRef"
-        >{{ translation.see }}
-        <span class="bold" v-if="descriptionRef">{{ translation.less }}..</span>
-        <span class="bold" v-else>{{ translation.more }}..</span>
+        >{{ $t.see }}
+        <span class="bold" v-if="descriptionRef">{{ $t.less }}..</span>
+        <span class="bold" v-else>{{ $t.more }}..</span>
       </span>
     </div>
 
     <div class="t-app-itinerary__infos t-infos">
-      <div class="t-infos__title">{{ translation.globalInfos }}</div>
+      <div class="t-infos__title">{{ $t.globalInfos }}</div>
       <div class="t-infos__container">
         <div class="t-info-tier">
           <img
@@ -98,19 +99,26 @@ onMounted(() => {
           </div>
           <div class="t-info-half__value">
             {{
-              data.steps[0]._place[0].address.items[0].content.substring(
-                data.steps[0]._place[0].address.items[0].content.indexOf(',') +
-                  1,
+              removeTags(
+                data.steps[0]._place[0].address.items[0].content.substring(
+                  data.steps[0]._place[0].address.items[0].content.indexOf(
+                    ',',
+                  ) + 1,
+                ),
               )
             }}
           </div>
           <div class="t-info-half__value">
             {{
-              data.steps[0]._place[0].address.items[0].content.slice(
-                0,
-                -data.steps[0]._place[0].address.items[0].content.substring(
-                  data.steps[0]._place[0].address.items[0].content.indexOf(','),
-                ).length,
+              removeTags(
+                data.steps[0]._place[0].address.items[0].content.slice(
+                  0,
+                  -data.steps[0]._place[0].address.items[0].content.substring(
+                    data.steps[0]._place[0].address.items[0].content.indexOf(
+                      ',',
+                    ),
+                  ).length,
+                ),
               )
             }}
           </div>
@@ -127,46 +135,43 @@ onMounted(() => {
             {{ data.steps[data.steps.length - 1]._place[0].title }}
           </div>
           <div class="t-info-half__value">
-            <!-- {{
-              data.steps[data.steps.length - 1]._place[0].address.substring(
-                data.steps[data.steps.length - 1]._place[0].address.indexOf(
-                  ',',
-                ) + 1,
+            {{
+              removeTags(
+                data.steps[
+                  data.steps.length - 1
+                ]._place[0].address.items[0].content.substring(
+                  data.steps[
+                    data.steps.length - 1
+                  ]._place[0].address.items[0].content.indexOf(',') + 1,
+                ),
               )
-            }} -->
+            }}
           </div>
           <div class="t-info-half__value">
-            <!-- {{
-              data.steps[data.steps.length - 1]._place[0].address.slice(
-                0,
-                -data.steps[data.steps.length - 1]._place[0].address.substring(
-                  data.steps[data.steps.length - 1]._place[0].address.indexOf(
-                    ',',
-                  ),
-                ).length,
+            {{
+              removeTags(
+                data.steps[
+                  data.steps.length - 1
+                ]._place[0].address.items[0].content.slice(
+                  0,
+                  -data.steps[
+                    data.steps.length - 1
+                  ]._place[0].address.items[0].content.substring(
+                    data.steps[
+                      data.steps.length - 1
+                    ]._place[0].address.items[0].content.indexOf(','),
+                  ).length,
+                ),
               )
-            }} -->
+            }}
           </div>
         </div>
       </div>
     </div>
-    <ValidateItinerary :translationData="translation" />
+    <ValidateItinerary :translationData="$t" />
     <VisitsContainer :data="piece" :translationData="translation" />
   </div>
 </template>
-
-<script>
-export default {
-  filters: {
-    stripHTML: function (value) {
-      const div = document.createElement('div')
-      div.innerHTML = value
-      const text = div.textContent || div.innerText || ''
-      return text
-    },
-  },
-}
-</script>
 
 <style scoped lang="scss">
 @import './assets/base.css';

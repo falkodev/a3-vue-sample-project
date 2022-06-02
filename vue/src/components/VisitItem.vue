@@ -116,10 +116,10 @@ export default {
     translation: Object,
   },
   mounted() {
-    if (this.step._place.length == 0) {
-      this.data = this.step._domain[0]
-    } else {
+    if (this.step.stepType === 'place') {
       this.data = this.step._place[0]
+    } else {
+      this.data = this.step._domain[0]
     }
   },
   emits: ['delItem'],

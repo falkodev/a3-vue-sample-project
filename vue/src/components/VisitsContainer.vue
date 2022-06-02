@@ -126,6 +126,7 @@ export default {
     LMarker,
   },
   mounted() {
+    console.log(this.data)
     this.attributeId()
     this.updateCenter()
   },
