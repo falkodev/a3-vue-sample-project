@@ -3,6 +3,7 @@
 import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateItinerary from './components/ValidateItinerary.vue'
 import { ref } from 'vue'
+import { onMounted } from 'vue'
 
 // Data
 const props = defineProps({
@@ -33,6 +34,10 @@ function dataPrice(price) {
 function dataMileAge(mileage) {
   return mileage + 'km'
 }
+
+onMounted(() => {
+  console.log(data.steps[0]._place[0].address.items)
+})
 </script>
 
 <template>
@@ -92,21 +97,22 @@ function dataMileAge(mileage) {
             {{ data.steps[0]._place[0].title }}
           </div>
           <div class="t-info-half__value">
-            <!-- {{
-              data.steps[0]._place[0].address.substring(
-                data.steps[0]._place[0].address.indexOf(',') + 1,
+            {{
+              data.steps[0]._place[0].address.items[0].content.substring(
+                data.steps[0]._place[0].address.items[0].content.indexOf(',') +
+                  1,
               )
-            }} -->
+            }}
           </div>
           <div class="t-info-half__value">
-            <!-- {{
-              data.steps[0]._place[0].address.slice(
+            {{
+              data.steps[0]._place[0].address.items[0].content.slice(
                 0,
-                -data.steps[0]._place[0].address.substring(
-                  data.steps[0]._place[0].address.indexOf(','),
+                -data.steps[0]._place[0].address.items[0].content.substring(
+                  data.steps[0]._place[0].address.items[0].content.indexOf(','),
                 ).length,
               )
-            }} -->
+            }}
           </div>
         </div>
         <div class="t-info-half">
@@ -148,6 +154,19 @@ function dataMileAge(mileage) {
     <VisitsContainer :data="piece" :translationData="translation" />
   </div>
 </template>
+
+<script>
+export default {
+  filters: {
+    stripHTML: function (value) {
+      const div = document.createElement('div')
+      div.innerHTML = value
+      const text = div.textContent || div.innerText || ''
+      return text
+    },
+  },
+}
+</script>
 
 <style scoped lang="scss">
 @import './assets/base.css';

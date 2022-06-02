@@ -54,13 +54,13 @@ import 'leaflet/dist/leaflet.css'
 export default {
   data() {
     return {
-      itinerary: [],
+      itinerary: JSON.parse(this.data),
       id: null,
       delSteps: [],
       zoom: 9,
       center: {},
       centerLoaded: false,
-      $t: {},
+      $t: this.translationData,
       icon: icon({
         iconUrl:
           '/apos-frontend/default/modules/content/icons/orangeMarker.png',
@@ -126,8 +126,6 @@ export default {
     LMarker,
   },
   mounted() {
-    this.$t = this.translationData
-    this.itinerary = JSON.parse(this.data)
     this.attributeId()
     this.updateCenter()
   },
