@@ -1,19 +1,27 @@
 <script setup>
-// Imports
 import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateItinerary from './components/ValidateItinerary.vue'
 import { ref } from 'vue'
 
-// Data
 const props = defineProps({
   piece: Object,
 })
 const data = JSON.parse(props.piece)
+
 if (!window.apos.user) {
   location.assign('/login?redirect=itinerary/' + data.slug)
 }
 const $t = window.apos.itinerary.labels
 let descriptionRef = ref(false)
+
+// function defineStepType(type) {
+//   if (type === 'place') {
+//     return '_place[0]'
+//   } else {
+//     return '_domain[0]'
+//   }
+// }
+//  Comment for push
 
 function dataDescription() {
   if (descriptionRef.value) {
@@ -23,7 +31,7 @@ function dataDescription() {
   }
 }
 function dataPrice(price) {
-  if (price == 0) {
+  if (!price) {
     return $t.free
   } else {
     return price + '€'
@@ -90,12 +98,12 @@ function dataMileAge(mileage) {
           <div class="t-info-half__logo-container">
             <img
               class="t-info-half__logo t-info-half__logo--left"
-              :src="'/apos-frontend/default/modules/content/icons/whiteMarker.png'"
+              :src="'/apos-frontend/default/modules/content/icons/white-marker.png'"
             />
           </div>
 
           <div class="t-info-half__title">
-            {{ data.steps[0]._place[0].title }}
+            {{ data.steps[0].defineStepType(data.steps[0].stepType).title }}
           </div>
           <div class="t-info-half__value">
             {{
@@ -127,7 +135,7 @@ function dataMileAge(mileage) {
           <div class="t-info-half__logo-container">
             <img
               class="t-info-half__logo t-info-half__logo--right"
-              :src="'/apos-frontend/default/modules/content/icons/whiteMarker.png'"
+              :src="'/apos-frontend/default/modules/content/icons/white-marker.png'"
             />
           </div>
 
