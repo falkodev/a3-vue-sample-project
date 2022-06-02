@@ -63,7 +63,7 @@ export default {
       $t: this.translationData,
       icon: icon({
         iconUrl:
-          '/apos-frontend/default/modules/content/icons/orangeMarker.png',
+          '/apos-frontend/default/modules/content/icons/orange-marker.png',
         iconSize: [20, 20],
         iconAnchor: [16, 37],
       }),
