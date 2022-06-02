@@ -103,7 +103,7 @@ function dataMileAge(mileage) {
           </div>
 
           <div class="t-info-half__title">
-            {{ data.steps[0].defineStepType(data.steps[0].stepType).title }}
+            {{ data.steps[0]._place[0].title }}
           </div>
           <div class="t-info-half__value">
             {{
@@ -177,7 +177,7 @@ function dataMileAge(mileage) {
       </div>
     </div>
     <ValidateItinerary :translationData="$t" />
-    <VisitsContainer :data="piece" :translationData="translation" />
+    <VisitsContainer :data="piece" :translationData="$t" />
   </div>
 </template>
 
