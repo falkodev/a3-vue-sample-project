@@ -24,7 +24,7 @@
     <div
       class="t-visit__infos t-infos"
       :class="{
-        't-visit__infos--domain': this.data.placeType == 'domain',
+        't-visit__infos--domain': this.data.stepType == 'domain',
       }"
     >
       <div class="t-infos__title">{{ this.data.title }}</div>
@@ -35,21 +35,19 @@
             :src="placeTypeIcon(this.data.placeType)"
             alt="category heading"
           />
-          {{ this.translation[this.step._place[0].placeType] }}
+          {{ $t[this.step._place[0].placeType] }}
         </div>
-        <div class="t-infos__visit">
-          ・ {{ this.translation.selfGuidedTour }}
-        </div>
+        <div class="t-infos__visit">・ {{ $t.selfGuidedTour }}</div>
       </div>
       <div class="t-infos__footer">
         <div class="">
-          <div v-if="this.data.placeType == 'domain'" class="t-infos__status">
-            {{ this.translation.takeAppointment }}
+          <div v-if="this.data.stepType == 'domain'" class="t-infos__status">
+            {{ $t.takeAppointment }}
           </div>
         </div>
         <div class="t-infos__fav">
           <HeartIcon />
-          <div class="">{{ this.translation.favorite }}</div>
+          <div class="">{{ $t.favorite }}</div>
         </div>
       </div>
     </div>
@@ -95,11 +93,11 @@ export default {
   data() {
     return {
       data: {},
+      $t: this.translation,
     }
   },
-  method: {
+  methods: {
     placeTypeIcon(type) {
-      console.log(type)
       if (type == 'wineStore') {
         return '/apos-frontend/default/modules/content/icons/wine-bottle.png'
       } else if (type == 'wineBar') {
@@ -118,7 +116,11 @@ export default {
     translation: Object,
   },
   mounted() {
-    this.data = this.step._place[0]
+    if (this.step._place.length == 0) {
+      this.data = this.step._domain[0]
+    } else {
+      this.data = this.step._place[0]
+    }
   },
   emits: ['delItem'],
   components: {

@@ -364,6 +364,7 @@
   "slug": "Slug",
   "slugInUse": "Slug already in use",
   "someoneElseTookControl": "{{ who }} took control of this document in another tab or window. A document can only be edited in one place at a time.",
+  "stepType": "Step type",
   "submit": "Submit",
   "submitted": "Submitted",
   "submittedDraft": "Submitted Draft",

@@ -392,6 +392,7 @@
   "toggleSection": "Toggle section",
   "toggleSelectionOf": "Toggle selection of {{ title }}",
   "treeError": "An error occurred while updating the page tree.",
+  "stepType": "Type d'étape",
   "type": "Type",
   "typeWithCount": "{{ type }} ({{ count }})",
   "unableToSwitchModes": "Unable to switch modes.",

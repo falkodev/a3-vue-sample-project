@@ -6,15 +6,12 @@
 export default {
   data() {
     return {
-      $t: {},
+      $t: this.translationData,
     }
   },
   name: 'ValidateItinerary',
   props: {
     translationData: Object,
-  },
-  mounted() {
-    this.$t = this.translationData
   },
 }
 </script>

@@ -82,10 +82,30 @@ module.exports = {
         label: 'apostrophe:steps',
         fields: {
           add: {
+            stepType: {
+              type: 'select',
+              label: 'apostrophe:stepType',
+              choices: [
+                {
+                  label: 'apostrophe:place.label',
+                  value: 'place',
+                },
+                {
+                  label: 'apostrophe:domain',
+                  value: 'domain',
+                },
+              ],
+            },
             _place: {
-              //TODO: when an order is created, check its matching itinerary, get steps with "domain" place and add them to the order
               type: 'relationship',
               label: 'apostrophe:place.label',
+              if: { stepType: 'place' },
+            },
+            _domain: {
+              //TODO: when an order is created, check its matching itinerary, get steps with "domain" place and add them to the order
+              type: 'relationship',
+              label: 'apostrophe:domain',
+              if: { stepType: 'domain' },
             },
           },
         },
