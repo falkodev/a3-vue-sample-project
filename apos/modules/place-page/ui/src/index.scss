@@ -36,7 +36,7 @@
   }
   &__content {
     position: relative;
-    top: calc(48px + $map-height);
+    top: calc(80px + $map-height);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -50,6 +50,9 @@
     filter: hue-rotate(140deg);
   }
   .t-step {
+    &__bloc {
+      padding-bottom: 16px;
+    }
     &__container {
       position: relative;
       display: flex;
@@ -92,6 +95,7 @@
       mask-repeat: no-repeat;
       mask-size: contain;
       mask-position: center;
+      cursor: pointer;
     }
   }
   .t-media {

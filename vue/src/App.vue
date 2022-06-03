@@ -8,7 +8,8 @@ import {
   // LControlLayers,
   // LTooltip,
   // LPopup,
-  LPolyline,
+  // LPolyline,
+  LGeoJson,
   // LPolygon,
   // LRectangle,
 } from '@vue-leaflet/vue-leaflet'
@@ -24,7 +25,8 @@ export default {
     // LControlLayers,
     // LTooltip,
     // LPopup,
-    LPolyline,
+    // LPolyline,
+    LGeoJson,
     // LPolygon,
     // LRectangle,
   },
@@ -32,12 +34,13 @@ export default {
   data() {
     return {
       allowZoom: false,
-      zoom: 15,
+      zoom: 18,
       userCoords: {
         latitude: 43.6367,
         longitude: 3.5866,
       },
       domain: {},
+      geojson: '',
     }
   },
   computed: {
@@ -105,7 +108,6 @@ export default {
         })
     },
     errorGettingPos(e) {
-      // console.log('error getting position ===>', e)
       return e
     },
     getUserPos() {
@@ -146,7 +148,15 @@ export default {
   beforeMount() {
     this.watchUserPos()
     this.domain = JSON.parse(this.piece)
+    console.log('domain ===>', this.domain)
+    this.geojson = JSON.parse(
+      this.domain.track.items[0].content
+        .replaceAll('<p>', '')
+        .replaceAll('</p>', '')
+        .replaceAll('<br />', ''),
+    )
   },
+  mounted() {},
   updated() {
     this.watchUserPos()
   },
@@ -161,7 +171,7 @@ export default {
         <l-map
           draggable="false"
           :minZoom="zoom"
-          :maxZoom="zoom"
+          :maxZoom="zoom + 2"
           v-model="zoom"
           :center="[userLat, userLong]"
           bounceAtZoomLimits="true"
@@ -172,6 +182,8 @@ export default {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           ></l-tile-layer>
 
+          <l-geo-json :geojson="geojson" />
+
           <l-marker :lat-lng="[userLat, userLong]" @moveend="getUserPos">
             <l-icon
               iconUrl="/apos-frontend/default/modules/content/icons/pin-user.svg"
@@ -179,19 +191,23 @@ export default {
             />
           </l-marker>
 
-          <l-marker
+          <!-- <l-marker
             v-for="(place, placeIndex) in places"
             :key="'place-' + placeIndex"
             :lat-lng="[place.lat, place.long]"
-          ></l-marker>
+          ></l-marker> -->
 
-          <l-polyline :lat-lngs="visitPoints" color="#e6004c"></l-polyline>
+          <!-- <l-polyline :lat-lngs="visitPoints" color="#e6004c"></l-polyline> -->
         </l-map>
       </div>
     </div>
 
     <div class="t-domain__content">
-      <div v-for="(step, stepIndex) in this.domain.visit" :key="stepIndex">
+      <div
+        v-for="(step, stepIndex) in this.domain.visit"
+        :key="stepIndex"
+        class="t-step__bloc"
+      >
         <div class="t-step__container">
           <div class="t-step__item">
             <p class="t-step__name">
