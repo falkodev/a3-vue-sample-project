@@ -514,6 +514,10 @@
       "title": "Title",
       "photo": "Photo",
       "downloadable": "Downloadable"
+    },
+    "track": {
+      "label": "GPS Track",
+      "pluralLabel": "GPS Tracks"
     }
   },
   "address": "Address",

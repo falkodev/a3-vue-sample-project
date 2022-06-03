@@ -45,6 +45,19 @@ module.exports = {
         def: null,
         required: true,
       },
+      track: {
+        type: 'area',
+        label: 'Tracé',
+        max: 1,
+        if: {
+          placeType: 'domain',
+        },
+        options: {
+          widgets: {
+            '@apostrophecms/rich-text': {},
+          },
+        },
+      },
       visit: {
         type: 'array',
         label: 'apostrophe:visit.label',
@@ -59,14 +72,12 @@ module.exports = {
               label: 'apostrophe:visit.sublabel',
               required: true,
             },
-            latitude: {
-              type: 'float',
-              label: 'apostrophe:visit.latitude',
-            },
-            longitude: {
-              type: 'float',
-              label: 'apostrophe:visit.longitude',
-            },
+            // track: {
+            //   type: 'attachment',
+            //   label: 'Tracé',
+            //   max: 1,
+            //   fileGroup: ['geojson'],
+            // },
             timeLength: {
               type: 'integer',
               label: 'apostrophe:visit.duration',
@@ -141,7 +152,7 @@ module.exports = {
       },
       visit: {
         label: 'apostrophe:visit.label',
-        fields: ['visit'],
+        fields: ['visit', 'track'],
       },
     },
   },
