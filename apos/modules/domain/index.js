@@ -39,6 +39,9 @@ module.exports = {
       basics: {
         fields: ['isAutoGuidedVisit', 'eShop'],
       },
+      widgets: {
+        fields: ['activities'],
+      },
     },
   },
 

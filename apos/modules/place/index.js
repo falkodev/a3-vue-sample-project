@@ -105,9 +105,11 @@ module.exports = {
     },
     group: {
       basics: {
+        fields: ['placeType', 'image', 'longitude', 'latitude'],
+      },
+      widgets: {
+        label: 'apostrophe:widgets',
         fields: [
-          'placeType',
-          'image',
           'description',
           'address',
           'phoneNumber',
