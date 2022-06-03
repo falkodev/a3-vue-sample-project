@@ -3,8 +3,6 @@
     <div class="t-visit__image-container">
       <img
         v-if="this.data.image"
-        alt=""
-        class="t-visit__image"
         :src="
           '/uploads/attachments/' +
           this.data.image._id +
@@ -13,27 +11,29 @@
           '.' +
           this.data.image.extension
         "
+        alt=""
+        class="t-visit__image"
       />
       <img
         v-else
-        class="t-visit__image"
         :src="'/apos-frontend/default/modules/content/images/default-domain.jpg'"
+        class="t-visit__image"
       />
     </div>
 
     <div
-      class="t-visit__infos t-infos"
       :class="{
-        't-visit__infos--domain': this.data.stepType == 'domain',
+        't-visit__infos--domain': this.data.stepType === 'domain',
       }"
+      class="t-visit__infos t-infos"
     >
       <div class="t-infos__title">{{ this.data.title }}</div>
       <div class="t-infos__description">
         <div class="t-infos__type">
           <img
-            class="t-infos__place-type"
             :src="placeTypeIcon(this.data.placeType)"
             alt="category heading"
+            class="t-infos__place-type"
           />
           {{ $t[this.step._place[0].placeType] }}
         </div>
@@ -54,32 +54,32 @@
     <div class="t-visit__bin">
       <svg
         v-if="status"
-        @click="$emit('delItem', id)"
-        xmlns="http://www.w3.org/2000/svg"
         class="t-bin-icon"
         fill="none"
-        viewBox="0 0 24 24"
         stroke="currentColor"
         stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        @click="$emit('delItem', id)"
       >
         <path
+          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
           stroke-linecap="round"
           stroke-linejoin="round"
-          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
         />
       </svg>
       <svg
         v-else
-        @click="$emit('addItem', id)"
         class="w-6 h-6"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
+        @click="$emit('addItem', id)"
       >
         <path
-          fill-rule="evenodd"
-          d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
           clip-rule="evenodd"
+          d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+          fill-rule="evenodd"
         ></path>
       </svg>
     </div>
@@ -88,6 +88,7 @@
 
 <script>
 import HeartIcon from './HeartIcon.vue'
+
 export default {
   name: 'VisitItem',
   data() {
@@ -129,7 +130,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '/assets/settings.scss';
 
 .t-visit {
@@ -184,6 +185,7 @@ export default {
     color: $color-purple;
   }
 }
+
 .t-infos {
   color: $color-purple;
 

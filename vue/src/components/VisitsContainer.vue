@@ -1,7 +1,7 @@
 <template>
   <div class="t-steps">
-    <div class="t-app-itinerary__map" v-if="centerLoaded">
-      <l-map v-model="zoom" :zoom="zoom" :center="[center.lat, center.lon]">
+    <div v-if="centerLoaded" class="t-app-itinerary__map">
+      <l-map v-model="zoom" :center="[center.lat, center.lon]" :zoom="zoom">
         <l-tile-layer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
@@ -9,35 +9,35 @@
         <l-marker
           v-for="marker in itinerary.steps"
           :key="marker"
-          :lat-lng="[marker._place[0].latitude, marker._place[0].longitude]"
           :icon="icon"
+          :lat-lng="[marker._place[0].latitude, marker._place[0].longitude]"
         >
         </l-marker>
       </l-map>
     </div>
-    <div class="t-steps__loaded t-loaded" v-if="itinerary.steps != ''">
+    <div v-if="itinerary.steps !== ''" class="t-steps__loaded t-loaded">
       <div class="t-loaded__title">{{ $t.visitList }}</div>
       <div class="t-loaded__steps">
         <VisitItem
           v-for="(step, index) in itinerary.steps"
-          :key="step"
           :id="index"
-          :step="step"
+          :key="step"
           :status="true"
+          :step="step"
           :translation="$t"
           @delItem="del"
         />
       </div>
     </div>
-    <div class="t-steps__loaded t-loaded" v-if="delSteps != ''">
+    <div v-if="delSteps != ''" class="t-steps__loaded t-loaded">
       <div class="t-loaded__title">{{ $t.add }}</div>
       <div class="t-loaded__steps">
         <VisitItem
           v-for="(step, index) in delSteps"
-          :key="step"
           :id="index"
-          :step="step"
+          :key="step"
           :status="false"
+          :step="step"
           :translation="$t"
           @addItem="add"
         />
@@ -51,6 +51,7 @@ import VisitItem from './VisitItem.vue'
 import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet'
 import { icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+
 export default {
   data() {
     return {
@@ -132,7 +133,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '/assets/settings.scss';
 
 .t-steps {
