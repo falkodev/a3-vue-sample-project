@@ -14,14 +14,13 @@ if (!window.apos.user) {
 const $t = window.apos.itinerary.labels
 let descriptionRef = ref(false)
 
-// function defineStepType(type) {
-//   if (type === 'place') {
-//     return '_place[0]'
-//   } else {
-//     return '_domain[0]'
-//   }
-// }
-//  Comment for push
+function defineStepType(step, prop) {
+  if (step.stepType === 'place') {
+    return step._place[0][prop]
+  } else {
+    return step._domain[0][prop]
+  }
+}
 
 function dataDescription() {
   if (descriptionRef.value) {
@@ -30,6 +29,7 @@ function dataDescription() {
     return data.description.substr(0, 150)
   }
 }
+
 function dataPrice(price) {
   if (!price) {
     return $t.free
@@ -57,18 +57,18 @@ function dataMileAge(mileage) {
       {{ dataDescription() }}..
       <span class="bold" @click="descriptionRef = !descriptionRef"
         >{{ $t.see }}
-        <span class="bold" v-if="descriptionRef">{{ $t.less }}..</span>
-        <span class="bold" v-else>{{ $t.more }}..</span>
+        <span v-if="descriptionRef" class="bold">{{ $t.less }}..</span>
+        <span v-else class="bold">{{ $t.more }}..</span>
       </span>
     </div>
 
-    <div class="t-app-itinerary__infos t-infos">
-      <div class="t-infos__title">{{ $t.globalInfos }}</div>
-      <div class="t-infos__container">
+    <div class="t-app-itinerary__infos t-general-infos">
+      <div class="t-general-infos__title">{{ $t.globalInfos }}</div>
+      <div class="t-general-infos__container">
         <div class="t-info-tier">
           <img
-            class="t-info-tier__logo"
             :src="'/apos-frontend/default/modules/content/icons/time.png'"
+            class="t-info-tier__logo"
           />
           <div class="t-info-tier__value">
             {{ data.duration.replace('00', '').replace(':', 'h') }}
@@ -76,8 +76,8 @@ function dataMileAge(mileage) {
         </div>
         <div class="t-info-tier">
           <img
-            class="t-info-tier__logo"
             :src="'/apos-frontend/default/modules/content/icons/event.png'"
+            class="t-info-tier__logo"
           />
           <div class="t-info-tier__value">
             {{ dataPrice(data.price) }}
@@ -85,25 +85,25 @@ function dataMileAge(mileage) {
         </div>
         <div class="t-info-tier">
           <img
-            class="t-info-tier__logo"
             :src="'/apos-frontend/default/modules/content/icons/destination.png'"
+            class="t-info-tier__logo"
           />
           <div class="t-info-tier__value">
             {{ dataMileAge(data.mileage) }}
           </div>
         </div>
       </div>
-      <div class="t-infos__container">
+      <div class="t-general-infos__container">
         <div class="t-info-half">
           <div class="t-info-half__logo-container">
             <img
-              class="t-info-half__logo t-info-half__logo--left"
               :src="'/apos-frontend/default/modules/content/icons/white-marker.png'"
+              class="t-info-half__logo t-info-half__logo--left"
             />
           </div>
 
           <div class="t-info-half__title">
-            {{ data.steps[0]._place[0].title }}
+            {{ defineStepType(data.steps[0], 'title') }}
           </div>
           <div class="t-info-half__value">
             {{
@@ -134,8 +134,8 @@ function dataMileAge(mileage) {
         <div class="t-info-half">
           <div class="t-info-half__logo-container">
             <img
-              class="t-info-half__logo t-info-half__logo--right"
               :src="'/apos-frontend/default/modules/content/icons/white-marker.png'"
+              class="t-info-half__logo t-info-half__logo--right"
             />
           </div>
 
@@ -181,7 +181,7 @@ function dataMileAge(mileage) {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import './assets/base.css';
 @import '/assets/settings.scss';
 
@@ -211,11 +211,11 @@ function dataMileAge(mileage) {
   }
 }
 
-.t-infos {
+.t-general-infos {
   margin-top: 36px;
 }
 
-.t-infos {
+.t-general-infos {
   &__title {
     color: $color-orange;
     text-transform: uppercase;
