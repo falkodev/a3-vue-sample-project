@@ -7,14 +7,17 @@ module.exports = {
       logo: {
         type: 'attachment',
         label: 'apostrophe:logoLabel',
+        fileGroup: 'images',
       },
       backgroundImage: {
         type: 'attachment',
         label: 'apostrophe:backgroundImageLabel',
+        fileGroup: 'images',
       },
       backgroundImageLogin: {
         type: 'attachment',
         label: 'apostrophe:backgroundImageLoginLabel',
+        fileGroup: 'images',
       },
       socialNetworks: {
         label: 'apostrophe:socialNetworks.label',
