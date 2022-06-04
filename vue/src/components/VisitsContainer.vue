@@ -85,32 +85,39 @@ function addStep(addIndex) {
 }
 
 function attributeId() {
-  for (let index = 0; index < itinerary.steps.length; index++) {
+  const length = itinerary.steps.length
+  for (let index = 0; index < length; index++) {
     itinerary.steps[index].order = index
   }
 }
 
 function updateCenter() {
+  const step = itinerary.steps[0]
+  const length = itinerary.steps.length
+
   let tempCenter = {
-    left: itinerary.steps[0].place.latitude,
-    right: itinerary.steps[0].place.latitude,
-    top: itinerary.steps[0].place.longitude,
-    bottom: itinerary.steps[0].place.longitude,
+    left: step.place.latitude,
+    right: step.place.latitude,
+    top: step.place.longitude,
+    bottom: step.place.longitude,
   }
-  for (let i = 0; i < itinerary.steps.length; i++) {
-    if (itinerary.steps[i].place.latitude < tempCenter.left) {
-      tempCenter.left = itinerary.steps[i].place.latitude
+
+  for (let i = 0; i < length; i++) {
+    const place = itinerary.steps[i].place
+    if (place.latitude < tempCenter.left) {
+      tempCenter.left = place.latitude
     }
-    if (itinerary.steps[i].place.latitude > tempCenter.right) {
-      tempCenter.right = itinerary.steps[i].place.latitude
+    if (place.latitude > tempCenter.right) {
+      tempCenter.right = place.latitude
     }
-    if (itinerary.steps[i].place.longitude < tempCenter.top) {
-      tempCenter.top = itinerary.steps[i].place.longitude
+    if (place.longitude < tempCenter.top) {
+      tempCenter.top = place.longitude
     }
-    if (itinerary.steps[i].place.longitude > tempCenter.bottom) {
-      tempCenter.bottom = itinerary.steps[i].place.longitude
+    if (place.longitude > tempCenter.bottom) {
+      tempCenter.bottom = place.longitude
     }
   }
+
   center = {
     lat: (tempCenter.left + tempCenter.right) / 2,
     lon: (tempCenter.top + tempCenter.bottom) / 2,
