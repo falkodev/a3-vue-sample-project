@@ -1,6 +1,6 @@
 @import '/modules/content/ui/src/scss/_settings';
 
-.t-spacer {
+.t-domain-spacer {
   height: 40vh;
   @media (min-width: map-get($breakpoints, 'md')) {
     min-height: 60vh;
@@ -94,9 +94,11 @@
       &__icon {
         margin-right: 7px;
       }
+
       &__title {
         font-size: 15px;
       }
+
       &__content {
         font-size: 12px;
       }

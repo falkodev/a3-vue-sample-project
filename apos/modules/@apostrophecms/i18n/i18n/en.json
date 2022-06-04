@@ -437,7 +437,11 @@
     "type": "itinerary type",
     "event": "event",
     "theme": "theme",
-    "syndicate": "syndicate route"
+    "syndicate": "syndicate route",
+    "globalInfos": "Global infos",
+    "visitList": "Visit list",
+    "takeAppointment": "Take appointment",
+    "validate": "Validate my itinerary"
   },
   "customer": "customer",
   "customers": "customers",
@@ -514,21 +518,11 @@
     "urlLabelLinkedin": "Enter your LinkedIn profile URL",
     "tabLabel": "Social networks"
   },
-  "theme": {
-    "see": "See",
-    "more": "more",
-    "less": "less",
-    "globalInfos": "Global infos",
-    "visitList": "Visit list",
-    "add": "Add",
-    "takeAppointment": "Take appointment",
-    "favorite": "Favorite",
-    "selfGuidedTour": "Self-guided tour",
-    "wineStore": "Wine store",
-    "wineBar": "Wine bar",
-    "domain": "Domain",
-    "validateItinerary": "Validate my itinerary"
-  },
+  "see": "See",
+  "more": "more",
+  "less": "less",
+  "add": "Add",
+  "favorites": "Favorite",
   "place": {
     "label": "Place",
     "pluralLabel": "Places",
