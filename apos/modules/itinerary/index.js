@@ -100,13 +100,13 @@ module.exports = {
             _place: {
               type: 'relationship',
               label: 'apostrophe:place.label',
-              if: {stepType: 'place'},
+              if: { stepType: 'place' },
             },
             _domain: {
               //TODO: when an order is created, check its matching itinerary, get steps with "domain" place and add them to the order
               type: 'relationship',
               label: 'apostrophe:domain',
-              if: {stepType: 'domain'},
+              if: { stepType: 'domain' },
             },
           },
         },
@@ -170,7 +170,7 @@ module.exports = {
 
             const placesIds = await self.apos.place
               .find(req, {})
-              .project({_id: 1})
+              .project({ _id: 1 })
               .toArray()
 
             if (!placesIds.length) {
