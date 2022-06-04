@@ -13,12 +13,6 @@
   </svg>
 </template>
 
-<script>
-export default {
-  name: 'HeartIcon',
-}
-</script>
-
 <style>
 .t-heart {
   margin: auto;
