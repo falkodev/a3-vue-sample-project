@@ -71,6 +71,7 @@ module.exports = {
         type: 'float',
         required: true,
         label: 'apostrophe:price',
+        min: 0,
       },
       image: {
         type: 'attachment',
@@ -99,13 +100,13 @@ module.exports = {
             _place: {
               type: 'relationship',
               label: 'apostrophe:place.label',
-              if: { stepType: 'place' },
+              if: {stepType: 'place'},
             },
             _domain: {
               //TODO: when an order is created, check its matching itinerary, get steps with "domain" place and add them to the order
               type: 'relationship',
               label: 'apostrophe:domain',
-              if: { stepType: 'domain' },
+              if: {stepType: 'domain'},
             },
           },
         },
@@ -132,7 +133,7 @@ module.exports = {
       },
     },
   },
-  extendMethods() {
+  extendMethods(self) {
     return {
       getBrowserData(_super, req) {
         const data = _super(req)
@@ -140,6 +141,7 @@ module.exports = {
           see: req.t('apostrophe:theme.see'),
           more: req.t('apostrophe:theme.more'),
           less: req.t('apostrophe:theme.less'),
+          free: req.t('apostrophe:free'),
           globalInfos: req.t('apostrophe:theme.globalInfos'),
           visitList: req.t('apostrophe:theme.visitList'),
           add: req.t('apostrophe:theme.add'),
@@ -151,6 +153,8 @@ module.exports = {
           selfGuidedTour: req.t('apostrophe:theme.selfGuidedTour'),
           validateItinerary: req.t('apostrophe:theme.validateItinerary'),
         }
+
+        data.assetBaseUrl = self.apos.asset.getAssetBaseUrl()
 
         return data
       },
@@ -166,7 +170,7 @@ module.exports = {
 
             const placesIds = await self.apos.place
               .find(req, {})
-              .project({ _id: 1 })
+              .project({_id: 1})
               .toArray()
 
             if (!placesIds.length) {

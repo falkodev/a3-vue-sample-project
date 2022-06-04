@@ -31,11 +31,7 @@ function dataDescription() {
 }
 
 function dataPrice(price) {
-  if (!price) {
-    return $t.free
-  } else {
-    return price + '€'
-  }
+  return price ? price + '€' : $t.free
 }
 
 function removeTags(str) {

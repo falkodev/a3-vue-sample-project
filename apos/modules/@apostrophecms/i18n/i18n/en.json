@@ -144,7 +144,7 @@
   "filterByTag": "Filter by Tag",
   "filterResultsByType": "Filter Results By Type",
   "findOrAddTag": "Find an existing tag or add a new one",
-  "free": "Gratuit",
+  "free": "Free",
   "globalDocLabel": "Global Content",
   "globalInformations": "Global Informations",
   "goToPage": "Go to page {{ page }}",
@@ -437,8 +437,7 @@
     "type": "itinerary type",
     "event": "event",
     "theme": "theme",
-    "syndicate": "syndicate route",
-    "free": "Free"
+    "syndicate": "syndicate route"
   },
   "customer": "customer",
   "customers": "customers",
