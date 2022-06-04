@@ -2,18 +2,8 @@
   <div class="t-validate">{{ $t.validateItinerary }}</div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      $t: this.translationData,
-    }
-  },
-  name: 'ValidateItinerary',
-  props: {
-    translationData: Object,
-  },
-}
+<script setup>
+const $t = window.apos.itinerary.labels
 </script>
 
 <style lang="scss">
@@ -22,7 +12,7 @@ export default {
 .t-validate {
   z-index: 99;
   position: fixed;
-  bottom: 9vh;
+  bottom: 80px;
   left: 0;
   right: 0;
   background: $color-orange;

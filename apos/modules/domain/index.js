@@ -132,7 +132,7 @@ module.exports = {
     /* istanbul ignore next */
     return {
       fetch: {
-        usage: 'npm run task --prefix apos -- domain:fetch --force=true',
+        usage: 'npm run task -- domain:fetch --force=true',
         async task({ force = false }) {
           await self.getDomains({ force })
         },

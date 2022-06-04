@@ -105,7 +105,14 @@ module.exports = {
     },
     group: {
       basics: {
-        fields: ['placeType', 'image', 'longitude', 'latitude'],
+        fields: [
+          'placeType',
+          'image',
+          'longitude',
+          'latitude',
+          'duration',
+          'labels',
+        ],
       },
       widgets: {
         label: 'apostrophe:widgets',
@@ -115,11 +122,6 @@ module.exports = {
           'phoneNumber',
           'website',
           'openingDaysAndHours',
-          'longitude',
-          'latitude',
-          'duration',
-          'image',
-          'labels',
         ],
       },
     },
@@ -151,7 +153,7 @@ module.exports = {
   components(self) {
     /* istanbul ignore next */
     return {
-      async categories(req, data) {
+      async categories(req) {
         const categories = config.get('categories')
         const result = await Promise.all([
           ...categories.map((category) =>
@@ -375,7 +377,7 @@ module.exports = {
     /* istanbul ignore next */
     return {
       fetch: {
-        usage: 'npm run task --prefix apos -- place:fetch --force=true',
+        usage: 'npm run task -- place:fetch --force=true',
         async task({ force = false }) {
           await self.getPlaces({ force })
         },

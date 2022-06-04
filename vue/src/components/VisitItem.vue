@@ -2,52 +2,54 @@
   <div class="t-visit">
     <div class="t-visit__image-container">
       <img
-        v-if="this.data.image"
+        v-if="step.place.image"
         :src="
           '/uploads/attachments/' +
-          this.data.image._id +
+          step.place.image._id +
           '-' +
-          this.data.image.name +
+          step.place.image.name +
           '.' +
-          this.data.image.extension
+          step.place.image.extension
         "
         alt=""
         class="t-visit__image"
       />
       <img
         v-else
-        :src="'/apos-frontend/default/modules/content/images/default-domain.jpg'"
+        :src="assetBaseUrl + '/modules/content/images/default-domain.jpg'"
         class="t-visit__image"
       />
     </div>
 
     <div
       :class="{
-        't-visit__infos--domain': this.data.stepType === 'domain',
+        't-visit__infos--domain': step.place.type === 'domain',
       }"
       class="t-visit__infos t-infos"
     >
-      <div class="t-infos__title">{{ this.data.title }}</div>
+      <div class="t-infos__title">{{ step.place.title }}</div>
       <div class="t-infos__description">
         <div class="t-infos__type">
           <img
-            :src="placeTypeIcon(this.data.placeType)"
+            :src="placeTypeIcon(step.place.placeType)"
             alt="category heading"
             class="t-infos__place-type"
           />
-          {{ $t[this.step._place[0].placeType] }}
+          {{ $t[step.place.placeType] }}
         </div>
-        <div class="t-infos__visit">・ {{ $t.selfGuidedTour }}</div>
+        <div v-if="step.place.isAutoGuidedVisit" class="t-infos__visit">
+          ・ {{ $t.autoGuidedVisit }}
+        </div>
       </div>
       <div class="t-infos__footer">
         <div class="">
-          <div v-if="this.data.stepType == 'domain'" class="t-infos__status">
+          <div v-if="step.place.type === 'domain'" class="t-infos__status">
             {{ $t.takeAppointment }}
           </div>
         </div>
         <div class="t-infos__fav">
           <HeartIcon />
-          <div class="">{{ $t.favorite }}</div>
+          <div class="">{{ $t.favorites }}</div>
         </div>
       </div>
     </div>
@@ -60,7 +62,7 @@
         stroke-width="2"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        @click="$emit('delItem', id)"
+        @click="$emit('removeStep', id)"
       >
         <path
           d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
@@ -74,7 +76,7 @@
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
-        @click="$emit('addItem', id)"
+        @click="$emit('addStep', id)"
       >
         <path
           clip-rule="evenodd"
@@ -86,47 +88,27 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import HeartIcon from './HeartIcon.vue'
 
-export default {
-  name: 'VisitItem',
-  data() {
-    return {
-      data: {},
-      $t: this.translation,
-    }
-  },
-  methods: {
-    placeTypeIcon(type) {
-      if (type == 'wineStore') {
-        return '/apos-frontend/default/modules/content/icons/wine-bottle.png'
-      } else if (type == 'wineBar') {
-        return '/apos-frontend/default/modules/content/icons/glass.png'
-      } else if (type == 'poi') {
-        return '/apos-frontend/default/modules/content/icons/binoculars.png'
-      } else {
-        return '/apos-frontend/default/modules/content/icons/grap.png'
-      }
-    },
-  },
-  props: {
-    step: Object,
-    id: Number,
-    status: Boolean,
-    translation: Object,
-  },
-  mounted() {
-    if (this.step.stepType === 'place') {
-      this.data = this.step._place[0]
-    } else {
-      this.data = this.step._domain[0]
-    }
-  },
-  emits: ['delItem'],
-  components: {
-    HeartIcon,
-  },
+defineProps({
+  id: Number,
+  step: Object,
+  status: Boolean,
+})
+defineEmits(['addStep', 'removeStep'])
+
+const $t = window.apos.itinerary.labels
+const assetBaseUrl = window.apos.itinerary.assetBaseUrl
+
+function placeTypeIcon(type) {
+  const img = {
+    wineStore: 'wine-bottle',
+    wineBar: 'glass',
+    poi: 'binoculars',
+    domain: 'grap',
+  }
+  return `${assetBaseUrl}/modules/content/icons/${img[type]}.png`
 }
 </script>
 
@@ -139,11 +121,10 @@ export default {
   flex-direction: row;
   align-items: center;
   width: 100%;
+  gap: 8px;
 
   &__image-container {
-    border: 1px solid $color-purple-light;
-    margin-right: 8px;
-    height: 90px;
+    height: 100px;
     display: flex;
     flex-direction: row;
     width: 25%;
@@ -158,7 +139,7 @@ export default {
   }
 
   &__infos {
-    height: 90px;
+    height: 100px;
     padding: 10px 16px;
     display: flex;
     flex-direction: column;
@@ -172,11 +153,6 @@ export default {
       background-color: $color-purple-transparent;
       color: $color-purple !important;
     }
-  }
-
-  &__description {
-    display: flex;
-    flex-direction: column;
   }
 
   &__bin {
@@ -193,6 +169,7 @@ export default {
     font-size: 14px;
     font-weight: bold;
     white-space: normal;
+    overflow: hidden;
   }
 
   &__type {
@@ -203,6 +180,10 @@ export default {
 
   &__visit {
     font-size: 12px;
+  }
+
+  &__description {
+    display: flex;
   }
 
   &__place-type {
@@ -219,7 +200,6 @@ export default {
   }
 
   &__footer {
-    margin-top: 7px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -228,13 +208,8 @@ export default {
   }
 
   &__fav {
-    position: absolute;
-    right: 8px;
-    bottom: 3px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     font-size: 10px;
   }
 }

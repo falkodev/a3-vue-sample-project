@@ -87,7 +87,7 @@ module.exports = {
     /* istanbul ignore next */
     return {
       defaults: {
-        usage: 'npm run task --prefix apos -- domain-related/activity:defaults',
+        usage: 'npm run task -- domain-related/activity:defaults',
         async task() {
           await self.setDefaultActivities()
         },
