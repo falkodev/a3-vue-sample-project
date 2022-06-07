@@ -156,7 +156,7 @@
   "home": "Accueil",
   "homePage": {
     "domain": "Les domaines à proximité",
-    "wineRoute": "Routes des vins",
+    "itinerary": "Routes des vins",
     "wineStore": "Cavistes aux alentours",
     "wineBar": "Restaurants, bars à vins proches",
     "poi": "Lieux d'intérêt près de vous"
@@ -496,7 +496,8 @@
     "openingDaysAndHours": "Horaires : ",
     "choices": "Ce domaine propose",
     "infos": "Informations et accès",
-    "event": "Événement"
+    "event": "Événement",
+    "note": "Note générale :"
   },
   "startDate": "Date début",
   "endDate": "Date fin",

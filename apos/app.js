@@ -51,6 +51,7 @@ require('apostrophe')({
     // The project's first custom page type.
     'default-page': {},
     place: {},
+    'place-page': {},
     domain: {},
     'domain-page': {},
     'register-page': {},

@@ -27,6 +27,12 @@ module.exports = {
         type: 'domain-page',
         title: 'Domain',
       },
+      {
+        slug: '/place',
+        parkedId: 'place',
+        type: 'place-page',
+        title: 'Place',
+      },
     ],
   },
 

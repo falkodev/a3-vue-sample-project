@@ -1,6 +1,6 @@
 @import '~/modules/content/ui/src/scss/_settings.scss';
 
-.t-place-category {
+.t-category {
   &__heading {
     display: flex;
     align-items: center;
@@ -34,7 +34,7 @@
   }
 }
 
-.t-place {
+.t-home {
   width: auto;
   height: auto;
   position: relative;
