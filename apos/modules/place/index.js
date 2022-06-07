@@ -46,17 +46,13 @@ module.exports = {
         required: true,
       },
       track: {
-        type: 'area',
-        label: 'Tracé',
-        max: 1,
         if: {
           placeType: 'domain',
         },
-        options: {
-          widgets: {
-            '@apostrophecms/rich-text': {},
-          },
-        },
+        type: 'attachment',
+        label: 'apostrophe:track.label',
+        max: 1,
+        fileGroup: 'geojson',
       },
       visit: {
         type: 'array',
@@ -186,7 +182,6 @@ module.exports = {
           ),
           self.apos.itinerary.find(req).limit(5).toArray(),
         ])
-
         return { result }
       },
     }
@@ -203,22 +198,6 @@ module.exports = {
       },
     }
   },
-
-  components(self) {
-    return {
-      async categories(req, data) {
-        const result = await Promise.all([
-          ...categories.map((category) =>
-            self.find(req, { placeType: category.value }).limit(5).toArray(),
-          ),
-          self.apos.itinerary.find(req).limit(5).toArray(),
-        ])
-
-        return { result }
-      },
-    }
-  },
-
   methods(self) {
     return {
       setChoices() {

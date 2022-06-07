@@ -3,38 +3,28 @@ import {
   LMap,
   LTileLayer,
   LMarker,
-  // LControlScale,
   LIcon,
-  // LControlLayers,
-  // LTooltip,
-  // LPopup,
   // LPolyline,
   LGeoJson,
-  // LPolygon,
-  // LRectangle,
 } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
+import IconArrow from '@/components/icons/IconArrow.vue'
 
 export default {
   components: {
     LMap,
     LTileLayer,
     LMarker,
-    // LControlScale,
     LIcon,
-    // LControlLayers,
-    // LTooltip,
-    // LPopup,
     // LPolyline,
     LGeoJson,
-    // LPolygon,
-    // LRectangle,
+    IconArrow,
   },
   props: ['piece', 'images'],
   data() {
     return {
       allowZoom: false,
-      zoom: 18,
+      zoom: 17,
       userCoords: {
         latitude: 43.6367,
         longitude: 3.5866,
@@ -47,7 +37,7 @@ export default {
     visit() {
       return this.domain.visit
     },
-    imagesList() {
+    attachmentList() {
       return JSON.parse(this.images)
     },
     userLat() {
@@ -148,13 +138,12 @@ export default {
   beforeMount() {
     this.watchUserPos()
     this.domain = JSON.parse(this.piece)
-    console.log('domain ===>', this.domain)
-    this.geojson = JSON.parse(
-      this.domain.track.items[0].content
-        .replaceAll('<p>', '')
-        .replaceAll('</p>', '')
-        .replaceAll('<br />', ''),
-    )
+    const jsonUrl = this.attachmentList.filter(x => x.extension == 'geojson')[0]._url
+    fetch(jsonUrl)
+    .then(response => response.json())
+    .then(data => {
+      console.log(this.geojson = data)
+    })
   },
   mounted() {},
   updated() {
@@ -164,10 +153,10 @@ export default {
 </script>
 
 <template>
-  <div class="t-domain">
-    <div class="t-domain__fixed">
-      <h2 class="t-domain__title">{{ domain.title }}</h2>
-      <div class="t-domain__map t-map__container">
+  <div class="t-visit">
+    <div class="t-visit__fixed">
+      <h2 class="t-visit__title">{{ domain.title }}</h2>
+      <div class="t-visit__map t-map__container">
         <l-map
           draggable="false"
           :minZoom="zoom"
@@ -202,7 +191,7 @@ export default {
       </div>
     </div>
 
-    <div class="t-domain__content">
+    <div class="t-visit__content">
       <div
         v-for="(step, stepIndex) in this.domain.visit"
         :key="stepIndex"
@@ -228,7 +217,7 @@ export default {
               v-for="(image, imageIndex) in substep._image"
               :key="imageIndex"
               :style="`background-image: url( ${
-                imagesList.filter((x) => x.name == image.attachment.name)[0]
+                attachmentList.filter((x) => x.name == image.attachment.name)[0]
                   ._urls.full
               })`"
             >
@@ -237,51 +226,7 @@ export default {
               </p>
             </div>
             <span :class="{ 't-media__download': substep.downloadable }">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112">
-                <circle
-                  cx="56"
-                  cy="56"
-                  r="48"
-                  fill="none"
-                  stroke="$color-purple"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="7.35"
-                />
-                <line
-                  x1="56"
-                  y1="24"
-                  x2="56"
-                  y2="88"
-                  fill="none"
-                  stroke="$color-purple"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="7.35"
-                />
-                <line
-                  x1="56"
-                  y1="88"
-                  x2="74"
-                  y2="64"
-                  fill="none"
-                  stroke="$color-purple"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="7.35"
-                />
-                <line
-                  x1="56"
-                  y1="88"
-                  x2="38"
-                  y2="64"
-                  fill="none"
-                  stroke="$color-purple"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="7.35"
-                />
-              </svg>
+              <IconArrow/>
             </span>
           </div>
         </div>

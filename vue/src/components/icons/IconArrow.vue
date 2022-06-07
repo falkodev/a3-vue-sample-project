@@ -1,0 +1,57 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112">
+    <circle
+      cx="56"
+      cy="56"
+      r="48"
+      fill="none"
+      stroke="$color-purple"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="7.35"
+    />
+    <line
+      x1="56"
+      y1="24"
+      x2="56"
+      y2="88"
+      fill="none"
+      stroke="$color-purple"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="7.35"
+    />
+    <line
+      x1="56"
+      y1="88"
+      x2="74"
+      y2="64"
+      fill="none"
+      stroke="$color-purple"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="7.35"
+    />
+    <line
+      x1="56"
+      y1="88"
+      x2="38"
+      y2="64"
+      fill="none"
+      stroke="$color-purple"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="7.35"
+    />
+  </svg>
+</template>
+
+<script>
+  export default {
+    name: 'IconArrow'
+  }
+</script>
+
+<style>
+
+</style>

@@ -1,7 +1,6 @@
 module.exports = {
   options: {
     fileGroups: [
-      // copier ici les 2 autres objets issus de la config par défaut - à trouver plus haut dans la conversation slack
       {
         name: 'images',
         label: 'apostrophe:images',
@@ -31,13 +30,14 @@ module.exports = {
           'dotx',
         ],
         extensionMaps: {},
-        // uploadfs should just accept this file as-is
+        // uploads should just accept this file as-is
         image: false,
       },
       {
         name: 'geojson',
         label: 'apostrophe:geoJson',
-        extensions: ['geoJson'],
+        extensions: ['geojson'],
+        extensionMaps: {},
         image: false,
       },
     ],
