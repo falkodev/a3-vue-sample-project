@@ -52,42 +52,17 @@
       </div>
     </div>
     <div class="t-visit__bin">
-      <svg
-        v-if="status"
-        @click="$emit('delItem', id)"
-        xmlns="http://www.w3.org/2000/svg"
-        class="t-bin-icon"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-        />
-      </svg>
-      <svg
-        v-else
-        @click="$emit('addItem', id)"
-        class="w-6 h-6"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-          clip-rule="evenodd"
-        ></path>
-      </svg>
+      <BinIcon v-if="status" @click="$emit('delItem', id)" />
+      <AddIcon v-else @click="$emit('addItem', id)" />
     </div>
   </div>
 </template>
 
 <script>
 import HeartIcon from './HeartIcon.vue'
+import BinIcon from './BinIcon.vue'
+import AddIcon from './AddIcon.vue'
+
 export default {
   name: 'VisitItem',
   data() {
@@ -125,6 +100,8 @@ export default {
   emits: ['delItem'],
   components: {
     HeartIcon,
+    BinIcon,
+    AddIcon,
   },
 }
 </script>
@@ -176,12 +153,6 @@ export default {
   &__description {
     display: flex;
     flex-direction: column;
-  }
-
-  &__bin {
-    width: 10%;
-    fill: $color-purple;
-    color: $color-purple;
   }
 }
 .t-infos {

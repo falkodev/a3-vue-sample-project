@@ -52,6 +52,20 @@ function dataMileAge(mileage) {
 <template>
   <div class="t-app-itinerary">
     <div class="t-spacer"></div>
+    <div class="t-image__container">
+      <img
+        class="t-image"
+        :src="
+          '/uploads/attachments/' +
+          data.image._id +
+          '-' +
+          data.image.name +
+          '.' +
+          data.image.extension
+        "
+        alt=""
+      />
+    </div>
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
@@ -185,7 +199,7 @@ function dataMileAge(mileage) {
 @import './assets/base.css';
 @import '/assets/settings.scss';
 
-.t-spacer {
+t-spacer {
   height: 20vh;
 }
 
@@ -194,9 +208,26 @@ function dataMileAge(mileage) {
   cursor: pointer;
 }
 
+.t-image {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+
+  &__container {
+    top: 20vh;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin-bottom: 20px;
+    height: 200px;
+    width: 100vw;
+  }
+}
+
 .t-app-itinerary {
-  padding: 32px;
-  margin: 15vh 0 15vh 0;
+  position: relative;
+  padding: 10vw;
+  margin: 5vw 0 5vw 0;
 
   &__title {
     font-size: 25px;
