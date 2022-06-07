@@ -133,12 +133,12 @@ module.exports = {
       async categories(req, data) {
         const categories = config.get('categories')
         const result = await Promise.all([
+          self.apos.domain.find(req).limit(5).toArray(),
+          self.apos.itinerary.find(req).limit(5).toArray(),
           ...categories.map((category) =>
             self.find(req, { placeType: category.value }).limit(5).toArray(),
           ),
-          self.apos.itinerary.find(req).limit(5).toArray(),
         ])
-
         return { result }
       },
     }
