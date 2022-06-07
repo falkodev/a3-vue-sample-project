@@ -71,6 +71,7 @@ module.exports = {
         type: 'float',
         required: true,
         label: 'apostrophe:price',
+        min: 0,
       },
       image: {
         type: 'attachment',
@@ -132,25 +133,29 @@ module.exports = {
       },
     },
   },
-  extendMethods() {
+
+  extendMethods(self) {
     return {
       getBrowserData(_super, req) {
         const data = _super(req)
         data.labels = {
-          see: req.t('apostrophe:theme.see'),
-          more: req.t('apostrophe:theme.more'),
-          less: req.t('apostrophe:theme.less'),
-          globalInfos: req.t('apostrophe:theme.globalInfos'),
-          visitList: req.t('apostrophe:theme.visitList'),
-          add: req.t('apostrophe:theme.add'),
-          wineStore: req.t('apostrophe:theme.wineStore'),
-          wineBar: req.t('apostrophe:theme.wineBar'),
-          domain: req.t('apostrophe:theme.domain'),
-          takeAppointment: req.t('apostrophe:theme.takeAppointment'),
-          favorite: req.t('apostrophe:theme.favorite'),
-          selfGuidedTour: req.t('apostrophe:theme.selfGuidedTour'),
-          validateItinerary: req.t('apostrophe:theme.validateItinerary'),
+          add: req.t('apostrophe:add'),
+          see: req.t('apostrophe:see'),
+          more: req.t('apostrophe:more'),
+          less: req.t('apostrophe:less'),
+          free: req.t('apostrophe:free'),
+          domain: req.t('apostrophe:domain'),
+          wineBar: req.t('apostrophe:wineBar'),
+          favorites: req.t('apostrophe:favorites'),
+          wineStore: req.t('apostrophe:wineStore'),
+          visitList: req.t('apostrophe:itinerary.visitList'),
+          autoGuidedVisit: req.t('apostrophe:autoGuidedVisit'),
+          globalInfos: req.t('apostrophe:itinerary.globalInfos'),
+          takeAppointment: req.t('apostrophe:itinerary.takeAppointment'),
+          validateItinerary: req.t('apostrophe:itinerary.validate'),
         }
+
+        data.assetBaseUrl = self.apos.asset.getAssetBaseUrl()
 
         return data
       },
@@ -171,7 +176,7 @@ module.exports = {
 
             if (!placesIds.length) {
               throw new Error(
-                'No places defined. Please, run the task to fetch places through the defined API, most likey "npm run task --prefix apos -- place:fetch"',
+                'No places defined. Please, run the task to fetch places through the defined API, most likely "npm run task -- place:fetch"',
               )
             }
 

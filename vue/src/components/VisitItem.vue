@@ -2,111 +2,91 @@
   <div class="t-visit">
     <div class="t-visit__image-container">
       <img
-        v-if="this.data.image"
-        alt=""
-        class="t-visit__image"
+        v-if="step.place.image"
         :src="
           '/uploads/attachments/' +
-          this.data.image._id +
+          step.place.image._id +
           '-' +
-          this.data.image.name +
+          step.place.image.name +
           '.' +
-          this.data.image.extension
+          step.place.image.extension
         "
+        alt=""
+        class="t-visit__image"
       />
       <img
         v-else
+        :src="assetBaseUrl + '/modules/content/images/default-domain.jpg'"
         class="t-visit__image"
-        :src="'/apos-frontend/default/modules/content/images/default-domain.jpg'"
       />
     </div>
 
     <div
-      class="t-visit__infos t-infos"
       :class="{
-        't-visit__infos--domain': this.data.stepType == 'domain',
+        't-visit__infos--domain': step.place.type === 'domain',
       }"
+      class="t-visit__infos t-infos"
     >
-      <div class="t-infos__title">{{ this.data.title }}</div>
+      <div class="t-infos__title">{{ step.place.title }}</div>
       <div class="t-infos__description">
         <div class="t-infos__type">
           <img
-            class="t-infos__place-type"
-            :src="placeTypeIcon(this.data.placeType)"
+            :src="placeTypeIcon(step.place.placeType)"
             alt="category heading"
+            class="t-infos__place-type"
           />
-          {{ $t[this.step._place[0].placeType] }}
+          {{ $t[step.place.placeType] }}
         </div>
-        <div class="t-infos__visit">・ {{ $t.selfGuidedTour }}</div>
+        <div v-if="step.place.isAutoGuidedVisit" class="t-infos__visit">
+          ・ {{ $t.autoGuidedVisit }}
+        </div>
       </div>
       <div class="t-infos__footer">
         <div class="">
-          <div v-if="this.data.stepType == 'domain'" class="t-infos__status">
+          <div v-if="step.place.type === 'domain'" class="t-infos__status">
             {{ $t.takeAppointment }}
           </div>
         </div>
         <div class="t-infos__fav">
           <HeartIcon />
-          <div class="">{{ $t.favorite }}</div>
+          <div class="">{{ $t.favorites }}</div>
         </div>
       </div>
     </div>
     <div class="t-visit__bin">
-      <BinIcon v-if="status" @click="$emit('delItem', id)" />
-      <AddIcon v-else @click="$emit('addItem', id)" />
+      <BinIcon v-if="status" @click="$emit('removeStep', id)" />
+      <AddIcon v-else @click="$emit('addStep', id)" />
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import HeartIcon from './HeartIcon.vue'
 import BinIcon from './BinIcon.vue'
 import AddIcon from './AddIcon.vue'
 
-export default {
-  name: 'VisitItem',
-  data() {
-    return {
-      data: {},
-      $t: this.translation,
-    }
-  },
-  methods: {
-    placeTypeIcon(type) {
-      if (type == 'wineStore') {
-        return '/apos-frontend/default/modules/content/icons/wine-bottle.png'
-      } else if (type == 'wineBar') {
-        return '/apos-frontend/default/modules/content/icons/glass.png'
-      } else if (type == 'poi') {
-        return '/apos-frontend/default/modules/content/icons/binoculars.png'
-      } else {
-        return '/apos-frontend/default/modules/content/icons/grap.png'
-      }
-    },
-  },
-  props: {
-    step: Object,
-    id: Number,
-    status: Boolean,
-    translation: Object,
-  },
-  mounted() {
-    if (this.step.stepType === 'place') {
-      this.data = this.step._place[0]
-    } else {
-      this.data = this.step._domain[0]
-    }
-  },
-  emits: ['delItem'],
-  components: {
-    HeartIcon,
-    BinIcon,
-    AddIcon,
-  },
+defineProps({
+  id: Number,
+  step: Object,
+  status: Boolean,
+})
+defineEmits(['addStep', 'removeStep'])
+
+const $t = window.apos.itinerary.labels
+const assetBaseUrl = window.apos.itinerary.assetBaseUrl
+
+function placeTypeIcon(type) {
+  const img = {
+    wineStore: 'wine-bottle',
+    wineBar: 'glass',
+    poi: 'binoculars',
+    domain: 'grap',
+  }
+  return `${assetBaseUrl}/modules/content/icons/${img[type]}.png`
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '/assets/settings.scss';
 
 .t-visit {
@@ -115,11 +95,10 @@ export default {
   flex-direction: row;
   align-items: center;
   width: 100%;
+  gap: 8px;
 
   &__image-container {
-    border: 1px solid $color-purple-light;
-    margin-right: 8px;
-    height: 90px;
+    height: 100px;
     display: flex;
     flex-direction: row;
     width: 25%;
@@ -134,7 +113,7 @@ export default {
   }
 
   &__infos {
-    height: 90px;
+    height: 100px;
     padding: 10px 16px;
     display: flex;
     flex-direction: column;
@@ -153,58 +132,63 @@ export default {
   &__description {
     display: flex;
     flex-direction: column;
-  }
-}
-.t-infos {
-  color: $color-purple;
-
-  &__title {
-    font-size: 14px;
-    font-weight: bold;
-    white-space: normal;
+    &__bin {
+      width: 10%;
+      fill: $color-purple;
+      color: $color-purple;
+    }
   }
 
-  &__type {
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-  }
+  .t-infos {
+    color: $color-purple;
 
-  &__visit {
-    font-size: 12px;
-  }
+    &__title {
+      font-size: 14px;
+      font-weight: bold;
+      white-space: normal;
+      overflow: hidden;
+    }
 
-  &__place-type {
-    width: 15px;
-    margin-right: 4px;
-  }
+    &__type {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+    }
 
-  &__status {
-    font-size: 10px;
-    padding: 2px 4px;
-    display: flex;
-    border: 1px solid $color-purple;
-    border-radius: 20px;
-  }
+    &__visit {
+      font-size: 12px;
+    }
 
-  &__footer {
-    margin-top: 7px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
+    &__description {
+      display: flex;
+    }
 
-  &__fav {
-    position: absolute;
-    right: 8px;
-    bottom: 3px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 10px;
+    &__place-type {
+      width: 15px;
+      margin-right: 4px;
+    }
+
+    &__status {
+      font-size: 10px;
+      padding: 2px 4px;
+      display: flex;
+      border: 1px solid $color-purple;
+      border-radius: 20px;
+    }
+
+    &__footer {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    &__fav {
+      display: flex;
+      flex-direction: column;
+      font-size: 10px;
+    }
   }
 }
 </style>

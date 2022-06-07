@@ -1,57 +1,6 @@
-<script setup>
-import VisitsContainer from './components/VisitsContainer.vue'
-import ValidateItinerary from './components/ValidateItinerary.vue'
-import { ref } from 'vue'
-
-const props = defineProps({
-  piece: Object,
-})
-const data = JSON.parse(props.piece)
-
-if (!window.apos.user) {
-  location.assign('/login?redirect=itinerary/' + data.slug)
-}
-const $t = window.apos.itinerary.labels
-let descriptionRef = ref(false)
-
-// function defineStepType(type) {
-//   if (type === 'place') {
-//     return '_place[0]'
-//   } else {
-//     return '_domain[0]'
-//   }
-// }
-//  Comment for push
-
-function dataDescription() {
-  if (descriptionRef.value) {
-    return data.description
-  } else {
-    return data.description.substr(0, 150)
-  }
-}
-function dataPrice(price) {
-  if (!price) {
-    return $t.free
-  } else {
-    return price + '€'
-  }
-}
-
-function removeTags(str) {
-  if (str === null || str === '') return false
-  else str = str.toString()
-  return str.replace(/(<([^>]+)>)/gi, '')
-}
-
-function dataMileAge(mileage) {
-  return mileage + 'km'
-}
-</script>
-
 <template>
   <div class="t-app-itinerary">
-    <div class="t-spacer"></div>
+    <div class="t-app-itinerary__spacer"></div>
     <div class="t-image__container">
       <img
         class="t-image"
@@ -71,27 +20,27 @@ function dataMileAge(mileage) {
       {{ dataDescription() }}..
       <span class="bold" @click="descriptionRef = !descriptionRef"
         >{{ $t.see }}
-        <span class="bold" v-if="descriptionRef">{{ $t.less }}..</span>
-        <span class="bold" v-else>{{ $t.more }}..</span>
+        <span v-if="descriptionRef" class="bold">{{ $t.less }}..</span>
+        <span v-else class="bold">{{ $t.more }}..</span>
       </span>
     </div>
 
-    <div class="t-app-itinerary__infos t-infos">
-      <div class="t-infos__title">{{ $t.globalInfos }}</div>
-      <div class="t-infos__container">
+    <div class="t-app-itinerary__infos t-general-infos">
+      <div class="t-general-infos__title">{{ $t.globalInfos }}</div>
+      <div class="t-general-infos__container">
         <div class="t-info-tier">
           <img
+            :src="assetBaseUrl + '/modules/content/icons/time.png'"
             class="t-info-tier__logo"
-            :src="'/apos-frontend/default/modules/content/icons/time.png'"
           />
           <div class="t-info-tier__value">
-            {{ data.duration.replace('00', '').replace(':', 'h') }}
+            {{ data.duration.replaceAll('00', '').replace(':', 'h') }}
           </div>
         </div>
         <div class="t-info-tier">
           <img
+            :src="assetBaseUrl + '/modules/content/icons/event.png'"
             class="t-info-tier__logo"
-            :src="'/apos-frontend/default/modules/content/icons/event.png'"
           />
           <div class="t-info-tier__value">
             {{ dataPrice(data.price) }}
@@ -99,109 +48,110 @@ function dataMileAge(mileage) {
         </div>
         <div class="t-info-tier">
           <img
+            :src="assetBaseUrl + '/modules/content/icons/destination.png'"
             class="t-info-tier__logo"
-            :src="'/apos-frontend/default/modules/content/icons/destination.png'"
           />
           <div class="t-info-tier__value">
             {{ dataMileAge(data.mileage) }}
           </div>
         </div>
       </div>
-      <div class="t-infos__container">
+      <div class="t-general-infos__container">
         <div class="t-info-half">
           <div class="t-info-half__logo-container">
             <img
+              :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
               class="t-info-half__logo t-info-half__logo--left"
-              :src="'/apos-frontend/default/modules/content/icons/white-marker.png'"
             />
           </div>
 
           <div class="t-info-half__title">
-            {{ data.steps[0]._place[0].title }}
+            {{ data.steps[0].place.title }}
           </div>
-          <div class="t-info-half__value">
-            {{
-              removeTags(
-                data.steps[0]._place[0].address.items[0].content.substring(
-                  data.steps[0]._place[0].address.items[0].content.indexOf(
-                    ',',
-                  ) + 1,
-                ),
-              )
-            }}
-          </div>
-          <div class="t-info-half__value">
-            {{
-              removeTags(
-                data.steps[0]._place[0].address.items[0].content.slice(
-                  0,
-                  -data.steps[0]._place[0].address.items[0].content.substring(
-                    data.steps[0]._place[0].address.items[0].content.indexOf(
-                      ',',
-                    ),
-                  ).length,
-                ),
-              )
-            }}
+          <div
+            v-for="addressPart in splitAddress(
+              removeTags(data.steps[0].place.address.items[0].content),
+            )"
+            :key="addressPart"
+            class="t-info-half__value"
+          >
+            {{ addressPart }}
           </div>
         </div>
         <div class="t-info-half">
           <div class="t-info-half__logo-container">
             <img
+              :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
               class="t-info-half__logo t-info-half__logo--right"
-              :src="'/apos-frontend/default/modules/content/icons/white-marker.png'"
             />
           </div>
 
           <div class="t-info-half__title">
-            {{ data.steps[data.steps.length - 1]._place[0].title }}
+            {{ data.steps[data.steps.length - 1].place.title }}
           </div>
-          <div class="t-info-half__value">
-            {{
+          <div
+            v-for="addressPart in splitAddress(
               removeTags(
-                data.steps[
-                  data.steps.length - 1
-                ]._place[0].address.items[0].content.substring(
-                  data.steps[
-                    data.steps.length - 1
-                  ]._place[0].address.items[0].content.indexOf(',') + 1,
-                ),
-              )
-            }}
-          </div>
-          <div class="t-info-half__value">
-            {{
-              removeTags(
-                data.steps[
-                  data.steps.length - 1
-                ]._place[0].address.items[0].content.slice(
-                  0,
-                  -data.steps[
-                    data.steps.length - 1
-                  ]._place[0].address.items[0].content.substring(
-                    data.steps[
-                      data.steps.length - 1
-                    ]._place[0].address.items[0].content.indexOf(','),
-                  ).length,
-                ),
-              )
-            }}
+                data.steps[data.steps.length - 1].place.address.items[0]
+                  .content,
+              ),
+            )"
+            :key="addressPart"
+            class="t-info-half__value"
+          >
+            {{ addressPart }}
           </div>
         </div>
       </div>
     </div>
-    <ValidateItinerary :translationData="$t" />
-    <VisitsContainer :data="piece" :translationData="$t" />
+    <ValidateItinerary />
+    <VisitsContainer :piece="data" />
   </div>
 </template>
 
-<style scoped lang="scss">
+<script setup>
+import VisitsContainer from './components/VisitsContainer.vue'
+import ValidateItinerary from './components/ValidateItinerary.vue'
+import { ref } from 'vue'
+
+if (!window.apos.user) {
+  location.assign('/login?redirect=itinerary/' + data.slug)
+}
+
+const props = defineProps({
+  piece: Object,
+})
+const data = JSON.parse(props.piece)
+const $t = window.apos.itinerary.labels
+const assetBaseUrl = window.apos.itinerary.assetBaseUrl
+let descriptionRef = ref(false)
+
+function dataDescription() {
+  return descriptionRef.value
+    ? data.description
+    : data.description.substr(0, 150)
+}
+
+function dataPrice(price) {
+  return price ? price + '€' : $t.free
+}
+
+function removeTags(str) {
+  return str?.toString().replace(/(<([^>]+)>)/gi, '')
+}
+
+function splitAddress(str) {
+  return str.split(',')
+}
+
+function dataMileAge(mileage) {
+  return mileage + 'km'
+}
+</script>
+
+<style lang="scss">
 @import './assets/base.css';
 @import '/assets/settings.scss';
-
-t-spacer {
-  height: 20vh;
-}
 
 .bold {
   font-weight: bold;
@@ -214,7 +164,7 @@ t-spacer {
   object-fit: cover;
 
   &__container {
-    top: 20vh;
+    top: 0vh;
     left: 0;
     right: 0;
     position: absolute;
@@ -227,7 +177,11 @@ t-spacer {
 .t-app-itinerary {
   position: relative;
   padding: 10vw;
-  margin: 5vw 0 5vw 0;
+  margin: 15vh 0;
+
+  &__spacer {
+    height: 20vh;
+  }
 
   &__title {
     font-size: 25px;
@@ -242,11 +196,11 @@ t-spacer {
   }
 }
 
-.t-infos {
+.t-general-infos {
   margin-top: 36px;
 }
 
-.t-infos {
+.t-general-infos {
   &__title {
     color: $color-orange;
     text-transform: uppercase;

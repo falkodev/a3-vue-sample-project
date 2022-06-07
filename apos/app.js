@@ -66,12 +66,7 @@ require('apostrophe')({
     },
     content: {},
     itinerary: {},
-    'itinerary-page': {
-      extend: '@apostrophecms/piece-page-type',
-      options: {
-        label: 'Itinerary Page',
-      },
-    },
+    'itinerary-page': {},
     customer: {},
     order: {},
     'collapse-rich-text-widget': {
