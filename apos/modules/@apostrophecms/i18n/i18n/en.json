@@ -144,7 +144,7 @@
   "filterByTag": "Filter by Tag",
   "filterResultsByType": "Filter Results By Type",
   "findOrAddTag": "Find an existing tag or add a new one",
-  "free": "Gratuit",
+  "free": "Free",
   "globalDocLabel": "Global Content",
   "globalInformations": "Global Informations",
   "goToPage": "Go to page {{ page }}",
@@ -438,7 +438,10 @@
     "event": "event",
     "theme": "theme",
     "syndicate": "syndicate route",
-    "free": "Free"
+    "globalInfos": "Global infos",
+    "visitList": "Visit list",
+    "takeAppointment": "Take appointment",
+    "validate": "Validate my itinerary"
   },
   "customer": "customer",
   "customers": "customers",
@@ -515,21 +518,11 @@
     "urlLabelLinkedin": "Enter your LinkedIn profile URL",
     "tabLabel": "Social networks"
   },
-  "theme": {
-    "see": "See",
-    "more": "more",
-    "less": "less",
-    "globalInfos": "Global infos",
-    "visitList": "Visit list",
-    "add": "Add",
-    "takeAppointment": "Take appointment",
-    "favorite": "Favorite",
-    "selfGuidedTour": "Self-guided tour",
-    "wineStore": "Wine store",
-    "wineBar": "Wine bar",
-    "domain": "Domain",
-    "validateItinerary": "Validate my itinerary"
-  },
+  "see": "See",
+  "more": "more",
+  "less": "less",
+  "add": "Add",
+  "favorites": "Favorites",
   "place": {
     "label": "Place",
     "pluralLabel": "Places",
