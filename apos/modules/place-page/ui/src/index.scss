@@ -1,8 +1,10 @@
 @import '~/modules/content/ui/src/scss/_settings.scss';
-.t-domain * {
+
+.t-visit * {
   box-sizing: border-box;
 }
-.t-domain {
+
+.t-visit {
   $map-height: 40vh;
 
   &__fixed {
@@ -27,6 +29,7 @@
     font-family: Sans-serif;
     color: $color-purple;
   }
+
   &__map {
     background-size: cover;
     background-position: center;
@@ -34,6 +37,7 @@
     height: auto;
     height: $map-height;
   }
+
   &__content {
     position: relative;
     top: calc(80px + $map-height);
@@ -46,13 +50,16 @@
     background-color: $color-white;
     border-radius: 24px 24px 0 0;
   }
+
   .t-icon__user {
     filter: hue-rotate(140deg);
   }
+
   .t-step {
     &__bloc {
       padding-bottom: 16px;
     }
+
     &__container {
       position: relative;
       display: flex;
@@ -62,6 +69,7 @@
       padding: 0 32px;
       width: 100%;
     }
+
     &__item {
       display: flex;
       align-items: center;
@@ -71,6 +79,7 @@
       border-radius: 4px;
       background-color: $color-purple-logo;
     }
+
     &__timing {
       display: flex;
       margin: 0;
@@ -78,6 +87,7 @@
       font-size: 0.8rem;
       color: $color-grey-50;
     }
+
     &__name {
       max-width: 296px;
       margin: 0;
@@ -87,6 +97,7 @@
       text-overflow: ellipsis;
       color: $color-purple;
     }
+
     &__icon {
       width: 24px;
       height: 24px;
@@ -98,6 +109,7 @@
       cursor: pointer;
     }
   }
+
   .t-media {
     &__container {
       display: flex;
@@ -107,6 +119,7 @@
       margin-bottom: 40px;
       padding: 12px 32px 0 32px;
     }
+
     &__item {
       position: relative;
       display: flex;
@@ -119,6 +132,7 @@
       background-color: $color-purple-logo;
       color: $color-purple;
     }
+
     &__image {
       position: relative;
       display: flex;
@@ -129,23 +143,24 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+
       &::before {
         position: absolute;
         content: '';
         height: 100%;
         width: 100%;
-        background: linear-gradient(
-          45deg,
-          $color-purple-alpha-20,
-          $color-purple-alpha-30
-        );
+        background: linear-gradient(45deg,
+            $color-purple-alpha-20,
+            $color-purple-alpha-30 );
       }
     }
+
     &__info {
       z-index: 1;
       text-align: center;
       color: $color-white;
     }
+
     &__download {
       position: absolute;
       right: 8px;
@@ -154,11 +169,13 @@
       width: 32px;
       cursor: pointer;
       transition: all 0.24s ease;
+
       svg {
         height: 32px;
         width: 32px;
         stroke: $color-white;
       }
+
       &:hover {
         transform: scale(1.1);
       }
