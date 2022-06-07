@@ -151,7 +151,7 @@
   "home": "Home",
   "homePage": {
     "domain": "Nearby domains",
-    "wineRoute": "Wine routes",
+    "itinerary": "Wine routes",
     "wineStore": "Wine merchants in the area",
     "wineBar": "Restaurants, wine bars nearby",
     "poi": "Places of interest near you"
@@ -493,7 +493,8 @@
     "openingDaysAndHours": "Opening hours: ",
     "choices": "This area offers",
     "infos": "Information and access",
-    "event": "Event"
+    "event": "Event",
+    "note": "General note:"
   },
   "startDate": "start date",
   "endDate": "end date",
