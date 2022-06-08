@@ -71,9 +71,12 @@ const icon = renderIcon({
   iconAnchor: [16, 37],
 })
 
+const emit = defineEmits(['itinerary'])
+
 function removeStep(delIndex) {
   let temp = itinerary.steps.splice(delIndex, 1)
   removedSteps.push(temp[0])
+  updateItinerary(itinerary)
   updateCenter()
 }
 
@@ -81,6 +84,7 @@ function addStep(addIndex) {
   let temp = removedSteps.splice(addIndex, 1)
   itinerary.steps.push(temp[0])
   itinerary.steps.sort((a, b) => a.order - b.order)
+  updateItinerary(itinerary)
   updateCenter()
 }
 
@@ -89,6 +93,11 @@ function attributeId() {
   for (let index = 0; index < length; index++) {
     itinerary.steps[index].order = index
   }
+}
+
+const updateItinerary = (i) => {
+  emit('itinerary', i)
+  console.log('emited')
 }
 
 function updateCenter() {

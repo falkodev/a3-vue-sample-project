@@ -105,7 +105,7 @@
       </div>
     </div>
     <ValidateItinerary />
-    <VisitsContainer :piece="data" />
+    <VisitsContainer @updateItinerary="updateItinerary" :piece="data" />
   </div>
 </template>
 
@@ -117,7 +117,6 @@ import { ref } from 'vue'
 if (!window.apos.user) {
   location.assign('/login?redirect=itinerary/' + data.slug)
 }
-
 const props = defineProps({
   piece: Object,
 })
@@ -125,6 +124,12 @@ const data = JSON.parse(props.piece)
 const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 let descriptionRef = ref(false)
+
+function updateItinerary(itinerary) {
+  console.log('test')
+  console.log(itinerary.steps)
+  // data.steps = itinerary.steps
+}
 
 function dataDescription() {
   return descriptionRef.value
