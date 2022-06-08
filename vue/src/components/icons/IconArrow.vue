@@ -47,11 +47,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'IconArrow'
-  }
+export default {
+  name: 'IconArrow',
+}
 </script>
 
-<style>
-
-</style>
+<style></style>

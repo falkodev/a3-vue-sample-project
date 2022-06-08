@@ -19,7 +19,7 @@ module.exports = {
         options: {
           'collapse-rich-text': {},
           max: 1,
-        }
+        },
       },
       isAutoGuidedVisit: {
         label: 'apostrophe:autoGuidedVisit',

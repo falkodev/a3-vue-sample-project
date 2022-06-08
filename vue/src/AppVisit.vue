@@ -122,12 +122,14 @@ export default {
     this.watchUserPos()
     this.domain = JSON.parse(this.piece)
     // console.log(this.domain)
-    const jsonUrl = this.attachmentList.filter(x => x.extension === 'geojson')[0]._url
+    const jsonUrl = this.attachmentList.filter(
+      (x) => x.extension === 'geojson',
+    )[0]._url
     fetch(jsonUrl)
-    .then(response => response.json())
-    .then(data => {
-      console.log(this.geojson = data)
-    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log((this.geojson = data))
+      })
   },
   mounted() {},
   updated() {
@@ -163,7 +165,6 @@ export default {
               iconSize="[120, 120]"
             />
           </l-marker>
-
         </l-map>
       </div>
     </div>
@@ -203,7 +204,7 @@ export default {
               </p>
             </div>
             <span :class="{ 't-media__download': subStep.downloadable }">
-              <IconArrow/>
+              <IconArrow />
             </span>
           </div>
         </div>
