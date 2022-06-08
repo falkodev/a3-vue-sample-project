@@ -27,23 +27,44 @@ require('apostrophe')({
     },
     '@apostrophecms/rich-text-widget': {
       options: {
-        className: 'bp-rich-text',
+        className: 't-rich-text',
+        defaultOptions: {
+          styles: [
+            {
+              tag: 'p',
+              label: 'apostrophe:richText',
+            },
+          ],
+        },
       },
     },
     '@apostrophecms/image-widget': {
       options: {
-        className: 'bp-image-widget',
+        className: 't-image-widget',
       },
     },
     '@apostrophecms/video-widget': {
       options: {
-        className: 'bp-video-widget',
+        className: 't-video-widget',
       },
     },
     // The project's first custom page type.
     'default-page': {},
+    place: {},
+    domain: {},
+    'domain-page': {
+      extend: '@apostrophecms/piece-page-type',
+      options: {
+        label: 'Domain Page',
+      },
+    },
     'register-page': {},
     component: {
+      options: {
+        ignoreNoCodeWarning: true,
+      },
+    },
+    'domain-related': {
       options: {
         ignoreNoCodeWarning: true,
       },
@@ -56,7 +77,7 @@ require('apostrophe')({
     'place-page': {
       extend: '@apostrophecms/piece-page-type',
       options: {
-        label: 'Place Page',
+        label: 'apostrophe:placePage.pageName',
       },
     },
   },

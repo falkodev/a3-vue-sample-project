@@ -11,12 +11,12 @@ describe('Login', () => {
 
     cy.get('.t-login__logo').should('contain', 'Your logo here')
     cy.get('.t-form__link').should('contain', 'Forgot your password?')
-    cy.get('.t-button--full').should('have.value', 'Login')
+    cy.get('.t-button--plain').should('have.value', 'Login')
     cy.get('.t-account__sentence').should(
       'contain',
       'No account yet? Sign up here!',
     )
-    cy.get('.t-button--empty').should('contain', 'I create my account')
+    cy.get('.t-button--outlined').should('contain', 'I create my account')
     cy.get('.t-login__bottom-sentence').should(
       'contain',
       'Excessive alcohol consumption can be damaging to your health',
@@ -46,8 +46,8 @@ describe('Login', () => {
     cy.wait(1500)
 
     cy.get('.t-snackbar')
-    .should('be.visible')
-    .should('contain', 'Successful login')
+      .should('be.visible')
+      .should('contain', 'Successful login')
   })
 
   it('should reject auth if empty fields', () => {
@@ -138,6 +138,9 @@ describe('Login', () => {
 
     cy.get('.t-form__errors')
       .should('be.visible')
-      .should('contain', 'Trop d\'essais. Vous pouvez réessayer dans une minute.')
+      .should(
+        'contain',
+        "Trop d'essais. Vous pouvez réessayer dans une minute.",
+      )
   })
 })

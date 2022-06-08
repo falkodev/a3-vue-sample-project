@@ -1,0 +1,7 @@
+{% extends "@apostrophecms/page:layout.html" %}
+
+{% block main %}
+<div id="app-visit" data-piece="{{ apos.page.stringify(data.piece) }}"
+  data-attachments="{{ apos.page.stringify( apos.attachment.all(data.piece, { annotate: true }) ) }}">
+</div>
+{% endblock %}
