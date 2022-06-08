@@ -4,6 +4,7 @@ module.exports = {
     alias: 'order',
     label: 'apostrophe:order',
     localized: false,
+    quickCreate: false,
   },
   fields: {
     add: {

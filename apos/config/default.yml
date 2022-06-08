@@ -19,13 +19,25 @@ register:
 categories:
   - label: apostrophe:wineStore
     value: wineStore
-    searchTerm: caviste
+    searchTerm: "caviste"
   - label: apostrophe:wineBar
     value: wineBar
-    searchTerm: bar a vins
+    searchTerm: "bar à vins"
   - label: apostrophe:poi
     value: poi
-    searchTerm: lieu dintérêt
+    searchTerm: "lieu d'intérêt"
   - label: apostrophe:domain
     value: domain
-    searchTerm: vignoble
+    searchTerm: "vignoble"
+
+activities:
+  - title: apostrophe:domainVisit
+    image: map.svg
+  - title: apostrophe:tasting
+    image: glass.svg
+  - title: apostrophe:directSale
+    image: bottles.svg
+  - title: apostrophe:organicWines
+    image: organic.svg
+  - title: apostrophe:bedAndBreakfast
+    image: bed.svg

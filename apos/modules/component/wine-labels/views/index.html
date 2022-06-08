@@ -1,0 +1,7 @@
+{% macro wineTag(value, color, size) %}
+
+  <div style='background-color: {{ color }}' class="t-wine__tag t-wine__tag--{{ value.toLowerCase() }} t-wine__tag--{{ size }}" >
+    {{ value }}
+  </div>
+
+{% endmacro %}

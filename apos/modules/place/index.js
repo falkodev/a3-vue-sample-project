@@ -5,106 +5,24 @@ const config = require('config')
 const { request } = require('gaxios')
 const asyncFs = require('fs/promises')
 
-const categories = [
-  {
-    label: 'apostrophe:domain',
-    value: 'domain',
-    searchTerm: 'vignoble',
-  },
-  {
-    label: 'apostrophe:wineStore',
-    value: 'wineStore',
-    searchTerm: 'caviste',
-  },
-  {
-    label: 'apostrophe:wineBar',
-    value: 'wineBar',
-    searchTerm: 'bar à vins',
-  },
-  {
-    label: 'apostrophe:poi',
-    value: 'poi',
-    searchTerm: "lieu d'intérêt",
-  },
-]
-
 module.exports = {
   extend: '@apostrophecms/piece-type',
+
   options: {
     alias: 'place',
     label: 'apostrophe:place.label',
     pluralLabel: 'apostrophe:place.pluralLabel',
-    localized: false,
+    localized: true,
   },
+
   fields: {
     add: {
       placeType: {
         type: 'select',
         label: 'apostrophe:place.type',
         choices: 'setChoices',
-        def: null,
+        def: 'domain',
         required: true,
-      },
-      track: {
-        if: {
-          placeType: 'domain',
-        },
-        type: 'attachment',
-        label: 'apostrophe:track.label',
-        max: 1,
-        fileGroup: 'geojson',
-      },
-      visit: {
-        type: 'array',
-        label: 'apostrophe:visit.label',
-        min: 1,
-        if: {
-          placeType: 'domain',
-        },
-        fields: {
-          add: {
-            name: {
-              type: 'string',
-              label: 'apostrophe:visit.sublabel',
-              required: true,
-            },
-            // track: {
-            //   type: 'attachment',
-            //   label: 'Tracé',
-            //   max: 1,
-            //   fileGroup: ['geojson'],
-            // },
-            timeLength: {
-              type: 'integer',
-              label: 'apostrophe:visit.duration',
-            },
-            substep: {
-              type: 'array',
-              label: 'apostrophe:visit.substep.label',
-              fields: {
-                add: {
-                  name: {
-                    type: 'string',
-                    help: 'Rentrez le titre de votre sous-étape',
-                    label: 'apostrophe:visit.substep.title',
-                    required: true,
-                  },
-                  _image: {
-                    label: 'Image',
-                    type: 'relationship',
-                    withType: '@apostrophecms/image',
-                    max: 1,
-                    group: ['image'],
-                  },
-                  downloadable: {
-                    type: 'boolean',
-                    label: 'apostrophe:visit.substep.downloadable',
-                  },
-                },
-              },
-            },
-          },
-        },
       },
       image: {
         type: 'attachment',
@@ -112,8 +30,44 @@ module.exports = {
         fileGroup: 'images',
       },
       address: {
-        type: 'string',
+        type: 'area',
         label: 'apostrophe:address',
+        options: {
+          widgets: {
+            '@apostrophecms/rich-text': {},
+          },
+          max: 1,
+        },
+      },
+      phoneNumber: {
+        type: 'area',
+        label: 'apostrophe:phoneNumber',
+        options: {
+          widgets: {
+            '@apostrophecms/rich-text': {},
+          },
+          max: 1,
+        },
+      },
+      website: {
+        type: 'area',
+        label: 'apostrophe:website',
+        options: {
+          widgets: {
+            '@apostrophecms/rich-text': {},
+          },
+          max: 1,
+        },
+      },
+      openingDaysAndHours: {
+        label: 'apostrophe:openingDaysAndHours',
+        type: 'area',
+        options: {
+          widgets: {
+            '@apostrophecms/rich-text': {},
+          },
+          max: 1,
+        },
       },
       longitude: {
         type: 'float',
@@ -123,35 +77,24 @@ module.exports = {
         type: 'float',
         required: true,
       },
-      labels: {
-        type: 'array',
-        titleField: 'name',
-        fields: {
-          add: {
-            name: {
-              type: 'string',
-            },
-          },
-        },
-      },
     },
     group: {
       basics: {
-        fields: [
-          'placeType',
-          'address',
-          'longitude',
-          'latitude',
-          'image',
-          'labels',
-        ],
+        fields: ['placeType', 'image', 'longitude', 'latitude'],
       },
-      visit: {
-        label: 'apostrophe:visit.label',
-        fields: ['visit', 'track'],
+      widgets: {
+        label: 'apostrophe:widgets',
+        fields: [
+          'description',
+          'address',
+          'phoneNumber',
+          'website',
+          'openingDaysAndHours',
+        ],
       },
     },
   },
+
   columns: {
     add: {
       placeType: {
@@ -159,6 +102,7 @@ module.exports = {
       },
     },
   },
+
   filters: {
     add: {
       placeType: {
@@ -166,16 +110,19 @@ module.exports = {
       },
     },
   },
+
   init(self) {
     /* istanbul ignore next */
     self.apos.migration.add('feed-places', () =>
       self.getPlaces({ force: false }),
     )
   },
+
   components(self) {
     /* istanbul ignore next */
     return {
       async categories(req, data) {
+        const categories = config.get('categories')
         const result = await Promise.all([
           ...categories.map((category) =>
             self.find(req, { placeType: category.value }).limit(5).toArray(),
@@ -186,21 +133,11 @@ module.exports = {
       },
     }
   },
-  extendMethods() {
-    /* istanbul ignore next */
-    return {
-      getRestQuery(_super, req) {
-        const query = _super(req)
-        if (req.user.role === 'editor') {
-          query._ids([req.user.domainIds[0]])
-        }
-        return query
-      },
-    }
-  },
+
   methods(self) {
     return {
       setChoices() {
+        const categories = config.get('categories')
         return [
           {
             label: '',
@@ -230,10 +167,12 @@ module.exports = {
             'utf8',
           )
 
+          const categories = config.get('categories')
+
           if (!dataFile || force) {
-            await self.fetchPlaces(assetsDir)
+            await self.fetchPlaces(self.name, categories, assetsDir)
           } else {
-            await self.createPlacesFromData(assetsDir, dataFile)
+            await self.createPlacesFromData(self.name, assetsDir, dataFile)
           }
 
           /* istanbul ignore next */
@@ -243,7 +182,7 @@ module.exports = {
         }
       },
 
-      async fetchPlaces(assetsDir) {
+      async fetchPlaces(module, categories, assetsDir) {
         const places = []
         const req = self.apos.task.getReq()
         const { url } = config.get('placesAPI')
@@ -268,13 +207,25 @@ module.exports = {
 
           for (const result of searchData.results) {
             const photoRef = result.photos?.[0]?.photo_reference
+
+            const address = {
+              metaType: 'area',
+              items: [
+                {
+                  metaType: 'widget',
+                  type: '@apostrophecms/rich-text',
+                  content: `<span>${result.vicinity}</span>`,
+                },
+              ],
+            }
+
             const place = {
-              ...self.newInstance(),
+              ...self.apos.modules[module].newInstance(),
               title: result.name,
               placeType: category.value,
-              address: result.vicinity,
               longitude: result.geometry.location.lng,
               latitude: result.geometry.location.lat,
+              address,
               ...(photoRef && { photoRef }),
             }
 
@@ -306,11 +257,11 @@ module.exports = {
 
                 place.image = image
               } catch (error) {
-                self.apos.util.error(error, 'Place fixtures image error')
+                self.apos.util.error(error, 'Place image error')
               }
             }
 
-            await self.insert(req, place)
+            await self.apos.modules[module].insert(req, place)
             places.push(place)
           }
         }
@@ -320,9 +271,11 @@ module.exports = {
         await asyncFs.writeFile(`${assetsDir}/data.json`, data)
       },
 
-      async createPlacesFromData(assetsDir, dataFile) {
+      async createPlacesFromData(module, assetsDir, dataFile) {
         const req = self.apos.task.getReq()
-        const existingPlaces = await self.find(req).toArray()
+        const existingPlaces = await self.apos.modules[module]
+          .find(req)
+          .toArray()
 
         if (!existingPlaces.length) {
           self.apos.util.log('Reading data from file...')
@@ -331,18 +284,48 @@ module.exports = {
             if (place.image) {
               const imageName = `${place.image.name}.${place.image.extension}`
               const imagePath = `${assetsDir}/images/${imageName}`
-              const image = await self.apos.attachment.insert(req, {
+              place.image = await self.apos.attachment.insert(req, {
                 name: imageName,
                 path: imagePath,
               })
-              place.image = image
             }
-            await self.insert(req, place)
+
+            place.address = {
+              metaType: 'area',
+              items: [
+                {
+                  metaType: 'widget',
+                  type: '@apostrophecms/rich-text',
+                  content: `<span>${place.address}</span>`,
+                },
+              ],
+            }
+
+            const insertedDoc = await self.apos.modules[module].insert(
+              req,
+              place,
+            )
+            for (const locale of Object.keys(self.apos.i18n.locales)) {
+              if (locale !== self.apos.i18n.defaultLocale) {
+                insertedDoc.slug = self.apos.util.slugify(
+                  `${insertedDoc.title}-1`,
+                )
+                const insertedDocInLocale = await self.apos.modules[
+                  module
+                ].localize(req, insertedDoc, locale)
+                await self.apos.modules[module].publish(
+                  req,
+                  insertedDocInLocale,
+                  locale,
+                )
+              }
+            }
           }
         }
       },
     }
   },
+
   handlers() {
     return {
       beforeSave: {
@@ -356,6 +339,7 @@ module.exports = {
       },
     }
   },
+
   tasks(self) {
     /* istanbul ignore next */
     return {

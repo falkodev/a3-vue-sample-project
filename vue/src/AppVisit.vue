@@ -4,7 +4,6 @@ import {
   LTileLayer,
   LMarker,
   LIcon,
-  // LPolyline,
   LGeoJson,
 } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -16,11 +15,10 @@ export default {
     LTileLayer,
     LMarker,
     LIcon,
-    // LPolyline,
     LGeoJson,
     IconArrow,
   },
-  props: ['piece', 'images'],
+  props: ['piece', 'attachments'],
   data() {
     return {
       allowZoom: false,
@@ -34,11 +32,8 @@ export default {
     }
   },
   computed: {
-    visit() {
-      return this.domain.visit
-    },
     attachmentList() {
-      return JSON.parse(this.images)
+      return JSON.parse(this.attachments)
     },
     userLat() {
       return this.userCoords.latitude
@@ -73,7 +68,7 @@ export default {
       ]
     },
     places() {
-      return this.visitPath.filter((x) => x.type == 'place')
+      return this.visitPath.filter((x) => x.type === 'place')
     },
     visitPoints() {
       return this.visitPath.reduce((prev, curr) => {
@@ -84,18 +79,10 @@ export default {
   },
   methods: {
     setPosition(pos) {
-      return new Promise((res) => {
-        res(pos)
-      })
-        .then((pos) => {
-          let time = new Date().toUTCString()
-          console.log(pos.coords, 'time :', time)
-          this.userCoords.latitude = pos.coords.latitude
-          this.userCoords.longitude = pos.coords.longitude
-        })
-        .catch((e) => {
-          console.log(e)
-        })
+      let time = new Date().toUTCString()
+      console.log(pos.coords, 'time :', time)
+      this.userCoords.latitude = pos.coords.latitude
+      this.userCoords.longitude = pos.coords.longitude
     },
     errorGettingPos(e) {
       return e
@@ -112,9 +99,7 @@ export default {
           },
         )
       } else {
-        console.log(
-          'Cannot execute getUserPos() ===> navigator.geolocation not available ',
-        )
+        // notif or "snackbar"
       }
     },
     watchUserPos() {
@@ -129,16 +114,15 @@ export default {
           },
         )
       } else {
-        console.log(
-          'Cannot execute watchUserPos() ===> navigator.geolocation not available ',
-        )
+        // notif or "snackbar"
       }
     },
   },
   beforeMount() {
     this.watchUserPos()
     this.domain = JSON.parse(this.piece)
-    const jsonUrl = this.attachmentList.filter(x => x.extension == 'geojson')[0]._url
+    // console.log(this.domain)
+    const jsonUrl = this.attachmentList.filter(x => x.extension === 'geojson')[0]._url
     fetch(jsonUrl)
     .then(response => response.json())
     .then(data => {
@@ -180,13 +164,6 @@ export default {
             />
           </l-marker>
 
-          <!-- <l-marker
-            v-for="(place, placeIndex) in places"
-            :key="'place-' + placeIndex"
-            :lat-lng="[place.lat, place.long]"
-          ></l-marker> -->
-
-          <!-- <l-polyline :lat-lngs="visitPoints" color="#e6004c"></l-polyline> -->
         </l-map>
       </div>
     </div>
@@ -209,12 +186,12 @@ export default {
         <div class="t-media__container">
           <div
             class="t-media__item"
-            v-for="(substep, substepIndex) in step.substep"
-            :key="'substep' + substepIndex"
+            v-for="(subStep, subStepIndex) in step.subStep"
+            :key="'subStep' + subStepIndex"
           >
             <div
               class="t-media__image"
-              v-for="(image, imageIndex) in substep._image"
+              v-for="(image, imageIndex) in subStep._image"
               :key="imageIndex"
               :style="`background-image: url( ${
                 attachmentList.filter((x) => x.name == image.attachment.name)[0]
@@ -222,10 +199,10 @@ export default {
               })`"
             >
               <p class="t-media__info">
-                {{ substep.name }}
+                {{ subStep.name }}
               </p>
             </div>
-            <span :class="{ 't-media__download': substep.downloadable }">
+            <span :class="{ 't-media__download': subStep.downloadable }">
               <IconArrow/>
             </span>
           </div>

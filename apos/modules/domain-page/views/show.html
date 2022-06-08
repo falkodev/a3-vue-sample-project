@@ -1,0 +1,96 @@
+{% extends "@apostrophecms/page:layout.html" %}
+{% import "component/wine-labels:index.html" as wineLabels %}
+
+{% block main %}
+  <div class="t-spacer"></div>
+
+  <div class="t-background-domain"
+  {% if data.piece.image -%} style="background-image: url('{{ apos.attachment.url(data.piece.image) }}');" {% endif -%}>
+    <div class="t-background-domain__container">
+      <div class="t-background-domain__title">{{ data.piece.title }}</div>
+      <div class="t-background-domain__place">
+        {{ __t('apostrophe:' + data.piece.placeType) }}
+        {% include "content:grape.svg" %}
+      </div>
+      <div class="t-domain__tags-domain">
+        {% for label in data.piece._wineLabels %}
+          {{ wineLabels.wineTag(label.value, label.color, 'medium') }}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="t-domain">
+    <h2 class="t-domain__title">{{ data.piece.title }}</h2>
+    <div class="t-domain__description">{% area data.piece, 'description' %}</div>
+
+    {% if data.piece.openingDaysAndHours.items[0].content %}
+      <div class="t-domain__schedule t-schedule">
+        <div class="t-domain__icon t-schedule__icon">{% include "content:clock.svg" %}</div>
+        <div class="t-schedule__title">{{ __t('apostrophe:placePage.openingDaysAndHours') }}</div>
+        <div class="t-schedule__content">{% area data.piece, 'openingDaysAndHours' %}</div>
+      </div>
+    {% else %}
+      {% area data.piece, 'openingDaysAndHours' %}
+    {% endif %}
+
+    {% area data.piece, 'activities' %}
+
+    {% if data.piece.eShop %}
+      <a href="{{ data.piece.eShop }}" target="_blank"
+      class="t-domain__e-shop t-button t-button--plain t-button--color-white">
+        {{ __t('apostrophe:placePage.toEshop') }}
+      </a>
+    {% endif %}
+
+    {% if data.piece.address.items[0].content or
+      data.piece.phoneNumber.items[0].content or
+      data.piece.website.items[0].content -%}
+      <div class="t-domain__access t-access">
+        <h3 class="t-access__title">{{ __t('apostrophe:placePage.infos') }}</h3>
+        <ul class="t-access__list">
+
+          {% if data.piece.address.items[0].content -%}
+            <li class="t-access__item">
+              <span class="t-domain__icon">{% include "content:home.svg" %}</span>
+              <span class="t-access__category">{{ __t('apostrophe:address') }}</span>
+              <span class="t-access__content">{% area data.piece, 'address' %}</span>
+            </li>
+          {% else %}
+            {% area data.piece, 'address' %}
+          {% endif -%}
+
+          {% if data.piece.phoneNumber.items[0].content -%}
+            <li class="t-access__item">
+              <a class="t-domain__phone-link" href="tel:{{ data.piece.phoneNumber }}">
+                <span class="t-domain__icon">{% include "content:phone.svg" %}</span>
+                <span class="t-access__category">{{ __t('apostrophe:phone') }}</span>
+                <span class="t-access__content">{% area data.piece, 'phoneNumber' %}</span>
+              </a>
+            </li>
+          {% else %}
+            {% area data.piece, 'phoneNumber' %}
+          {% endif -%}
+
+          {% if data.piece.website.items[0].content -%}
+            <li class="t-access__item">
+              <a class="t-domain__web-link" href="{{ data.piece.website }}">
+                <span class="t-domain__icon">{% include "content:web.svg" %}</span>
+                <span class="t-access__category">{{ __t('apostrophe:placePage.website') }}</span>
+                <span class="t-access__content">{% area data.piece, 'website' %}</span>
+              </a>
+            </li>
+          {% else %}
+            {% area data.piece, 'website' %}
+          {% endif -%}
+
+        </ul>
+      </div>
+    {% endif -%}
+
+    <div class="t-domain__actions">
+      <a href="#" class="t-button t-button--plain">{{ __t('apostrophe:placePage.appointment') }}</a>
+      <a href="#" class="t-button t-button--plain">{{ __t('apostrophe:placePage.startVisit') }}</a>
+    </div>
+  </div>
+{% endblock %}
