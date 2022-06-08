@@ -71,7 +71,7 @@ const icon = renderIcon({
   iconAnchor: [16, 37],
 })
 
-const emit = defineEmits(['itinerary'])
+const emit = defineEmits(['updateItinerary'])
 
 function removeStep(delIndex) {
   let temp = itinerary.steps.splice(delIndex, 1)
@@ -95,9 +95,8 @@ function attributeId() {
   }
 }
 
-const updateItinerary = (i) => {
-  emit('itinerary', i)
-  console.log('emited')
+const updateItinerary = (itinerary) => {
+  emit('updateItinerary', itinerary)
 }
 
 function updateCenter() {
