@@ -69,9 +69,7 @@
             {{ data.steps[0].place.title }}
           </div>
           <div
-            v-for="addressPart in splitAddress(
-              removeTags(data.steps[0].place.address.items[0].content),
-            )"
+            v-for="addressPart in splitAddress(removeTags(startStep))"
             :key="addressPart"
             class="t-info-half__value"
           >
@@ -90,12 +88,7 @@
             {{ data.steps[data.steps.length - 1].place.title }}
           </div>
           <div
-            v-for="addressPart in splitAddress(
-              removeTags(
-                data.steps[data.steps.length - 1].place.address.items[0]
-                  .content,
-              ),
-            )"
+            v-for="addressPart in splitAddress(removeTags(lastStep))"
             :key="addressPart"
             class="t-info-half__value"
           >
@@ -112,7 +105,7 @@
 <script setup>
 import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateItinerary from './components/ValidateItinerary.vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const props = defineProps({
   piece: Object,
@@ -127,10 +120,14 @@ const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 let descriptionRef = ref(false)
 
 function updateItinerary(itinerary) {
-  console.log('test', itinerary)
-  console.log(itinerary.steps)
-  // data.steps = itinerary.steps
+  data.steps = itinerary.steps
+  console.log(data.steps)
 }
+
+const startStep = computed(() => data.steps[0].place.address.items[0].content)
+const lastStep = computed(
+  () => data.steps[data.steps.length - 1].place.address.items[0].content,
+)
 
 function dataDescription() {
   return descriptionRef.value
