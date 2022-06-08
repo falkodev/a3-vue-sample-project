@@ -3,7 +3,6 @@
     <div class="t-app-itinerary__spacer"></div>
     <div class="t-image__container">
       <img
-        class="t-image"
         :src="
           '/uploads/attachments/' +
           data.image._id +
@@ -13,6 +12,7 @@
           data.image.extension
         "
         alt=""
+        class="t-image"
       />
     </div>
     <div class="t-app-itinerary__title">{{ data.title }}</div>
@@ -105,7 +105,7 @@
       </div>
     </div>
     <ValidateItinerary />
-    <VisitsContainer @updateItinerary="updateItinerary" :piece="data" />
+    <VisitsContainer :piece="data" @updateItinerary="updateItinerary" />
   </div>
 </template>
 
@@ -114,19 +114,20 @@ import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateItinerary from './components/ValidateItinerary.vue'
 import { ref } from 'vue'
 
-if (!window.apos.user) {
-  location.assign('/login?redirect=itinerary/' + data.slug)
-}
 const props = defineProps({
   piece: Object,
 })
 const data = JSON.parse(props.piece)
+if (!window.apos.user) {
+  location.assign('/login?redirect=itinerary/' + data.slug)
+}
+
 const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 let descriptionRef = ref(false)
 
 function updateItinerary(itinerary) {
-  console.log('test')
+  console.log('test', itinerary)
   console.log(itinerary.steps)
   // data.steps = itinerary.steps
 }
@@ -169,7 +170,7 @@ function dataMileAge(mileage) {
   object-fit: cover;
 
   &__container {
-    top: 0vh;
+    top: 0;
     left: 0;
     right: 0;
     position: absolute;
