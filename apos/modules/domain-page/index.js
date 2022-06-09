@@ -6,7 +6,7 @@ module.exports = {
   methods(self) {
     return {
       async visitPage(req) {
-        const piece = await self.apos.place
+        const piece = await self.apos.domain
           .find(req, { slug: req.params.slug })
           .toObject()
         self.setTemplate(req, 'visit')
