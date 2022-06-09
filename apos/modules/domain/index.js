@@ -22,6 +22,12 @@ module.exports = {
         type: 'url',
         label: 'apostrophe:eShop',
       },
+
+      _visits: {
+        type: 'relationship',
+        withType: 'visit',
+      },
+
       activities: {
         type: 'area',
         label: 'apostrophe:activity.pluralLabel',
@@ -31,6 +37,7 @@ module.exports = {
           },
           max: 1,
         },
+        
       },
     },
     remove: ['placeType'],
@@ -42,6 +49,9 @@ module.exports = {
       widgets: {
         fields: ['activities'],
       },
+      visits: {
+        fields: ['visits'],
+      }
     },
   },
 
