@@ -583,5 +583,29 @@
     "en": "English"
   },
   "languages": "Langues",
-  "widgets": "Widgets"
+  "widgets": "Widgets",
+  "visitType": {
+    "label": "Visite",
+    "pluralLabel": "Visites",
+    "image": "Image de la presentation du circuit",
+    "track":"Tracé du GPS",
+    "step": {
+      "pluralStep": "Étapes",
+      "title": "Titre de l'Étape"
+    },
+    "subStep": {
+      "pluralSubStep": "sous-étapes",
+      "title": "Titre de la sous-étape",
+      "duration": "Durée (en minutes)",
+      "image": "Photo de la sous-étape"
+    },
+    "content": {
+      "pluralContent": "Contenus",
+      "title": "Titre du contenu",
+      "presentation": "Video ou image de presentation",
+      "urlPodcast": "Url du podcast",
+      "content": "Contenu principal de la page",
+      "interview": "Video de l'interview"
+    }
+  }
 }
