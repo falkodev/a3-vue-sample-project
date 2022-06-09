@@ -121,15 +121,16 @@ export default {
   beforeMount() {
     this.watchUserPos()
     this.domain = JSON.parse(this.piece)
-    // console.log(this.domain)
+    console.log('attachments: ', this.attachmentList)
     const jsonUrl = this.attachmentList.filter(
       (x) => x.extension === 'geojson',
     )[0]._url
     fetch(jsonUrl)
       .then((response) => response.json())
       .then((data) => {
-        console.log((this.geojson = data))
+        console.log('geojson: ', (this.geojson = data))
       })
+      console.log(this.geojson, this.domain)
   },
   mounted() {},
   updated() {
@@ -171,7 +172,7 @@ export default {
 
     <div class="t-visit__content">
       <div
-        v-for="(step, stepIndex) in this.domain.visit"
+        v-for="(step, stepIndex) in domain.visitSteps"
         :key="stepIndex"
         class="t-step__bloc"
       >
@@ -187,7 +188,7 @@ export default {
         <div class="t-media__container">
           <div
             class="t-media__item"
-            v-for="(subStep, subStepIndex) in step.subStep"
+            v-for="(subStep, subStepIndex) in step.subSteps"
             :key="'subStep' + subStepIndex"
           >
             <div
@@ -195,7 +196,7 @@ export default {
               v-for="(image, imageIndex) in subStep._image"
               :key="imageIndex"
               :style="`background-image: url( ${
-                attachmentList.filter((x) => x.name == image.attachment.name)[0]
+                attachmentList.filter((x) => x.name === image.attachment.name)[0]
                   ._urls.full
               })`"
             >

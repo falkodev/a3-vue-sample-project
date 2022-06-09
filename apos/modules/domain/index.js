@@ -39,6 +39,55 @@ module.exports = {
           max: 1,
         },
       },
+      track: {
+        type: 'attachment',
+        label: 'apostrophe:visit.track.label',
+        max: 1,
+        fileGroup: 'geojson',
+      },
+      visitSteps: {
+        type: 'array',
+        label: 'apostrophe:visit.label',
+        min: 1,
+        fields: {
+          add: {
+            name: {
+              type: 'string',
+              label: 'apostrophe:visit.subLabel',
+              required: true,
+            },
+            timeLength: {
+              type: 'integer',
+              label: 'apostrophe:visit.duration',
+            },
+            subSteps: {
+              type: 'array',
+              label: 'apostrophe:visit.subStep.label',
+              fields: {
+                add: {
+                  name: {
+                    type: 'string',
+                    help: 'Rentrez le titre de votre sous-étape',
+                    label: 'apostrophe:visit.subStep.title',
+                    required: true,
+                  },
+                  _image: {
+                    label: 'Image',
+                    type: 'relationship',
+                    withType: '@apostrophecms/image',
+                    max: 1,
+                    group: ['image'],
+                  },
+                  downloadable: {
+                    type: 'boolean',
+                    label: 'apostrophe:visit.subStep.downloadable',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     },
     remove: ['placeType'],
 
@@ -48,6 +97,10 @@ module.exports = {
       },
       widgets: {
         fields: ['activities'],
+      },
+      visit: {
+        label: 'apostrophe:visit.label',
+        fields: ['visitSteps', 'track'],
       },
     },
   },
