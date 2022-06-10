@@ -1,0 +1,55 @@
+{% extends "@apostrophecms/page:layout.html" %}
+{% import "svgs.html" as svg %}
+
+{% block main %}
+  <div class="t-account">
+    {% if data.piece.image %}
+      <div class="t-account__img" style="background-image: url({{ apos.attachment.url(data.piece.image) }})"></div>
+    {% else %}
+      <div class="t-account__avatar">{{ data.piece.firstName[0] }}{{ data.piece.lastName[0] }}</div>
+    {% endif %}
+    <div class="t-account__title">{{ __t('apostrophe:accountPage.myAccount') }}</div>
+    <div class="t-account__name">
+      {{ data.piece.title }}
+    </div>
+  </div>
+
+  <ul class="t-account__list">
+    <li class="t-account__element">
+      <span class="t-account__icon">{% render svg.star() %}</span>
+      <div class="t-account__label">
+        <a class="t-account__action" href="#">{{ __t('apostrophe:accountPage.assessment') }}</a>
+      </div>
+    </li>
+
+    <li class="t-account__element">
+      <span class="t-account__icon">{% render svg.heart() %}</span>
+      <div class="t-account__label">
+        <a class="t-account__action" href="#">{{ __t('apostrophe:layout.textFavorites') }}</a>
+      </div>
+    </li>
+
+    <li class="t-account__element">
+      <span class="t-account__icon">{% render svg.map() %}</span>
+      <div class="t-account__label">
+        <a class="t-account__action" href="#">{{ __t('apostrophe:layout.textVisits') }}</a>
+      </div>
+    </li>
+
+    <li class="t-account__element">
+      <span class="t-account__icon">{% render svg.cog() %}</span>
+      <div class="t-account__label">
+        <a class="t-account__action" href="#">{{ __t('apostrophe:accountPage.setting') }}</a>
+      </div>
+    </li>
+
+    <li class="t-account__element">
+      <span class="t-account__icon t-account__icon--disable">{% render svg.disable() %}</span>
+      <div class="t-account__label">
+        <a class="t-account__action t-account__action--disable" href="#" data-disable-account data-open-popup="true">
+          {{ __t('apostrophe:disableAccount') }}
+        </a>
+      </div>
+    </li>
+  </ul>
+{% endblock %}

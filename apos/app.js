@@ -68,6 +68,7 @@ require('apostrophe')({
     content: {},
     itinerary: {},
     customer: {},
+    'customer-page': {},
     order: {},
     'collapse-rich-text-widget': {
       extend: '@apostrophecms/rich-text-widget',

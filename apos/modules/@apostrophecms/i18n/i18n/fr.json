@@ -11,6 +11,7 @@
   "applyToSubpages": "Apply to Subpages",
   "arrayCancelDescription": "Do you want to discard changes to this list?",
   "archive": "Archivé",
+  "archiveAccount": "Voulez-vous vraiment supprimer votre compte ?",
   "archiveImage": "Archiver Image",
   "archiveOnlyThisPage": "Archiver seulement cette page",
   "archivePageAndSubpages": "Archiver cette page et les pages enfants",
@@ -71,11 +72,13 @@
   "dayjsCellDateFormat": "apostrophe",
   "dayjsMediaCreatedDateFormat": "MMM Do, YYYY",
   "deduplicateSlugReserved": "The deduplicate- slug is reserved.",
+  "deleteAccount": "Votre compte a bien été supprimé",
   "delete": "Supprimer",
   "deleteDraft": "Supprimer brouillon",
   "deleteDraftAffirmativeLabel": "Oui, supprimer ce document",
   "deleteDraftDescription": "Since {{ title }} has never been published, this will completely delete the document.",
   "description": "Description",
+  "disableAccount": "Supprimer le compte",
   "disabled": "Disabled",
   "discardChanges": "Discard Changes",
   "discardChangesPrompt": "Do you want to discard changes?",
@@ -519,6 +522,11 @@
     "label": "Lieu",
     "pluralLabel": "Lieux",
     "type": "Type"
+  },
+  "accountPage": {
+    "assessment": "Appréciations données",
+    "setting": "Réglages",
+    "myAccount": "Mon compte"
   },
   "domainType": {
     "label": "Domaine",
