@@ -2,6 +2,7 @@ const path = require('path')
 
 module.exports = {
   'component/checkbox': {},
+  'component/popup': {},
   'component/home-redirect': {
     options: {
       ignoreNoCodeWarning: true,
@@ -16,6 +17,7 @@ module.exports = {
           resolve: {
             alias: {
               '@/snackbar': path.join(__dirname, './snackbar/public'),
+              '@/popup': path.join(__dirname, './popup/public'),
             },
           },
         },

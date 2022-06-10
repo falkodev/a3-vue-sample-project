@@ -68,13 +68,22 @@ export default () => {
             },
           })
 
+          const customers = await apos.http.get(
+            `${apos.customer.action}?search=${usernameInput.value}`,
+            {},
+          )
+          if (customers?.results?.length) {
+            const customer = customers.results[0]
+            window.sessionStorage.setItem('aposCustomerSlug', customer.slug)
+            window.sessionStorage.setItem('aposCustomerId', customer._id)
+          }
+
           window.sessionStorage.setItem('aposStateChange', Date.now())
           window.sessionStorage.setItem('aposStateChangeSeen', '{}')
           window.sessionStorage.setItem('aposLoadAfterLogin', true)
           location.assign(`${apos.prefix}/`)
         } catch (e) {
-          const error = e.message || loginError
-          formError.innerHTML = error
+          formError.innerHTML = e.message || loginError
           formError.style.display = 'block'
         } finally {
           loader.style.opacity = 0
