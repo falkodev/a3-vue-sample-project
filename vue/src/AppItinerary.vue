@@ -121,12 +121,10 @@ let descriptionRef = ref(false)
 
 function updateItinerary(itinerary) {
   data.steps = itinerary.steps
-  console.log(data.steps)
   refStartStep.value = data.steps[0]
   refLastStep.value = data.steps[data.steps.length - 1]
   refItineraryDuration.value = data.steps
 }
-
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
   () => refStartStep.value.place.address.items[0].content,
@@ -136,20 +134,21 @@ const refLastStep = ref(data.steps[data.steps.length - 1])
 const lastStep = computed(
   () => refLastStep.value.place.address.items[0].content,
 )
-
 const refItineraryDuration = ref(data.duration)
 const itineraryDuration = computed(() =>
-  refItineraryDuration.value.length
-    ? calculateItineraryDuration(refItineraryDuration)
-    : data.duration,
+  calculateItineraryDuration(refItineraryDuration.value),
 )
 
 function calculateItineraryDuration(steps) {
-  let duration = 0
-  steps.forEach((step) => {
-    step._place.length ? (step = step._place) : (step = step._domain)
-    duration = duration + step.duration
-  })
+  let duration = steps
+  console.log(steps)
+  if (Array.isArray(steps)) {
+    steps.forEach((step) => {
+      step._place.length ? (step = step._place) : (step = step._domain)
+      duration = duration + step.duration
+    })
+  }
+
   return duration
 }
 
