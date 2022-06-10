@@ -339,7 +339,7 @@ module.exports = {
               place,
             )
             for (const locale of Object.keys(self.apos.i18n.locales)) {
-              if (locale !== self.apos.i18n.defaultLocale) {
+              if (insertedDoc && locale !== self.apos.i18n.defaultLocale) {
                 insertedDoc.slug = self.apos.util.slugify(
                   `${insertedDoc.title}-1`,
                 )

@@ -135,6 +135,7 @@ module.exports = {
   },
 
   extendMethods(self) {
+    /* istanbul ignore next */
     return {
       getBrowserData(_super, req) {
         const data = _super(req)
