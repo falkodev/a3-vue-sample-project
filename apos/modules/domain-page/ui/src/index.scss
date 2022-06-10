@@ -1,18 +1,45 @@
 @import '/modules/content/ui/src/scss/_settings';
 
+.t-spacer-domain {
+  height: 32vh;
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
+  }
+}
+
+.t-background-domain {
+  min-height: 40vh;
+  background-attachment: fixed;
+  background-position: 100% 15%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: fixed;
+  right: 0;
+  left: 0;
+
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
+  }
+
+  &__container {
+    margin: auto;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .t-domain {
   &__tags-domain {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: end;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-right: 5px;
   }
 
   &__title {
     color: $color-purple;
   }
-
   &__actions {
     display: flex;
     align-items: center;
