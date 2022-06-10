@@ -11,6 +11,7 @@
   "applyToSubpages": "Apply to Subpages",
   "arrayCancelDescription": "Do you want to discard changes to this list?",
   "archive": "Archive",
+  "archiveAccount": "Do you really want to delete your account?",
   "archiveImage": "Archive Image",
   "archiveOnlyThisPage": "Archive only this page",
   "archivePageAndSubpages": "Archive this page and all child pages",
@@ -68,12 +69,14 @@
   "dayjsCellDateFormat": "apostrophe",
   "dayjsMediaCreatedDateFormat": "MMM Do, YYYY",
   "deduplicateSlugReserved": "The deduplicate- slug is reserved.",
+  "deleteAccount": "Your account has been successfully deleted",
   "delete": "Delete",
   "deleteDraft": "Delete Draft",
   "deleteDraftAffirmativeLabel": "Yes, delete document",
   "deleteDraftDescription": "Since {{ title }} has never been published, this will completely delete the document.",
   "description": "Description",
   "disabled": "Disabled",
+  "disableAccount": "Delete account",
   "discardChanges": "Discard Changes",
   "discardChangesPrompt": "Do you want to discard changes?",
   "discardChangesToDocTypePrompt": "Do you want to discard changes to this {{ type }}?",
@@ -516,6 +519,11 @@
     "label": "Place",
     "pluralLabel": "Places",
     "type": "Place Type"
+  },
+  "accountPage": {
+    "assessment": "Appreciations given",
+    "setting": "Settings",
+    "myAccount": "My account"
   },
   "domainType": {
     "label": "Domain",

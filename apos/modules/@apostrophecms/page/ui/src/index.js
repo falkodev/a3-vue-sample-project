@@ -50,5 +50,25 @@ export default () => {
         dismiss: true,
       })
     }
+
+    const account = sessionStorage.getItem('delete')
+    if (JSON.parse(account)) {
+      // weird behavior where the layout is not fully loaded following a user account deletion
+      // so wait for the DOM to be ready
+      const snackbars = document.querySelector('[data-snackbars]')
+      if (snackbars) {
+        sessionStorage.setItem('delete', false)
+        displaySnackbar(apos.page.labels.deleteAccount, {
+          type: 'success',
+          dismiss: true,
+        })
+      }
+    }
+
+    const customerSlug = sessionStorage.getItem('aposCustomerSlug')
+    const customerLink = document.querySelector('[data-customer-link]')
+    if (customerLink && customerSlug && apos.customer?.name) {
+      customerLink.href = `/${apos.locale}/${apos.customer.name}/${customerSlug}`
+    }
   })
 }

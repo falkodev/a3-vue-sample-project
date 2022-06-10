@@ -1,4 +1,5 @@
 // This configures the @apostrophecms/pages module to add a "home" page type to the
+
 // pages menu
 module.exports = {
   options: {
@@ -33,7 +34,17 @@ module.exports = {
         type: 'place-page',
         title: 'Place',
       },
+      {
+        slug: '/customer',
+        parkedId: 'customer',
+        type: 'customer-page',
+        title: 'Customer',
+      },
     ],
+    templateData: {
+      loggedInMsg: 'loggedInMsg',
+      loggedOutMsg: 'loggedOutMsg',
+    },
   },
 
   init(self) {
@@ -45,13 +56,12 @@ module.exports = {
       getBrowserData(_super, req) {
         let data = {}
 
-        if (req.user) {
-          data = _super(req)
-        }
+        data = _super(req)
 
         data.labels = {
           loggedInMsg: req.t('apostrophe:loggedInMsg'),
           loggedOutMsg: req.t('apostrophe:loggedOutMsg'),
+          deleteAccount: req.t('apostrophe:deleteAccount'),
         }
 
         return data
