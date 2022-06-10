@@ -1,5 +1,4 @@
 {% extends "@apostrophecms/page:layout.html" %}
-{% import "component/wine-labels:index.html" as wineLabels %}
 
 {% block main %}
   <div class="t-spacer-place"></div>
@@ -13,9 +12,7 @@
         {% include "content:grape.svg" %}
       </div>
       <div class="t-domain__tags-domain">
-        {% for label in data.piece._wineLabels %}
-          {{ wineLabels.wineTag(label.value, label.color, 'medium') }}
-        {% endfor %}
+        {% area data.piece, 'wineLabels' %}
       </div>
     </div>
   </div>
@@ -35,6 +32,8 @@
     </div>
 
     {% area data.piece, 'activities' %}
+    {% area data.piece, 'conveniences' %}
+    {% area data.piece, 'wineTypes' %}
 
     {% if data.piece.eShop %}
       <a href="{{ data.piece.eShop }}" target="_blank"

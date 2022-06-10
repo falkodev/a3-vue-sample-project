@@ -13,6 +13,6 @@ describe('NotFound', () => {
       'contain',
       '404 error: The page cannot be found or no longer exists.',
     )
-    cy.get('.t-button--empty').should('contain', 'Back to Home')
+    cy.get('.t-button--outlined').should('contain', 'Back to Home')
   })
 })

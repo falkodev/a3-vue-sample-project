@@ -112,7 +112,7 @@
         display: flex;
         align-self: flex-start;
         color: $color-purple;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
       }
 
       &__list {
@@ -140,20 +140,33 @@
         margin-left: 12px;
 
         &-address {
-          width: 75px;
+          width: 85px;
           margin-left: 16px;
-          min-width: 75px;
+          min-width: 85px;
+        }
+
+        &-visit {
+          width: 130px;
+          margin-left: 16px;
+          min-width: 130px;
         }
       }
 
       &__data {
         margin-left: 5px;
         display: inline-block;
+
+        &-address {
+          .apos-area p {
+            margin: 0;
+          }
+        }
       }
 
       &__item {
         display: flex;
         align-items: flex-start;
+        min-height: 30px;
 
         .t-content__web-link + .apos-area p {
           margin: 0;

@@ -1,0 +1,7 @@
+{% import "component/wine-labels:index.html" as wineLabels %}
+
+<div class="t-wine-tag">
+  {% for label in data.widget._wineLabels %}
+    {{ wineLabels.wineTag(label.title, label.color, 'medium') }}
+  {% endfor %}
+</div>
