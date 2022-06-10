@@ -1,0 +1,14 @@
+@import '/modules/content/ui/src/scss/_settings';
+
+.t-wine-tag {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  margin-top: 10px;
+  white-space: nowrap;
+  justify-content: flex-end;
+
+  @media (min-width: map-get($breakpoints, 'md')) {
+    justify-content: center;
+  }
+}
