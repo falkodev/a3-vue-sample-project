@@ -34,7 +34,7 @@
             class="t-info-tier__logo"
           />
           <div class="t-info-tier__value">
-            {{ data.duration.replaceAll('00', '').replace(':', 'h') }}
+            {{ itineraryDuration }}
           </div>
         </div>
         <div class="t-info-tier">
@@ -122,12 +122,36 @@ let descriptionRef = ref(false)
 function updateItinerary(itinerary) {
   data.steps = itinerary.steps
   console.log(data.steps)
+  refStartStep.value = data.steps[0]
+  refLastStep.value = data.steps[data.steps.length - 1]
+  refItineraryDuration.value = data.steps
 }
 
-const startStep = computed(() => data.steps[0].place.address.items[0].content)
-const lastStep = computed(
-  () => data.steps[data.steps.length - 1].place.address.items[0].content,
+const refStartStep = ref(data.steps[0])
+const startStep = computed(
+  () => refStartStep.value.place.address.items[0].content,
 )
+
+const refLastStep = ref(data.steps[data.steps.length - 1])
+const lastStep = computed(
+  () => refLastStep.value.place.address.items[0].content,
+)
+
+const refItineraryDuration = ref(data.duration)
+const itineraryDuration = computed(() =>
+  refItineraryDuration.value.length
+    ? calculateItineraryDuration(refItineraryDuration)
+    : data.duration,
+)
+
+function calculateItineraryDuration(steps) {
+  let duration = 0
+  steps.forEach((step) => {
+    step._place.length ? (step = step._place) : (step = step._domain)
+    duration = duration + step.duration
+  })
+  return duration
+}
 
 function dataDescription() {
   return descriptionRef.value
