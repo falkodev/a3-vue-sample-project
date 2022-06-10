@@ -2,7 +2,7 @@
   <li class="t-content__item">
     <span class="t-content__icon">{% include "content:home.svg" %}</span>
     <span class="t-content__category t-content__category-address">{{ __t('apostrophe:address') }}</span>
-    <span class="t-content__data">{% area data.piece, 'address' %}</span>
+    <span class="t-content__data t-content__data-address">{% area data.piece, 'address' %}</span>
   </li>
 {% else %}
   {% area data.piece, 'address' %}
@@ -30,4 +30,14 @@
   </li>
 {% else %}
   {% area data.piece, 'website' %}
+{% endif -%}
+
+{% if data.piece.visitPrice.items[0].content %}
+  <li class="t-content__item">
+      <span class="t-content__icon">{% include "content:euro.svg" %}</span>
+      <span class="t-content__category t-content__category-visit">{{ __t('apostrophe:visitPrice') }}</span>
+      <span class="t-content__data t-content__data-address">{% area data.piece, 'visitPrice' %}</span>
+  </li>
+{% else %}
+  {% area data.piece, 'visitPrice' %}
 {% endif -%}

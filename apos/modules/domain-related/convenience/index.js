@@ -3,9 +3,9 @@ const { setDefaultItems } = require('../common')
 module.exports = {
   extend: '@apostrophecms/piece-type',
   options: {
-    alias: 'activity',
-    label: 'apostrophe:activity.label',
-    pluralLabel: 'apostrophe:activity.pluralLabel',
+    alias: 'convenience',
+    label: 'apostrophe:convenience.label',
+    pluralLabel: 'apostrophe:convenience.pluralLabel',
     localized: true,
     quickCreate: false,
   },
@@ -26,11 +26,11 @@ module.exports = {
 
   methods(self) {
     return {
-      async setDefaultActivities() {
+      async setDefaultConveniences() {
         try {
-          await setDefaultItems(self, 'activities', 'activity')
+          await setDefaultItems(self, 'conveniences', 'convenience')
         } catch (error) {
-          self.apos.util.error(`Default activities error: ${error}`)
+          self.apos.util.error(`Default conveniences error: ${error}`)
         }
       },
     }
@@ -40,9 +40,9 @@ module.exports = {
     /* istanbul ignore next */
     return {
       defaults: {
-        usage: 'npm run task -- domain-related/activity:defaults',
+        usage: 'npm run task -- domain-related/convenience:defaults',
         async task() {
-          await self.setDefaultActivities()
+          await self.setDefaultConveniences()
         },
       },
     }
@@ -52,7 +52,7 @@ module.exports = {
     return {
       '@apostrophecms/db:defaults': {
         async addDefaults() {
-          await self.setDefaultActivities()
+          await self.setDefaultConveniences()
         },
       },
     }

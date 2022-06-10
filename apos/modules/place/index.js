@@ -40,7 +40,7 @@ module.exports = {
       },
       address: {
         type: 'area',
-        label: 'apostrophe:address',
+        label: 'apostrophe:addressSimple',
         options: {
           widgets: {
             '@apostrophecms/rich-text': {},
@@ -92,7 +92,7 @@ module.exports = {
         fields: ['placeType', 'image', 'longitude', 'latitude'],
       },
       widgets: {
-        label: 'apostrophe:widgets',
+        label: 'apostrophe:domainPresentation',
         fields: [
           'description',
           'address',
