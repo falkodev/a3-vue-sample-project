@@ -1,5 +1,7 @@
 const moment = require('moment')
 const config = require('config')
+const path = require('path')
+const asyncFs = require('fs/promises')
 
 const LEGAL_AGE = 18
 const MIN_PASSWORD_LENGTH = config.get('register.minPasswordLength')
@@ -12,6 +14,7 @@ module.exports = {
     alias: 'customer',
     label: 'apostrophe:customer',
     localized: false,
+    publicApiProjection: { slug: 1, archived: 1 },
   },
   fields: {
     add: {
@@ -35,16 +38,16 @@ module.exports = {
         required: true,
       },
 
+      image: {
+        type: 'attachment',
+        label: 'apostrophe:image',
+        fileGroup: 'images',
+      },
       newsletter: {
         type: 'boolean',
       },
-
-      _domains: {
-        label: 'apostrophe:domain',
-        type: 'relationship',
-        withType: 'place',
-      },
     },
+
     group: {
       basics: {
         fields: [
@@ -52,8 +55,8 @@ module.exports = {
           'lastName',
           'birthDate',
           'email',
+          'image',
           'newsletter',
-          '_domains',
         ],
       },
     },
@@ -66,8 +69,7 @@ module.exports = {
           const { user } = self.apos.task.getAdminReq()
           req.user = user
 
-          const newCustomer = await _super(req)
-          return newCustomer
+          return await _super(req)
         } catch (error) {
           const err = error.message || error
           if (err.includes('E11000')) {
@@ -85,6 +87,21 @@ module.exports = {
           }
         }
       },
+
+      async patch(_super, req, _id) {
+        const currentUser = req.user
+        const customerLinkedToCurrentUser = await self
+          .find(req, { email: req.user?.username })
+          .project({ _id: 1 })
+          .toObject()
+        if (customerLinkedToCurrentUser?._id === req.params?._id) {
+          const { user } = self.apos.task.getAdminReq()
+          req.user = user
+          await self.apos.user.update(req, { ...currentUser, archived: true })
+        }
+
+        return _super(req, _id)
+      },
     }
   },
 
@@ -101,11 +118,19 @@ module.exports = {
 
       getBrowserData(_super, req) {
         const browserOptions = _super(req)
+
         if (req.user?.role === 'editor') {
           browserOptions.batchOperations = []
           browserOptions.quickCreate = false
           browserOptions.showCreate = false
           browserOptions.canPublish = false
+        }
+
+        browserOptions.labels = {
+          archiveAccount: req.t('apostrophe:archiveAccount'),
+          yes: req.t('apostrophe:yes'),
+          no: req.t('apostrophe:no'),
+          error: req.t('apostrophe:loginErrorGeneric'),
         }
 
         return browserOptions
@@ -167,6 +192,19 @@ module.exports = {
           try {
             self.apos.util.log('Starting customer fixtures')
 
+            const imagesFolder = path.resolve(__dirname, './images/')
+            const imagesNames = await asyncFs.readdir(imagesFolder)
+            const uploadedImages = await Promise.all(
+              imagesNames.map((imageName) => {
+                const imagePath = `${imagesFolder}/${imageName}`
+                return self.apos.attachment.insert(req, {
+                  name: imageName,
+                  path: imagePath,
+                  fixtures: true,
+                })
+              }),
+            )
+
             const customers = [
               {
                 email: 'henri@roland-garros.fr',
@@ -174,6 +212,7 @@ module.exports = {
                 lastName: 'Cochet',
                 birthDate: '1901-12-14',
                 password: 'vino01',
+                image: uploadedImages[0],
               },
               {
                 email: 'rene@roland-garros.fr',
@@ -181,6 +220,7 @@ module.exports = {
                 lastName: 'Lacoste',
                 birthDate: '1904-07-02',
                 password: 'vino01',
+                image: uploadedImages[1],
               },
               {
                 email: 'jean@roland-garros.fr',
@@ -188,6 +228,7 @@ module.exports = {
                 lastName: 'Borotra',
                 birthDate: '1898-08-13',
                 password: 'vino01',
+                image: uploadedImages[2],
               },
               {
                 email: 'jacques@roland-garros.fr',
@@ -195,6 +236,7 @@ module.exports = {
                 lastName: 'Brugnon',
                 birthDate: '1895-05-11',
                 password: 'vino01',
+                image: uploadedImages[3],
               },
             ]
 
