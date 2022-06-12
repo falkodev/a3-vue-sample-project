@@ -55,7 +55,7 @@ require('apostrophe')({
     'domain-page': {
       extend: '@apostrophecms/piece-page-type',
       options: {
-        label: 'Domain Page',
+        label: 'apostrophe:domainPage',
       },
     },
     'register-page': {},
