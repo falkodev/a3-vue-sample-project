@@ -66,7 +66,7 @@
           </div>
 
           <div class="t-info-half__title">
-            {{ data.steps[0].place.title }}
+            {{ data?.steps[0]?.place?.title }}
           </div>
           <div
             v-for="addressPart in splitAddress(removeTags(startStep))"
@@ -105,7 +105,7 @@
 <script setup>
 import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateItinerary from './components/ValidateItinerary.vue'
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
   piece: Object,
@@ -121,7 +121,6 @@ let descriptionRef = ref(false)
 
 function updateItinerary(itinerary) {
   data.steps = itinerary.steps
-  console.log(data.steps)
   refStartStep.value = data.steps[0]
   refLastStep.value = data.steps[data.steps.length - 1]
   refItineraryDuration.value = data.steps
@@ -129,28 +128,24 @@ function updateItinerary(itinerary) {
 
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
-  () => refStartStep.value.place.address.items[0].content,
+  () => refStartStep?.value?.place?.addressN?.items[0]?.content,
 )
 
 const refLastStep = ref(data.steps[data.steps.length - 1])
 const lastStep = computed(
-  () => refLastStep.value.place.address.items[0].content,
+  () => refLastStep?.value?.place?.address?.items[0]?.content,
 )
 
 const refItineraryDuration = ref(data.duration)
 const itineraryDuration = computed(() =>
-  refItineraryDuration.value.length
-    ? calculateItineraryDuration(refItineraryDuration)
+  refItineraryDuration.value.length && Array.isArray(refItineraryDuration.value)
+    ? calculateItineraryDuration(refItineraryDuration.value)
     : data.duration,
 )
 
 function calculateItineraryDuration(steps) {
-  let duration = 0
-  steps.forEach((step) => {
-    step._place.length ? (step = step._place) : (step = step._domain)
-    duration = duration + step.duration
-  })
-  return duration
+  console.log('======> PASSING HERE <======', steps)
+  return steps.reduce((acc, cur) => (acc += cur.place?.duration || 0) && acc, 0)
 }
 
 function dataDescription() {
@@ -168,7 +163,7 @@ function removeTags(str) {
 }
 
 function splitAddress(str) {
-  return str.split(',')
+  return (str || '').split(',')
 }
 
 function dataMileAge(mileage) {
