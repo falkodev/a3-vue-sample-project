@@ -67,7 +67,7 @@ module.exports = {
                 add: {
                   name: {
                     type: 'string',
-                    help: 'Rentrez le titre de votre sous-étape',
+                    help: 'apostrophe:visit.subStep.help',
                     label: 'apostrophe:visit.subStep.title',
                     required: true,
                   },

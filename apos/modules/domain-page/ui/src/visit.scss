@@ -1,0 +1,185 @@
+.t-visit * {
+  box-sizing: border-box;
+}
+
+.t-visit {
+  $map-height: 40vh;
+
+  &__fixed {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background-color: $color-white;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 102px;
+    max-height: 102px;
+    margin: 0 auto;
+    padding: 24px 0;
+    font-family: Sans-serif;
+    color: $color-purple;
+  }
+
+  &__map {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: auto;
+    height: $map-height;
+  }
+
+  &__frame {
+    position: fixed;
+    top: calc($admin-height + $header-height + 30vh);
+    bottom: 0;
+    width: 100%;
+    overflow: scroll;
+    border-radius: 24px 24px 0 0;
+  }
+
+  &__content {
+    position: relative;
+    top: calc($header-height + 10vh);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 40px 0;
+    padding-bottom: calc($footer-height + 85px);
+    background-color: $color-white;
+  }
+
+  .t-step {
+    &__bloc {
+      padding-bottom: 16px;
+    }
+
+    &__container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      row-gap: 12px;
+      padding: 0 32px;
+      width: 100%;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 12px;
+      border-radius: 4px;
+      background-color: $color-purple-logo;
+    }
+
+    &__timing {
+      display: flex;
+      margin: 0;
+      padding: 4px 0;
+      font-size: 0.8rem;
+      color: $color-grey-50;
+    }
+
+    &__name {
+      max-width: 296px;
+      margin: 0;
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: $color-purple;
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+      mask-image: url('/modules/content/icons/arrow-right.svg');
+      background-color: $color-purple;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      mask-position: center;
+      cursor: pointer;
+    }
+  }
+
+  .t-media {
+    &__container {
+      display: flex;
+      flex-flow: row;
+      column-gap: 24px;
+      overflow-x: scroll;
+      margin-bottom: 40px;
+      padding: 12px 32px 0 32px;
+    }
+
+    &__item {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 200px;
+      height: 200px;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: $color-purple-logo;
+      color: $color-purple;
+    }
+
+    &__image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      &::before {
+        position: absolute;
+        content: '';
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(45deg,
+            $color-purple-alpha-20,
+            $color-purple-alpha-30 );
+      }
+    }
+
+    &__info {
+      z-index: 1;
+      text-align: center;
+      color: $color-white;
+    }
+
+    &__download {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      height: 32px;
+      width: 32px;
+      cursor: pointer;
+      transition: all 0.24s ease;
+
+      svg {
+        height: 32px;
+        width: 32px;
+        stroke: $color-white;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
