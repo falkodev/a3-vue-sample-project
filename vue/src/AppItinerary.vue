@@ -144,7 +144,6 @@ const itineraryDuration = computed(() =>
 )
 
 function calculateItineraryDuration(steps) {
-  console.log('======> PASSING HERE <======', steps)
   return steps.reduce((acc, cur) => (acc += cur.place?.duration || 0) && acc, 0)
 }
 
