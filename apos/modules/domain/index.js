@@ -37,7 +37,6 @@ module.exports = {
           },
           max: 1,
         },
-        
       },
     },
     remove: ['placeType'],
@@ -51,7 +50,7 @@ module.exports = {
       },
       visits: {
         fields: ['visits'],
-      }
+      },
     },
   },
 
