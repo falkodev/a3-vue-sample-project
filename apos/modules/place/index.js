@@ -87,7 +87,7 @@ module.exports = {
         required: true,
       },
       duration: {
-        type: 'float',
+        type: 'time',
         label: 'apostrophe:duration',
         required: true,
       },
