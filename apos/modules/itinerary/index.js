@@ -108,6 +108,10 @@ module.exports = {
               label: 'apostrophe:domain',
               if: { stepType: 'domain' },
             },
+            duration: {
+              type: 'time',
+              label: 'apostrophe:duration',
+            },
           },
         },
       },
