@@ -90,6 +90,11 @@ module.exports = {
           },
         },
       },
+      _visits: {
+        type: 'relationship',
+        withType: 'visit',
+        max: 1,
+      },
     },
     group: {
       basics: {

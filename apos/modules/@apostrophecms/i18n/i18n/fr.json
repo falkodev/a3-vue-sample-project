@@ -588,7 +588,7 @@
     "label": "Visite",
     "pluralLabel": "Visites",
     "image": "Image de la presentation du circuit",
-    "track":"Tracé du GPS",
+    "track": "Tracé du GPS",
     "step": {
       "pluralStep": "Étapes",
       "title": "Titre de l'Étape"
@@ -597,6 +597,7 @@
       "pluralSubStep": "sous-étapes",
       "title": "Titre de la sous-étape",
       "duration": "Durée (en minutes)",
+      "mileage": "Distance entre chaque sous étape (en mètres)",
       "image": "Photo de la sous-étape"
     },
     "content": {
