@@ -43,9 +43,9 @@
       </div>
       <div class="t-infos__footer">
         <div class="">
-          <div v-if="step.place.type === 'domain'" class="t-infos__status">
+          <a v-if="step.place.type === 'domain'" class="t-infos__status">
             {{ $t.takeAppointment }}
-          </div>
+          </a>
         </div>
         <div class="t-infos__fav">
           <HeartIcon />
@@ -132,13 +132,10 @@ function placeTypeIcon(type) {
   &__description {
     display: flex;
     flex-direction: column;
-    &__bin {
-      width: 10%;
-      fill: $color-purple;
-      color: $color-purple;
-    }
   }
-
+  &__bin {
+    display: none;
+  }
   .t-infos {
     color: $color-purple;
 
