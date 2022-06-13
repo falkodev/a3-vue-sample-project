@@ -22,7 +22,7 @@ module.exports = {
       },
       _domains: {
         type: 'relationship',
-        withType: 'place',
+        withType: 'domain',
       },
       date: {
         type: 'date',
