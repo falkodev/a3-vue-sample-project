@@ -17,7 +17,7 @@
   }
 }
 
-.t-login {
+.t-sign {
   font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
@@ -39,24 +39,25 @@
     font-weight: 600;
     color: $color-purple-logo;
     text-align: center;
+
     img {
       max-width: inherit;
     }
   }
 
   &__bottom-sentence {
-    position: absolute;
+    position: fixed;
     width: 250px;
     color: $color-white;
     font-size: 11px;
-    bottom: 40px;
+    bottom: 10px;
     left: 50%;
     text-align: center;
     transform: translateX(-50%);
   }
 }
 
-.t-account {
+.t-sign-in {
   display: flex;
   flex-direction: column;
   font-size: 15px;

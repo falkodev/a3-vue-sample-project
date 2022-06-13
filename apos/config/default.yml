@@ -26,9 +26,6 @@ categories:
   - label: apostrophe:poi
     value: poi
     searchTerm: "lieu d'intérêt"
-  - label: apostrophe:domain
-    value: domain
-    searchTerm: 'vignoble'
 
 activities:
   - title: apostrophe:domainVisit
@@ -41,3 +38,32 @@ activities:
     image: organic.svg
   - title: apostrophe:bedAndBreakfast
     image: bed.svg
+
+conveniences:
+  - title: apostrophe:picnicArea
+    image: picnic.svg
+  - title: apostrophe:parking
+    image: parking.svg
+  - title: apostrophe:approvedPets
+    image: pets.svg
+  - title: apostrophe:restorations
+    image: restoration.svg
+
+wineLabels:
+  - title: apostrophe:organicWines
+    color: purple
+  - title: apostrophe:biodynamics
+    color: blue
+  - title: apostrophe:organicAgriculture
+    color: red
+  - title: apostrophe:natureAndAdvance
+    color: pink
+  - title: apostrophe:terraVittis
+    color: green
+
+wineTypes:
+  - title: apostrophe:red
+  - title: apostrophe:rose
+  - title: apostrophe:white
+  - title: apostrophe:soft
+  - title: apostrophe:effervesent

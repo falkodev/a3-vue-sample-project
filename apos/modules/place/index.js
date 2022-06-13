@@ -40,7 +40,7 @@ module.exports = {
       },
       address: {
         type: 'area',
-        label: 'apostrophe:address',
+        label: 'apostrophe:addressSimple',
         options: {
           widgets: {
             '@apostrophecms/rich-text': {},
@@ -92,7 +92,7 @@ module.exports = {
         fields: ['placeType', 'image', 'longitude', 'latitude'],
       },
       widgets: {
-        label: 'apostrophe:widgets',
+        label: 'apostrophe:domainPresentation',
         fields: [
           'description',
           'address',
@@ -133,12 +133,12 @@ module.exports = {
       async categories(req, data) {
         const categories = config.get('categories')
         const result = await Promise.all([
+          self.apos.domain.find(req).limit(5).toArray(),
+          self.apos.itinerary.find(req).limit(5).toArray(),
           ...categories.map((category) =>
             self.find(req, { placeType: category.value }).limit(5).toArray(),
           ),
-          self.apos.itinerary.find(req).limit(5).toArray(),
         ])
-
         return { result }
       },
     }
