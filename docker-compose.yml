@@ -57,4 +57,4 @@ services:
       VITE_BASE_URL: /vue-app/
     healthcheck:
       test: node healthcheck
-  
+

@@ -590,5 +590,30 @@
     "en": "English"
   },
   "languages": "Languages",
-  "widgets": "Widgets"
+  "widgets": "Widgets",
+  "visitType": {
+    "label": "Visit",
+    "pluralLabel": "Visits",
+    "image": "Presentation Image",
+    "track": "GPS Track",
+    "step": {
+      "pluralStep": "Steps",
+      "title": "Title step"
+    },
+    "subStep": {
+      "pluralSubStep": "Substeps",
+      "title": "Title of Substep",
+      "duration": "Duration (in minutes)",
+      "mileage": "Distance between each substep (in meters)",
+      "image": "Photo subStep"
+    },
+    "content": {
+      "pluralContent": "Contents",
+      "title": "Title Content",
+      "presentation": "Video or Image presentation",
+      "urlPodcast": "Url Podcast",
+      "content": "main Content",
+      "interview": "Video for interview or image"
+    }
+  }
 }
