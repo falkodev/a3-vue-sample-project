@@ -6,12 +6,13 @@ logs
 .jshintrc
 .DS_Store
 .idea
+.vscode
 nginx/logs
-.idea
 .nuxt/
 .env
 coverage
 apos/config/local.yml
+apos/public/vue-app
 mocks
 cypress/screenshots
 cypress/videos

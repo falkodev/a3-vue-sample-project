@@ -22,7 +22,7 @@ dev-logs:
 	make kill && NODE_ENV=development docker-compose up -d && make logs
 
 prod:
-	NODE_ENV=production docker-compose up -d --build && make logs
+	NODE_ENV=production docker-compose -f docker-compose.remote.yml --compatibility up -d --build
 
 logs-mongo:
 	docker logs vino-terr-mongo -f

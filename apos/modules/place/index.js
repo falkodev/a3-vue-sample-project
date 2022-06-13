@@ -120,17 +120,10 @@ module.exports = {
     },
   },
 
-  init(self) {
-    /* istanbul ignore next */
-    self.apos.migration.add('feed-places', () =>
-      self.getPlaces({ force: false }),
-    )
-  },
-
   components(self) {
     /* istanbul ignore next */
     return {
-      async categories(req, data) {
+      async categories(req) {
         const categories = config.get('categories')
         const result = await Promise.all([
           self.apos.domain.find(req).limit(5).toArray(),
@@ -354,7 +347,7 @@ module.exports = {
     /* istanbul ignore next */
     return {
       fetch: {
-        usage: 'npm run task --prefix apos -- place:fetch --force=true',
+        usage: 'npm run task -- place:fetch --force=true',
         async task({ force = false }) {
           await self.getPlaces({ force })
         },

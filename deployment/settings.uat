@@ -1,0 +1,3 @@
+USER=ec2-user
+SERVER=15.188.246.213
+SSH_OPTIONS="-i ./deployment/vino-terr-larzac-uat.pem"

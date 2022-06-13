@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Also a good place to ensure any data folders
+# that are *not* supposed to be replaced on every deployment exist
+# and create a symlink to them from the latest deployment directory.
+
+# The real 'data' folder is shared. It lives two levels up and one over
+# (we're in a deployment dir, which is a subdir of 'deployments', which
+# is a subdir of the project's main dir)
+
+# Install any dependencies that can't just be rsynced over with
+# the deployment. Example: node apps have npm modules in a
+# node_modules folder. These may contain compiled C++ code that
+# won't work portably from one server to another.
+
+# This script runs after the rsync, but before the 'stop' script,
+# so your app is not down during the npm installation.
+
+HERE=`pwd`
+mkdir -p ../../data
+ln -s ../../data $HERE/data
+
+mkdir -p ../../uploads
+cp -r $HERE/../../uploads $HERE/apos/public
+
+mkdir -p ../../mongo/data/db
+mkdir -p $HERE/mongo/data
+ln -sfn $HERE/../../mongo/data/db $HERE/mongo/data
+

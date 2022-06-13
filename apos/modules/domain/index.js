@@ -93,13 +93,6 @@ module.exports = {
     remove: ['placeType'],
   },
 
-  init(self) {
-    /* istanbul ignore next */
-    self.apos.migration.add('feed-domains', () =>
-      self.getDomains({ force: false }),
-    )
-  },
-
   extendMethods() {
     /* istanbul ignore next */
     return {
@@ -172,7 +165,7 @@ module.exports = {
     /* istanbul ignore next */
     return {
       fetch: {
-        usage: 'npm run task --prefix apos -- domain:fetch --force=true',
+        usage: 'npm run task -- domain:fetch --force=true',
         async task({ force = false }) {
           await self.getDomains({ force })
         },
