@@ -106,6 +106,7 @@
 import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateItinerary from './components/ValidateItinerary.vue'
 import { ref, computed } from 'vue'
+import dayjs from 'dayjs'
 
 const props = defineProps({
   piece: Object,
@@ -134,20 +135,21 @@ const refLastStep = ref(data.steps[data.steps.length - 1])
 const lastStep = computed(
   () => refLastStep.value.place.address.items[0].content,
 )
-const refItineraryDuration = ref(data.duration)
+
+const refItineraryDuration = ref(data.steps)
 const itineraryDuration = computed(() =>
   calculateItineraryDuration(refItineraryDuration.value),
 )
 
 function calculateItineraryDuration(steps) {
-  let duration = steps
-  console.log(steps)
-  if (Array.isArray(steps)) {
-    steps.forEach((step) => {
-      step._place.length ? (step = step._place) : (step = step._domain)
-      duration = duration + step.duration
-    })
-  }
+  console.log('updated')
+  let hours = 0
+  let minutes = 0
+  steps.forEach((step) => {
+    hours = hours + dayjs(`2000-01-01 ${step.place.duration}`).$H
+    minutes = minutes + dayjs(`2000-01-01 ${step.place.duration}`).$M
+  })
+  let duration = `${hours}:${minutes}`
 
   return duration
 }
