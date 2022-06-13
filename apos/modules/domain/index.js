@@ -22,6 +22,11 @@ module.exports = {
         type: 'url',
         label: 'apostrophe:eShop',
       },
+      _visits: {
+        type: 'relationship',
+        withType: 'visit',
+      },
+
       visitPrice: {
         type: 'area',
         label: 'apostrophe:visitPriceSimple',
@@ -81,6 +86,9 @@ module.exports = {
       },
       widgets: {
         fields: ['activities', 'conveniences', 'wineLabels', 'wineTypes'],
+      },
+      visits: {
+        fields: ['visits'],
       },
     },
   },
