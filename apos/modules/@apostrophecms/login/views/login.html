@@ -3,14 +3,14 @@
 {% set fileBackground = apos.attachment.url(data.global.backgroundImageLogin) %}
 
 {% block main %}
-  <div class="t-login__background" style="background-image: url('{{ fileBackground }}');">
-    <div class="t-login">
+  <div class="t-sign__background" style="background-image: url('{{ fileBackground }}');">
+    <div class="t-sign">
 
       {% include "component/home-redirect:index.html" %}
 
       {{ localeSwitcher.displayFlags('login') }}
 
-      <div class="t-login__logo">
+      <div class="t-sign__logo">
         {% if data.global.logo %}
           <img src="{{ apos.attachment.url(data.global.logo) }}" alt="logo-site">
         {% else %}
@@ -21,11 +21,13 @@
       <form action="/login" class="t-form" data-login-form>
         <div class="t-form__field">
           <input
-          class="t-form__input"
-          data-input-username
-          name="username"
-          placeholder="{{ __t('apostrophe:loginPage.username') }}"
-          type="text"/>
+            id="username"
+            autocomplete="username"
+            class="t-form__input"
+            data-input-username
+            name="username"
+            placeholder="{{ __t('apostrophe:loginPage.username') }}"
+            type="text"/>
           <label class="t-form__label t-form__label--error" data-label-username>
             {{ __t('apostrophe:loginPage.required') }}
           </label>
@@ -33,11 +35,13 @@
 
         <div>
           <input
-          class="t-form__input"
-          data-input-password
-          name="password"
-          placeholder="{{ __t('apostrophe:loginPage.password') }}"
-          type="password"/>
+            id="current-password"
+            autocomplete="current-password"
+            class="t-form__input"
+            data-input-password
+            name="password"
+            placeholder="{{ __t('apostrophe:loginPage.password') }}"
+            type="password"/>
           <label class="t-form__label t-form__label--error" data-label-password>
             {{ __t('apostrophe:loginPage.required') }}
           </label>
@@ -50,16 +54,16 @@
         <div class="t-form__errors"></div>
       </form>
 
-      <div class="t-account">
-        <span class="t-account__sentence">{{ __t('apostrophe:loginPage.noAccount') }}</span>
-        <a class="t-account__link" href="/{{ data.locale }}/register">
+      <div class="t-sign-in">
+        <span class="t-sign-in__sentence">{{ __t('apostrophe:loginPage.noAccount') }}</span>
+        <a class="t-sign-in__link" href="/{{ data.locale }}/register">
           <button class="t-button t-button--outlined t-button--bold ">{{ __t('apostrophe:register') }}</button>
         </a>
       </div>
 
     </div>
 
-    <p class="t-login__bottom-sentence">
+    <p class="t-sign__bottom-sentence">
       {{ __t('apostrophe:loginPage.alcoholWarning') }}
     </p>
   </div>

@@ -22,12 +22,21 @@ module.exports = {
         type: 'url',
         label: 'apostrophe:eShop',
       },
-
       _visits: {
         type: 'relationship',
         withType: 'visit',
       },
 
+      visitPrice: {
+        type: 'area',
+        label: 'apostrophe:visitPriceSimple',
+        options: {
+          widgets: {
+            '@apostrophecms/rich-text': {},
+          },
+          max: 1,
+        },
+      },
       activities: {
         type: 'area',
         label: 'apostrophe:activity.pluralLabel',
@@ -38,15 +47,45 @@ module.exports = {
           max: 1,
         },
       },
+      conveniences: {
+        type: 'area',
+        label: 'apostrophe:convenience.pluralLabel',
+        options: {
+          widgets: {
+            'domain-related/convenience': {},
+          },
+          max: 1,
+        },
+      },
+      wineLabels: {
+        type: 'area',
+        label: 'apostrophe:wineLabel.pluralLabel',
+        options: {
+          widgets: {
+            'domain-related/wine-label': {},
+          },
+          max: 1,
+        },
+      },
+      wineTypes: {
+        type: 'area',
+        label: 'apostrophe:wineType.pluralLabel',
+        options: {
+          widgets: {
+            'domain-related/wine-type': {},
+          },
+          max: 1,
+        },
+      },
     },
     remove: ['placeType'],
 
     group: {
       basics: {
-        fields: ['isAutoGuidedVisit', 'eShop'],
+        fields: ['isAutoGuidedVisit', 'eShop', 'visitPrice'],
       },
       widgets: {
-        fields: ['activities'],
+        fields: ['activities', 'conveniences', 'wineLabels', 'wineTypes'],
       },
       visits: {
         fields: ['visits'],

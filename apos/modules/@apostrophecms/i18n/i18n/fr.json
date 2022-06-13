@@ -11,6 +11,7 @@
   "applyToSubpages": "Apply to Subpages",
   "arrayCancelDescription": "Do you want to discard changes to this list?",
   "archive": "Archivé",
+  "archiveAccount": "Voulez-vous vraiment supprimer votre compte ?",
   "archiveImage": "Archiver Image",
   "archiveOnlyThisPage": "Archiver seulement cette page",
   "archivePageAndSubpages": "Archiver cette page et les pages enfants",
@@ -71,11 +72,13 @@
   "dayjsCellDateFormat": "apostrophe",
   "dayjsMediaCreatedDateFormat": "MMM Do, YYYY",
   "deduplicateSlugReserved": "The deduplicate- slug is reserved.",
+  "deleteAccount": "Votre compte a bien été supprimé",
   "delete": "Supprimer",
   "deleteDraft": "Supprimer brouillon",
   "deleteDraftAffirmativeLabel": "Oui, supprimer ce document",
   "deleteDraftDescription": "Since {{ title }} has never been published, this will completely delete the document.",
   "description": "Description",
+  "disableAccount": "Supprimer le compte",
   "disabled": "Disabled",
   "discardChanges": "Discard Changes",
   "discardChangesPrompt": "Do you want to discard changes?",
@@ -97,6 +100,7 @@
   "doesNotExistYetDescription": "The document does not exist yet as {{ mode }} in the {{ locale }} locale.",
   "domain": "Domaine",
   "domains": "Domaines",
+  "domainPresentation": "Présentation du domaine",
   "download": "Download",
   "draft": "Brouillon",
   "draftDeleted": "Draft Deleted",
@@ -156,7 +160,7 @@
   "home": "Accueil",
   "homePage": {
     "domain": "Les domaines à proximité",
-    "wineRoute": "Routes des vins",
+    "itinerary": "Routes des vins",
     "wineStore": "Cavistes aux alentours",
     "wineBar": "Restaurants, bars à vins proches",
     "poi": "Lieux d'intérêt près de vous"
@@ -424,6 +428,8 @@
   "videoUrlHelp": "Enter the URL for a media source you wish to embed (e.g., YouTube, Vimeo, or other hosted video URL).",
   "view": "View",
   "visibility": "Visibilité",
+  "visitPrice": "Prix de la visite :",
+  "visitPriceSimple": "Prix de la visite",
   "website": "Lien vers le site web",
   "willMoveImageToArchive": "This will move the image to the archive.",
   "yes": "Oui",
@@ -496,7 +502,8 @@
     "openingDaysAndHours": "Horaires : ",
     "choices": "Ce domaine propose",
     "infos": "Informations et accès",
-    "event": "Événement"
+    "event": "Événement",
+    "note": "Note générale :"
   },
   "startDate": "Date début",
   "endDate": "Date fin",
@@ -519,11 +526,17 @@
     "pluralLabel": "Lieux",
     "type": "Type"
   },
+  "accountPage": {
+    "assessment": "Appréciations données",
+    "setting": "Réglages",
+    "myAccount": "Mon compte"
+  },
   "domainType": {
     "label": "Domaine",
     "pluralLabel": "Domaines"
   },
   "address": "Adresse :",
+  "addressSimple": "Adresse",
   "wineStore": "Caviste",
   "wineBar": "Restaurant & bar à vins",
   "poi": "Point d'interêt",
@@ -573,7 +586,7 @@
   "conveniences": "Commodités",
   "picnicArea": "Aire de pique nique",
   "parking": "Parking",
-  "approvedPets": "Animaux Approuvés",
+  "approvedPets": "Animaux approuvés",
   "restorations": "Restaurations",
   "phoneNumber": "Numéro de téléphone",
   "eShop": "Lien vers l'e-boutique",

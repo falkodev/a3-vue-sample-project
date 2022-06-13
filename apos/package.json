@@ -7,6 +7,7 @@
     "start": "node app",
     "dev": "NODE_ENV=development NODE_APP_INSTANCE=larzac nodemon --no-deprecation",
     "build": "NODE_ENV=production node app @apostrophecms/asset:build && npm run sw",
+    "defaults": "NODE_ENV=development NODE_APP_INSTANCE=larzac node --no-deprecation app @apostrophecms/db:defaults",
     "fixtures": "NODE_ENV=development NODE_APP_INSTANCE=larzac node --no-deprecation app @apostrophecms/db:fixtures",
     "sw": "workbox injectManifest modules/content/workbox-config.js",
     "serve": "NODE_ENV=production NODE_APP_INSTANCE=larzac node app",

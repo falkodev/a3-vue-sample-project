@@ -1,0 +1,43 @@
+{% if data.piece.address.items[0].content %}
+  <li class="t-content__item">
+    <span class="t-content__icon">{% include "content:home.svg" %}</span>
+    <span class="t-content__category t-content__category-address">{{ __t('apostrophe:address') }}</span>
+    <span class="t-content__data t-content__data-address">{% area data.piece, 'address' %}</span>
+  </li>
+{% else %}
+  {% area data.piece, 'address' %}
+{% endif -%}
+
+{% if data.piece.phoneNumber.items[0].content %}
+  <li class="t-content__item">
+    <a class="t-content__phone-link" href="tel:{{ data.piece.phoneNumber }}">
+      <span class="t-content__icon">{% include "content:phone.svg" %}</span>
+      <span class="t-content__category">{{ __t('apostrophe:phone') }}</span>
+      <span class="t-content__data">{% area data.piece, 'phoneNumber' %}</span>
+    </a>
+  </li>
+{% else %}
+  {% area data.piece, 'phoneNumber' %}
+{% endif -%}
+
+{% if data.piece.website.items[0].content %}
+  <li class="t-content__item">
+    <a class="t-content__web-link" href="{{ data.piece.website }}">
+      <span class="t-content__icon">{% include "content:web.svg" %}</span>
+      <span class="t-content__category">{{ __t('apostrophe:placePage.website') }}</span>
+      <span class="t-content__data">{% area data.piece, 'website' %}</span>
+    </a>
+  </li>
+{% else %}
+  {% area data.piece, 'website' %}
+{% endif -%}
+
+{% if data.piece.visitPrice.items[0].content %}
+  <li class="t-content__item">
+      <span class="t-content__icon">{% include "content:euro.svg" %}</span>
+      <span class="t-content__category t-content__category-visit">{{ __t('apostrophe:visitPrice') }}</span>
+      <span class="t-content__data t-content__data-address">{% area data.piece, 'visitPrice' %}</span>
+  </li>
+{% else %}
+  {% area data.piece, 'visitPrice' %}
+{% endif -%}

@@ -1,0 +1,11 @@
+<div class="t-activities">
+  <h3 class="t-activities__title">{{ __t('apostrophe:convenience.pluralLabel') }}</h3>
+  <ul class="t-activities__list">
+    {% for convenience in data.widget._conveniences %}
+      <li class="t-activities__item">
+        <div class="t-activities__icon t-activities__icon-convenience" {% if convenience.image -%} style="-webkit-mask-image: url('{{ apos.attachment.url(convenience.image) }}'); mask-image: url('{{ apos.attachment.url(convenience.image) }}');" {% endif -%}></div>
+        <span class="t-activities__text">{{ convenience.title }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
