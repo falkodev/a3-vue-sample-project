@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+  vino-terr-mongo:
+    container_name: vino-terr-mongo
+    build: mongo
+    init: true
+    ports:
+      - 27018:27017
+    volumes:
+      - ./mongo/data/db:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: vino-terr
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD:
+      MONGO_INITDB_USER_USERNAME: app-admin
+      MONGO_INITDB_USER_PASSWORD:
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017/test --quiet
+
+  vino-terr-apos:
+    container_name: vino-terr-apos
+    build: apos
+    init: true
+    volumes:
+      - ./apos/app.js:/app/app.js
+      - ./apos/config:/app/config
+      - ./apos/modules:/app/modules
+      - ./apos/public:/app/public
+      - ./apos/package.json:/app/package.json
+      - ./vue/dist:/app/public/vue-app
+    ports:
+      - 8080:8080
+    depends_on:
+      - vino-terr-mongo
+    environment:
+      APOS_DEV:
+      NODE_ENV: ${NODE_ENV:-production}
+      NODE_APP_INSTANCE: ${NODE_APP_INSTANCE:?NODE_APP_INSTANCE is mandatory}
+      HOST: docker
+      MONGO_DB:
+      WAIT_HOSTS: vino-terr-mongo:27017
+    healthcheck:
+      test: node healthcheck
+
+  vino-terr-vue:
+    container_name: vino-terr-vue
+    build: vue
+    init: true
+    volumes:
+      - ./vue/dist:/app/dist
+      - ./vue/src:/app/src
+      - ./vue/package.json:/app/package.json
+      - ./vue/vite.config.js:/app/vite.config.js
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      VITE_BASE_URL: /vue-app/
+    healthcheck:
+      test: node healthcheck
+  
