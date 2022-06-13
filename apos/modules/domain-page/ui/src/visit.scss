@@ -15,6 +15,7 @@
   }
 
   &__title {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,6 +26,19 @@
     padding: 24px 0;
     font-family: Sans-serif;
     color: $color-purple;
+  }
+
+  &__geoloc {
+    position: absolute;
+    top: 32px;
+    right: 25px;
+    height: 48px;
+    width: auto;
+
+    &--icon {
+      fill: $color-purple;
+      cursor: pointer;
+    }
   }
 
   &__map {
@@ -54,6 +68,7 @@
     padding: 40px 0;
     padding-bottom: calc($footer-height + 85px);
     background-color: $color-white;
+    pointer-events: all;
   }
 
   .t-step {
