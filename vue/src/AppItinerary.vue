@@ -66,7 +66,7 @@
           </div>
 
           <div class="t-info-half__title">
-            {{ data.steps[0].place.title }}
+            {{ data?.steps[0]?.place?.title }}
           </div>
           <div
             v-for="addressPart in splitAddress(removeTags(startStep))"
@@ -105,8 +105,7 @@
 <script setup>
 import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateItinerary from './components/ValidateItinerary.vue'
-import { ref, computed } from 'vue'
-import dayjs from 'dayjs'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
   piece: Object,
@@ -128,30 +127,23 @@ function updateItinerary(itinerary) {
 }
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
-  () => refStartStep.value.place.address.items[0].content,
+  () => refStartStep?.value?.place?.addressN?.items[0]?.content,
 )
 
 const refLastStep = ref(data.steps[data.steps.length - 1])
 const lastStep = computed(
-  () => refLastStep.value.place.address.items[0].content,
+  () => refLastStep?.value?.place?.address?.items[0]?.content,
 )
 
 const refItineraryDuration = ref(data.steps)
 const itineraryDuration = computed(() =>
-  calculateItineraryDuration(refItineraryDuration.value),
+  refItineraryDuration.value.length && Array.isArray(refItineraryDuration.value)
+    ? calculateItineraryDuration(refItineraryDuration.value)
+    : data.duration,
 )
 
 function calculateItineraryDuration(steps) {
-  console.log('updated')
-  let hours = 0
-  let minutes = 0
-  steps.forEach((step) => {
-    hours = hours + dayjs(`2000-01-01 ${step.place.duration}`).$H
-    minutes = minutes + dayjs(`2000-01-01 ${step.place.duration}`).$M
-  })
-  let duration = `${hours}:${minutes}`
-
-  return duration
+  return steps.reduce((acc, cur) => (acc += cur.place?.duration || 0) && acc, 0)
 }
 
 function dataDescription() {
@@ -169,7 +161,7 @@ function removeTags(str) {
 }
 
 function splitAddress(str) {
-  return str.split(',')
+  return (str || '').split(',')
 }
 
 function dataMileAge(mileage) {
