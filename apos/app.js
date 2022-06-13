@@ -73,5 +73,6 @@ require('apostrophe')({
     'collapse-rich-text-widget': {
       extend: '@apostrophecms/rich-text-widget',
     },
+    visit: {},
   },
 })
