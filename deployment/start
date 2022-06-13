@@ -1,0 +1,10 @@
+#!/bin/bash
+
+DEPLOYMENTS=$DIR/deployments
+KEEP=5
+KEPT=$[$KEEP+1]
+echo "Remove old deployments with sudo"
+find "$DEPLOYMENTS" -mindepth 1 -maxdepth 1 | sort -r | tail -n +$KEPT | xargs sudo rm -rf
+
+make prod
+echo "Site started"

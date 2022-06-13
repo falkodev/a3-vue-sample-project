@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Find package version and tell Apostrophe the release version
+grep version package.json | awk -F \" '{print $4}' > apos/release-id
+
+# build dist folder for vue and put it in apos folder
+npm run build --prefix vue
+mkdir -p apos/public/vue-app
+cp -R vue/dist/* apos/public/vue-app
+
+# build apos assets
+npm run build --prefix apos
+
+echo "Pre-deploy scripts ok"

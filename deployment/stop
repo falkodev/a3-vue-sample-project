@@ -1,0 +1,18 @@
+#!/bin/bash
+
+HERE=`pwd`
+
+# save db
+#docker exec vino-terr-mongo sh -c 'mongodump --archive -u root -p k8fQRwR4' > ../../db/backup-$(date +"%FT%H%M").agz
+#echo "DB saved"
+
+cp -r $HERE/apos/public/uploads/attachments $HERE/../../uploads
+echo "ApostropheCMS attachments saved"
+
+docker-compose stop
+docker rm --force vino-terr-mongo
+docker rm --force vino-terr-apos
+
+# echo "Prune docker images and volumes"
+# docker image prune -a --force && docker system prune --force && docker volume prune --force && docker network prune --force
+echo "Site stopped"
