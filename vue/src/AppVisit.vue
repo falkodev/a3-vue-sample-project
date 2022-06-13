@@ -2,13 +2,14 @@
   <div class="t-visit">
     <div class="t-visit__fixed">
       <h2 class="t-visit__title">{{ domain.title }}</h2>
+      <IconGeoloc class="t-visit__geoloc" @click="centerMapOnUser"/>
       <div class="t-visit__map t-map__container">
         <l-map
           draggable="false"
-          :minZoom="zoom - 1"
+          :minZoom="zoom - 5"
           :maxZoom="zoom + 2"
           v-model="zoom"
-          :center="[userLat, userLong]"
+          :center="[mapCenter.lat, mapCenter.long]"
           bounceAtZoomLimits="true"
           zoomControl="false"
           @moveend="getUserPos"
@@ -19,7 +20,7 @@
 
           <l-geo-json :geojson="geojson" />
 
-          <l-marker :lat-lng="[userLat, userLong]" @moveend="getUserPos">
+          <l-marker v-if="userLat && userLong" :lat-lng="[userLat, userLong]" @moveend="getUserPos">
             <l-icon
               iconUrl="/apos-frontend/default/modules/content/icons/pin-user.svg"
               :iconSize="[50, 50]"
@@ -56,7 +57,7 @@
                 :key="imageIndex"
                 :style="`background-image: url( ${
                   attachmentList.filter(
-                    (x) => x.name === image.attachment.name,
+                    (attachment) => attachment.name === image.attachment.name,
                   )[0]._urls.full
                 })`"
               >
@@ -93,19 +94,29 @@ import {
 } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
 import IconArrow from '@/components/icons/IconArrow.vue'
+import IconGeoloc from '@/components/icons/IconGeoloc.vue'
 
 const props = defineProps(['piece', 'attachments'])
 
+let geojson
+let jsonUrl
+
 let zoom = ref(17)
 let userCoords = reactive({
-  latitude: 43.6367,
-  longitude: 3.5866,
+  latitude: null,
+  longitude: null,
 })
-let geojson = reactive({})
-let jsonUrl = reactive({})
+
+let mapCenter = reactive({
+  lat: null,
+  long: null,
+})
 
 const domain = computed(() => JSON.parse(props.piece))
 const attachmentList = computed(() => JSON.parse(props.attachments))
+
+const domainLat = computed(() => domain.value.latitude)
+const domainLong = computed(() => domain.value.longitude)
 
 let userLat = computed(() => {
   return userCoords.latitude
@@ -113,7 +124,10 @@ let userLat = computed(() => {
 let userLong = computed(() => {
   return userCoords.longitude
 })
-
+const centerMapOnUser = () => {
+  mapCenter.lat = userLat.value,
+  mapCenter.long = userLong.value
+}
 const setPosition = (pos) => {
   userCoords.latitude = pos.coords.latitude
   userCoords.longitude = pos.coords.longitude
@@ -141,9 +155,7 @@ const watchUserPos = () => {
 }
 onBeforeMount(() => {
   watchUserPos()
-})
-onMounted(() => {
-  jsonUrl = attachmentList.value.filter((x) => x.extension === 'geojson')[0]
+  jsonUrl = attachmentList.value.filter((attachment) => attachment.extension === 'geojson')[0]
     ._url
 
   fetch(jsonUrl)
@@ -151,6 +163,11 @@ onMounted(() => {
     .then((data) => {
       geojson = data
     })
+
+  mapCenter.lat = domainLat.value
+  mapCenter.long = domainLong.value
+})
+onMounted(() => {
 })
 onUpdated(() => {
   watchUserPos()
