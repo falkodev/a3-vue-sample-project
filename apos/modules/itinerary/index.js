@@ -8,7 +8,7 @@ module.exports = {
     alias: 'itinerary',
     label: 'apostrophe:itinerary.label',
     pluralLabel: 'apostrophe:itinerary.pluralLabel',
-    localized: false,
+    localized: true,
   },
   fields: {
     add: {
@@ -71,6 +71,7 @@ module.exports = {
         type: 'float',
         required: true,
         label: 'apostrophe:price',
+        min: 0,
       },
       image: {
         type: 'attachment',
@@ -82,10 +83,38 @@ module.exports = {
         label: 'apostrophe:steps',
         fields: {
           add: {
+            stepType: {
+              type: 'select',
+              label: 'apostrophe:stepType',
+              choices: [
+                {
+                  label: 'apostrophe:place.label',
+                  value: 'place',
+                },
+                {
+                  label: 'apostrophe:domain',
+                  value: 'domain',
+                },
+              ],
+            },
             _place: {
-              //TODO: when an order is created, check its matching itinerary, get steps with "domain" place and add them to the order
+              min: 1,
+              max: 1,
               type: 'relationship',
               label: 'apostrophe:place.label',
+              if: { stepType: 'place' },
+            },
+            _domain: {
+              min: 1,
+              max: 1,
+              //TODO: when an order is created, check its matching itinerary, get steps with "domain" place and add them to the order
+              type: 'relationship',
+              label: 'apostrophe:domain',
+              if: { stepType: 'domain' },
+            },
+            duration: {
+              type: 'time',
+              label: 'apostrophe:duration',
             },
           },
         },
@@ -118,6 +147,35 @@ module.exports = {
     },
   },
 
+  extendMethods(self) {
+    /* istanbul ignore next */
+    return {
+      getBrowserData(_super, req) {
+        const data = _super(req)
+        data.labels = {
+          add: req.t('apostrophe:add'),
+          see: req.t('apostrophe:see'),
+          more: req.t('apostrophe:more'),
+          less: req.t('apostrophe:less'),
+          free: req.t('apostrophe:free'),
+          domain: req.t('apostrophe:domain'),
+          wineBar: req.t('apostrophe:wineBar'),
+          favorites: req.t('apostrophe:favorites'),
+          wineStore: req.t('apostrophe:wineStore'),
+          visitList: req.t('apostrophe:itinerary.visitList'),
+          autoGuidedVisit: req.t('apostrophe:autoGuidedVisit'),
+          globalInfos: req.t('apostrophe:itinerary.globalInfos'),
+          takeAppointment: req.t('apostrophe:itinerary.takeAppointment'),
+          validateItinerary: req.t('apostrophe:itinerary.validate'),
+        }
+
+        data.assetBaseUrl = self.apos.asset.getAssetBaseUrl()
+
+        return data
+      },
+    }
+  },
+
   handlers(self) {
     return {
       '@apostrophecms/db:fixtures': {
@@ -132,7 +190,7 @@ module.exports = {
 
             if (!placesIds.length) {
               throw new Error(
-                'No places defined. Please, run the task to fetch places through the defined API, most likey "npm run task --prefix apos -- place:fetch"',
+                'No places defined. Please, run the task to fetch places through the defined API, most likely "npm run task -- place:fetch"',
               )
             }
 

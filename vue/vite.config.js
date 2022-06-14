@@ -18,5 +18,6 @@ export default defineConfig({
     // generate manifest.json in outDir
     manifest: true,
     outDir: './dist',
+    minify: process.env.NODE_ENV === 'production',
   },
 })

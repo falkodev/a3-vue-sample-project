@@ -1,0 +1,25 @@
+<template>
+  <div class="t-validate">{{ $t.validateItinerary }}</div>
+</template>
+
+<script setup>
+const $t = window.apos.itinerary.labels
+</script>
+
+<style lang="scss">
+@import '/assets/settings.scss';
+
+.t-validate {
+  z-index: 99;
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  background: $color-orange;
+  color: $color-white;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 15px;
+}
+</style>

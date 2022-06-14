@@ -86,10 +86,33 @@ module.exports = {
         type: 'float',
         required: true,
       },
+      duration: {
+        type: 'time',
+        label: 'apostrophe:duration',
+        required: true,
+      },
+      labels: {
+        type: 'array',
+        titleField: 'name',
+        fields: {
+          add: {
+            name: {
+              type: 'string',
+            },
+          },
+        },
+      },
     },
     group: {
       basics: {
-        fields: ['placeType', 'image', 'longitude', 'latitude'],
+        fields: [
+          'placeType',
+          'image',
+          'longitude',
+          'latitude',
+          'duration',
+          'labels',
+        ],
       },
       widgets: {
         label: 'apostrophe:domainPresentation',
@@ -309,7 +332,7 @@ module.exports = {
               place,
             )
             for (const locale of Object.keys(self.apos.i18n.locales)) {
-              if (locale !== self.apos.i18n.defaultLocale) {
+              if (insertedDoc && locale !== self.apos.i18n.defaultLocale) {
                 insertedDoc.slug = self.apos.util.slugify(
                   `${insertedDoc.title}-1`,
                 )

@@ -150,7 +150,9 @@
   "filterByTag": "Filter by Tag",
   "filterResultsByType": "Filter Results By Type",
   "findOrAddTag": "Find an existing tag or add a new one",
+  "free": "Free",
   "globalDocLabel": "Global Content",
+  "globalInformations": "Global Informations",
   "goToPage": "Go to page {{ page }}",
   "guest": "Guest",
   "hideInNavigation": "Hide in Navigation",
@@ -368,6 +370,7 @@
   "slug": "Slug",
   "slugInUse": "Slug already in use",
   "someoneElseTookControl": "{{ who }} took control of this document in another tab or window. A document can only be edited in one place at a time.",
+  "stepType": "Step type",
   "submit": "Submit",
   "submitted": "Submitted",
   "submittedDraft": "Submitted Draft",
@@ -442,7 +445,11 @@
     "type": "itinerary type",
     "event": "event",
     "theme": "theme",
-    "syndicate": "syndicate route"
+    "syndicate": "syndicate route",
+    "globalInfos": "Global infos",
+    "visitList": "Visit list",
+    "takeAppointment": "Take appointment",
+    "validate": "Validate my steps"
   },
   "customer": "customer",
   "customers": "customers",
@@ -518,6 +525,11 @@
     "urlLabelLinkedin": "Enter your LinkedIn profile URL",
     "tabLabel": "Social networks"
   },
+  "see": "See",
+  "more": "more",
+  "less": "less",
+  "add": "Add",
+  "favorites": "Favorites",
   "place": {
     "label": "Place",
     "pluralLabel": "Places",
