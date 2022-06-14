@@ -22,6 +22,7 @@
    5.5 [Pino](#5-5)<br>
 6. [Tests](#6)<br>
 7. [Fixtures and defaults](#7)<br>
+8. [CI/CD and deployments](#8)<br>
 
 <a id="1"></a>
 
@@ -302,3 +303,19 @@ command is `docker-compose exec vino-terr-apos npm run fixtures`.
 
 For default values, such as activities, wine labels, ..., the command
 is `docker-compose exec vino-terr-apos npm run defaults` or locally `cd apos && npm run defaults`.
+
+<a id="8"></a>
+
+## 8 CI/CD and deployments [&#x2B06;](#contents)
+
+UAT and production environments are deployed to AWS Lightsail servers, executing docker-compose.
+
+Here are the steps to deploy a release:
+- upgrade package.json version
+- create a new entry in CHANGELOG.md with this new version, the current date and a changes sum up
+- create a MR on the target branch (e.g: larzac-uat to deploy on UAT for Larzac) with a commit starting with "Release v" and the defined version
+
+This will trigger a pipeline that will :
+- create a new release on Gitlab (available in https://gitlab.com/vino-vibes/vinoways-territoire/-/releases)
+- run tests
+- deploy the version to the AWS server following the configuration in the "deployment" folder in this repository
