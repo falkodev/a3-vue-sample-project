@@ -16,11 +16,8 @@ test:
     - npm run install:app --cache .npm --prefer-offline
     - npm install --location=global jest
     - npm run test:apos
-    - mkdir -p sc
-    - cd sc
     - git clone https://github.com/punkave/stagecoach
-    - cd stagecoach
-    - bin/sc-deploy uat
+    - stagecoach/bin/sc-deploy uat
   only:
     - ci-lightsail
 
