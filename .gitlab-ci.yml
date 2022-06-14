@@ -2,6 +2,8 @@ image: node:16
 
 stages:
   - test
+  - release
+  - deploy
 
 cache:
   key: npm
@@ -11,9 +13,39 @@ cache:
 
 test:
   stage: test
-  variables:
-    JOB_NAME: test
-    TARGET_BRANCH: main
+  before_script:
+    - npm install --location=global jest
+  script:
+    - npm run install:app --cache .npm --prefer-offline
+    - npm run test:apos
+  only:
+    - ci-lightsail
+    - larzac-uat
+
+release_job:
+  stage: release
+  needs: [ "test" ]
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  script:
+    - echo "running release_job for $TAG"
+  release: # See https://docs.gitlab.com/ee/ci/yaml/#release for available properties
+    tag_name: 'v0.$CI_PIPELINE_IID'                # The version is incremented per pipeline.
+    description: 'v0.$CI_PIPELINE_IID'
+    ref: '$CI_COMMIT_SHA'
+  only:
+    refs:
+      - ci-lightsail
+      - larzac-uat
+    variables:
+      # Run only on master and commit message starts with "Release v"
+      - $CI_COMMIT_MESSAGE =~ /^Release v.*/
+    changes:
+      - CHANGELOG.md
+      - apos/release-id
+
+deploy_uat:
+  stage: deploy
+  needs: [ "release_job" ]
   before_script:
     - apt-get update -y && apt-get -y install rsync
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -26,9 +58,6 @@ test:
     - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" > deployment/vino-terr-larzac-uat.pem
     - git clone https://github.com/punkave/stagecoach
   script:
-    - npm run install:app --cache .npm --prefer-offline
-    - npm install --location=global jest
-    - npm run test:apos
     - stagecoach/bin/sc-deploy larzac-uat
   only:
     - ci-lightsail
