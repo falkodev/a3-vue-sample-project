@@ -12,7 +12,7 @@ cache:
 test:
   stage: test
   variables:
-    JOB_NAME: testCoverage
+    JOB_NAME: test
     TARGET_BRANCH: main
   before_script:
     - apt-get update -y && apt-get -y install rsync curl jq
@@ -31,8 +31,8 @@ test:
     - CURRENT_COVERAGE=`curl -s "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/pipelines/${CI_PIPELINE_ID}/jobs?private_token=${PRIVATE_TOKEN}" | jq --arg JOB_NAME "$JOB_NAME" '.[] | select(.name==$JOB_NAME) | .coverage'`
     - if  [ "$CURRENT_COVERAGE" -lt "$TARGET_COVERAGE" ]; then echo "Coverage decreased from ${TARGET_COVERAGE} to ${CURRENT_COVERAGE}" && exit 1; fi;
     - npm run install:app --cache .npm --prefer-offline
-    #    - npm install --location=global jest
-    #    - npm run test:apos
+    - npm install --location=global jest
+    - npm run test:apos
     - stagecoach/bin/sc-deploy larzac-uat
   only:
     - ci-lightsail
