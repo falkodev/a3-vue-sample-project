@@ -14,8 +14,8 @@ test:
   stage: test
   script:
     - npm run install:app --cache .npm --prefer-offline
-    - npm install --location=global jest
-    - npm run test:apos
+    #    - npm install --location=global jest
+    #    - npm run test:apos
     - git clone https://github.com/punkave/stagecoach
     - stagecoach/bin/sc-deploy uat
   only:
