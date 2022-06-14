@@ -1,8 +1,8 @@
 image: node:16
 
 stages:
-  #  - release
-  #  - test
+  - release
+  - test
   - deploy
 
 cache:
@@ -31,18 +31,17 @@ cache:
 #      - CHANGELOG.md
 #      - package.json
 
-#test:
-#  stage: test
-#  #  needs: [ "release" ]
-#  before_script:
-#    - npm install --location=global jest
-#    - npm run install:app --cache .npm --prefer-offline
-#  script:
-#    - npm run test:apos
+test:
+  stage: test
+  #  needs: [ "release" ]
+  before_script:
+    - npm install --location=global jest
+    - npm run install:app --cache .npm --prefer-offline
+  script:
+    - npm run test:apos
 
-deploy_uat:
+deploy_larzac_uat:
   stage: deploy
-  #  needs: [ "test" ]
   before_script:
     - apt-get update -y && apt-get -y install rsync
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -56,7 +55,7 @@ deploy_uat:
     - touch deployment/vino-terr-larzac-uat.pem
     - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" > deployment/vino-terr-larzac-uat.pem
     - echo "mongoDB:" > apos/config/local.yml
-    - 'echo "  dockerUri: mongodb://$MONGO_INITDB_ROOT_USERNAME:$MONGO_INITDB_ROOT_PASSWORD@vino-terr-mongo:27017/vino-terr-larzac?authSource=admin" >> apos/config/local.yml'
+    - 'echo "  dockerUri: mongodb://"$MONGO_INITDB_ROOT_USERNAME":"$MONGO_INITDB_ROOT_PASSWORD"@vino-terr-mongo:27017/vino-terr-larzac?authSource=admin" >> apos/config/local.yml'
     - git clone https://github.com/punkave/stagecoach
     - npm run install:app --cache .npm --prefer-offline
   script:
