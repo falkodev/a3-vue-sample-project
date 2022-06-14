@@ -11,34 +11,32 @@ cache:
   paths:
     - .npm/
 
-#release:
-#  stage: release
-#  image: registry.gitlab.com/gitlab-org/release-cli:latest
-#  script:
-#    - echo "running release_job for $TAG"
-#  release:
-#    tag_name: 'v0.$CI_PIPELINE_IID'
-#    description: 'v0.$CI_PIPELINE_IID'
-#    ref: '$CI_COMMIT_SHA'
-#  only:
-#    refs:
-#      - ci-lightsail
-#      - larzac-uat
-#    variables:
-#      # Run only when commit message starts with "Release v"
-#      - $CI_COMMIT_MESSAGE =~ /^Release v.*/
-#    changes:
-#      - CHANGELOG.md
-#      - package.json
+release:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  script:
+    - echo "running release_job for $TAG"
+  release:
+    tag_name: 'v0.$CI_PIPELINE_IID'
+    description: 'v0.$CI_PIPELINE_IID'
+    ref: '$CI_COMMIT_SHA'
+  only:
+    refs:
+      - larzac-uat
+    variables:
+      # Run only when commit message starts with "Release v"
+      - $CI_COMMIT_MESSAGE =~ /^Release v.*/
+    changes:
+      - CHANGELOG.md
+      - package.json
 
-#test:
-#  stage: test
-#  #  needs: [ "release" ]
-#  before_script:
-#    - npm install --location=global jest
-#    - npm run install:app --cache .npm --prefer-offline
-#  script:
-#    - npm run test:apos
+test:
+  stage: test
+  before_script:
+    - npm install --location=global jest
+    - npm run install:app --cache .npm --prefer-offline
+  script:
+    - npm run test:apos
 
 deploy_larzac_uat:
   stage: deploy
@@ -61,5 +59,4 @@ deploy_larzac_uat:
   script:
     - stagecoach/bin/sc-deploy larzac-uat
   only:
-    - ci-lightsail
     - larzac-uat
