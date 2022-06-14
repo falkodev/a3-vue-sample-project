@@ -2,7 +2,7 @@
   <div class="t-visit">
     <div class="t-visit__fixed">
       <h2 class="t-visit__title">{{ domain.title }}</h2>
-      <IconGeoloc class="t-visit__geoloc" @click="centerMapOnUser"/>
+      <IconGeoloc class="t-visit__geoloc" @click="centerMapOnUser" />
       <div class="t-visit__map t-map__container">
         <l-map
           draggable="false"
@@ -20,7 +20,11 @@
 
           <l-geo-json :geojson="geojson" />
 
-          <l-marker v-if="userLat && userLong" :lat-lng="[userLat, userLong]" @moveend="getUserPos">
+          <l-marker
+            v-if="userLat && userLong"
+            :lat-lng="[userLat, userLong]"
+            @moveend="getUserPos"
+          >
             <l-icon
               iconUrl="/apos-frontend/default/modules/content/icons/pin-user.svg"
               :iconSize="[50, 50]"
@@ -57,7 +61,8 @@
                 :key="imageIndex"
                 :style="`background-image: url( ${
                   attachmentList.filter(
-                    (attachment) => attachment.name === image.attachment.name)[0]._urls.full
+                    (attachment) => attachment.name === image.attachment.name,
+                  )[0]._urls.full
                 })`"
               >
                 <p class="t-media__info">
@@ -124,8 +129,7 @@ let userLong = computed(() => {
   return userCoords.longitude
 })
 const centerMapOnUser = () => {
-  mapCenter.lat = userLat.value,
-  mapCenter.long = userLong.value
+  ;(mapCenter.lat = userLat.value), (mapCenter.long = userLong.value)
 }
 const setPosition = (pos) => {
   userCoords.latitude = pos.coords.latitude
@@ -154,8 +158,9 @@ const watchUserPos = () => {
 }
 onBeforeMount(() => {
   watchUserPos()
-  jsonUrl = attachmentList.value.filter((attachment) => attachment.extension === 'geojson')[0]
-    ._url
+  jsonUrl = attachmentList.value.filter(
+    (attachment) => attachment.extension === 'geojson',
+  )[0]._url
 
   fetch(jsonUrl)
     .then((response) => response.json())
@@ -166,8 +171,7 @@ onBeforeMount(() => {
   mapCenter.lat = domainLat.value
   mapCenter.long = domainLong.value
 })
-onMounted(() => {
-})
+onMounted(() => {})
 onUpdated(() => {
   watchUserPos()
 })

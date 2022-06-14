@@ -1,11 +1,9 @@
 module.exports = {
   extend: '@apostrophecms/piece-page-type',
   methods(self) {
-    return {
-    }
+    return {}
   },
   extendMethods(self) {
-    return {
-    }
+    return {}
   },
 }
