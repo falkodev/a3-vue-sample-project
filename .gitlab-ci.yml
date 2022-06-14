@@ -22,7 +22,7 @@ test:
     - ci-lightsail
     - larzac-uat
 
-release_job:
+release:
   stage: release
   needs: [ "test" ]
   image: registry.gitlab.com/gitlab-org/release-cli:latest
