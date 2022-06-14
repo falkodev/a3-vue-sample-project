@@ -11,10 +11,8 @@ cache:
 
 test:
   stage: test
-  script:
-    - npm run install:app --cache .npm --prefer-offline
-    #    - npm install --location=global jest
-    #    - npm run test:apos
+  before_script:
+    - apk update && apk add openssh-client rsync
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" | tr -d '\r' | ssh-add -
@@ -22,8 +20,11 @@ test:
     - chmod 700 ~/.ssh
     - touch key.pem
     - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" > key.pem
-    - cat key.pem
     - git clone https://github.com/punkave/stagecoach
+  script:
+    - npm run install:app --cache .npm --prefer-offline
+    #    - npm install --location=global jest
+    #    - npm run test:apos
     - stagecoach/bin/sc-deploy uat
   only:
     - ci-lightsail
