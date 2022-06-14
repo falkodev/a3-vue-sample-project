@@ -3,6 +3,7 @@
     <div class="t-app-itinerary__spacer"></div>
     <div class="t-image__container">
       <img
+        v-if="data.image"
         :src="
           '/uploads/attachments/' +
           data.image._id +
@@ -66,14 +67,20 @@
           </div>
 
           <div class="t-info-half__title">
-            {{ data?.steps[0]?.place?.title }}
+            {{
+              data.steps.length
+                ? data.steps[0].place.title
+                : data._visits[0].steps[0].subSteps[0].title
+            }}
           </div>
-          <div
-            v-for="addressPart in splitAddress(removeTags(startStep))"
-            :key="addressPart"
-            class="t-info-half__value"
-          >
-            {{ addressPart }}
+          <div v-if="data.steps.length">
+            <div
+              v-for="addressPart in splitAddress(removeTags(startStep))"
+              :key="addressPart"
+              class="t-info-half__value"
+            >
+              {{ addressPart }}
+            </div>
           </div>
         </div>
         <div class="t-info-half">
@@ -85,14 +92,24 @@
           </div>
 
           <div class="t-info-half__title">
-            {{ data.steps[data.steps.length - 1].place.title }}
+            {{
+              data.steps.length
+                ? data.steps[data.steps.length - 1].place.title
+                : data._visits[0].steps[data._visits[0].steps.length - 1]
+                    .subSteps[
+                    data._visits[0].steps[data._visits[0].steps.length - 1]
+                      .subSteps.length - 1
+                  ].title
+            }}
           </div>
-          <div
-            v-for="addressPart in splitAddress(removeTags(lastStep))"
-            :key="addressPart"
-            class="t-info-half__value"
-          >
-            {{ addressPart }}
+          <div v-if="data.steps.length">
+            <div
+              v-for="addressPart in splitAddress(removeTags(lastStep))"
+              :key="addressPart"
+              class="t-info-half__value"
+            >
+              {{ addressPart }}
+            </div>
           </div>
         </div>
       </div>
@@ -104,7 +121,7 @@
     <!-- Rendre dynamique le ValidateItinerary, avec une traduction et un lien dans ses paramètres -->
 
     <!-- Pour vous il n'y a pas de principe de dynamisque dans les infos générales, mais ne touchez pas ce qui est déja présent, ca devrait fonctionner quand meme. -->
-    <!-- Pour les infos générales,  laissez les blocs présents par défaut, et rajoutez des conditions pour les vôtres, merci ! -->
+    <!-- Pour les infos générales,  laissez les blocs présents par défaut, et rajoutez des conditions pour les vôtres, merci -->
   </div>
 </template>
 
@@ -153,7 +170,6 @@ function calculateItineraryDuration(steps) {
   let hours = 0
   let minutes = 0
   steps.forEach((step) => {
-    console.log(step)
     hours = hours + dayjs(`2000-01-01 ${step.duration}`).$H
     minutes = minutes + dayjs(`2000-01-01 ${step.duration}`).$M
   })

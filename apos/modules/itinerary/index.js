@@ -98,15 +98,11 @@ module.exports = {
               ],
             },
             _place: {
-              min: 1,
-              max: 1,
               type: 'relationship',
               label: 'apostrophe:place.label',
               if: { stepType: 'place' },
             },
             _domain: {
-              min: 1,
-              max: 1,
               //TODO: when an order is created, check its matching itinerary, get steps with "domain" place and add them to the order
               type: 'relationship',
               label: 'apostrophe:domain',
