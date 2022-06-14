@@ -56,7 +56,7 @@ deploy_uat:
     - touch deployment/vino-terr-larzac-uat.pem
     - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" > deployment/vino-terr-larzac-uat.pem
     - echo "mongoDB:" > apos/config/local.yml
-    - echo "  dockerUri: mongodb://$MONGO_INITDB_ROOT_USERNAME:$MONGO_INITDB_ROOT_PASSWORD@vino-terr-mongo:27017/vino-terr-larzac?authSource=admin" >> apos/config/local.yml
+    - 'echo "  dockerUri: mongodb://$MONGO_INITDB_ROOT_USERNAME:$MONGO_INITDB_ROOT_PASSWORD@vino-terr-mongo:27017/vino-terr-larzac?authSource=admin" >> apos/config/local.yml'
     - git clone https://github.com/punkave/stagecoach
     - npm run install:app --cache .npm --prefer-offline
   script:
