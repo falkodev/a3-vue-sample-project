@@ -147,8 +147,9 @@ function calculateItineraryDuration(steps) {
   let hours = 0
   let minutes = 0
   steps.forEach((step) => {
-    hours = hours + dayjs(`2000-01-01 ${step.place.duration}`).$H
-    minutes = minutes + dayjs(`2000-01-01 ${step.place.duration}`).$M
+    console.log(step)
+    hours = hours + dayjs(`2000-01-01 ${step.duration}`).$H
+    minutes = minutes + dayjs(`2000-01-01 ${step.duration}`).$M
   })
   let duration = `${hours}:${minutes}`
   return duration
