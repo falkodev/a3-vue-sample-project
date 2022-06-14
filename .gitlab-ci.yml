@@ -2,7 +2,7 @@ image: node:16
 
 stages:
   - build
-  - test
+#  - test
 
 cache:
   key: npm
@@ -14,13 +14,17 @@ build:
   stage: build
   script:
     - npm run install:app --cache .npm --prefer-offline
-  only:
-    - ci-lightsail
-
-test:
-  stage: test
-  script:
+    - npm install -g jest
     - npm run test:apos
     - npm run cy:run
   only:
     - ci-lightsail
+
+#test:
+#  stage: test
+#  script:
+#    - npm install -g jest
+#    - npm run test:apos
+#    - npm run cy:run
+#  only:
+#    - ci-lightsail
