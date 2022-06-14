@@ -1,8 +1,8 @@
 image: node:16
 
 stages:
-  - test
   - release
+  - test
   - deploy
 
 cache:
@@ -11,41 +11,40 @@ cache:
   paths:
     - .npm/
 
+#release:
+#  stage: release
+#  image: registry.gitlab.com/gitlab-org/release-cli:latest
+#  script:
+#    - echo "running release_job for $TAG"
+#  release:
+#    tag_name: 'v0.$CI_PIPELINE_IID'
+#    description: 'v0.$CI_PIPELINE_IID'
+#    ref: '$CI_COMMIT_SHA'
+#  only:
+#    refs:
+#      - ci-lightsail
+#      - larzac-uat
+#    variables:
+#      # Run only when commit message starts with "Release v"
+#      - $CI_COMMIT_MESSAGE =~ /^Release v.*/
+#    changes:
+#      - CHANGELOG.md
+#      - apos/release-id
+
 test:
   stage: test
+  #  needs: [ "release" ]
   before_script:
     - npm install --location=global jest
   script:
-    - npm run install:app --cache .npm --prefer-offline
     - npm run test:apos
   only:
     - ci-lightsail
     - larzac-uat
 
-release:
-  stage: release
-  needs: [ "test" ]
-  image: registry.gitlab.com/gitlab-org/release-cli:latest
-  script:
-    - echo "running release_job for $TAG"
-  release: # See https://docs.gitlab.com/ee/ci/yaml/#release for available properties
-    tag_name: 'v0.$CI_PIPELINE_IID'                # The version is incremented per pipeline.
-    description: 'v0.$CI_PIPELINE_IID'
-    ref: '$CI_COMMIT_SHA'
-  only:
-    refs:
-      - ci-lightsail
-      - larzac-uat
-    variables:
-      # Run only on master and commit message starts with "Release v"
-      - $CI_COMMIT_MESSAGE =~ /^Release v.*/
-    changes:
-      - CHANGELOG.md
-      - apos/release-id
-
 deploy_uat:
   stage: deploy
-  needs: [ "release" ]
+  needs: [ "test" ]
   before_script:
     - apt-get update -y && apt-get -y install rsync
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -54,10 +53,14 @@ deploy_uat:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - echo "NODE_APP_INSTANCE=larzac" > .env
+    - echo "MONGO_INITDB_ROOT_USERNAME=root" >> .env
+    - echo "MONGO_INITDB_ROOT_PASSWORD=$MONGO_INITDB_ROOT_PASSWORD_LARZAC_UAT" >> .env
+    - cat .env
     - touch deployment/vino-terr-larzac-uat.pem
     - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" > deployment/vino-terr-larzac-uat.pem
     - git clone https://github.com/punkave/stagecoach
   script:
+    - npm run install:app --cache .npm --prefer-offline
     - stagecoach/bin/sc-deploy larzac-uat
   only:
     - ci-lightsail
