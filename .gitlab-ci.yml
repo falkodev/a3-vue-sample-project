@@ -11,20 +11,29 @@ cache:
 
 test:
   stage: test
+  variables:
+    JOB_NAME: testCoverage
+    TARGET_BRANCH: main
   before_script:
-    - apt-get update -y && apt-get -y install rsync
+    - apt-get update -y && apt-get -y install rsync curl jq
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - touch key.pem
-    - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" > key.pem
+    - echo "NODE_APP_INSTANCE=larzac" > .env
+    - touch deployment/vino-terr-larzac-uat.pem
+    - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" > deployment/vino-terr-larzac-uat.pem
     - git clone https://github.com/punkave/stagecoach
   script:
+    - TARGET_PIPELINE_ID=`curl -s "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/pipelines?ref=${TARGET_BRANCH}&status=success&private_token=${PRIVATE_TOKEN}" | jq ".[0].id"`
+    - TARGET_COVERAGE=`curl -s "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/pipelines/${TARGET_PIPELINE_ID}/jobs?private_token=${PRIVATE_TOKEN}" | jq --arg JOB_NAME "$JOB_NAME" '.[] | select(.name==$JOB_NAME) | .coverage'`
+    - CURRENT_COVERAGE=`curl -s "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/pipelines/${CI_PIPELINE_ID}/jobs?private_token=${PRIVATE_TOKEN}" | jq --arg JOB_NAME "$JOB_NAME" '.[] | select(.name==$JOB_NAME) | .coverage'`
+    - if  [ "$CURRENT_COVERAGE" -lt "$TARGET_COVERAGE" ]; then echo "Coverage decreased from ${TARGET_COVERAGE} to ${CURRENT_COVERAGE}" && exit 1; fi;
     - npm run install:app --cache .npm --prefer-offline
     #    - npm install --location=global jest
     #    - npm run test:apos
-    - stagecoach/bin/sc-deploy uat
+    - stagecoach/bin/sc-deploy larzac-uat
   only:
     - ci-lightsail
+    - larzac-uat
