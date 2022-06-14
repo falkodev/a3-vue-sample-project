@@ -2,7 +2,6 @@ image: node:16
 
 stages:
   - test
-#  - test
 
 cache:
   key: npm
@@ -13,7 +12,7 @@ cache:
 test:
   stage: test
   script:
-    - npm run install:app --cache .npm --prefer-offline
+    #    - npm run install:app --cache .npm --prefer-offline
     #    - npm install --location=global jest
     #    - npm run test:apos
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
@@ -21,16 +20,10 @@ test:
     - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+    - touch key.pem
+    - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" > key.pem
+    - echo key.pem
     - git clone https://github.com/punkave/stagecoach
     - stagecoach/bin/sc-deploy uat
   only:
     - ci-lightsail
-
-#test:
-#  stage: test
-#  script:
-#    - npm install -g jest
-#    - npm run test:apos
-#    - npm run cy:run
-#  only:
-#    - ci-lightsail
