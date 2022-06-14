@@ -45,7 +45,7 @@ release_job:
 
 deploy_uat:
   stage: deploy
-  needs: [ "release_job" ]
+  needs: [ "release" ]
   before_script:
     - apt-get update -y && apt-get -y install rsync
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'

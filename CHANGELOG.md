@@ -6,4 +6,5 @@
 
 - ApostropheCMS, Vue, Mongo, Docker
 - Deployment to AWS through .gitlab-ci.yml
+- test
 
