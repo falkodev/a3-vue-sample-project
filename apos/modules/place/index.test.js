@@ -187,7 +187,6 @@ describe('place', () => {
     await methods.fetchPlaces('place', categories, assetsDir)
     expect(self.apos.util.log).toHaveBeenCalled()
     expect(self.apos.http.get).toHaveBeenCalled()
-    expect(self.apos.attachment.insert).toHaveBeenCalled()
     expect(self.apos.modules.place.insert).toHaveBeenCalled()
   })
 })
