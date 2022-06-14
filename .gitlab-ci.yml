@@ -16,6 +16,11 @@ test:
     - npm run install:app --cache .npm --prefer-offline
     #    - npm install --location=global jest
     #    - npm run test:apos
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
     - git clone https://github.com/punkave/stagecoach
     - stagecoach/bin/sc-deploy uat
   only:
