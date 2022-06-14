@@ -36,7 +36,7 @@ module.exports = {
         }
 
         req.locale = defaultLocale
-        const title = req.t(item.title)
+        const title = req.t(item.title) || item.title
 
         if (image) {
           doc = { title, image }
