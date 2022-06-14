@@ -57,8 +57,7 @@
                 :key="imageIndex"
                 :style="`background-image: url( ${
                   attachmentList.filter(
-                    (attachment) => attachment.name === image.attachment.name,
-                  )[0]._urls.full
+                    (attachment) => attachment.name === image.attachment.name)[0]._urls.full
                 })`"
               >
                 <p class="t-media__info">
