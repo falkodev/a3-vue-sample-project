@@ -319,3 +319,7 @@ This will trigger a pipeline that will :
 - create a new release on Gitlab (available in https://gitlab.com/vino-vibes/vinoways-territoire/-/releases)
 - run tests
 - deploy the version to the AWS server following the configuration in the "deployment" folder in this repository
+
+Current UAT for Larzac:
+- IP address: http://15.188.246.213:8080
+- Configuration and SSH connection: https://lightsail.aws.amazon.com/ls/webapp/eu-west-3/instances/vino-terr-larzac-uat/connect?# (log in with Pascal's AWS account)
