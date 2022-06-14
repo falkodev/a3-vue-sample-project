@@ -36,6 +36,7 @@ test:
   #  needs: [ "release" ]
   before_script:
     - npm install --location=global jest
+    - npm run install:app --cache .npm --prefer-offline
   script:
     - npm run test:apos
   only:
@@ -59,8 +60,8 @@ deploy_uat:
     - touch deployment/vino-terr-larzac-uat.pem
     - echo "$SSH_PRIVATE_KEY_LARZAC_UAT" > deployment/vino-terr-larzac-uat.pem
     - git clone https://github.com/punkave/stagecoach
-  script:
     - npm run install:app --cache .npm --prefer-offline
+  script:
     - stagecoach/bin/sc-deploy larzac-uat
   only:
     - ci-lightsail
