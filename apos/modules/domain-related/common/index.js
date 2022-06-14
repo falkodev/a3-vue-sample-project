@@ -46,9 +46,7 @@ module.exports = {
           doc = { title }
         }
 
-        const insertedDoc = await self.apos.modules[
-          `domain-related/${moduleName}`
-        ].insert(req, {
+        const insertedDoc = await self.insert(req, {
           ...self.newInstance(),
           ...doc,
         })

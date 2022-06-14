@@ -14,7 +14,7 @@ build:
   stage: build
   script:
     - npm run install:app --cache .npm --prefer-offline
-    - npm install -g jest
+    - npm install --location=global jest
     - npm run test:apos
     - npm run cy:run
   only:
