@@ -145,7 +145,7 @@ function updateItinerary(itinerary) {
 }
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
-  () => refStartStep?.value?.place?.addressN?.items[0]?.content,
+  () => refStartStep?.value?.place?.address?.items[0]?.content,
 )
 
 const refLastStep = ref(data.steps[data.steps.length - 1])
