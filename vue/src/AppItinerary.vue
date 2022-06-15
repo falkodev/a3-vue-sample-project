@@ -218,7 +218,7 @@
 import EventContainer from './components/EventContainer.vue'
 // import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateButton from './components/ValidateButton.vue'
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref } from 'vue'
 import dayjs from 'dayjs'
 
 const props = defineProps({
@@ -228,23 +228,17 @@ const data = JSON.parse(props.piece)
 if (!window.apos.user) {
   location.assign('/login?redirect=itinerary/' + data.slug)
 }
-// onMounted(() => {
-//   if (data._visits[0]) {
-//     document.querySelectorAll('.t-info-half').style.height = '100px'
-//     document.querySelectorAll('.t-info-half').style.width = '32%'
-//   }
-// })
 
 const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 let descriptionRef = ref(false)
 
-function updateItinerary(itinerary) {
-  data.steps = itinerary.steps
-  refStartStep.value = data.steps[0]
-  refLastStep.value = data.steps[data.steps.length - 1]
-  refItineraryDuration.value = data.steps
-}
+// function updateItinerary(itinerary) {
+//   data.steps = itinerary.steps
+//   refStartStep.value = data.steps[0]
+//   refLastStep.value = data.steps[data.steps.length - 1]
+//   refItineraryDuration.value = data.steps
+// }
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
   () => refStartStep?.value?.place?.addressN?.items[0]?.content,
