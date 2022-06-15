@@ -1,12 +1,7 @@
-{% extends data.outerLayout %}
+{% extends "@apostrophecms/page:layout.html" %}
 
-{% block beforeMain %}
-<h1>itinerary step</h1>
-{# Page header markup and the main content area opening tag... #}
-{% endblock %}
-
-{% block main %}{% endblock %}
-
-{% block afterMain %}
-{# The main content area closing tag and page footer... #}
+{% block main %}
+<div id="app-visit" data-piece="{{ apos.page.stringify(data.piece) }}"
+  data-attachments="{{ apos.page.stringify( apos.attachment.all(data.piece, { annotate: true }) ) }}">
+</div>
 {% endblock %}
