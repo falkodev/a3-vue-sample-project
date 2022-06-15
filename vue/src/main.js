@@ -4,7 +4,6 @@ import { createPinia } from 'pinia'
 import App_Itinerary from './AppItinerary.vue'
 import AppVisit from './AppVisit.vue'
 
-
 const mountEl = document.querySelector('#app_itinerary')
 if (mountEl) {
   const app = createApp(App_Itinerary, mountEl.dataset)
