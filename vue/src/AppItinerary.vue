@@ -130,7 +130,7 @@
 </template>
 
 <script setup>
-import VisitsEvents from './components/VisitsEvents.vue'
+// import VisitsEvents from './components/VisitsEvents.vue'
 // import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateButton from './components/ValidateButton.vue'
 import { computed, ref, onMounted } from 'vue'
