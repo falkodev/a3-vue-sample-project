@@ -38,13 +38,22 @@
             {{ itineraryDuration }}
           </div>
         </div>
-        <div class="t-info-tier">
+        <div v-if="data.steps.length" class="t-info-tier">
           <img
             :src="assetBaseUrl + '/modules/content/icons/event.png'"
             class="t-info-tier__logo"
           />
           <div class="t-info-tier__value">
             {{ dataPrice(data.price) }}
+          </div>
+        </div>
+        <div v-else class="t-info-tier">
+          <img
+            :src="assetBaseUrl + '/modules/content/icons/event.png'"
+            class="t-info-tier__logo"
+          />
+          <div class="t-info-tier__value">
+            {{ data._visits }}
           </div>
         </div>
         <div class="t-info-tier">
@@ -115,14 +124,16 @@
       </div>
     </div>
     <ValidateButton :buttonText="'validateItinerary'" :buttonLink="'link'" />
-    <VisitsContainer :piece="data" @updateItinerary="updateItinerary" />
+    <VisitsEvents />
+    <!-- <VisitsContainer :piece="data" @updateItinerary="updateItinerary" /> -->
   </div>
 </template>
 
 <script setup>
-import VisitsContainer from './components/VisitsContainer.vue'
+import VisitsEvents from './components/VisitsEvents.vue'
+// import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateButton from './components/ValidateButton.vue'
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import dayjs from 'dayjs'
 
 const props = defineProps({
@@ -132,17 +143,19 @@ const data = JSON.parse(props.piece)
 if (!window.apos.user) {
   location.assign('/login?redirect=itinerary/' + data.slug)
 }
-
+onMounted(() => {
+  console.log(data._visits)
+})
 const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 let descriptionRef = ref(false)
 
-function updateItinerary(itinerary) {
-  data.steps = itinerary.steps
-  refStartStep.value = data.steps[0]
-  refLastStep.value = data.steps[data.steps.length - 1]
-  refItineraryDuration.value = data.steps
-}
+// function updateItinerary(itinerary) {
+//   data.steps = itinerary.steps
+//   refStartStep.value = data.steps[0]
+//   refLastStep.value = data.steps[data.steps.length - 1]
+//   refItineraryDuration.value = data.steps
+// }
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
   () => refStartStep?.value?.place?.addressN?.items[0]?.content,
