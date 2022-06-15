@@ -115,12 +115,16 @@
       </div>
     </div>
     <ValidateButton :buttonText="'validateItinerary'" :buttonLink="'link'" />
-    <VisitsContainer :piece="data" @updateItinerary="updateItinerary" />
+    <ThemeContainer
+      v-if="data.itineraryType === 'theme'"
+      :piece="data"
+      @updateItinerary="updateItinerary"
+    />
   </div>
 </template>
 
 <script setup>
-import VisitsContainer from './components/VisitsContainer.vue'
+import ThemeContainer from './components/ThemeContainer.vue'
 import ValidateButton from './components/ValidateButton.vue'
 import { computed, ref } from 'vue'
 import dayjs from 'dayjs'
