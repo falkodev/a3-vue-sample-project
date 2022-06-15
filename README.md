@@ -20,6 +20,7 @@
    5.3 [MongoDB](#5-3)<br>
    5.4 [Swagger](#5-4)<br>
    5.5 [Pino](#5-5)<br>
+   5.6 [Adminer](#5-6)<br>
 6. [Tests](#6)<br>
 7. [Fixtures and defaults](#7)<br>
 8. [CI/CD and deployments](#8)<br>
@@ -272,8 +273,28 @@ Example of usage:
 self.apos.util.log('Backend application started on http://%s:%d', host, port)
 ```
 
-<a id="6"></a>
+<a id="5-6"></a>
 
+### 5.6 Adminer [&#x2B06;](#contents)
+
+`Adminer` is a tool for viewing and managing content in databases.
+It natively supports MySQL, MariaDB, PostgreSQL, SQLite, MS SQL, Oracle, Elasticsearch and MongoDB.
+
+Go to http://localhost:8001 to access it.
+
+Example of usage:
+
+```yml
+System  : MongoDB
+Server  : vino-terr-mongo
+Username: root
+Password: XXX
+Database: vino-terr-YYY
+```
+
+`XXX` being the content of `MONGO_INITDB_ROOT_PASSWORD` and `YYY` the syndicate name (most probably `larzac`)
+
+<a id="6"></a>
 ## 6 Tests [&#x2B06;](#contents)
 
 Tests are a mix of Jest on backend and frontend and E2E tests with Cypress on frontend.
