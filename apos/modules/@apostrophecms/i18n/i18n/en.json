@@ -620,6 +620,7 @@
       "image": "Photo subStep"
     },
     "content": {
+      "singleContent": "Content",
       "pluralContent": "Contents",
       "title": "Title Content",
       "presentation": "Video or Image presentation",

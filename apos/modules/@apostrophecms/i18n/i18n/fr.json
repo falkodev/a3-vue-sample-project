@@ -626,6 +626,7 @@
       "image": "Photo de la sous-étape"
     },
     "content": {
+      "singleContent": "Contenu",
       "pluralContent": "Contenus",
       "title": "Titre du contenu",
       "presentation": "Video ou image de presentation",
