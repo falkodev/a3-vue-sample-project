@@ -19,21 +19,23 @@
 </template>
 
 <script setup>
-// import { LMap, LMarker, LTileLayer } from '@vue-leaflet/vue-leaflet'
+import { LMap, LMarker, LTileLayer } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
-// import { reactive, toRefs } from 'vue'
-// import { icon as renderIcon } from 'leaflet'
+import { reactive, toRefs } from 'vue'
+import { icon as renderIcon } from 'leaflet'
 
-// const assetBaseUrl = window.apos.itinerary.assetBaseUrl
-// const $t = window.apos.itinerary.labels
+console.log(LMarker, toRefs, $t, centerLoaded, icon)
+
+const assetBaseUrl = window.apos.itinerary.assetBaseUrl
+const $t = window.apos.itinerary.labels
 const zoom = 10
-// let center = reactive({ lat: 0, lon: 0 })
-// let centerLoaded = reactive(false)
-// const icon = renderIcon({
-//   iconUrl: assetBaseUrl + '/modules/content/icons/orange-marker.png',
-//   iconSize: [20, 20],
-//   iconAnchor: [16, 37],
-// })
+let center = reactive({ lat: 0, lon: 0 })
+let centerLoaded = reactive(false)
+const icon = renderIcon({
+  iconUrl: assetBaseUrl + '/modules/content/icons/orange-marker.png',
+  iconSize: [20, 20],
+  iconAnchor: [16, 37],
+})
 </script>
 
 <style lang="scss">
