@@ -1,9 +1,16 @@
 <template>
-  <div class="t-validate">{{ $t.validateItinerary }}</div>
+  <div :href="buttonLink" class="t-validate">{{ $t[buttonText] }}</div>
 </template>
 
 <script setup>
 const $t = window.apos.itinerary.labels
+
+const props = defineProps({
+  buttonText: Object,
+  // buttonLink: Object,
+})
+
+console.log(props)
 </script>
 
 <style lang="scss">
