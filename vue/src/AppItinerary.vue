@@ -86,45 +86,34 @@
                 : data._visits[0].steps[0].subSteps[0].title
             }}
           </div>
-          <!-- <div v-if="data.steps.length">
-            <div
-              v-for="addressPart in splitAddress(removeTags(startStep))"
-              :key="addressPart"
-              class="t-info-half__value"
-            >
-              {{ addressPart }}
-            </div>
-          </div> -->
         </div>
-        <div v-else-if="data.steps.length" class="t-info-half">
-          <div class="t-info-half__logo-container">
-            <img
-              :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
-              class="t-info-half__logo t-info-half__logo--right"
-            />
-          </div>
 
-          <div class="t-info-half__title">
-            {{
-              data.steps.length
-                ? data.steps[data.steps.length - 1].place.title
-                : data._visits[0].steps[data._visits[0].steps.length - 1]
-                    .subSteps[
-                    data._visits[0].steps[data._visits[0].steps.length - 1]
-                      .subSteps.length - 1
-                  ].title
-            }}
-          </div>
+        <div v-else-if="data.steps.length">
+          <div class="t-info-half">
+            <div class="t-info-half__logo-container">
+              <img
+                :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
+                class="t-info-half__logo t-info-half__logo--left"
+              />
+            </div>
 
-          <!-- <div v-if="data.steps.length"> -->
-          <div
-            v-for="addressPart in splitAddress(removeTags(startStep))"
-            :key="addressPart"
-            class="t-info-half__value"
-          >
-            {{ addressPart }}
+            <div class="t-info-half__title">
+              {{
+                data.steps.length
+                  ? data.steps[0].place.title
+                  : data._visits[0].steps[0].subSteps[0].title
+              }}
+            </div>
+            <div v-if="data.steps.length">
+              <div
+                v-for="addressPart in splitAddress(removeTags(startStep))"
+                :key="addressPart"
+                class="t-info-half__value"
+              >
+                {{ addressPart }}
+              </div>
+            </div>
           </div>
-          <!-- </div> -->
         </div>
 
         <div
@@ -150,47 +139,38 @@
                   ].title
             }}
           </div>
-
-          <!-- <div v-if="data.steps.length">
-            <div
-              v-for="addressPart in splitAddress(removeTags(lastStep))"
-              :key="addressPart"
-              class="t-info-half__value"
-            >
-              {{ addressPart }}
-            </div>
-          </div> -->
         </div>
 
-        <div v-else-if="data.steps.lenght" class="t-info-half">
-          <div class="t-info-half__logo-container">
-            <img
-              :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
-              class="t-info-half__logo t-info-half__logo--right"
-            />
-          </div>
+        <div v-else-if="data.steps.length">
+          <div class="t-info-half">
+            <div class="t-info-half__logo-container">
+              <img
+                :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
+                class="t-info-half__logo t-info-half__logo--right"
+              />
+            </div>
 
-          <div class="t-info-half__title">
-            {{
-              data.steps.length
-                ? data.steps[data.steps.length - 1].place.title
-                : data._visits[0].steps[data._visits[0].steps.length - 1]
-                    .subSteps[
-                    data._visits[0].steps[data._visits[0].steps.length - 1]
-                      .subSteps.length - 1
-                  ].title
-            }}
+            <div class="t-info-half__title">
+              {{
+                data.steps.length
+                  ? data.steps[data.steps.length - 1].place.title
+                  : data._visits[0].steps[data._visits[0].steps.length - 1]
+                      .subSteps[
+                      data._visits[0].steps[data._visits[0].steps.length - 1]
+                        .subSteps.length - 1
+                    ].title
+              }}
+            </div>
+            <div v-if="data.steps.length">
+              <div
+                v-for="addressPart in splitAddress(removeTags(lastStep))"
+                :key="addressPart"
+                class="t-info-half__value"
+              >
+                {{ addressPart }}
+              </div>
+            </div>
           </div>
-
-          <!-- <div v-if="data.steps.length"> -->
-          <div
-            v-for="addressPart in splitAddress(removeTags(lastStep))"
-            :key="addressPart"
-            class="t-info-half__value"
-          >
-            {{ addressPart }}
-          </div>
-          <!-- </div> -->
         </div>
 
         <div
