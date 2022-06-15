@@ -16,6 +16,11 @@ main {
   flex-grow: 1;
 }
 
+[data-apos-refreshable] {
+  position: relative;
+  top: $admin-height;
+}
+
 .apos-admin-bar-spacer {
   margin-bottom: 0;
   display: none;
@@ -25,6 +30,7 @@ main {
   position: relative;
   top: calc($admin-height + $header-height);
 }
+
 .t-wrapper {
   position: relative;
   top: $header-height;

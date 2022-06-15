@@ -2,6 +2,8 @@ $color-white: #fff;
 $color-purple: #5357c1;
 $color-purple-transparent: #5357c145;
 $color-purple-rgb: rgba(83, 87, 193, 0.9);
+$color-purple-alpha-20: rgba(83, 87, 193, 0.2);
+$color-purple-alpha-30: rgba(83, 87, 193, 0.3);
 $color-purple-light: #8264f1;
 $color-purple-logo: #d4d7fb;
 $color-purple-dark: #eb443b30;
@@ -20,8 +22,8 @@ $color-grey-60: #323232;
 $color-red: #ec0808;
 $color-red-light: #f76161;
 
-$header-height: 102px;
 $admin-height: 112px;
+$header-height: 102px;
 $footer-height: 80px;
 
 $breakpoints: (

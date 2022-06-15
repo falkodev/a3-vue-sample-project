@@ -95,8 +95,6 @@
   "documentSaved": "Document saved.",
   "doesNotExistYet": "Does Not Exist Yet",
   "doesNotExistYetDescription": "The document does not exist yet as {{ mode }} in the {{ locale }} locale.",
-  "domain": "domain",
-  "domains": "domains",
   "domainPresentation": "Domain presentation",
   "download": "Download",
   "draft": "Draft",
@@ -455,6 +453,9 @@
   "customers": "customers",
   "order": "order",
   "orders": "orders",
+  "domain": "domain",
+  "domainPage": "Domain Page",
+  "domains": "domains",
   "syndicate": "syndicate",
   "groupType": "type",
   "role": "role",
@@ -507,7 +508,8 @@
     "choices": "This area offers",
     "infos": "Information and access",
     "event": "Event",
-    "note": "General note:"
+    "note": "General note:",
+    "name": "Place page"
   },
   "startDate": "start date",
   "endDate": "end date",
@@ -539,6 +541,27 @@
     "assessment": "Appreciations given",
     "setting": "Settings",
     "myAccount": "My account"
+  },
+  "visit": {
+    "label": "Visit",
+    "pluralLabel": "Visits",
+    "labelTitle": "Edit visit",
+    "subLabel": "Milestone",
+    "subLabelPlural": "Milestones",
+    "duration": "Duration (in minutes)",
+    "longitude": "Longitude",
+    "latitude": "Latitude",
+    "subStep": {
+      "help": "Enter Sub-milestone title",
+      "label": "Sub-Milestone",
+      "title": "Title",
+      "photo": "Photo",
+      "downloadable": "Downloadable"
+    },
+    "track": {
+      "label": "GPS Track",
+      "pluralLabel": "GPS Tracks"
+    }
   },
   "domainType": {
     "label": "Domain",

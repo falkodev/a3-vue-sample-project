@@ -99,6 +99,7 @@
   "doesNotExistYet": "Does Not Exist Yet",
   "doesNotExistYetDescription": "The document does not exist yet as {{ mode }} in the {{ locale }} locale.",
   "domain": "Domaine",
+  "domainPage": "Page domaine",
   "domains": "Domaines",
   "domainPresentation": "Présentation du domaine",
   "download": "Download",
@@ -510,7 +511,8 @@
     "choices": "Ce domaine propose",
     "infos": "Informations et accès",
     "event": "Événement",
-    "note": "Note générale :"
+    "note": "Note générale :",
+    "pageName": "Page lieux"
   },
   "startDate": "Date début",
   "endDate": "Date fin",
@@ -542,6 +544,27 @@
     "assessment": "Appréciations données",
     "setting": "Réglages",
     "myAccount": "Mon compte"
+  },
+  "visit": {
+    "label": "Visite",
+    "pluralLabel": "Visites",
+    "labelTitle": "Éditer la visite",
+    "subLabel": "Étape",
+    "subLabelPlural": "Étapes",
+    "duration": "Durée (en minutes)",
+    "longitude": "Longitude",
+    "latitude": "Latitude",
+    "subStep": {
+      "help": "Rentrez le type de votre sous-étape",
+      "label": "Sous-étape",
+      "title": "Titre",
+      "photo": "Photo",
+      "downloadable": "Téléchargeable"
+    },
+    "track": {
+      "label": "Tracé GPS",
+      "pluralLabel": "Tracés GPS"
+    }
   },
   "domainType": {
     "label": "Domaine",
