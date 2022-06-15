@@ -53,7 +53,7 @@
             class="t-info-tier__logo"
           />
           <div class="t-info-tier__value">
-            {{ data._visits }}
+            {{ data._visits[0].createdAt }}
           </div>
         </div>
         <div class="t-info-tier">
@@ -67,7 +67,11 @@
         </div>
       </div>
       <div class="t-general-infos__container">
-        <div class="t-info-half">
+        <div
+          v-if="data._visits[0]"
+          class="t-info-half"
+          style="width: 32%; height: 100px"
+        >
           <div class="t-info-half__logo-container">
             <img
               :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
@@ -92,7 +96,7 @@
             </div>
           </div>
         </div>
-        <div class="t-info-half">
+        <div v-else-if="data.steps.length" class="t-info-half">
           <div class="t-info-half__logo-container">
             <img
               :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
@@ -111,6 +115,7 @@
                   ].title
             }}
           </div>
+
           <div v-if="data.steps.length">
             <div
               v-for="addressPart in splitAddress(removeTags(lastStep))"
@@ -121,16 +126,96 @@
             </div>
           </div>
         </div>
+
+        <div
+          v-if="data._visits[0]"
+          class="t-info-half"
+          style="width: 32%; height: 100px"
+        >
+          <div class="t-info-half__logo-container">
+            <img
+              :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
+              class="t-info-half__logo t-info-half__logo--right"
+            />
+          </div>
+
+          <div class="t-info-half__title">
+            {{
+              data.steps.length
+                ? data.steps[data.steps.length - 1].place.title
+                : data._visits[0].steps[data._visits[0].steps.length - 1]
+                    .subSteps[
+                    data._visits[0].steps[data._visits[0].steps.length - 1]
+                      .subSteps.length - 1
+                  ].title
+            }}
+          </div>
+
+          <div v-if="data.steps.length">
+            <div
+              v-for="addressPart in splitAddress(removeTags(lastStep))"
+              :key="addressPart"
+              class="t-info-half__value"
+            >
+              {{ addressPart }}
+            </div>
+          </div>
+        </div>
+
+        <div v-else-if="data.steps.lenght" class="t-info-half">
+          <div class="t-info-half__logo-container">
+            <img
+              :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
+              class="t-info-half__logo t-info-half__logo--right"
+            />
+          </div>
+
+          <div class="t-info-half__title">
+            {{
+              data.steps.length
+                ? data.steps[data.steps.length - 1].place.title
+                : data._visits[0].steps[data._visits[0].steps.length - 1]
+                    .subSteps[
+                    data._visits[0].steps[data._visits[0].steps.length - 1]
+                      .subSteps.length - 1
+                  ].title
+            }}
+          </div>
+
+          <div v-if="data.steps.length">
+            <div
+              v-for="addressPart in splitAddress(removeTags(lastStep))"
+              :key="addressPart"
+              class="t-info-half__value"
+            >
+              {{ addressPart }}
+            </div>
+          </div>
+        </div>
+
+        <div
+          v-if="data._visits[0]"
+          class="t-info-half"
+          style="width: 32%; height: 100px"
+        >
+          <img
+            :src="assetBaseUrl + '/modules/content/icons/event.png'"
+            class="t-info-tier__logo"
+          />
+          <div class="t-info-half__value">
+            {{ dataPrice(data.price) }}
+          </div>
+        </div>
       </div>
     </div>
-    <ValidateButton :buttonText="'validateItinerary'" :buttonLink="'link'" />
-    <VisitsEvents />
-    <!-- <VisitsContainer :piece="data" @updateItinerary="updateItinerary" /> -->
   </div>
+  <ValidateButton :buttonText="'validateItinerary'" :buttonLink="'link'" />
+  <EventContainer />
+  <!-- <VisitsContainer :piece="data" @updateItinerary="updateItinerary" /> -->
 </template>
 
 <script setup>
-import VisitsEvents from './components/VisitsEvents.vue'
+import EventContainer from './components/EventContainer.vue'
 // import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateButton from './components/ValidateButton.vue'
 import { computed, ref, onMounted } from 'vue'
@@ -143,19 +228,23 @@ const data = JSON.parse(props.piece)
 if (!window.apos.user) {
   location.assign('/login?redirect=itinerary/' + data.slug)
 }
-onMounted(() => {
-  console.log(data._visits)
-})
+// onMounted(() => {
+//   if (data._visits[0]) {
+//     document.querySelectorAll('.t-info-half').style.height = '100px'
+//     document.querySelectorAll('.t-info-half').style.width = '32%'
+//   }
+// })
+
 const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 let descriptionRef = ref(false)
 
-// function updateItinerary(itinerary) {
-//   data.steps = itinerary.steps
-//   refStartStep.value = data.steps[0]
-//   refLastStep.value = data.steps[data.steps.length - 1]
-//   refItineraryDuration.value = data.steps
-// }
+function updateItinerary(itinerary) {
+  data.steps = itinerary.steps
+  refStartStep.value = data.steps[0]
+  refLastStep.value = data.steps[data.steps.length - 1]
+  refItineraryDuration.value = data.steps
+}
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
   () => refStartStep?.value?.place?.addressN?.items[0]?.content,
