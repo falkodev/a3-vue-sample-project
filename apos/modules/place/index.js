@@ -17,21 +17,19 @@ module.exports = {
 
   fields: {
     add: {
+      description: {
+        type: 'area',
+        options: {
+          'collapse-rich-text': {},
+          max: 1,
+        },
+      },
       placeType: {
         type: 'select',
         label: 'apostrophe:place.type',
         choices: 'setChoices',
         def: 'domain',
         required: true,
-      },
-      description: {
-        type: 'area',
-        options: {
-          widgets: {
-            'collapse-rich-text': {},
-          },
-          max: 1,
-        },
       },
       image: {
         type: 'attachment',
