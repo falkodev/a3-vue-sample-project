@@ -114,20 +114,14 @@
         </div>
       </div>
     </div>
-    <ValidateItinerary />
+    <ValidateButton :buttonText="'validateItinerary'" :buttonLink="'link'" />
     <VisitsContainer :piece="data" @updateItinerary="updateItinerary" />
-    <!-- Display ici le component lié au type d'évènement -->
-    <!-- Copier le principe de map, présent dans Visits Container pour votre component -->
-    <!-- Rendre dynamique le ValidateItinerary, avec une traduction et un lien dans ses paramètres -->
-
-    <!-- Pour vous il n'y a pas de principe de dynamisque dans les infos générales, mais ne touchez pas ce qui est déja présent, ca devrait fonctionner quand meme. -->
-    <!-- Pour les infos générales,  laissez les blocs présents par défaut, et rajoutez des conditions pour les vôtres, merci -->
   </div>
 </template>
 
 <script setup>
 import VisitsContainer from './components/VisitsContainer.vue'
-import ValidateItinerary from './components/ValidateItinerary.vue'
+import ValidateButton from './components/ValidateButton.vue'
 import { computed, ref } from 'vue'
 import dayjs from 'dayjs'
 
