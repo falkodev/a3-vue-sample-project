@@ -35,7 +35,7 @@
   "backgroundImageLabel": "Background image for homepage",
   "backgroundImageLoginLabel": "Background image for login and register pages",
   "backToHome": "Back to Home",
-  "basics": "Basics",
+  "basics": "Description",
   "bio": "Bio",
   "biodynamique": "Biodynamics",
   "browseDocType": "Browse {{ type }}",

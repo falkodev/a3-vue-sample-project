@@ -35,7 +35,7 @@
   "backgroundImageLabel": "Image d'arrière plan homepage",
   "backgroundImageLoginLabel": "Image d'arrière plan login et register",
   "backToHome": "Retour à l'accueil",
-  "basics": "Champs de base",
+  "basics": "Description",
   "bio": "Bio",
   "biodynamique": "Biodynamique",
   "browseDocType": "Parcourir {{ type }}",
