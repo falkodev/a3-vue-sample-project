@@ -377,7 +377,7 @@ function dataMileAge(mileage) {
     background-color: $color-orange;
     opacity: 75%;
     height: 120px;
-    width: 49%;
+    width: 297px;
     border-radius: 15px;
 
     &__title {
