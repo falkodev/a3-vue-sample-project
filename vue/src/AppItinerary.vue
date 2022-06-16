@@ -15,8 +15,11 @@
         alt=""
         class="t-image"
       />
+      <div v-if="data._visits[0]" class="t-eventsAnnonce">
+        <p>Event</p>
+      </div>
     </div>
-    <div v-if="data._visits[0]" class="t-eventsAnnonce"></div>
+
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
@@ -288,7 +291,7 @@ function dataMileAge(mileage) {
 
 .t-eventsAnnonce {
   background-color: $color-orange;
-  height: 120px;
+  height: 35px;
   width: 100%;
 }
 
