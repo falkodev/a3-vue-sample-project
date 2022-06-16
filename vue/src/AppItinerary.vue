@@ -16,6 +16,7 @@
         class="t-image"
       />
     </div>
+    <div v-if="data._visits[0]" class="t-eventsAnnonce"></div>
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
@@ -285,6 +286,12 @@ function dataMileAge(mileage) {
   cursor: pointer;
 }
 
+.t-eventsAnnonce {
+  background-color: $color-orange;
+  height: 120px;
+  width: 100%;
+}
+
 .t-image {
   height: 180px;
   width: 100%;
@@ -383,8 +390,7 @@ function dataMileAge(mileage) {
     background-color: $color-orange;
     opacity: 75%;
     height: 120px;
-    // width: 297px;
-    width: 120%;
+    width: 49%;
     border-radius: 15px;
 
     &__title {
