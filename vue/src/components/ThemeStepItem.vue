@@ -142,7 +142,7 @@ function placeTypeIcon(type) {
     color: $color-purple;
 
     &__title {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: bold;
       white-space: normal;
       overflow: hidden;

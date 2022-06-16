@@ -37,7 +37,6 @@
             v-if="step.place.description.items[0].content"
             class="t-infos__description"
           >
-            {{ log(step.place) }}
             {{ removeTags(step.place.description.items[0].content) }}
           </div>
         </div>
@@ -59,7 +58,6 @@
       </div>
     </div>
     <div v-if="seeProximityRef && isPay" class="">
-      {{ log(step.nearDomains) }}
       <VisitItem
         v-for="(step, index) in step.nearDomains"
         :id="index"
@@ -99,10 +97,6 @@ function placeTypeIcon(type) {
 
 function removeTags(str) {
   return str?.toString().replace(/(<([^>]+)>)/gi, '')
-}
-
-function log(a) {
-  console.log(a)
 }
 </script>
 
