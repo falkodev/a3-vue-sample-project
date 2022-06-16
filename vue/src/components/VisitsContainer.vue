@@ -149,7 +149,7 @@ updateCenter()
   top: 12vh;
   right: 0;
   left: 0;
-  height: 20vh;
+  height: 35vh;
   width: 100vw;
   z-index: 99;
 }
