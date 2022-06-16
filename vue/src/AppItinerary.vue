@@ -68,8 +68,8 @@
       </div>
       <div class="t-general-infos__container">
         <div
-          v-if="data._visits[0]"
           class="t-info-half"
+          v-if="data._visits[0]"
           style="width: 32%; height: 100px"
         >
           <div class="t-info-half__logo-container">
@@ -117,8 +117,8 @@
         </div>
 
         <div
-          v-if="data._visits[0]"
           class="t-info-half"
+          v-if="data._visits[0]"
           style="width: 32%; height: 100px"
         >
           <div class="t-info-half__logo-container">
@@ -190,13 +190,19 @@
     </div>
   </div>
   <ValidateButton :buttonText="'validateItinerary'" :buttonLink="'link'" />
-  <EventContainer />
-  <!-- <VisitsContainer :piece="data" @updateItinerary="updateItinerary" /> -->
+
+  <div v-if="data.steps.length">
+    <VisitsContainer :piece="data" @updateItinerary="updateItinerary" />
+  </div>
+
+  <div v-if="data._visits[0]">
+    <EventContainer />
+  </div>
 </template>
 
 <script setup>
 import EventContainer from './components/EventContainer.vue'
-// import VisitsContainer from './components/VisitsContainer.vue'
+import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateButton from './components/ValidateButton.vue'
 import { computed, ref } from 'vue'
 import dayjs from 'dayjs'
@@ -213,12 +219,12 @@ const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 let descriptionRef = ref(false)
 
-// function updateItinerary(itinerary) {
-//   data.steps = itinerary.steps
-//   refStartStep.value = data.steps[0]
-//   refLastStep.value = data.steps[data.steps.length - 1]
-//   refItineraryDuration.value = data.steps
-// }
+function updateItinerary(itinerary) {
+  data.steps = itinerary.steps
+  refStartStep.value = data.steps[0]
+  refLastStep.value = data.steps[data.steps.length - 1]
+  refItineraryDuration.value = data.steps
+}
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
   () => refStartStep?.value?.place?.addressN?.items[0]?.content,
@@ -377,7 +383,8 @@ function dataMileAge(mileage) {
     background-color: $color-orange;
     opacity: 75%;
     height: 120px;
-    width: 297px;
+    // width: 297px;
+    width: 120%;
     border-radius: 15px;
 
     &__title {
