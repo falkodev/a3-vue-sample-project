@@ -1,5 +1,5 @@
 <template>
-  <div class="t-steps">
+  <div class="t-syndicate">
     <div v-if="centerLoaded" class="t-app-itinerary__map">
       <l-map v-model="zoom" :center="[center.lat, center.lon]" :zoom="zoom">
         <l-tile-layer
@@ -16,40 +16,22 @@
       </l-map>
     </div>
 
-    <div v-if="itinerary.steps.length" class="t-steps__loaded t-loaded">
-      <div class="t-loaded__title">{{ $t.visitList }}</div>
-      <div class="t-loaded__steps">
-        <VisitItem
-          v-for="(step, index) in itinerary.steps"
-          :id="index"
-          :key="step"
-          :status="true"
-          :step="step"
-          @removeStep="removeStep"
-        />
-      </div>
-    </div>
-
-    <div v-if="removedSteps.length" class="t-steps__loaded t-loaded">
-      <div class="t-loaded__title">{{ $t.add }}</div>
-      <div class="t-loaded__steps">
-        <VisitItem
-          v-for="(step, index) in removedSteps"
-          :id="index"
-          :key="step"
-          :status="false"
-          :step="step"
-          @addStep="addStep"
-        />
-      </div>
+    <div class="t-syndicate__steps">
+      <VisitItem
+        v-for="(step, index) in itinerary.steps"
+        :id="index"
+        :key="step"
+        :status="true"
+        :step="step"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, toRefs } from 'vue'
-import VisitItem from './ThemeStepItem.vue'
 import { LMap, LMarker, LTileLayer } from '@vue-leaflet/vue-leaflet'
+import VisitItem from './SyndicateStepItem.vue'
 import { icon as renderIcon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
@@ -57,11 +39,9 @@ const props = defineProps({
   piece: Object,
 })
 
-const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 const { piece } = toRefs(props)
 const itinerary = piece.value
-const removedSteps = reactive([])
 const zoom = 10
 let center = reactive({})
 let centerLoaded = reactive(false)
@@ -71,32 +51,11 @@ const icon = renderIcon({
   iconAnchor: [16, 37],
 })
 
-const emit = defineEmits(['updateItinerary'])
-
-function removeStep(delIndex) {
-  let temp = itinerary.steps.splice(delIndex, 1)
-  removedSteps.push(temp[0])
-  updateItinerary(itinerary)
-  updateCenter()
-}
-
-function addStep(addIndex) {
-  let temp = removedSteps.splice(addIndex, 1)
-  itinerary.steps.push(temp[0])
-  itinerary.steps.sort((a, b) => a.order - b.order)
-  updateItinerary(itinerary)
-  updateCenter()
-}
-
 function attributeId() {
   const length = itinerary.steps.length
   for (let index = 0; index < length; index++) {
     itinerary.steps[index].order = index
   }
-}
-
-const updateItinerary = (itinerary) => {
-  emit('updateItinerary', itinerary)
 }
 
 function updateCenter() {
@@ -140,7 +99,7 @@ updateCenter()
 <style lang="scss">
 @import '/assets/settings.scss';
 
-.t-steps {
+.t-syndicate {
   margin-top: 36px;
 }
 
@@ -152,5 +111,19 @@ updateCenter()
   height: 20vh;
   width: 100vw;
   z-index: 99;
+}
+
+.t-syndicate {
+  &__steps {
+  }
+
+  &__step {
+    &-title {
+      color: $color-purple;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 17px;
+    }
+  }
 }
 </style>

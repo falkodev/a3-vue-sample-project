@@ -449,7 +449,14 @@
     "globalInfos": "Global infos",
     "visitList": "Visit list",
     "takeAppointment": "Take appointment",
-    "validate": "Validate my steps"
+    "validate": "Validate my steps",
+    "buy": "Buy",
+    "indefiniteDuration": "Indefinite duration",
+    "visit": "Visit",
+    "goTo": "Go",
+    "step": "Step",
+    "seeNearDomains": "See near domains",
+    "itinerary": "Road itinerary"
   },
   "customer": "customer",
   "customers": "customers",

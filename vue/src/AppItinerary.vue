@@ -114,7 +114,11 @@
         </div>
       </div>
     </div>
-    <ValidateButton :buttonText="'validateItinerary'" :buttonLink="'link'" />
+    <ValidateButton :buttonText="buttonText" :buttonLink="'link'" />
+    <SyndicateContainer
+      v-if="data.itineraryType === 'syndicate'"
+      :piece="data"
+    />
     <ThemeContainer
       v-if="data.itineraryType === 'theme'"
       :piece="data"
@@ -125,6 +129,7 @@
 
 <script setup>
 import ThemeContainer from './components/ThemeContainer.vue'
+import SyndicateContainer from './components/SyndicateContainer.vue'
 import ValidateButton from './components/ValidateButton.vue'
 import { computed, ref } from 'vue'
 import dayjs from 'dayjs'
@@ -137,6 +142,10 @@ if (!window.apos.user) {
   location.assign('/login?redirect=itinerary/' + data.slug)
 }
 
+const isPay = ref(true)
+const buttonText = computed(() => {
+  return isPay.value ? 'itinerary' : 'buy'
+})
 const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 let descriptionRef = ref(false)

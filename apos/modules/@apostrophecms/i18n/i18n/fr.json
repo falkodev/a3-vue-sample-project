@@ -450,7 +450,14 @@
     "globalInfos": "Infos générales",
     "visitList": "Liste des visites",
     "takeAppointment": "Prendre RDV",
-    "validate": "Valider mes étapes"
+    "validate": "Valider mes étapes",
+    "buy": "Acheter",
+    "indefiniteDuration": "Durée indéterminée",
+    "visit": "Visite",
+    "goTo": "Y aller",
+    "step": "Étape",
+    "seeNearDomains": "Voir domaines à proximité",
+    "itinerary": "Itinéraire routier"
   },
   "customer": "Client",
   "customers": "Clients",
