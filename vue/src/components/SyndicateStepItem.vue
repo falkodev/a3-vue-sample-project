@@ -73,6 +73,7 @@
 import { ref } from 'vue'
 import VisitItem from './ThemeStepItem.vue'
 import VisitIcon from './VisitIcon.vue'
+// import Content from './Content.vue'
 import GoIcon from './GoIcon.vue'
 defineProps({
   id: Number,
