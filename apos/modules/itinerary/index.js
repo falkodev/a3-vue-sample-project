@@ -115,19 +115,16 @@ module.exports = {
             content: {
               type: 'array',
               label: 'apostrophe:visitType.content.content',
-              min: 1,
               max: 1,
               fields: {
                 add: {
                   title: {
                     type: 'string',
                     label: 'apostrophe:visitType.content.title',
-                    required: true,
                   },
                   presentation: {
                     type: 'area',
                     label: 'apostrophe:visitType.content.presentation',
-                    min: 1,
                     max: 1,
                     options: {
                       widgets: {
@@ -154,7 +151,6 @@ module.exports = {
                   interview: {
                     type: 'area',
                     label: 'apostrophe:visitType.content.interview',
-                    min: 1,
                     options: {
                       widgets: {
                         '@apostrophecms/image': {},
