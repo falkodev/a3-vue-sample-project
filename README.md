@@ -16,6 +16,10 @@
    5.1 [ApostropheCMS](#5-1)<br>
    &nbsp;&nbsp;&nbsp;&nbsp;5.1.1 [Data models](#5-1-1)<br>
    &nbsp;&nbsp;&nbsp;&nbsp;5.1.2 [Modules](#5-1-2)<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;5.1.3 [Templates, macros, fragments](#5-1-3)<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;5.1.4 [Distinction between back and front code](#5-1-4)<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;5.1.5 [Custom components](#5-1-5)<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;5.1.6 [Publication workflow, locales and translations](#5-1-6)<br>
    5.2 [Docker](#5-2)<br>
    5.3 [MongoDB](#5-3)<br>
    5.4 [Swagger](#5-4)<br>
@@ -29,7 +33,10 @@
 
 ## 1 Context [&#x2B06;](#contents)
 
-This app contains backend and frontend for Vinoways Territoire.
+This project contains backend and frontend for Vinoways Territoire. The designs are hosted here: https://xd.adobe.com/view/64694451-3659-4266-b6a9-f80f680b178c-313a/grid
+
+The app will enable wine syndicates to import and edit domains and places to visit for itineraries and events they configure and sell.
+<br>Customers can create an account, and login to book and buy those.
 
 <a id="2"></a>
 
@@ -53,8 +60,7 @@ First, you need to have docker and docker-compose installed and launched on your
 - copy the file `.env.example` and name it `.env` (this file will contain passwords, and will be git-ignored, so don't
   try to commit it)
 - in this `.env` file, create a password for `MONGO_INITDB_ROOT_PASSWORD` and another one
-  for `MONGO_INITDB_USER_PASSWORD` (choose whatever you want, it does not matter because it will be only available in
-  your machine) - do not modify `MONGO_INITDB_ROOT_USERNAME` and `MONGO_INITDB_USER_USERNAME`
+  for `MONGO_INITDB_USER_PASSWORD` (choose whatever you want but do not use `@` or `:` because it will mess the DB connection up otherwise) - do not modify `MONGO_INITDB_ROOT_USERNAME` and `MONGO_INITDB_USER_USERNAME`
 - create `apos/config/local.yml` file, and add this content
 
 ```yml
@@ -86,7 +92,7 @@ or `make dev-logs` as explained below. This time, the DB will start quickly, ena
 
 Run simply `make` to start on development mode. The CMS part is accessible on `http://localhost:8080`. For Vue, by
 default, the npm script is `npm run build:watch` to serve Vue files as static assets for the CMS. As a consequence,
-there is no Vue app available on localhost. However, when running with `npm run dev` in the `vue`, folder the Vue app is
+there is no Vue app available on localhost. However, when running with `npm run dev` in the `vue` folder, the Vue app is
 launched on `http://localhost:3000` .
 
 You can also look at the Makefile for other possible commands. The next section explains what commands to run.
@@ -99,26 +105,25 @@ You can also look at the Makefile for other possible commands. The next section 
 
 ### 4.1 Main commands [&#x2B06;](#contents)
 
-Run `docker-compose up` for production in Docker
+Run:
 
-- `docker-compose ps` for running instances.
-- `docker-compose stop`
+- `docker-compose ps` for running instances
+- `docker-compose stop` or `docker-compose kill` for stopping the containers
 - `docker-compose build` to rebuild images
 - `docker-compose exec container-name sh` to log into a container (i.e: `docker-compose exec vino-terr-apos sh` to log
   into the server container)
 
 Additionally, there is a Makefile. Therefore, these commands are available:
 
-- `make` will run a `docker-compose up` with NODE_ENV=development and hide logs
-- `make dev-logs` will run a `docker-compose up` with NODE_ENV=development and display logs from Mongo, Apostrophe and
-  Vue
+- `make` will run a `docker-compose up` with NODE_ENV=development and display logs from Apostrophe and Vue
+- `make dev` will run a `docker-compose up` with NODE_ENV=development and hide logs
 - `make kill` will shutdown all containers quickly
 - `make build` is also available to build containers after a new package is added in a package.json file (for server and
   client containers)
 - `make rebuild` will force to download all images again, starting from scratch before building containers
 
 Mongo outputs a lot of logs, and while this can be necessary to read them sometimes, most of the time it is too much
-useless information. An advice is too run `make && make logs-apos & make logs-vue` in a terminal.
+useless information. Displaying its logs is possible though through `make logs-mongo`.
 
 <a id="4-2"></a>
 
@@ -212,6 +217,230 @@ extendRestApiRoutes(self) { // override existing default restApiRoutes made by A
 },
 ```
 
+A module is defined by its type, often it will be `piece-type` to hold documents, and a schema with fields will be defined.
+<br>There are also options to configure.
+
+Example of the "place" module:
+
+```js
+module.exports = {
+  extend: '@apostrophecms/piece-type',
+
+  options: {
+    alias: 'place',
+    label: 'apostrophe:place.label',
+    pluralLabel: 'apostrophe:place.pluralLabel',
+    localized: true,
+  },
+
+  fields: { /* definition of different fields to display for the editor user in the UI */ },
+
+  methods() { /* methods and hooks */ }
+}
+```
+
+To know more about the possible configurations of a module: https://v3.docs.apostrophecms.org/reference/module-api/module-overview.html#configuration-settings
+
+<a id="5-1-3"></a>
+
+#### 5.1.3 Templates, macros, fragments [&#x2B06;](#contents)
+
+ApostropheCMS uses Nunjucks templates to render data by default.
+
+`layout.html` (apos/modules/@apostrophecms/page/views/layout.html) is the default template.
+<br>It is composed of several blocks that can be overridden. For example, the block `main` in `layout.html` is where pages will output their own content.
+
+Simplified view of `layout.html`:
+
+```html
+{% block beforeMain %} {# the header is defined here, no need to override in most cases #} {% endblock %}
+{% block main %}
+  {#
+    Usually, your page templates in the @apostrophecms/pages module will override
+    this block. It is safe to assume this is where your page-specific content
+    should go.
+  #}
+{% endblock %}
+{% block afterMain %} {# the footer is defined here, no need to override in most cases #} {% endblock %}
+```
+
+Then any page will extend `layout.html` and override the `main` block. Example with the homepage:
+
+```html
+{% extends "@apostrophecms/page:layout.html" %}
+
+{% set fileBackground = apos.attachment.url(data.global.backgroundImage) %}
+
+{% block main %}
+  <div class="t-background" style="background-image: url('{{ fileBackground }}');"></div>
+
+  <div class="t-places-categories">
+    {% component 'place:categories' %}
+  </div>
+
+  <div class="t-partnerships">
+    <div class="t-partnership">Logos AOC</div>
+    <div class="t-partnership">Logos AOC</div>
+    <div class="t-partnership">Logos AOC</div>
+  </div>
+{% endblock %}
+```
+
+It is also possible to include simple templates. When parameters are needed, macros come into place. With Apostrophe3, a new way of including functions has come: fragments.
+Examples can be found in the codebase. For more information, see https://v3.docs.apostrophecms.org/guide/templating.html
+
+<a id="5-1-4"></a>
+
+#### 5.1.4 Distinction between back and front code [&#x2B06;](#contents)
+
+The backend code is always in `index.js` file at the root of a module. It can be `require`d from other files, but it will end up in this file.
+
+The frontend code is always in the `index.js` file of the `src/ui/` folder of a module. It can be `import`ed but there has to be `index.js` at some point.
+<br>This file is then bundled by the automatic Webpack configuration contained in Apostrophe and is available in the browser.
+
+<a id="5-1-5"></a>
+
+#### 5.1.5 Custom components [&#x2B06;](#contents)
+
+Custom components can be found in `apos/modules/component`. Standard modules are traditionnally declared in `apos/app.js` but these are defined in `apos/modules/component/modules.js`.
+
+These components are meant to be reused in the project.
+
+If a component has a `view` folder with a Nunjucks template, it means it can be included in another template.
+<br>For example, the locale-switcher component is used in multiple pages. It is imported and used this way:
+```html
+{% import "component/locale-switcher:index.html" as localeSwitcher with context %}
+...
+{{ localeSwitcher.displayFlags(params) }}
+```
+
+It uses a [macro](https://mozilla.github.io/nunjucks/templating.html#macro) `displayFlags` and outputs a list of available languages for the app user.
+
+Another type of component is not using templates. For example, snackbar and pop-up.
+<br>As it is purely js, it will not be imported in a template, but rather in a front js file.
+<br>For example, here is how to display a pop-up:
+
+```js
+import displayPopup from '@/popup'
+...
+displayPopup('message to display', {
+  dismiss: { label: 'No' },
+  confirm: {
+    label: 'Yes',
+    action: () => {
+      // action when 'Yes' is clicked
+      // it could be a redirection on a different page
+      // or an HTTP request to the backend
+    },
+  },
+})
+```
+
+It is possible to import the pop-up with `@/popup` thanks an addition to the default Webpack configuration contained in Apostrophe.
+<br>It is done while declaring the component:
+
+```js
+// in apos/modules/component/modules.js
+'component/popup': {
+    webpack: {
+      extensions: {
+        popupAlias: {
+          resolve: {
+            alias: {
+              '@/popup': path.join(__dirname, './popup/public'),
+            },
+          },
+        },
+      },
+    },
+  },
+```
+
+<a id="5-1-6"></a>
+
+#### 5.1.6 Publication workflow, locales and translations [&#x2B06;](#contents)
+
+Apostrophe3 has a publication workflow at the core. It gives the possibility to create draft documents and publish them later, or even give permissions to specific users to edit documents, and other users to publish them.
+About roles and permissions, see this documentation: https://v3.docs.apostrophecms.org/guide/users.html#user-roles
+
+Languages are called "locales" in Apostrophe and they are defined in `apos/modules/@apostrophecms/i18n/index.js`:
+
+```js
+options: {
+    defaultLocale: 'fr',
+    locales: {
+      fr: {
+        label: 'Français',
+        prefix: '/fr',
+      },
+      en: {
+        label: 'English',
+        prefix: '/en',
+      },
+    },
+  },
+```
+
+To enable this draft/live workflow, a module has to be "localized". Example with the "place" module:
+
+```js
+options: {
+  alias: 'place',
+  label: 'apostrophe:place.label',
+  pluralLabel: 'apostrophe:place.pluralLabel',
+  localized: true,
+},
+```
+
+This means there will be the same number of documents in every defined locale. When creating a document in a module or a page, it is possible to "localize" in other defined locales, meaning it will be published (giving the "live" status).
+A localized document, when edited, is in draft. It has to be published to be public (when the user clicks on "Publish" in the document modal or programmatically). As a consequence, a document can be translated by a user who has the permission to edit.
+
+However, labels in the UI or our frontend code cannot be translated through the Apostrophe "localization" feature. Therefore, there are translation files in `apos/modules/@apostrophecms/i18n/i18n`. These are JSON files.
+<br>There are different ways to use translations coming from these JSON files:
+- in Apostrophe labels, as in module definition for options or fields for example: `label: 'apostrophe:place.label',` (look for the object "place" in `apos/modules/@apostrophecms/i18n/i18n/fr.json`, the translation of the label `label` will be there)
+- in the `req` object in Apostrophe methods: `req.t('apostrophe:registerPage.existingAccount')` (the `t` function is provided by the module `i18n`, the one managing translations in locales)
+- in templates: `{{ __t('apostrophe:backToHome') }}` (`__t` is the same function provided by `i18n` - Apostrophe injects it in templates through a [helper](https://v3.docs.apostrophecms.org/reference/module-api/module-overview.html#helpers-self) )
+
+By default, these translations are not available in js frontend code. If needed in a specific page, they can be injected through a `getBrowserData` method.
+
+For example, the register page needs labels. They are defined in `data.labels` in the backend:
+
+```js
+// in apos/modules/register-page/index.js
+getBrowserData(_super, req) {
+  const data = _super(req)
+  const minPasswordLength = config.get('register.minPasswordLength')
+
+  data.labels = {
+    minPasswordLength,
+    passwordLengthMessage: req.t(
+      'apostrophe:registerPage.passwordLength',
+      {
+        nb: minPasswordLength,
+      },
+    ),
+    requiredField: req.t('apostrophe:loginPage.required'),
+    invalidEmail: req.t('apostrophe:registerPage.invalidEmail'),
+    acceptConditions: req.t('apostrophe:registerPage.acceptConditions'),
+  }
+
+  return data
+}
+```
+
+`getBrowserData` is an Apostrophe function that pushes JS objects to the frontend. Therefore, labels are accessible in `apos.register.labels` (for this example) in frontend js code.
+
+```js
+// in apos/modules/register-page/ui/src/index.js
+const {
+  minPasswordLength,
+  passwordLengthMessage,
+  requiredField,
+  invalidEmail,
+  acceptConditions,
+} = apos.register.labels
+```
+
 <a id="5-2"></a>
 
 ### 5.2 Docker [&#x2B06;](#contents)
@@ -249,7 +478,7 @@ If other scripts during the first init step are needed in the future, they shoul
 copied the same way in the Dockerfile.
 
 Outside of the Docker network, the port exposed is 27018 (in order not to mess with existing MongoDB in the local
-machine). Therefore, you can connect to GUI tools such as MongDB Compass or Robo 3T through `mongodb://localhost:27018`
+machine). Therefore, you can connect to GUI tools such as MongoDB Compass or Robo3T through `mongodb://localhost:27018`
 and indicate in the authentication settings the `root` credentials.
 
 To log into the container, you can run `docker-compose exec vino-terr-mongo bash` and then `mongo -u root`. Insert
@@ -303,15 +532,7 @@ They can be launched locally by running `npm run test` on root level or through 
 
 For cypress, run `npm run cy:open` to visualize tests. The CI version is available with `npm run cy:run`.
 
-For a specific service:
-
-- backend: run `make test-apos`
-- frontend: run `make test-vue`
-
-If a watch mode is needed during development:
-
-- for backend: `docker-compose exec vino-terr-apos npm run test:watch` or `cd server && npm run test:watch`
-- for frontend: `docker-compose exec vino-terr-vue npm run test:watch` or `cd client && npm run test:watch`
+If a watch mode is needed during development for backend: `docker-compose exec vino-terr-apos npm run test:watch` or `cd server && npm run test:watch`
 
 <a id="7"></a>
 
