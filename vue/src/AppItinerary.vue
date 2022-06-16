@@ -136,7 +136,6 @@ import dayjs from 'dayjs'
 
 const props = defineProps({
   piece: Object,
-  // domains: Object
 })
 const data = JSON.parse(props.piece)
 if (!window.apos.user) {

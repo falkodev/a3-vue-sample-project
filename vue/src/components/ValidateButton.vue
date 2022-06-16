@@ -5,12 +5,9 @@
 <script setup>
 const $t = window.apos.itinerary.labels
 
-const props = defineProps({
+defineProps({
   buttonText: Object,
-  // buttonLink: Object,
 })
-
-console.log(props)
 </script>
 
 <style lang="scss">
