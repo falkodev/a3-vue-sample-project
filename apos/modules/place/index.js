@@ -32,6 +32,7 @@ module.exports = {
           },
           max: 1,
         },
+        required: true,
       },
       image: {
         type: 'attachment',

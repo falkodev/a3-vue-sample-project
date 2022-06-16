@@ -33,7 +33,11 @@
               class="t-infos__place-type"
             />
           </div>
-          <div class="t-infos__description">
+          <div
+            v-if="step.place.description.items[0].content"
+            class="t-infos__description"
+          >
+            {{ log(step.place) }}
             {{ removeTags(step.place.description.items[0].content) }}
           </div>
         </div>
