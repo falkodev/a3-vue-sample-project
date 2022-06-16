@@ -619,11 +619,11 @@
   "visitType": {
     "label": "Visite",
     "pluralLabel": "Visites",
-    "image": "Image de la presentation du circuit",
+    "image": "Image de la présentation du circuit",
     "track": "Tracé du GPS",
     "step": {
       "pluralStep": "Étapes",
-      "title": "Titre de l'Étape"
+      "title": "Titre de l'étape"
     },
     "subStep": {
       "pluralSubStep": "sous-étapes",
@@ -636,10 +636,10 @@
       "singleContent": "Contenu",
       "pluralContent": "Contenus",
       "title": "Titre du contenu",
-      "presentation": "Video ou image de presentation",
+      "presentation": "Vidéo ou image de présentation",
       "urlPodcast": "Url du podcast",
       "content": "Contenu principal de la page",
-      "interview": "Video de l'interview"
+      "interview": "Vidéo de l'interview"
     }
   }
 }
