@@ -229,6 +229,13 @@ module.exports = {
           globalInfos: req.t('apostrophe:itinerary.globalInfos'),
           takeAppointment: req.t('apostrophe:itinerary.takeAppointment'),
           validateItinerary: req.t('apostrophe:itinerary.validate'),
+          buy: req.t('apostrophe:itinerary.buy'),
+          indefiniteDuration: req.t('apostrophe:itinerary.indefiniteDuration'),
+          visit: req.t('apostrophe:itinerary.visit'),
+          goTo: req.t('apostrophe:itinerary.goTo'),
+          step: req.t('apostrophe:itinerary.step'),
+          seeNearDomains: req.t('apostrophe:itinerary.seeNearDomains'),
+          itinerary: req.t('apostrophe:itinerary.itinerary'),
         }
 
         data.assetBaseUrl = self.apos.asset.getAssetBaseUrl()
