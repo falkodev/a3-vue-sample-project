@@ -38,7 +38,7 @@
           </div>
         </div>
         <div v-if="isPay" class="t-infos__buttons">
-          <GoIcon />
+          <GoIcon :lat="step.place.latitude" :lon="step.place.longitude" />
           <VisitIcon />
         </div>
       </div>
@@ -54,12 +54,22 @@
         {{ $t.seeNearDomains }}
       </div>
     </div>
-    <div v-if="seeProximityRef" class="">domaines....</div>
+    <div v-if="seeProximityRef && isPay" class="">
+      {{ log(step.nearDomains) }}
+      <VisitItem
+        v-for="(step, index) in step.nearDomains"
+        :id="index"
+        :key="step"
+        :status="false"
+        :step="step"
+      />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import VisitItem from './ThemeStepItem.vue'
 import VisitIcon from './VisitIcon.vue'
 import GoIcon from './GoIcon.vue'
 defineProps({
@@ -85,6 +95,10 @@ function placeTypeIcon(type) {
 
 function removeTags(str) {
   return str?.toString().replace(/(<([^>]+)>)/gi, '')
+}
+
+function log(a) {
+  console.log(a)
 }
 </script>
 

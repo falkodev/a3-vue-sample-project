@@ -1,7 +1,12 @@
 <template>
   <div class="t-syndicate">
     <div v-if="centerLoaded" class="t-app-itinerary__map">
-      <l-map v-model="zoom" :center="[center.lat, center.lon]" :zoom="zoom">
+      <l-map
+        v-model="zoom"
+        :center="[center.lat, center.lon]"
+        :zoom="zoom"
+        draggable="false"
+      >
         <l-tile-layer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
