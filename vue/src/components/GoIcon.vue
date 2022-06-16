@@ -1,5 +1,5 @@
 <template>
-  <div class="t-col">
+  <a :href="'https://www.google.com/maps/?q=' + lat + ',' + lon" class="t-col">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
@@ -11,11 +11,16 @@
       />
     </svg>
     {{ $t.goTo }}
-  </div>
+  </a>
 </template>
 
 <script setup>
 const $t = window.apos.itinerary.labels
+
+defineProps({
+  lat: Number,
+  lon: Number,
+})
 </script>
 
 <style lang="scss" scoped>

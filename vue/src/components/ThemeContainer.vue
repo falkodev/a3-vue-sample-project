@@ -25,6 +25,7 @@
           :key="step"
           :status="true"
           :step="step"
+          :type="'theme'"
           @removeStep="removeStep"
         />
       </div>
@@ -37,8 +38,8 @@
           v-for="(step, index) in removedSteps"
           :id="index"
           :key="step"
-          :status="false"
           :step="step"
+          :type="'theme'"
           @addStep="addStep"
         />
       </div>
