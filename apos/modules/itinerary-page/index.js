@@ -18,7 +18,10 @@ module.exports = {
         }
 
         if (req.data.piece.duration) {
-          req.data.piece.duration = moment(req.data.piece.duration, 'H:mm').format('H:mm')
+          req.data.piece.duration = moment(
+            req.data.piece.duration,
+            'H:mm',
+          ).format('H:mm')
         }
 
         req.data.piece.steps = req.data.piece.steps || []
@@ -43,7 +46,6 @@ module.exports = {
                 },
               })
               .limit(3)
-              .project({ title: 1, image: 1, latitude: 1, longitude: 1 })
               .toArray()
           }
         }
