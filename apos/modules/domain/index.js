@@ -14,17 +14,51 @@ module.exports = {
 
   fields: {
     add: {
-      isAutoGuidedVisit: {
-        label: 'apostrophe:autoGuidedVisit',
-        type: 'boolean',
-      },
       eShop: {
         type: 'url',
         label: 'apostrophe:eShop',
       },
-      _visits: {
-        type: 'relationship',
-        withType: 'visit',
+
+      reception: {
+        type: 'boolean',
+        label: 'apostrophe:reception',
+        def: false,
+      },
+
+      isAutoGuidedVisit: {
+        type: 'boolean',
+        label: 'apostrophe:autoGuidedVisit',
+        if: {
+          reception: true
+        },
+      },
+
+      openingDaysAndHours: {
+        label: 'apostrophe:openingDaysAndHours',
+        type: 'area',
+        options: {
+          widgets: {
+            '@apostrophecms/rich-text': {},
+          },
+          max: 1,
+        },
+        if: {
+          reception: true
+        },
+      },
+
+      phoneNumberAppointment: {
+        type: 'area',
+        label: 'apostrophe:phoneNumberAppointment',
+        options: {
+          widgets: {
+            '@apostrophecms/rich-text': {},
+          },
+          max: 1,
+        },
+        if: {
+          reception: true
+        },
       },
 
       visitPrice: {
@@ -36,7 +70,19 @@ module.exports = {
           },
           max: 1,
         },
+        if: {
+          reception: true
+        },
       },
+
+      _visits: {
+        type: 'relationship',
+        withType: 'visit',
+        if: {
+          reception: true
+        },
+      },
+
       activities: {
         type: 'area',
         label: 'apostrophe:activity.pluralLabel',
@@ -45,6 +91,9 @@ module.exports = {
             'domain-related/activity': {},
           },
           max: 1,
+        },
+        if: {
+          reception: true
         },
       },
       conveniences: {
@@ -55,6 +104,9 @@ module.exports = {
             'domain-related/convenience': {},
           },
           max: 1,
+        },
+        if: {
+          reception: true
         },
       },
       wineLabels: {
@@ -77,18 +129,34 @@ module.exports = {
           max: 1,
         },
       },
+
+      
     },
     remove: ['placeType'],
 
     group: {
       basics: {
-        fields: ['isAutoGuidedVisit', 'eShop', 'visitPrice'],
+        fields: ['eShop'],
       },
-      widgets: {
-        fields: ['activities', 'conveniences', 'wineLabels', 'wineTypes'],
+      wineAndLabel: {
+        label: 'apostrophe:wineAndLabel',
+        fields: ['wineLabels', 'wineTypes'],
+      },
+      receptionInformations: {
+        label: 'apostrophe:receptionInformations',
+        fields: [
+          'reception',
+          'isAutoGuidedVisit',
+          'phoneNumberAppointment',
+          'openingDaysAndHours',
+          'visitPrice',
+          'activities',
+          'conveniences',
+        ],
       },
       visits: {
-        fields: ['visits'],
+        label: 'apostrophe:visits',
+        fields: ['_visits'],
       },
     },
   },
