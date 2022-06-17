@@ -192,15 +192,14 @@
         </div>
       </div>
     </div>
-  </div>
-  <ValidateButton :buttonText="'validateItinerary'" :buttonLink="'link'" />
+    <ValidateButton :buttonText="'validateItinerary'" :buttonLink="'link'" />
 
-  <div v-if="data.steps.length">
-    <VisitsContainer :piece="data" @updateItinerary="updateItinerary" />
-  </div>
-
-  <div v-if="data._visits[0]">
-    <EventContainer />
+    <VisitsContainer
+      v-if="data.steps.length"
+      :piece="data"
+      @updateItinerary="updateItinerary"
+    />
+    <EventContainer v-else />
   </div>
 </template>
 
