@@ -7,7 +7,7 @@
         <div class="t-visit__map t-map__container">
           <l-map
             draggable="false"
-            :minZoom="zoom - 5"
+            :minZoom="zoom"
             :maxZoom="zoom + 2"
             :center="[userLat, userLong]"
             v-model="zoom"
