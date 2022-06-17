@@ -43,8 +43,8 @@
         />
       </div>
     </div>
+    <div class="t-spacer-visits"></div>
   </div>
-  <div class="t-spacer-visits"></div>
 </template>
 
 <script setup>
