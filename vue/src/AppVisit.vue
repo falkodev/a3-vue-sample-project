@@ -7,7 +7,7 @@
         <div class="t-visit__map t-map__container">
           <l-map
             draggable="false"
-            :minZoom="zoom - 2"
+            :minZoom="zoom - 5"
             :maxZoom="zoom + 2"
             :center="[userLat, userLong]"
             v-model="zoom"
@@ -54,7 +54,7 @@
                   </p>
                   <span class="t-step__icon"></span>
                 </div>
-                <p class="t-step__timing">{{ step.duration }} minutes</p>
+                <p class="t-step__timing">Sous-étapes</p>
               </div>
               <div class="t-media__container">
                 <div
@@ -74,7 +74,7 @@
                       {{ subStep.title }}
                     </p>
                   </div>
-                  <span :class="{ 't-media__download': true}">
+                  <span :class="{ 't-media__download': true }">
                     <IconArrow />
                   </span>
                 </div>
@@ -170,25 +170,25 @@ onBeforeMount(() => {
   jsonUrl = attachmentList.value.filter(
     (attachment) => attachment.extension === 'geojson',
   )[0]._url
-  console.log(jsonUrl)
-
-  fetch(jsonUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      geojson = data
-    })
-
+  // console.log(jsonUrl)
 
   mapCenter.lat = userLat.value
   mapCenter.long = userLong.value
 })
 
 onMounted(() => {
-  console.log('dataObject ===>', dataObject.value)
-  console.log('attachmentList ===>', attachmentList.value)
-  console.log('mapCenter', mapCenter)
-  console.log('userCoords', userCoords)
-  console.log('geojson', geojson)
+  fetch(jsonUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      geojson = data
+      // console.log(geojson)
+      return data
+    })
+  // console.log('dataObject ===>', dataObject.value)
+  // console.log('attachmentList ===>', attachmentList.value)
+  // console.log('mapCenter', mapCenter)
+  // console.log('userCoords', userCoords)
+  // console.log('geojson', geojson)
 })
 onUpdated(() => {
   watchUserPos()
