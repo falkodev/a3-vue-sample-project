@@ -114,7 +114,7 @@
         </div>
       </div>
     </div>
-    <ValidateButton :buttonText="buttonText" :buttonLink="'link'" />
+    <ValidateButton :buttonText="buttonText" :buttonLink="buttonLink" />
     <SyndicateContainer
       v-if="data.itineraryType === 'syndicate'"
       :piece="data"
@@ -146,6 +146,13 @@ const isPay = ref(true)
 const buttonText = computed(() => {
   return isPay.value ? 'itinerary' : 'buy'
 })
+const itineraryType = ref(data.itineraryType)
+const buttonLink = computed(() => {
+  return itineraryType.value === 'syndicate'
+    ? lauchItinerary(data.steps)
+    : 'link'
+})
+
 const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 let descriptionRef = ref(false)
@@ -172,6 +179,31 @@ const itineraryDuration = computed(() =>
     ? calculateItineraryDuration(refItineraryDuration.value)
     : data.duration,
 )
+
+function lauchItinerary(steps) {
+  const baseUrl = 'https://www.google.com/maps/dir/?api=1'
+  const origin = steps[0].place.latitude + '%2C' + steps[0].place.longitude
+  let waypoints = ''
+  for (let index = 1; index < steps.length - 1; index++) {
+    let tempLat = steps[index].place.latitude
+    let tempLon = steps[index].place.longitude
+    waypoints = waypoints + '|' + tempLat + '%2C' + tempLon
+  }
+  const destination =
+    steps[steps.length - 1].place.latitude +
+    '%2C' +
+    steps[steps.length - 1].place.longitude
+
+  return (
+    baseUrl +
+    '&origin=' +
+    origin +
+    '&waypoints=' +
+    waypoints +
+    '&destination=' +
+    destination
+  )
+}
 
 function calculateItineraryDuration(steps) {
   let hours = 0
