@@ -3,6 +3,17 @@ const config = require('config')
 const self = require('apostrophe')
 
 describe('place', () => {
+  const doc = {
+    title: 'Wine store',
+    placeType: 'wineStore',
+    address: '12 avenue Charles de Gaulle, 34001 Montpellier',
+    longitude: 3.543093,
+    latitude: 43.652038,
+    slug: 'wine-store',
+    type: 'place',
+    fixtures: true,
+  }
+
   asyncFs = {
     unlink: jest.fn(),
     readdir: jest.fn(),
@@ -19,6 +30,11 @@ describe('place', () => {
       toArray: jest.fn().mockImplementation(() => []),
     }
   }
+  self.insert = jest.fn()
+  self.newInstance = jest.fn()
+  self.localize = jest.fn()
+  self.publish = jest.fn()
+
   self.methods = {
     getPlaces: jest.fn(),
     createPlacesFromData: jest.fn(),
@@ -46,7 +62,21 @@ describe('place', () => {
     },
     modules: {
       place: {
-        insert: jest.fn(),
+        insert: jest.fn().mockImplementation(() => ({
+          title: 'Les Caves Gourmandes',
+          placeType: 'wineStore',
+          address: "10 All. de l'Esplanade, Gignac",
+          longitude: 3.5527339,
+          latitude: 43.6527002,
+          slug: 'les-caves-gourmandes6',
+          visibility: 'public',
+          archived: false,
+          type: 'place',
+          aposDocId: 'cl1f0wdz60004nup5n1qc6sc5',
+          _id: 'cl1f0wdz60004nup5n1qc6sc5',
+          metaType: 'doc',
+          image: null,
+        })),
         find: self.find,
         newInstance: jest.fn(),
         localize: jest.fn(),
@@ -83,17 +113,6 @@ describe('place', () => {
     migration: {
       add: jest.fn(),
     },
-  }
-
-  const doc = {
-    title: 'Wine store',
-    placeType: 'wineStore',
-    address: '12 avenue Charles de Gaulle, 34001 Montpellier',
-    longitude: 3.543093,
-    latitude: 43.652038,
-    slug: 'wine-store',
-    type: 'place',
-    fixtures: true,
   }
 
   const beforeSave = place.handlers(self).beforeSave
