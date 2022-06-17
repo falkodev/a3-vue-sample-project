@@ -1,0 +1,4 @@
+PROJECT=vino-terr-larzac
+DIR=/opt/stagecoach/apps/$PROJECT
+ADJUST_PATH=':'
+SSH_PORT=22

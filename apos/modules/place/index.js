@@ -116,14 +116,19 @@ module.exports = {
         ],
       },
       widgets: {
-        label: 'apostrophe:domainPresentation',
+        label: 'apostrophe:presentation',
         fields: [
+          'placeType',
           'description',
-          'address',
+          'image',
           'phoneNumber',
-          'website',
           'openingDaysAndHours',
+          'website',
         ],
+      },
+      location: {
+        label: 'apostrophe:location',
+        fields: ['longitude', 'latitude', 'address'],
       },
     },
   },

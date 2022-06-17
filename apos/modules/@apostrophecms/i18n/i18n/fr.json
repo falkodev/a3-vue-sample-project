@@ -35,7 +35,8 @@
   "backgroundImageLabel": "Image d'arrière plan homepage",
   "backgroundImageLoginLabel": "Image d'arrière plan login et register",
   "backToHome": "Retour à l'accueil",
-  "basics": "Champs de base",
+  "basics": "Description",
+  "visits": "Les visites (Accueil nécessaire)",
   "bio": "Bio",
   "biodynamique": "Biodynamique",
   "browseDocType": "Parcourir {{ type }}",
@@ -100,7 +101,7 @@
   "doesNotExistYetDescription": "The document does not exist yet as {{ mode }} in the {{ locale }} locale.",
   "domain": "Domaine",
   "domains": "Domaines",
-  "domainPresentation": "Présentation du domaine",
+  "presentation": "Présentation",
   "download": "Download",
   "draft": "Brouillon",
   "draftDeleted": "Draft Deleted",
@@ -191,6 +192,7 @@
   "localizeAllRelated": "Localize all related documents and overwrite existing documents",
   "localizeNewRelated": "Localize new related documents",
   "localizingBusy": "Localizing Content",
+  "location": "Localisation",
   "loggedInMsg": "Connexion réussie",
   "loggedOutMsg": "Déconnexion réussie",
   "login": "Me connecter",
@@ -308,6 +310,7 @@
   "rawHtml": "Raw HTML",
   "rawHtmlCode": "Raw HTML (Code)",
   "rawHtmlCodeHelp": "Be careful when embedding third-party code, as it can break the website editing functionality. If a page becomes unusable, add \"?safe_mode=1\" to the URL to make it work temporarily without the problem code being rendered.",
+  "receptionInformations": "Informations de l'accueil du domaine",
   "redo": "Redo",
   "redoTooltip": "Redo Change",
   "redoTooltipNoChanges": "No Changes to Redo",
@@ -607,7 +610,9 @@
   "parking": "Parking",
   "approvedPets": "Animaux approuvés",
   "restorations": "Restaurations",
-  "phoneNumber": "Numéro de téléphone",
+  "phoneNumber": "Numéro de téléphone public",
+  "phoneNumberAppointment": "Numéro de téléphone pour la prise de rendez-vous",
+
   "eShop": "Lien vers l'e-boutique",
   "openingDaysAndHours": "Jours et heures d'ouverture",
   "locales": {
@@ -641,5 +646,7 @@
       "content": "Contenu principal de la page",
       "interview": "Vidéo de l'interview"
     }
-  }
+  },
+  "reception": "Accueil",
+  "wineAndLabel": "Vins et Labels"
 }
