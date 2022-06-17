@@ -201,6 +201,8 @@
     />
     <EventContainer v-else />
   </div>
+
+  <div v-if="data._visits[0]" class="t-spacer-circulade"></div>
 </template>
 
 <script setup>
@@ -428,6 +430,12 @@ function dataMileAge(mileage) {
       color: $color-white;
       font-size: 12px;
     }
+  }
+}
+.t-spacer-circulade {
+  height: 20vh;
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
   }
 }
 </style>
