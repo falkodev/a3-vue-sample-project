@@ -9,7 +9,7 @@
             draggable="false"
             :minZoom="zoom - 2"
             :maxZoom="zoom + 2"
-            :center="[mapCenter.lat, mapCenter.long]"
+            :center="[userLat, userLong]"
             v-model="zoom"
             bounceAtZoomLimits="true"
             zoomControl="false"
@@ -74,6 +74,9 @@
                       {{ subStep.title }}
                     </p>
                   </div>
+                  <span :class="{ 't-media__download': true}">
+                    <IconArrow />
+                  </span>
                 </div>
               </div>
             </div>
@@ -101,18 +104,18 @@ import {
   LGeoJson,
 } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
-// import IconArrow from '@/components/icons/IconArrow.vue'
+import IconArrow from '@/components/icons/IconArrow.vue'
 import IconGeoloc from '@/components/icons/IconGeoloc.vue'
 
 const props = defineProps(['piece', 'attachments'])
 
-let geojson
+let geojson = reactive({})
 let jsonUrl
 
 let zoom = ref(17)
 let userCoords = reactive({
-  latitude: null,
-  longitude: null,
+  latitude: 0,
+  longitude: 0,
 })
 
 let mapCenter = reactive({
@@ -133,9 +136,9 @@ let userLat = computed(() => {
 let userLong = computed(() => {
   return userCoords.longitude
 })
-let centerMapOnUser = () => {
-  mapCenter.lat = userCoords.latitude
-  mapCenter.long = userCoords.longitude
+const centerMapOnUser = () => {
+  mapCenter.lat = userLat.value
+  mapCenter.long = userLong.value
 }
 const setPosition = (pos) => {
   userCoords.latitude = pos.coords.latitude
@@ -164,31 +167,28 @@ const watchUserPos = () => {
 }
 onBeforeMount(() => {
   watchUserPos()
-  jsonUrl = attachmentList.value.filter((att) => att.extension === 'geojson')[0]
-    ._url
+  jsonUrl = attachmentList.value.filter(
+    (attachment) => attachment.extension === 'geojson',
+  )[0]._url
+  console.log(jsonUrl)
 
   fetch(jsonUrl)
     .then((response) => response.json())
     .then((data) => {
-      if (data) {
-        geojson = data
-        console.log('geojson', geojson)
-        console.log(
-          'geojson coord',
-          geojson.features[0].geometry.coordinates[1],
-          geojson.features[0].geometry.coordinates[2],
-        )
-        mapCenter = {
-          lat: geojson.features[0].geometry.coordinates[1],
-          long: geojson.features[0].geometry.coordinates[2],
-        }
-        console.log('mapCenter', mapCenter)
-      }
+      geojson = data
     })
+
+
+  mapCenter.lat = userLat.value
+  mapCenter.long = userLong.value
 })
+
 onMounted(() => {
   console.log('dataObject ===>', dataObject.value)
   console.log('attachmentList ===>', attachmentList.value)
+  console.log('mapCenter', mapCenter)
+  console.log('userCoords', userCoords)
+  console.log('geojson', geojson)
 })
 onUpdated(() => {
   watchUserPos()
