@@ -313,8 +313,10 @@ function dataMileAge(mileage) {
 
 .t-app-itinerary {
   position: relative;
-  padding: 10vw;
-  margin: 15vh 0;
+  padding-top: 10vh;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  margin-top: 100px;
 
   &__spacer {
     height: 20vh;
@@ -393,8 +395,9 @@ function dataMileAge(mileage) {
     background-color: $color-orange;
     opacity: 75%;
     height: 120px;
-    width: 49%;
+    width: 39vw;
     border-radius: 15px;
+    margin-bottom: 60px;
 
     &__title {
       color: $color-white;
