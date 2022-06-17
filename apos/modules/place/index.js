@@ -101,7 +101,7 @@ module.exports = {
       },
       location: {
         label: 'apostrophe:location',
-        fields: ['longitude', 'latitude', 'address',],
+        fields: ['longitude', 'latitude', 'address'],
       },
     },
   },
