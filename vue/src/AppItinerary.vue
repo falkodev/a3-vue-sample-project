@@ -294,6 +294,7 @@ function dataMileAge(mileage) {
 .bold {
   font-weight: bold;
   cursor: pointer;
+  color: var(--vt-c-black);
 }
 
 .t-image {
@@ -317,7 +318,6 @@ function dataMileAge(mileage) {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
   }
 }
 
@@ -342,6 +342,7 @@ function dataMileAge(mileage) {
     margin-top: 36px;
     font-size: 15px;
     line-height: 25px;
+    color: var(--vt-c-black);
   }
 }
 
