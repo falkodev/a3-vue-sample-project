@@ -35,7 +35,7 @@ module.exports = {
         type: 'boolean',
         label: 'apostrophe:autoGuidedVisit',
         if: {
-          reception: true
+          reception: true,
         },
       },
 
@@ -49,7 +49,7 @@ module.exports = {
           max: 1,
         },
         if: {
-          reception: true
+          reception: true,
         },
       },
 
@@ -63,7 +63,7 @@ module.exports = {
           max: 1,
         },
         if: {
-          reception: true
+          reception: true,
         },
       },
 
@@ -77,7 +77,7 @@ module.exports = {
           max: 1,
         },
         if: {
-          reception: true
+          reception: true,
         },
       },
 
@@ -85,7 +85,7 @@ module.exports = {
         type: 'relationship',
         withType: 'visit',
         if: {
-          reception: true
+          reception: true,
         },
       },
 
@@ -99,7 +99,7 @@ module.exports = {
           max: 1,
         },
         if: {
-          reception: true
+          reception: true,
         },
       },
       conveniences: {
@@ -112,7 +112,7 @@ module.exports = {
           max: 1,
         },
         if: {
-          reception: true
+          reception: true,
         },
       },
       wineLabels: {
@@ -135,8 +135,6 @@ module.exports = {
           max: 1,
         },
       },
-
-      
     },
     remove: ['placeType'],
 
