@@ -58,6 +58,7 @@ module.exports = {
                     type: 'array',
                     label: 'apostrophe:visitType.content.pluralContent',
                     min: 1,
+                    max: 1,
                     fields: {
                       add: {
                         title: {
