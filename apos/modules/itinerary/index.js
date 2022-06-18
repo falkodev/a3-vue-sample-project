@@ -163,6 +163,8 @@ module.exports = {
           globalInfos: req.t('apostrophe:itinerary.globalInfos'),
           takeAppointment: req.t('apostrophe:itinerary.takeAppointment'),
           validateItinerary: req.t('apostrophe:itinerary.validate'),
+          events: req.t('apostrophe:placePage.event'),
+          reserve: req.t('apostrophe:reserve'),
         }
 
         data.assetBaseUrl = self.apos.asset.getAssetBaseUrl()
