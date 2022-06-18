@@ -68,4 +68,12 @@ module.exports = {
       },
     }
   },
+
+  elpers(self) {
+    return {
+      stringify(label) {
+        return JSON.stringify(label)
+      },
+    }
+  },
 }
