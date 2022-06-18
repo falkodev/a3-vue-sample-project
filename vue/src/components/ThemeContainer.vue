@@ -44,6 +44,7 @@
         />
       </div>
     </div>
+    <div class="t-spacer-visits"></div>
   </div>
 </template>
 
@@ -143,6 +144,8 @@ updateCenter()
 
 .t-steps {
   margin-top: 36px;
+  padding-left: 10vw;
+  padding-right: 10vw;
 }
 
 .t-app-itinerary__map {
@@ -150,8 +153,22 @@ updateCenter()
   top: 12vh;
   right: 0;
   left: 0;
-  height: 20vh;
+  height: 26vh;
   width: 100vw;
   z-index: 99;
+}
+
+.t-loaded__title {
+  color: $color-purple;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.t-spacer-visits {
+  height: 20vh;
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
+  }
 }
 </style>

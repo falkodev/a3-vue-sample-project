@@ -1,7 +1,10 @@
 <template>
   <div class="t-app-itinerary">
     <div class="t-app-itinerary__spacer"></div>
-    <div class="t-image__container">
+    <div class="t-image">
+      <div v-if="data._visits[0]" class="t-eventsAnnonce">
+        <p>{{ $t.events }}</p>
+      </div>
       <img
         v-if="data.image"
         :src="
@@ -13,9 +16,10 @@
           data.image.extension
         "
         alt=""
-        class="t-image"
+        class="t-image__container"
       />
     </div>
+
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
@@ -38,7 +42,7 @@
             {{ itineraryDuration }}
           </div>
         </div>
-        <div class="t-info-tier">
+        <div v-if="data.steps.length" class="t-info-tier">
           <img
             :src="assetBaseUrl + '/modules/content/icons/event.png'"
             class="t-info-tier__logo"
@@ -46,6 +50,13 @@
           <div class="t-info-tier__value">
             {{ dataPrice(data.price) }}
           </div>
+        </div>
+        <div v-else class="t-info-tier">
+          <img
+            :src="assetBaseUrl + '/modules/content/icons/event.png'"
+            class="t-info-tier__logo"
+          />
+          <div class="t-info-tier__value">{{ formatDate(data) }}</div>
         </div>
         <div class="t-info-tier">
           <img
@@ -58,7 +69,11 @@
         </div>
       </div>
       <div class="t-general-infos__container">
-        <div class="t-info-half">
+        <div
+          class="t-info-half"
+          v-if="data._visits[0]"
+          style="width: 32%; height: 100px"
+        >
           <div class="t-info-half__logo-container">
             <img
               :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
@@ -73,17 +88,41 @@
                 : data._visits[0].steps[0].subSteps[0].title
             }}
           </div>
-          <div v-if="data.steps.length">
-            <div
-              v-for="addressPart in splitAddress(removeTags(startStep))"
-              :key="addressPart"
-              class="t-info-half__value"
-            >
-              {{ addressPart }}
+        </div>
+
+        <div v-else-if="data.steps.length">
+          <div class="t-info-half">
+            <div class="t-info-half__logo-container">
+              <img
+                :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
+                class="t-info-half__logo t-info-half__logo--left"
+              />
+            </div>
+
+            <div class="t-info-half__title">
+              {{
+                data.steps.length
+                  ? data.steps[0].place.title
+                  : data._visits[0].steps[0].subSteps[0].title
+              }}
+            </div>
+            <div v-if="data.steps.length">
+              <div
+                v-for="addressPart in splitAddress(removeTags(startStep))"
+                :key="addressPart"
+                class="t-info-half__value"
+              >
+                {{ addressPart }}
+              </div>
             </div>
           </div>
         </div>
-        <div class="t-info-half">
+
+        <div
+          class="t-info-half"
+          v-if="data._visits[0]"
+          style="width: 32%; height: 100px"
+        >
           <div class="t-info-half__logo-container">
             <img
               :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
@@ -102,14 +141,51 @@
                   ].title
             }}
           </div>
-          <div v-if="data.steps.length">
-            <div
-              v-for="addressPart in splitAddress(removeTags(lastStep))"
-              :key="addressPart"
-              class="t-info-half__value"
-            >
-              {{ addressPart }}
+        </div>
+
+        <div v-else-if="data.steps.length">
+          <div class="t-info-half">
+            <div class="t-info-half__logo-container">
+              <img
+                :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
+                class="t-info-half__logo t-info-half__logo--right"
+              />
             </div>
+
+            <div class="t-info-half__title">
+              {{
+                data.steps.length
+                  ? data.steps[data.steps.length - 1].place.title
+                  : data._visits[0].steps[data._visits[0].steps.length - 1]
+                      .subSteps[
+                      data._visits[0].steps[data._visits[0].steps.length - 1]
+                        .subSteps.length - 1
+                    ].title
+              }}
+            </div>
+            <div v-if="data.steps.length">
+              <div
+                v-for="addressPart in splitAddress(removeTags(lastStep))"
+                :key="addressPart"
+                class="t-info-half__value"
+              >
+                {{ addressPart }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          v-if="data._visits[0]"
+          class="t-info-half"
+          style="width: 32%; height: 100px"
+        >
+          <img
+            :src="assetBaseUrl + '/modules/content/icons/event.png'"
+            class="t-info-tier__logo"
+          />
+          <div class="t-info-half__value">
+            {{ dataPrice(data.price) }}
           </div>
         </div>
       </div>
@@ -124,12 +200,15 @@
       :piece="data"
       @updateItinerary="updateItinerary"
     />
+    <EventContainer v-else />
+    <div v-if="data._visits[0]" class="t-spacer-circulade"></div>
   </div>
 </template>
 
 <script setup>
 import ThemeContainer from './components/ThemeContainer.vue'
 import SyndicateContainer from './components/SyndicateContainer.vue'
+import EventContainer from './components/EventContainer.vue'
 import ValidateButton from './components/ValidateButton.vue'
 import { computed, ref } from 'vue'
 import dayjs from 'dayjs'
@@ -216,6 +295,14 @@ function calculateItineraryDuration(steps) {
   return duration
 }
 
+function formatDate(infos) {
+  console.log(data.startDate)
+  let startDate = infos.startDate
+  let endDate = infos.endDate
+  startDate = dayjs(startDate).format('DD/MM/YYYY')
+  endDate = dayjs(endDate).format('DD/MM/YYYY')
+  return 'Du ' + startDate + '\n au ' + endDate
+}
 function dataDescription() {
   return descriptionRef.value
     ? data.description
@@ -246,28 +333,39 @@ function dataMileAge(mileage) {
 .bold {
   font-weight: bold;
   cursor: pointer;
+  color: var(--vt-c-black);
 }
 
 .t-image {
-  height: 180px;
-  width: 100%;
-  object-fit: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  height: 200px;
+  width: 100vw;
 
   &__container {
-    top: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    margin-bottom: 20px;
     height: 200px;
-    width: 100vw;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .t-eventsAnnonce {
+    background-color: $color-orange;
+    height: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 .t-app-itinerary {
   position: relative;
-  padding: 10vw;
-  margin: 15vh 0;
+  padding-top: 10vh;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  margin-top: 100px;
 
   &__spacer {
     height: 20vh;
@@ -283,6 +381,7 @@ function dataMileAge(mileage) {
     margin-top: 36px;
     font-size: 15px;
     line-height: 25px;
+    color: var(--vt-c-black);
   }
 }
 
@@ -346,8 +445,9 @@ function dataMileAge(mileage) {
     background-color: $color-orange;
     opacity: 75%;
     height: 120px;
-    width: 49%;
+    width: 39vw;
     border-radius: 15px;
+    margin-bottom: 60px;
 
     &__title {
       color: $color-white;
@@ -379,6 +479,12 @@ function dataMileAge(mileage) {
       color: $color-white;
       font-size: 12px;
     }
+  }
+}
+.t-spacer-circulade {
+  height: 20vh;
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
   }
 }
 </style>

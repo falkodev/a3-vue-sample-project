@@ -232,6 +232,8 @@ module.exports = {
           step: req.t('apostrophe:itinerary.step'),
           seeNearDomains: req.t('apostrophe:itinerary.seeNearDomains'),
           itinerary: req.t('apostrophe:itinerary.itinerary'),
+          events: req.t('apostrophe:placePage.event'),
+          reserve: req.t('apostrophe:reserve'),
         }
 
         data.assetBaseUrl = self.apos.asset.getAssetBaseUrl()
