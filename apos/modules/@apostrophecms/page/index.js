@@ -69,7 +69,7 @@ module.exports = {
     }
   },
 
-  elpers(self) {
+  helpers(self) {
     return {
       stringify(label) {
         return JSON.stringify(label)
