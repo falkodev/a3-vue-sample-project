@@ -105,24 +105,19 @@ module.exports = {
     },
     group: {
       basics: {
+        label: 'apostrophe:presentation',
         fields: [
           'placeType',
+          'description',
           'image',
-          'longitude',
-          'latitude',
-          'duration',
-          'labels',
+          'phoneNumber',
+          'openingDaysAndHours',
+          'website',
         ],
       },
-      widgets: {
-        label: 'apostrophe:domainPresentation',
-        fields: [
-          'description',
-          'address',
-          'phoneNumber',
-          'website',
-          'openingDaysAndHours',
-        ],
+      location: {
+        label: 'apostrophe:location',
+        fields: ['longitude', 'latitude', 'address'],
       },
     },
   },

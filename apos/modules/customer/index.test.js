@@ -5,6 +5,9 @@ describe('customer', () => {
   self.insert = jest.fn()
   self.newInstance = jest.fn()
   self.apos = {
+    attachment: {
+      insert: jest.fn(),
+    },
     user: {
       insert: jest.fn(),
     },
@@ -27,6 +30,10 @@ describe('customer', () => {
         }
       }),
     },
+  }
+
+  asyncFs = {
+    readdir: jest.fn(),
   }
 
   const doc = {
