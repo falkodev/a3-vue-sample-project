@@ -47,7 +47,7 @@ const icon = renderIcon({
   top: 12vh;
   right: 0;
   left: 0;
-  height: 35vh;
+  height: 26vh;
   width: 100vw;
   z-index: 99;
 }

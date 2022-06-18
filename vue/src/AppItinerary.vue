@@ -1,7 +1,10 @@
 <template>
   <div class="t-app-itinerary">
     <div class="t-app-itinerary__spacer"></div>
-    <div class="t-image__container">
+    <div class="t-image">
+      <div v-if="data._visits[0]" class="t-eventsAnnonce">
+        <p>{{ $t.events }}</p>
+      </div>
       <img
         v-if="data.image"
         :src="
@@ -13,11 +16,8 @@
           data.image.extension
         "
         alt=""
-        class="t-image"
+        class="t-image__container"
       />
-      <div v-if="data._visits[0]" class="t-eventsAnnonce">
-        <p>Event</p>
-      </div>
     </div>
 
     <div class="t-app-itinerary__title">{{ data.title }}</div>
@@ -56,9 +56,7 @@
             :src="assetBaseUrl + '/modules/content/icons/event.png'"
             class="t-info-tier__logo"
           />
-          <div class="t-info-tier__value">
-            {{ data._visits[0].createdAt }}
-          </div>
+          <div class="t-info-tier__value">{{ formatDate(data) }}</div>
         </div>
         <div class="t-info-tier">
           <img
@@ -201,6 +199,8 @@
     />
     <EventContainer v-else />
   </div>
+
+  <div v-if="data._visits[0]" class="t-spacer-circulade"></div>
 </template>
 
 <script setup>
@@ -256,6 +256,14 @@ function calculateItineraryDuration(steps) {
   return duration
 }
 
+function formatDate(infos) {
+  console.log(data.startDate)
+  let startDate = infos.startDate
+  let endDate = infos.endDate
+  startDate = dayjs(startDate).format('DD/MM/YYYY')
+  endDate = dayjs(endDate).format('DD/MM/YYYY')
+  return 'Du ' + startDate + '\n au ' + endDate
+}
 function dataDescription() {
   return descriptionRef.value
     ? data.description
@@ -286,27 +294,30 @@ function dataMileAge(mileage) {
 .bold {
   font-weight: bold;
   cursor: pointer;
-}
-
-.t-eventsAnnonce {
-  background-color: $color-orange;
-  height: 35px;
-  width: 100%;
+  color: var(--vt-c-black);
 }
 
 .t-image {
-  height: 180px;
-  width: 100%;
-  object-fit: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  height: 200px;
+  width: 100vw;
 
   &__container {
-    top: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    margin-bottom: 20px;
     height: 200px;
-    width: 100vw;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .t-eventsAnnonce {
+    background-color: $color-orange;
+    height: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -331,6 +342,7 @@ function dataMileAge(mileage) {
     margin-top: 36px;
     font-size: 15px;
     line-height: 25px;
+    color: var(--vt-c-black);
   }
 }
 
@@ -428,6 +440,12 @@ function dataMileAge(mileage) {
       color: $color-white;
       font-size: 12px;
     }
+  }
+}
+.t-spacer-circulade {
+  height: 20vh;
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
   }
 }
 </style>
