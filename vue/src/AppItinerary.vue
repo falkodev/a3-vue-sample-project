@@ -56,7 +56,9 @@
             :src="assetBaseUrl + '/modules/content/icons/event.png'"
             class="t-info-tier__logo"
           />
-          <div class="t-info-tier__value">{{ formatDate(data) }}</div>
+          <div class="t-info-tier__value t-info-tier__value--date">
+            {{ formatDate(data) }}
+          </div>
         </div>
         <div class="t-info-tier">
           <img
@@ -184,7 +186,7 @@
             :src="assetBaseUrl + '/modules/content/icons/event.png'"
             class="t-info-tier__logo"
           />
-          <div class="t-info-half__value">
+          <div class="t-info-tier__value">
             {{ dataPrice(data.price) }}
           </div>
         </div>
@@ -431,6 +433,11 @@ function dataMileAge(mileage) {
       color: $color-white;
       font-size: 20px;
       font-weight: bold;
+
+      &--date {
+        font-size: 15px;
+        text-align: center;
+      }
     }
   }
 
