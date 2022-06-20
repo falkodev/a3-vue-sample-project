@@ -15,7 +15,7 @@
     "release": "npm install && npm run build && node app @apostrophecms/migration:migrate",
     "lint": "prettier --write '**/*.{js,css,scss}' --config ../package.json --ignore-path ../.prettierignore",
     "test": "NODE_ENV=development NODE_APP_INSTANCE=larzac jest",
-    "test:coverage": "NODE_ENV=development NODE_APP_INSTANCE=larzac jest --coverage || exit 0",
+    "test:coverage": "NODE_ENV=development NODE_APP_INSTANCE=larzac jest --coverage --colors || exit 0",
     "test:watch": "NODE_ENV=development NODE_APP_INSTANCE=larzac jest --watchAll --verbose",
     "test:dev": "NODE_ENV=development NODE_APP_INSTANCE=test node app @apostrophecms/db:reset && npm run test:fixtures && NODE_ENV=development NODE_APP_INSTANCE=test nodemon --no-deprecation",
     "test:fixtures": "NODE_ENV=development NODE_APP_INSTANCE=test node app --no-deprecation place:fetch && NODE_ENV=development NODE_APP_INSTANCE=test node --no-deprecation app @apostrophecms/db:fixtures",
@@ -43,7 +43,7 @@
   },
   "author": "Vinovibes Team",
   "dependencies": {
-    "apostrophe": "^3.17.0",
+    "apostrophe": "^3.22.1",
     "config": "^3.3.7",
     "copyfiles": "^2.4.1",
     "express-oas-generator": "^1.0.41",
@@ -69,12 +69,16 @@
       "public/apos-frontend/",
       "data"
     ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "modules/*/*.js"
+    ],
     "coverageThreshold": {
       "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": -10
+        "statements": 80,
+        "branches": 70,
+        "functions": 60,
+        "lines": 80
       }
     }
   }
