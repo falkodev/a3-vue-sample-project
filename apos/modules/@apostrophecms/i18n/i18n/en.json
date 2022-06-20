@@ -35,7 +35,8 @@
   "backgroundImageLabel": "Background image for homepage",
   "backgroundImageLoginLabel": "Background image for login and register pages",
   "backToHome": "Back to Home",
-  "basics": "Basics",
+  "basics": "Description",
+  "visits": "Visits (required Reception)",
   "bio": "Bio",
   "biodynamique": "Biodynamics",
   "browseDocType": "Browse {{ type }}",
@@ -97,7 +98,7 @@
   "doesNotExistYetDescription": "The document does not exist yet as {{ mode }} in the {{ locale }} locale.",
   "domain": "domain",
   "domains": "domains",
-  "domainPresentation": "Domain presentation",
+  "presentation": "Presentation",
   "download": "Download",
   "draft": "Draft",
   "draftDeleted": "Draft Deleted",
@@ -186,6 +187,7 @@
   "localizeAllRelated": "Localize all related documents and overwrite existing documents",
   "localizeNewRelated": "Localize new related documents",
   "localizingBusy": "Localizing Content",
+  "location": "Location",
   "loggedInMsg": "Successful login",
   "loggedOutMsg": "Successful logout",
   "login": "Login",
@@ -303,6 +305,7 @@
   "rawHtml": "Raw HTML",
   "rawHtmlCode": "Raw HTML (Code)",
   "rawHtmlCodeHelp": "Be careful when embedding third-party code, as it can break the website editing functionality. If a page becomes unusable, add \"?safe_mode=1\" to the URL to make it work temporarily without the problem code being rendered.",
+  "receptionInformations": "Informations de l'accueil du domaine",
   "redo": "Redo",
   "redoTooltip": "Redo Change",
   "redoTooltipNoChanges": "No Changes to Redo",
@@ -582,7 +585,8 @@
   "parking": "Parking",
   "approvedPets": "Approved pets",
   "restorations": "Restorations",
-  "phoneNumber": "Phone number",
+  "phoneNumber": "Public phone number",
+  "phoneNumberAppointment": "Phone number appointment",
   "eShop": "Link to e-shop",
   "openingDaysAndHours": "Opening days and hours",
   "locales": {
@@ -615,5 +619,7 @@
       "content": "main Content",
       "interview": "Video for interview or image"
     }
-  }
+  },
+  "reception": "Reception",
+  "wineAndLabel": "Wines and Labels"
 }
