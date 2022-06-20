@@ -225,7 +225,11 @@ if (!window.apos.user) {
 
 const isPay = ref(true)
 const buttonText = computed(() => {
-  return isPay.value ? 'itinerary' : 'buy'
+  return isPay.value
+    ? data.itineraryType === 'event'
+      ? 'start'
+      : 'itinerary'
+    : 'buy'
 })
 const itineraryType = ref(data.itineraryType)
 const buttonLink = computed(() => {

@@ -5,26 +5,18 @@
         <l-tile-layer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
-
-        <!-- <l-marker
-          v-for="marker in itinerary.steps"
-          :key="marker"
-          :icon="icon"
-          :lat-lng="[marker.place.latitude, marker.place.longitude]"
-        >
-        </l-marker> -->
       </l-map>
     </div>
   </div>
 </template>
 
 <script setup>
-import { LMap } from '@vue-leaflet/vue-leaflet'
+import { LMap, LTileLayer } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { reactive } from 'vue'
 
 const zoom = 10
-let center = reactive({ lat: 0, lon: 0 })
+let center = reactive({ lat: 45.12, lon: 8.13 })
 </script>
 
 <style lang="scss">
