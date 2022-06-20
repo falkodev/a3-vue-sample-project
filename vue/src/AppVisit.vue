@@ -7,7 +7,7 @@
         <div class="t-visit__map t-map__container">
           <l-map
             draggable="false"
-            :minZoom="zoom"
+            :minZoom="zoom - 5"
             :maxZoom="zoom + 2"
             :center="[userLat, userLong]"
             v-model="zoom"
@@ -15,12 +15,11 @@
             zoomControl="false"
             @moveend="getUserPos"
           >
-            <!-- :center="[userlat, userLong]" -->
             <l-tile-layer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             ></l-tile-layer>
 
-            <l-geo-json :geojson="geojson" />
+            <l-geo-json :geojson="geojsonFile" />
 
             <l-marker
               v-if="userLat && userLong"
@@ -54,7 +53,9 @@
                   </p>
                   <span class="t-step__icon"></span>
                 </div>
-                <p class="t-step__timing">Sous-étapes</p>
+                <p class="t-step__timing">
+                  {{ getTotalDuration(step.subSteps) }}
+                </p>
               </div>
               <div class="t-media__container">
                 <div
@@ -63,13 +64,19 @@
                   :key="'step' + subStepIndex"
                 >
                   <div
+                    v-if="subStep.image"
                     class="t-media__image"
                     :style="`background-image: url( ${
                       attachmentList.filter(
-                        (attachment) => attachment.name === subStep.image.name
+                        (attachment) => attachment.name === subStep.image.name,
                       )[0]._urls.full
                     })`"
                   >
+                    <p class="t-media__info">
+                      {{ subStep.title }}
+                    </p>
+                  </div>
+                  <div v-else class="t-media__image">
                     <p class="t-media__info">
                       {{ subStep.title }}
                     </p>
@@ -93,7 +100,6 @@ import {
   computed,
   onUpdated,
   onBeforeMount,
-  onMounted,
   reactive,
 } from 'vue'
 import {
@@ -109,8 +115,8 @@ import IconGeoloc from '@/components/icons/IconGeoloc.vue'
 
 const props = defineProps(['piece', 'attachments'])
 
-let geojson = reactive({})
-let jsonUrl
+let geojsonFile = reactive({})
+let jsonUrl = reactive({})
 
 let zoom = ref(17)
 let userCoords = reactive({
@@ -122,13 +128,8 @@ let mapCenter = reactive({
   lat: null,
   long: null,
 })
-
 const dataObject = computed(() => JSON.parse(props.piece))
 const attachmentList = computed(() => JSON.parse(props.attachments))
-
-// const display = (arg) => {
-//   console.log(`arg ====>`, arg)
-// }
 
 let userLat = computed(() => {
   return userCoords.latitude
@@ -136,6 +137,21 @@ let userLat = computed(() => {
 let userLong = computed(() => {
   return userCoords.longitude
 })
+const getTotalDuration = (arr) => {
+  let res = arr
+    .reduce((pre, curr) => {
+      return [
+        ...pre,
+        parseInt(curr.duration.split(':')[0]) * 60 +
+          parseInt(curr.duration.split(':')[1]),
+      ]
+    }, '')
+    .reduce((pre, curr) => {
+      return parseInt(pre) + parseInt(curr)
+    }, 0)
+
+  return Math.floor(res / 60) + ' h ' + (res % 60) + ' min'
+}
 const centerMapOnUser = () => {
   mapCenter.lat = userLat.value
   mapCenter.long = userLong.value
@@ -165,31 +181,23 @@ const watchUserPos = () => {
     })
   }
 }
+
+jsonUrl = attachmentList.value.filter(
+  (attachment) => attachment.extension === 'geojson',
+)[0]._url
+
+fetch(jsonUrl, { method: 'GET' })
+  .then((response) => response.json())
+  .then((data) => {
+    geojsonFile = data
+  })
+
 onBeforeMount(() => {
   watchUserPos()
-  jsonUrl = attachmentList.value.filter(
-    (attachment) => attachment.extension === 'geojson',
-  )[0]._url
-  // console.log(jsonUrl)
-
   mapCenter.lat = userLat.value
   mapCenter.long = userLong.value
 })
 
-onMounted(() => {
-  fetch(jsonUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      geojson = data
-      // console.log(geojson)
-      return data
-    })
-  // console.log('dataObject ===>', dataObject.value)
-  // console.log('attachmentList ===>', attachmentList.value)
-  // console.log('mapCenter', mapCenter)
-  // console.log('userCoords', userCoords)
-  // console.log('geojson', geojson)
-})
 onUpdated(() => {
   watchUserPos()
 })
