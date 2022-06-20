@@ -7,9 +7,9 @@
         <div class="t-visit__map t-map__container">
           <l-map
             draggable="false"
-            :minZoom="zoom - 5"
+            :minZoom="zoom - 1"
             :maxZoom="zoom + 2"
-            :center="[userLat, userLong]"
+            :center="[mapCenter.lat, mapCenter.long]"
             v-model="zoom"
             bounceAtZoomLimits="true"
             zoomControl="false"
@@ -95,13 +95,7 @@
 </template>
 
 <script setup>
-import {
-  ref,
-  computed,
-  onUpdated,
-  onBeforeMount,
-  reactive,
-} from 'vue'
+import { ref, computed, onUpdated, onBeforeMount,  reactive } from 'vue'
 import {
   LMap,
   LTileLayer,
@@ -117,6 +111,7 @@ const props = defineProps(['piece', 'attachments'])
 
 let geojsonFile = reactive({})
 let jsonUrl = reactive({})
+let geojsonPoint = ref(null)
 
 let zoom = ref(17)
 let userCoords = reactive({
@@ -125,8 +120,8 @@ let userCoords = reactive({
 })
 
 let mapCenter = reactive({
-  lat: null,
-  long: null,
+  lat: 0,
+  long: 0,
 })
 const dataObject = computed(() => JSON.parse(props.piece))
 const attachmentList = computed(() => JSON.parse(props.attachments))
@@ -149,12 +144,30 @@ const getTotalDuration = (arr) => {
     .reduce((pre, curr) => {
       return parseInt(pre) + parseInt(curr)
     }, 0)
-
-  return Math.floor(res / 60) + ' h ' + (res % 60) + ' min'
+  if(Math.floor(res / 60) > 0){
+    if((res % 60) < 10) {
+      return Math.floor(res / 60) + ' h ' + '0' + (res % 60) + ' min'
+    }
+    else {
+      return Math.floor(res / 60) + ' h ' + (res % 60) + ' min'
+    }
+  }
+  else {
+    if((res % 60) < 10) {
+      return '0' + (res % 60) + ' min'
+    }
+    else {
+      return (res % 60) + ' min'
+    }
+  }
 }
 const centerMapOnUser = () => {
   mapCenter.lat = userLat.value
   mapCenter.long = userLong.value
+}
+const centerMapOnGeoPoint = () => {
+  mapCenter.lat = geojsonPoint[0]
+  mapCenter.long = geojsonPoint[1]
 }
 const setPosition = (pos) => {
   userCoords.latitude = pos.coords.latitude
@@ -163,6 +176,7 @@ const setPosition = (pos) => {
 const errorGettingPos = (e) => {
   return e
 }
+
 const getUserPos = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(setPosition, errorGettingPos, {
@@ -182,23 +196,26 @@ const watchUserPos = () => {
   }
 }
 
-jsonUrl = attachmentList.value.filter(
-  (attachment) => attachment.extension === 'geojson',
-)[0]._url
-
-fetch(jsonUrl, { method: 'GET' })
-  .then((response) => response.json())
-  .then((data) => {
-    geojsonFile = data
-  })
-
-onBeforeMount(() => {
+onBeforeMount(async () => {
   watchUserPos()
-  mapCenter.lat = userLat.value
-  mapCenter.long = userLong.value
-})
 
+  jsonUrl = attachmentList.value.filter(
+    (attachment) => attachment.extension === 'geojson',
+  )[0]._url
+
+  const response = await fetch(jsonUrl, { method: 'GET' })
+  geojsonFile = await response.json()
+
+  geojsonPoint = [ geojsonFile.features.filter(x => x.geometry.type === 'Point')[0].geometry.coordinates[1], geojsonFile.features.filter(x => x.geometry.type === 'Point')[0].geometry.coordinates[0] ]
+
+
+  centerMapOnGeoPoint()
+
+})
 onUpdated(() => {
   watchUserPos()
+  if(geojsonPoint){
+    centerMapOnGeoPoint()
+  }
 })
 </script>
