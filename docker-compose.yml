@@ -59,3 +59,10 @@ services:
     healthcheck:
       test: node healthcheck
 
+  vino-terr-adminer:
+    container_name: vino-terr-adminer
+    image: dockette/adminer:mongo
+    depends_on:
+      - vino-terr-mongo
+    ports:
+      - 8001:80

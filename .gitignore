@@ -10,6 +10,7 @@ logs
 nginx/logs
 .nuxt/
 .env
+.npm
 coverage
 apos/config/local.yml
 apos/public/vue-app

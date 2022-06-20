@@ -1,7 +1,10 @@
 <template>
   <div class="t-app-itinerary">
     <div class="t-app-itinerary__spacer"></div>
-    <div class="t-image__container">
+    <div class="t-image">
+      <div v-if="data._visits[0]" class="t-eventsAnnonce">
+        <p>{{ $t.events }}</p>
+      </div>
       <img
         v-if="data.image"
         :src="
@@ -13,9 +16,10 @@
           data.image.extension
         "
         alt=""
-        class="t-image"
+        class="t-image__container"
       />
     </div>
+
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
       {{ dataDescription() }}..
@@ -52,8 +56,8 @@
             :src="assetBaseUrl + '/modules/content/icons/event.png'"
             class="t-info-tier__logo"
           />
-          <div class="t-info-tier__value">
-            {{ data._visits }}
+          <div class="t-info-tier__value t-info-tier__value--date">
+            {{ formatDate(data) }}
           </div>
         </div>
         <div class="t-info-tier">
@@ -67,7 +71,11 @@
         </div>
       </div>
       <div class="t-general-infos__container">
-        <div class="t-info-half">
+        <div
+          class="t-info-half"
+          v-if="data._visits[0]"
+          style="width: 32%; height: 100px"
+        >
           <div class="t-info-half__logo-container">
             <img
               :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
@@ -82,17 +90,41 @@
                 : data._visits[0].steps[0].subSteps[0].title
             }}
           </div>
-          <div v-if="data.steps.length">
-            <div
-              v-for="addressPart in splitAddress(removeTags(startStep))"
-              :key="addressPart"
-              class="t-info-half__value"
-            >
-              {{ addressPart }}
+        </div>
+
+        <div v-else-if="data.steps.length">
+          <div class="t-info-half">
+            <div class="t-info-half__logo-container">
+              <img
+                :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
+                class="t-info-half__logo t-info-half__logo--left"
+              />
+            </div>
+
+            <div class="t-info-half__title">
+              {{
+                data.steps.length
+                  ? data.steps[0].place.title
+                  : data._visits[0].steps[0].subSteps[0].title
+              }}
+            </div>
+            <div v-if="data.steps.length">
+              <div
+                v-for="addressPart in splitAddress(removeTags(startStep))"
+                :key="addressPart"
+                class="t-info-half__value"
+              >
+                {{ addressPart }}
+              </div>
             </div>
           </div>
         </div>
-        <div class="t-info-half">
+
+        <div
+          class="t-info-half"
+          v-if="data._visits[0]"
+          style="width: 32%; height: 100px"
+        >
           <div class="t-info-half__logo-container">
             <img
               :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
@@ -111,21 +143,67 @@
                   ].title
             }}
           </div>
-          <div v-if="data.steps.length">
-            <div
-              v-for="addressPart in splitAddress(removeTags(lastStep))"
-              :key="addressPart"
-              class="t-info-half__value"
-            >
-              {{ addressPart }}
+        </div>
+
+        <div v-else-if="data.steps.length">
+          <div class="t-info-half">
+            <div class="t-info-half__logo-container">
+              <img
+                :src="assetBaseUrl + '/modules/content/icons/white-marker.png'"
+                class="t-info-half__logo t-info-half__logo--right"
+              />
             </div>
+
+            <div class="t-info-half__title">
+              {{
+                data.steps.length
+                  ? data.steps[data.steps.length - 1].place.title
+                  : data._visits[0].steps[data._visits[0].steps.length - 1]
+                      .subSteps[
+                      data._visits[0].steps[data._visits[0].steps.length - 1]
+                        .subSteps.length - 1
+                    ].title
+              }}
+            </div>
+            <div v-if="data.steps.length">
+              <div
+                v-for="addressPart in splitAddress(removeTags(lastStep))"
+                :key="addressPart"
+                class="t-info-half__value"
+              >
+                {{ addressPart }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          v-if="data._visits[0]"
+          class="t-info-half"
+          style="width: 32%; height: 100px"
+        >
+          <img
+            :src="assetBaseUrl + '/modules/content/icons/event.png'"
+            class="t-info-tier__logo"
+          />
+          <div class="t-info-tier__value">
+            {{ dataPrice(data.price) }}
           </div>
         </div>
       </div>
     </div>
-    <ValidateButton :buttonText="'validateItinerary'" :buttonLink="'link'" />
-    <VisitsEvents />
-    <!-- <VisitsContainer :piece="data" @updateItinerary="updateItinerary" /> -->
+    <ValidateButton :buttonText="buttonText" :buttonLink="buttonLink" />
+    <SyndicateContainer
+      v-if="data.itineraryType === 'syndicate'"
+      :piece="data"
+    />
+    <ThemeContainer
+      v-if="data.itineraryType === 'theme'"
+      :piece="data"
+      @updateItinerary="updateItinerary"
+    />
+    <EventContainer v-else />
+    <div v-if="data._visits[0]" class="t-spacer-circulade"></div>
   </div>
 </template>
 
@@ -133,7 +211,7 @@
 // import VisitsEvents from './components/VisitsEvents.vue'
 // import VisitsContainer from './components/VisitsContainer.vue'
 import ValidateButton from './components/ValidateButton.vue'
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref } from 'vue'
 import dayjs from 'dayjs'
 
 const props = defineProps({
@@ -143,22 +221,35 @@ const data = JSON.parse(props.piece)
 if (!window.apos.user) {
   location.assign('/login?redirect=itinerary/' + data.slug)
 }
-onMounted(() => {
-  console.log(data._visits)
+
+const isPay = ref(true)
+const buttonText = computed(() => {
+  return isPay.value
+    ? data.itineraryType === 'event'
+      ? 'start'
+      : 'itinerary'
+    : 'buy'
 })
+const itineraryType = ref(data.itineraryType)
+const buttonLink = computed(() => {
+  return itineraryType.value === 'syndicate'
+    ? lauchItinerary(data.steps)
+    : 'link'
+})
+
 const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 let descriptionRef = ref(false)
 
-// function updateItinerary(itinerary) {
-//   data.steps = itinerary.steps
-//   refStartStep.value = data.steps[0]
-//   refLastStep.value = data.steps[data.steps.length - 1]
-//   refItineraryDuration.value = data.steps
-// }
+function updateItinerary(itinerary) {
+  data.steps = itinerary.steps
+  refStartStep.value = data.steps[0]
+  refLastStep.value = data.steps[data.steps.length - 1]
+  refItineraryDuration.value = data.steps
+}
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
-  () => refStartStep?.value?.place?.addressN?.items[0]?.content,
+  () => refStartStep?.value?.place?.address?.items[0]?.content,
 )
 
 const refLastStep = ref(data.steps[data.steps.length - 1])
@@ -173,6 +264,31 @@ const itineraryDuration = computed(() =>
     : data.duration,
 )
 
+function lauchItinerary(steps) {
+  const baseUrl = 'https://www.google.com/maps/dir/?api=1'
+  const origin = steps[0].place.latitude + '%2C' + steps[0].place.longitude
+  let waypoints = ''
+  for (let index = 1; index < steps.length - 1; index++) {
+    let tempLat = steps[index].place.latitude
+    let tempLon = steps[index].place.longitude
+    waypoints = waypoints + '|' + tempLat + '%2C' + tempLon
+  }
+  const destination =
+    steps[steps.length - 1].place.latitude +
+    '%2C' +
+    steps[steps.length - 1].place.longitude
+
+  return (
+    baseUrl +
+    '&origin=' +
+    origin +
+    '&waypoints=' +
+    waypoints +
+    '&destination=' +
+    destination
+  )
+}
+
 function calculateItineraryDuration(steps) {
   let hours = 0
   let minutes = 0
@@ -184,6 +300,14 @@ function calculateItineraryDuration(steps) {
   return duration
 }
 
+function formatDate(infos) {
+  console.log(data.startDate)
+  let startDate = infos.startDate
+  let endDate = infos.endDate
+  startDate = dayjs(startDate).format('DD/MM/YYYY')
+  endDate = dayjs(endDate).format('DD/MM/YYYY')
+  return 'Du ' + startDate + '\n au ' + endDate
+}
 function dataDescription() {
   return descriptionRef.value
     ? data.description
@@ -214,28 +338,39 @@ function dataMileAge(mileage) {
 .bold {
   font-weight: bold;
   cursor: pointer;
+  color: var(--vt-c-black);
 }
 
 .t-image {
-  height: 180px;
-  width: 100%;
-  object-fit: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  height: 200px;
+  width: 100vw;
 
   &__container {
-    top: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    margin-bottom: 20px;
     height: 200px;
-    width: 100vw;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .t-eventsAnnonce {
+    background-color: $color-orange;
+    height: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 .t-app-itinerary {
   position: relative;
-  padding: 10vw;
-  margin: 15vh 0;
+  padding-top: 10vh;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  margin-top: 100px;
 
   &__spacer {
     height: 20vh;
@@ -251,6 +386,7 @@ function dataMileAge(mileage) {
     margin-top: 36px;
     font-size: 15px;
     line-height: 25px;
+    color: var(--vt-c-black);
   }
 }
 
@@ -300,6 +436,11 @@ function dataMileAge(mileage) {
       color: $color-white;
       font-size: 20px;
       font-weight: bold;
+
+      &--date {
+        font-size: 15px;
+        text-align: center;
+      }
     }
   }
 
@@ -314,8 +455,9 @@ function dataMileAge(mileage) {
     background-color: $color-orange;
     opacity: 75%;
     height: 120px;
-    width: 49%;
+    width: 39vw;
     border-radius: 15px;
+    margin-bottom: 60px;
 
     &__title {
       color: $color-white;
@@ -347,6 +489,12 @@ function dataMileAge(mileage) {
       color: $color-white;
       font-size: 12px;
     }
+  }
+}
+.t-spacer-circulade {
+  height: 20vh;
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
   }
 }
 </style>
