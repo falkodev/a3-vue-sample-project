@@ -35,7 +35,8 @@
   "backgroundImageLabel": "Background image for homepage",
   "backgroundImageLoginLabel": "Background image for login and register pages",
   "backToHome": "Back to Home",
-  "basics": "Basics",
+  "basics": "Description",
+  "visits": "Visits (required Reception)",
   "bio": "Bio",
   "biodynamique": "Biodynamics",
   "browseDocType": "Browse {{ type }}",
@@ -96,6 +97,7 @@
   "doesNotExistYet": "Does Not Exist Yet",
   "doesNotExistYetDescription": "The document does not exist yet as {{ mode }} in the {{ locale }} locale.",
   "domainPresentation": "Domain presentation",
+  "presentation": "Presentation",
   "download": "Download",
   "draft": "Draft",
   "draftDeleted": "Draft Deleted",
@@ -186,6 +188,7 @@
   "localizeAllRelated": "Localize all related documents and overwrite existing documents",
   "localizeNewRelated": "Localize new related documents",
   "localizingBusy": "Localizing Content",
+  "location": "Location",
   "loggedInMsg": "Successful login",
   "loggedOutMsg": "Successful logout",
   "login": "Login",
@@ -256,6 +259,7 @@
   "piecePermissionsIntro": "Pieces are structured content. They are often used for content like articles, events, products, categories, etc.",
   "piecePermissionsPieceTypeList": "Pieces for this site include:",
   "register": "I create my account",
+  "reserve": "reserve",
   "richTextAlignCenter": "Align Center",
   "richTextAlignJustify": "Align Justify",
   "richTextAlignLeft": "Align Left",
@@ -303,6 +307,7 @@
   "rawHtml": "Raw HTML",
   "rawHtmlCode": "Raw HTML (Code)",
   "rawHtmlCodeHelp": "Be careful when embedding third-party code, as it can break the website editing functionality. If a page becomes unusable, add \"?safe_mode=1\" to the URL to make it work temporarily without the problem code being rendered.",
+  "receptionInformations": "Informations de l'accueil du domaine",
   "redo": "Redo",
   "redoTooltip": "Redo Change",
   "redoTooltipNoChanges": "No Changes to Redo",
@@ -447,7 +452,15 @@
     "globalInfos": "Global infos",
     "visitList": "Visit list",
     "takeAppointment": "Take appointment",
-    "validate": "Validate my steps"
+    "validate": "Validate my steps",
+    "buy": "Buy",
+    "indefiniteDuration": "Indefinite duration",
+    "visit": "Visit",
+    "goTo": "Go",
+    "step": "Step",
+    "seeNearDomains": "See near domains",
+    "itinerary": "Road itinerary",
+    "start": "Start"
   },
   "customer": "customer",
   "customers": "customers",
@@ -617,7 +630,8 @@
   "parking": "Parking",
   "approvedPets": "Approved pets",
   "restorations": "Restorations",
-  "phoneNumber": "Phone number",
+  "phoneNumber": "Public phone number",
+  "phoneNumberAppointment": "Phone number appointment",
   "eShop": "Link to e-shop",
   "openingDaysAndHours": "Opening days and hours",
   "locales": {
@@ -643,6 +657,7 @@
       "image": "Photo subStep"
     },
     "content": {
+      "singleContent": "Content",
       "pluralContent": "Contents",
       "title": "Title Content",
       "presentation": "Video or Image presentation",
@@ -650,5 +665,7 @@
       "content": "main Content",
       "interview": "Video for interview or image"
     }
-  }
+  },
+  "reception": "Reception",
+  "wineAndLabel": "Wines and Labels"
 }
