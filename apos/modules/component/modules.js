@@ -1,5 +1,6 @@
 const path = require('path')
 
+/* istanbul ignore next */
 module.exports = {
   'component/checkbox': {},
   'component/popup': {
