@@ -30,6 +30,7 @@
         :step="step"
       />
     </div>
+    <div class="t-spacer-syndicate"></div>
   </div>
 </template>
 
@@ -129,6 +130,12 @@ updateCenter()
       font-weight: bold;
       font-size: 17px;
     }
+  }
+}
+.t-spacer-syndicate {
+  height: 20vh;
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
   }
 }
 </style>

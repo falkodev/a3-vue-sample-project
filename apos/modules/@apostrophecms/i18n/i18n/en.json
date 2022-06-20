@@ -460,7 +460,8 @@
     "goTo": "Go",
     "step": "Step",
     "seeNearDomains": "See near domains",
-    "itinerary": "Road itinerary"
+    "itinerary": "Road itinerary",
+    "start": "Start"
   },
   "customer": "customer",
   "customers": "customers",

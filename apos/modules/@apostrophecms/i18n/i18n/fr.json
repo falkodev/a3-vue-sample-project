@@ -461,7 +461,8 @@
     "goTo": "Y aller",
     "step": "Étape",
     "seeNearDomains": "Voir domaines à proximité",
-    "itinerary": "Itinéraire routier"
+    "itinerary": "Itinéraire routier",
+    "start": "Commencer"
   },
   "customer": "Client",
   "customers": "Clients",
