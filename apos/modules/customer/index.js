@@ -191,7 +191,6 @@ module.exports = {
         async customerFixtures(req) {
           try {
             self.apos.util.log('Starting customer fixtures')
-
             const imagesFolder = path.resolve(__dirname, './images/')
             const imagesNames = await asyncFs.readdir(imagesFolder)
             const uploadedImages = await Promise.all(

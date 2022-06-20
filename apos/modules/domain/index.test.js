@@ -1,16 +1,14 @@
-const place = require('./index')
-const config = require('config')
+const domain = require('./index')
 const self = require('apostrophe')
 
-describe('place', () => {
+describe('domain', () => {
   const doc = {
-    title: 'Wine store',
-    placeType: 'wineStore',
+    title: 'Domaine Test',
     address: '12 avenue Charles de Gaulle, 34001 Montpellier',
     longitude: 3.543093,
     latitude: 43.652038,
-    slug: 'wine-store',
-    type: 'place',
+    slug: 'domain-test',
+    type: 'domain',
     fixtures: true,
   }
 
@@ -36,8 +34,8 @@ describe('place', () => {
   self.publish = jest.fn()
 
   self.methods = {
-    getPlaces: jest.fn(),
-    createPlacesFromData: jest.fn(),
+    getDomains: jest.fn(),
+    createDomainsFromData: jest.fn(),
   }
   self.apos = {
     i18n: {
@@ -61,19 +59,18 @@ describe('place', () => {
       getReq: jest.fn(),
     },
     modules: {
-      place: {
+      domain: {
         insert: jest.fn().mockImplementation(() => ({
           title: 'Les Caves Gourmandes',
-          placeType: 'wineStore',
           address: "10 All. de l'Esplanade, Gignac",
           longitude: 3.5527339,
           latitude: 43.6527002,
           slug: 'les-caves-gourmandes6',
           visibility: 'public',
           archived: false,
-          type: 'place',
-          aposDocId: 'cl1f0wdz60004nup5n1qc6sc5',
-          _id: 'cl1f0wdz60004nup5n1qc6sc5',
+          type: 'domain',
+          aposDocId: 'cl1f0wdz60004nup5n1qc6sc4',
+          _id: 'cl1f0wdz60004nup5n1qc6sc4',
           metaType: 'doc',
           image: null,
         })),
@@ -88,7 +85,7 @@ describe('place', () => {
         return {
           results: [
             {
-              name: 'Wine store',
+              name: 'Domaine Test',
               vicinity: '12 avenue Charles de Gaulle, 34001 Montpellier',
               geometry: {
                 location: {
@@ -113,9 +110,13 @@ describe('place', () => {
     migration: {
       add: jest.fn(),
     },
+    place: {
+      fetchPlaces: jest.fn(),
+    },
   }
 
-  const beforeSave = place.handlers(self).beforeSave
+  const beforeSave = domain.handlers(self).beforeSave
+  const methods = domain.methods(self)
 
   test('should have coordinates and convert them to GeoJSON point', () => {
     const newDoc = beforeSave.convertCoordinatesToGeoJSONPoint({}, doc)
@@ -129,83 +130,18 @@ describe('place', () => {
     })
   })
 
-  const methods = place.methods(self)
-  test('setChoices', () => {
-    expect(methods.setChoices()).toBeInstanceOf(Array)
-  })
-
-  test('getPlaces', async () => {
-    await methods.getPlaces({ force: false })
+  test('getDomains', async () => {
+    await methods.getDomains({ force: false })
     expect(self.apos.util.log).toHaveBeenCalled()
 
     const nodeAppInstance = process.env.NODE_APP_INSTANCE
 
     process.env.NODE_APP_INSTANCE = ''
-    await methods.getPlaces({ force: false })
+    await methods.getDomains({ force: false })
     expect(self.apos.util.error).toHaveBeenCalled()
 
     process.env.NODE_APP_INSTANCE = nodeAppInstance
-    await methods.getPlaces({ force: true })
-  })
-
-  test('createPlacesFromData', async () => {
-    const fakeJSON = JSON.stringify([
-      {
-        title: 'Les Caves Gourmandes',
-        placeType: 'wineStore',
-        address: "10 All. de l'Esplanade, Gignac",
-        longitude: 3.5527339,
-        latitude: 43.6527002,
-        slug: 'les-caves-gourmandes6',
-        visibility: 'public',
-        archived: false,
-        type: 'place',
-        aposDocId: 'cl1f0wdz60004nup5n1qc6sc5',
-        _id: 'cl1f0wdz60004nup5n1qc6sc5',
-        metaType: 'doc',
-        image: null,
-      },
-      {
-        title: 'Grappe',
-        placeType: 'wineStore',
-        address: '125 Av. Pierre Mendès France, Gignac',
-        longitude: 3.54351,
-        latitude: 43.652149,
-        slug: 'grappe2',
-        visibility: 'public',
-        archived: false,
-        image: {
-          _id: 'cl1f0wefk0005nup5js7893sk',
-          group: 'images',
-          createdAt: '2022-03-31T13:18:53.086Z',
-          name: 'grappe',
-          title: 'grappe',
-          extension: 'jpg',
-          type: 'attachment',
-          docIds: [],
-          archivedDocIds: [],
-          length: 0,
-          md5: '80bdfdafcd239483235d25e8bdf895f4',
-          width: 800,
-          height: 532,
-          landscape: true,
-        },
-        type: 'place',
-      },
-    ])
-    const assetsDir = 'domains/test'
-    await methods.createPlacesFromData('place', assetsDir, fakeJSON)
-    expect(self.apos.task.getReq).toHaveBeenCalled()
-    expect(self.apos.util.log).toHaveBeenCalled()
-    expect(self.apos.modules.place.insert).toHaveBeenCalledTimes(2)
-  })
-
-  test('fetchPlaces', async () => {
-    const assetsDir = require('path').resolve(__dirname, `./domains/test`)
-    const categories = config.get('categories')
-    await methods.fetchPlaces('place', categories, assetsDir)
-    expect(self.apos.util.log).toHaveBeenCalled()
-    expect(self.apos.http.get).toHaveBeenCalled()
-    expect(self.apos.modules.place.insert).toHaveBeenCalled()
+    await methods.getDomains({ force: true })
+    expect(self.apos.place.fetchPlaces).toHaveBeenCalled()
   })
 })
