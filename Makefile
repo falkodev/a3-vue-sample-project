@@ -50,3 +50,6 @@ test-watch:
 
 fixtures:
 	docker-compose exec vino-terr-apos npm run fixtures
+
+defaults:
+	docker-compose exec vino-terr-apos npm run defaults

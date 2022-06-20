@@ -36,7 +36,7 @@ module.exports = {
         }
 
         req.locale = defaultLocale
-        const title = req.t(item.title)
+        const title = req.t(item.title) || item.title
 
         if (image) {
           doc = { title, image }
@@ -46,9 +46,7 @@ module.exports = {
           doc = { title }
         }
 
-        const insertedDoc = await self.apos.modules[
-          `domain-related/${moduleName}`
-        ].insert(req, {
+        const insertedDoc = await self.insert(req, {
           ...self.newInstance(),
           ...doc,
         })

@@ -3,10 +3,32 @@ const self = require('apostrophe')
 
 describe('customer', () => {
   self.insert = jest.fn()
+  self.find = jest.fn().mockImplementation(() => {
+    return {
+      project: jest.fn().mockImplementation(() => {
+        return {
+          toObject: jest.fn().mockImplementation(() => [
+            {
+              title: 'René Lacoste',
+              type: 'customer',
+              email: 'rene@roland-garros.fr',
+              firstName: 'René',
+              lastName: 'Lacoste',
+              birthDate: '1898-08-13',
+            },
+          ]),
+        }
+      }),
+    }
+  })
   self.newInstance = jest.fn()
   self.apos = {
+    attachment: {
+      insert: jest.fn(),
+    },
     user: {
       insert: jest.fn(),
+      update: jest.fn(),
     },
     util: {
       log: jest.fn(),
@@ -29,6 +51,10 @@ describe('customer', () => {
     },
   }
 
+  asyncFs = {
+    readdir: jest.fn(),
+  }
+
   const doc = {
     email: 'roland@gmail.com',
     firstName: 'Roland',
@@ -40,6 +66,7 @@ describe('customer', () => {
 
   const beforeInsert = customer.handlers(self).beforeInsert
   const httpPost = customer.extendRestApiRoutes(self).post
+  const httpPatch = customer.extendRestApiRoutes(self).patch
 
   test('cannot be created if no user', () => {
     expect(() => beforeInsert.checkPermissions({}, doc)).toThrow(
@@ -174,5 +201,11 @@ describe('customer', () => {
       await httpPost(originalPost, {})
       expect(self.apos.error).toHaveBeenCalled()
     } catch (error) {}
+  })
+
+  test('http PATCH user deactivation', async () => {
+    const originalPost = () => ({})
+    await httpPatch(originalPost, {})
+    expect(self.find).toHaveBeenCalled()
   })
 })

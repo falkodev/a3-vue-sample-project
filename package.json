@@ -11,7 +11,7 @@
     "lint:apos": "cd ./apos && npm run lint",
     "test": "npm run test:vue && npm run test:apos",
     "test:vue": "cd ./vue && npm run jest && npm run cy:run",
-    "test:apos": "cd ./apos && npm run test",
+    "test:apos": "cd ./apos && npm run test:coverage",
     "cy:open": "start-server-and-test 'cd ./apos && npm run test:dev' http-get://localhost:8080 'cypress open'",
     "cy:run": "start-server-and-test 'cd ./apos && npm run test:dev' http-get://localhost:8080 'cypress run'"
   },

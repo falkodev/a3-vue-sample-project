@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 module.exports = {
   extend: '@apostrophecms/piece-type',
   options: {
@@ -58,6 +59,7 @@ module.exports = {
                     type: 'array',
                     label: 'apostrophe:visitType.content.pluralContent',
                     min: 1,
+                    max: 1,
                     fields: {
                       add: {
                         title: {

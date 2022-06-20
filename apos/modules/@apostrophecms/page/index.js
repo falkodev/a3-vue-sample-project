@@ -68,4 +68,12 @@ module.exports = {
       },
     }
   },
+
+  helpers(self) {
+    return {
+      stringify(label) {
+        return JSON.stringify(label)
+      },
+    }
+  },
 }
