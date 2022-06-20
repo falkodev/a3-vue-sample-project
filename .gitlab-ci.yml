@@ -34,7 +34,7 @@ test:
   stage: test
   before_script:
     - npm install --location=global jest
-    - npm run install:app --cache .npm --prefer-offline
+    - npm run install:app
   script:
     - npm run test:apos
 
@@ -55,7 +55,7 @@ deploy_larzac_uat:
     - echo "mongoDB:" > apos/config/local.yml
     - 'echo "  dockerUri: mongodb://root:$MONGO_INITDB_ROOT_PASSWORD_LARZAC_UAT@vino-terr-mongo:27017/vino-terr-larzac?authSource=admin" >> apos/config/local.yml'
     - git clone https://github.com/punkave/stagecoach
-    - npm run install:app --cache .npm --prefer-offline
+    - npm run install:app
   script:
     - stagecoach/bin/sc-deploy larzac-uat
   only:
