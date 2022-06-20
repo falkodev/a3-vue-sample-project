@@ -67,6 +67,7 @@ require('apostrophe')({
     },
     content: {},
     itinerary: {},
+    'itinerary-page': {},
     customer: {},
     'customer-page': {},
     order: {},

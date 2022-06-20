@@ -34,7 +34,6 @@ export default async () => {
         document.head.appendChild(css)
       }
     }
-
     if (vueBundle.imports) {
       for (const importFile of vueBundle.imports) {
         const link = document.createElement('link')

@@ -124,9 +124,13 @@
   }
 }
 
+.apos-admin-bar-wrapper ~ [data-apos-refreshable] .t-menu__list {
+  top: calc($admin-height + $header-height);
+}
+
 .t-menu {
   &__list {
-    position: absolute;
+    position: fixed;
     z-index: -1;
     top: $header-height;
     left: 0;

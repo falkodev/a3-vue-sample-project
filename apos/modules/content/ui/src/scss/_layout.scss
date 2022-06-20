@@ -21,7 +21,7 @@ main {
   display: none;
 }
 
-.apos-admin-bar .t-wrapper {
+.apos-admin-bar-wrapper ~ [data-apos-refreshable] .t-wrapper {
   position: relative;
   top: calc($admin-height + $header-height);
 }
