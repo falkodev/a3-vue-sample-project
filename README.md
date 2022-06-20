@@ -565,3 +565,16 @@ This will trigger a pipeline that will :
 Current UAT for Larzac:
 - IP address: http://15.188.246.213:8080
 - Configuration and SSH connection: https://lightsail.aws.amazon.com/ls/webapp/eu-west-3/instances/vino-terr-larzac-uat/connect?# (log in with Pascal's AWS account)
+
+### 8.1 Process to create a new instance
+
+- Go to https://lightsail.aws.amazon.com/ls/webapp/home/instances, log in and create a new instance
+  ![](documentation/instance_creation.png)
+- Check the location is `eu-west-3`, pick "Linux" and "Amazon Linux 2" as OS
+  ![](documentation/os_choice.png)
+- Scroll down, enable the automatic snapshot, choose an instance plan (for reference, for dev and uat, it is advised to choose the a $10 instance with 1 vCPU, for production it is better to choose the $20 instance with 2 vCPUs that can handle more connections), add a meaningful name, add tags that can help to sort instances later
+  ![](documentation/name_choice.png)
+- The new instance will be created in less than one minute
+  ![](documentation/instance_created.png)
+- A ssh connection is available from the terminal icon in the instance
+  ![](documentation/ssh_connection.png)
