@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PROJECT=vino-terr-larzac
+DIR=/opt/stagecoach/apps/$PROJECT
 DEPLOYMENTS=$DIR/deployments
 KEEP=5
 KEPT=$[$KEEP+1]

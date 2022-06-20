@@ -46,21 +46,5 @@
       ]
     },
     "photoRef": "Aap_uED7w4Zs0q4lAy3YPJ__J4FE1-Ov5rNOP8A3bdGa9p_yKXCYuFcJDYddEbC4Sj6nd_P1dlSzSOWcJ7pKe6Z8s53FmAv5CG-l5scTUJyZR6BpvRBbsNZlbc5IGx5jKbR18VN7DHxeAp34FEruTOJu3v9ZMtW55NLqI7ngxmbAviNnGwev"
-  },
-  {
-    "title": "Wine store",
-    "placeType": "domain",
-    "latitude": 43.652038,
-    "address": {
-      "metaType": "area",
-      "items": [
-        {
-          "metaType": "widget",
-          "type": "@apostrophecms/rich-text",
-          "content": "<span>12 avenue Charles de Gaulle, 34001 Montpellier</span>"
-        }
-      ]
-    },
-    "photoRef": "Aap_uED7w4Zs0q4lAy3YPJ__J4FE1-Ov5rNOP8A3bdGa9p_yKXCYuFcJDYddEbC4Sj6nd_P1dlSzSOWcJ7pKe6Z8s53FmAv5CG-l5scTUJyZR6BpvRBbsNZlbc5IGx5jKbR18VN7DHxeAp34FEruTOJu3v9ZMtW55NLqI7ngxmbAviNnGwev"
   }
 ]

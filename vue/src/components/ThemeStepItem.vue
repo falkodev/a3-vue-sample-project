@@ -2,14 +2,14 @@
   <div class="t-visit">
     <div class="t-visit__image-container">
       <img
-        v-if="step.place.image"
+        v-if="realStep.image"
         :src="
           '/uploads/attachments/' +
-          step.place.image._id +
+          realStep.image._id +
           '-' +
-          step.place.image.name +
+          realStep.image.name +
           '.' +
-          step.place.image.extension
+          realStep.image.extension
         "
         alt=""
         class="t-visit__image"
@@ -23,27 +23,27 @@
 
     <div
       :class="{
-        't-visit__infos--domain': step.place.type === 'domain',
+        't-visit__infos--domain': realStep.type === 'domain',
       }"
       class="t-visit__infos t-infos"
     >
-      <div class="t-infos__title">{{ step.place.title }}</div>
+      <div class="t-infos__title">{{ realStep.title }}</div>
       <div class="t-infos__description">
         <div class="t-infos__type">
           <img
-            :src="placeTypeIcon(step.place.placeType)"
+            :src="placeTypeIcon(realStep.placeType)"
             alt="category heading"
             class="t-infos__place-type"
           />
-          {{ $t[step.place.placeType] }}
+          {{ $t[realStep.placeType] }}
         </div>
-        <div v-if="step.place.isAutoGuidedVisit" class="t-infos__visit">
+        <div v-if="realStep.isAutoGuidedVisit" class="t-infos__visit">
           ・ {{ $t.autoGuidedVisit }}
         </div>
       </div>
       <div class="t-infos__footer">
         <div class="">
-          <a v-if="step.place.type === 'domain'" class="t-infos__status">
+          <a v-if="realStep.type === 'domain'" class="t-infos__status">
             {{ $t.takeAppointment }}
           </a>
         </div>
@@ -64,14 +64,16 @@
 import HeartIcon from './HeartIcon.vue'
 import BinIcon from './BinIcon.vue'
 import AddIcon from './AddIcon.vue'
-
-defineProps({
+const props = defineProps({
   id: Number,
   step: Object,
   status: Boolean,
+  type: String,
 })
-defineEmits(['addStep', 'removeStep'])
 
+const realStep = props.type === 'theme' ? props.step.place : props.step
+
+defineEmits(['addStep', 'removeStep'])
 const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 
@@ -140,7 +142,7 @@ function placeTypeIcon(type) {
     color: $color-purple;
 
     &__title {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: bold;
       white-space: normal;
       overflow: hidden;

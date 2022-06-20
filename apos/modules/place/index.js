@@ -31,6 +31,16 @@ module.exports = {
         def: 'domain',
         required: true,
       },
+      description: {
+        type: 'area',
+        options: {
+          widgets: {
+            'collapse-rich-text': {},
+          },
+          max: 1,
+        },
+        required: true,
+      },
       image: {
         type: 'attachment',
         label: 'apostrophe:image',
@@ -113,14 +123,19 @@ module.exports = {
         ],
       },
       widgets: {
-        label: 'apostrophe:domainPresentation',
+        label: 'apostrophe:presentation',
         fields: [
+          'placeType',
           'description',
-          'address',
+          'image',
           'phoneNumber',
-          'website',
           'openingDaysAndHours',
+          'website',
         ],
+      },
+      location: {
+        label: 'apostrophe:location',
+        fields: ['longitude', 'latitude', 'address'],
       },
     },
   },

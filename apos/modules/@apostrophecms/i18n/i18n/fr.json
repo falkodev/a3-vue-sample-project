@@ -35,7 +35,8 @@
   "backgroundImageLabel": "Image d'arrière plan homepage",
   "backgroundImageLoginLabel": "Image d'arrière plan login et register",
   "backToHome": "Retour à l'accueil",
-  "basics": "Champs de base",
+  "basics": "Description",
+  "visits": "Les visites (Accueil nécessaire)",
   "bio": "Bio",
   "biodynamique": "Biodynamique",
   "browseDocType": "Parcourir {{ type }}",
@@ -101,7 +102,7 @@
   "domain": "Domaine",
   "domainPage": "Page domaine",
   "domains": "Domaines",
-  "domainPresentation": "Présentation du domaine",
+  "presentation": "Présentation",
   "download": "Download",
   "draft": "Brouillon",
   "draftDeleted": "Draft Deleted",
@@ -192,6 +193,7 @@
   "localizeAllRelated": "Localize all related documents and overwrite existing documents",
   "localizeNewRelated": "Localize new related documents",
   "localizingBusy": "Localizing Content",
+  "location": "Localisation",
   "loggedInMsg": "Connexion réussie",
   "loggedOutMsg": "Déconnexion réussie",
   "login": "Me connecter",
@@ -263,6 +265,7 @@
   "piecePermissionsIntro": "",
   "piecePermissionsPieceTypeList": "Les modules de contenus sont les suivants :",
   "register": "Je crée mon compte",
+  "reserve": "réserver",
   "richTextAlignCenter": "Align Center",
   "richTextAlignJustify": "Align Justify",
   "richTextAlignLeft": "Align Left",
@@ -309,6 +312,7 @@
   "rawHtml": "Raw HTML",
   "rawHtmlCode": "Raw HTML (Code)",
   "rawHtmlCodeHelp": "Be careful when embedding third-party code, as it can break the website editing functionality. If a page becomes unusable, add \"?safe_mode=1\" to the URL to make it work temporarily without the problem code being rendered.",
+  "receptionInformations": "Informations de l'accueil du domaine",
   "redo": "Redo",
   "redoTooltip": "Redo Change",
   "redoTooltipNoChanges": "No Changes to Redo",
@@ -451,7 +455,15 @@
     "globalInfos": "Infos générales",
     "visitList": "Liste des visites",
     "takeAppointment": "Prendre RDV",
-    "validate": "Valider mes étapes"
+    "validate": "Valider mes étapes",
+    "buy": "Acheter",
+    "indefiniteDuration": "Durée indéterminée",
+    "visit": "Visite",
+    "goTo": "Y aller",
+    "step": "Étape",
+    "seeNearDomains": "Voir domaines à proximité",
+    "itinerary": "Itinéraire routier",
+    "start": "Commencer"
   },
   "customer": "Client",
   "customers": "Clients",
@@ -623,7 +635,9 @@
   "parking": "Parking",
   "approvedPets": "Animaux approuvés",
   "restorations": "Restaurations",
-  "phoneNumber": "Numéro de téléphone",
+  "phoneNumber": "Numéro de téléphone public",
+  "phoneNumberAppointment": "Numéro de téléphone pour la prise de rendez-vous",
+
   "eShop": "Lien vers l'e-boutique",
   "openingDaysAndHours": "Jours et heures d'ouverture",
   "locales": {
@@ -635,11 +649,11 @@
   "visitType": {
     "label": "Visite",
     "pluralLabel": "Visites",
-    "image": "Image de la presentation du circuit",
+    "image": "Image de la présentation du circuit",
     "track": "Tracé du GPS",
     "step": {
       "pluralStep": "Étapes",
-      "title": "Titre de l'Étape"
+      "title": "Titre de l'étape"
     },
     "subStep": {
       "pluralSubStep": "sous-étapes",
@@ -649,12 +663,15 @@
       "image": "Photo de la sous-étape"
     },
     "content": {
+      "singleContent": "Contenu",
       "pluralContent": "Contenus",
       "title": "Titre du contenu",
-      "presentation": "Video ou image de presentation",
+      "presentation": "Vidéo ou image de présentation",
       "urlPodcast": "Url du podcast",
       "content": "Contenu principal de la page",
-      "interview": "Video de l'interview"
+      "interview": "Vidéo de l'interview"
     }
-  }
+  },
+  "reception": "Accueil",
+  "wineAndLabel": "Vins et Labels"
 }
