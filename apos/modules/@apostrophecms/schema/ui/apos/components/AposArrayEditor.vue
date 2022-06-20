@@ -1,25 +1,25 @@
 <template>
   <AposModal
-    class="apos-array-editor"
     :modal="modal"
     :modal-title="modalTitle"
+    class="apos-array-editor"
+    @esc="confirmAndCancel"
     @inactive="modal.active = false"
     @show-modal="modal.showModal = true"
-    @esc="confirmAndCancel"
     @no-modal="$emit('safe-close')"
   >
     <template #secondaryControls>
       <AposButton
-        type="default"
         label="apostrophe:cancel"
+        type="default"
         @click="confirmAndCancel"
       />
     </template>
     <template #primaryControls>
       <AposButton
-        type="primary"
-        label="apostrophe:save"
         :disabled="!valid"
+        label="apostrophe:save"
+        type="primary"
         @click="submit"
       />
     </template>
@@ -45,21 +45,21 @@
               </span>
             </div>
             <AposButton
-              class="apos-modal-array-items__add"
-              label="apostrophe:addItem"
-              :icon-only="true"
-              icon="plus-icon"
-              :modifiers="['tiny', 'round']"
               :disabled="maxed || itemError"
+              :icon-only="true"
+              :modifiers="['tiny', 'round']"
+              class="apos-modal-array-items__add"
+              icon="plus-icon"
+              label="apostrophe:addItem"
               @click.prevent="add"
             />
           </div>
           <AposSlatList
+            :selected="currentId"
+            :value="withLabels(next)"
             class="apos-modal-array-items__items"
             @input="update"
             @select="select"
-            :selected="currentId"
-            :value="withLabels(next)"
           />
         </div>
       </AposModalRail>
@@ -73,16 +73,16 @@
                 <div class="apos-array-item__body">
                   <AposSchema
                     v-if="currentId"
+                    ref="schema"
+                    :conditional-fields="conditionalFields()"
+                    :following-values="followingValues()"
                     :schema="schema"
+                    :server-errors="currentDocServerErrors"
                     :trigger-validation="triggerValidation"
                     :utility-rail="false"
-                    :following-values="followingValues()"
-                    :conditional-fields="conditionalFields()"
                     :value="currentDoc"
                     @input="currentDocUpdate"
                     @validate="triggerValidate"
-                    :server-errors="currentDocServerErrors"
-                    ref="schema"
                   />
                 </div>
               </div>

@@ -8,7 +8,9 @@ export default {
       const result = AposDocEditor.computed.saveDisabled.call(this)
       if (
         apos.userRole !== 'admin' &&
-        ['customer', 'order'].includes(this.original?.type)
+        ['customer', 'order', 'domain-related/activity'].includes(
+          this.original?.type,
+        )
       ) {
         this.errorCount = 1
         return true
