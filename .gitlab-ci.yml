@@ -23,6 +23,8 @@ release:
   only:
     refs:
       - larzac-uat
+      - larzac-prod
+      - documentation
     variables:
       # Run only when commit message starts with "Release v"
       - $CI_COMMIT_MESSAGE =~ /^Release v.*/
