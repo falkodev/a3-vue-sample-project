@@ -31,6 +31,16 @@ module.exports = {
         def: 'domain',
         required: true,
       },
+      description: {
+        type: 'area',
+        options: {
+          widgets: {
+            'collapse-rich-text': {},
+          },
+          max: 1,
+        },
+        required: true,
+      },
       image: {
         type: 'attachment',
         label: 'apostrophe:image',

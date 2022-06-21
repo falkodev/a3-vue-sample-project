@@ -26,7 +26,7 @@ main {
   display: none;
 }
 
-.apos-admin-bar-wrapper~[data-apos-refreshable] .t-wrapper {
+.apos-admin-bar-wrapper ~ [data-apos-refreshable] .t-wrapper {
   position: relative;
   top: $header-height;
 }
