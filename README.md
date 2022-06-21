@@ -573,8 +573,24 @@ Current UAT for Larzac:
 - Check the location is `eu-west-3`, pick "Linux" and "Amazon Linux 2" as OS
   ![](documentation/os_choice.png)
 - Scroll down, enable the automatic snapshot, choose an instance plan (for reference, for dev and uat, it is advised to choose the a $10 instance with 1 vCPU, for production it is better to choose the $20 instance with 2 vCPUs that can handle more connections), add a meaningful name, add tags that can help to sort instances later
-  ![](documentation/name_choice.png)
+  ![](documentation/name_choice.p ng)
 - The new instance will be created in less than one minute
   ![](documentation/instance_created.png)
 - A ssh connection is available from the terminal icon in the instance
   ![](documentation/ssh_connection.png)
+- In the code repository, create a new settings file in the `deployment` folder. For instance, `settings.larzac-prod`. The first part of the name has to be `settings` and the ultimate part will design an environment where to deploy. This file will contain the user to connect with, the IP address and ssh options.
+```bash
+USER=ec2-user # user created by AWS
+SERVER=15.236.144.185 # IP address provided by AWS
+SSH_OPTIONS="-i deployment/vino-terr-ssh-key.pem -oStrictHostKeyChecking=no" # SSH file automatically created by gitlab-ci.yml
+```
+As the name in the example is `settings.larzac-prod`, when gitlab-ci.yml launches the command `sc-deploy larzac-prod`, it will use this file.
+It means it is also possible to deploy from a machine (in case Gitlab is down) by installing `stagecoach` (https://github.com/apostrophecms/stagecoach), downloading the SSH file from AWS by clicking on "Download default key" on the instance page and running `sc-deploy name-of-the-env`
+![](documentation/settings.png)
+- Add an environment variable in https://gitlab.com/vino-vibes/vinoways-territoire/-/settings/ci_cd. For example, `MONGO_INITDB_ROOT_PASSWORD_LARZAC_PROD` in our case. Choose to mask it.
+  ![](documentation/list_env_var.png)
+  ![](documentation/add_env_var.png)
+- Add a script in gitlab-ci.yml for this new environment by using another `deploy` script. Be sure to put the right `$MONGO_INITDB_ROOT_PASSWORD` variable, the right environment variable for `sc` deployment  on the right branch.
+<br>Create the branch. Add it as a protected branch in https://gitlab.com/vino-vibes/vinoways-territoire/-/settings/repository.
+  ![](documentation/branch.png)
+-
