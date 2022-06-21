@@ -24,6 +24,7 @@ release:
     refs:
       - larzac-uat
       - larzac-prod
+      - documentation
     variables:
       # Run only when commit message starts with "Release v"
       - $CI_COMMIT_MESSAGE =~ /^Release v.*/
@@ -88,3 +89,4 @@ deploy_larzac_prod:
     - stagecoach/bin/sc-deploy larzac-prod
   only:
     - larzac-prod
+    - documentation
