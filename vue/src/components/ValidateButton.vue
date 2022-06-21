@@ -20,7 +20,7 @@ defineProps({
   bottom: 80px;
   left: 0;
   right: 0;
-  background: $color-orange;
+  background: $color-main;
   color: $color-white;
   text-align: center;
   padding: 20px;

@@ -25,7 +25,7 @@ export default {
 @import '/assets/settings.scss';
 
 .t-bin-icon {
-  color: $color-purple;
+  color: $color-main;
   width: 30px;
   width: 30px;
 }
