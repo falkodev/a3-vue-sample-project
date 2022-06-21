@@ -3,7 +3,7 @@
     <Modal
       :dataObj="dataObject"
       :modalOpen="modalOpen"
-      :modalIndex="modalIndex"
+      :modalStepIndex="modalStepIndex"
       @close-modal="toggleModal"
     />
     <div class="t-visit__bloc" v-if="dataObject.itineraryType">
@@ -65,7 +65,7 @@
               </div>
               <div class="t-media__container">
                 <div
-                  class="t-media__item"
+                  class="t-media__item t-media__item--rectangle"
                   v-for="(subStep, subStepIndex) in step.subSteps"
                   :key="'step' + subStepIndex"
                 >
@@ -121,7 +121,7 @@ let jsonUrl = reactive({})
 let geojsonPoint = ref(null)
 
 let modalOpen = ref(false)
-let modalIndex = ref(0)
+let modalStepIndex = ref(0)
 
 let zoom = ref(17)
 let userCoords = reactive({
@@ -149,7 +149,7 @@ const toggleModal = (index) => {
   } else {
     modalOpen.value = true
   }
-  modalIndex.value = index
+  modalStepIndex.value = index
   return
 }
 const getTotalDuration = (arr) => {
@@ -183,8 +183,10 @@ const centerMapOnUser = () => {
   mapCenter.long = userLong.value
 }
 const centerMapOnGeoPoint = () => {
-  mapCenter.lat = geojsonPoint.value[0]
-  mapCenter.long = geojsonPoint.value[1]
+  if(geojsonPoint){
+    // mapCenter.lat = geojsonPoint.value[0]
+    // mapCenter.long = geojsonPoint.value[1]
+  }
 }
 const setPosition = (pos) => {
   userCoords.latitude = pos.coords.latitude
@@ -232,7 +234,7 @@ onBeforeMount(async () => {
 
   centerMapOnGeoPoint()
 
-  console.dir(dataObject.value)
+  console.log('dataObject ===>', dataObject.value)
 })
 onUpdated(() => {
   watchUserPos()
