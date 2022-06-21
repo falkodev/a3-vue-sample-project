@@ -70,6 +70,7 @@ deploy_larzac_prod:
   stage: deploy
   needs:
     - release
+    - test
   before_script:
     - apt-get update -y && apt-get -y install rsync
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'

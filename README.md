@@ -578,7 +578,6 @@ Current UAT for Larzac:
   ![](documentation/instance_created.png)
 - A ssh connection is available from the terminal icon in the instance
   ![](documentation/ssh_connection.png)
-Connect and run ` sudo mkdir /opt/stagecoach`
 - In the code repository, create a new settings file in the `deployment` folder. For instance, `settings.larzac-prod`. The first part of the name has to be `settings` and the ultimate part will design an environment where to deploy. This file will contain the user to connect with, the IP address and ssh options.
 ```bash
 USER=ec2-user # user created by AWS
