@@ -339,7 +339,7 @@ function dataMileAge(mileage) {
 .bold {
   font-weight: bold;
   cursor: pointer;
-  color: var(--vt-c-black);
+  color: $color-black;
 }
 
 .t-image {
@@ -357,7 +357,7 @@ function dataMileAge(mileage) {
   }
 
   .t-eventsAnnonce {
-    background-color: $color-orange;
+    background-color: $color-main;
     height: 35px;
     width: 100%;
     display: flex;
@@ -379,7 +379,7 @@ function dataMileAge(mileage) {
 
   &__title {
     font-size: 25px;
-    color: $color-purple;
+    color: $color-main;
     font-weight: bold;
   }
 
@@ -387,7 +387,7 @@ function dataMileAge(mileage) {
     margin-top: 36px;
     font-size: 15px;
     line-height: 25px;
-    color: var(--vt-c-black);
+    color: var($color-text);
   }
 }
 
@@ -397,7 +397,7 @@ function dataMileAge(mileage) {
 
 .t-general-infos {
   &__title {
-    color: $color-orange;
+    color: $color-main;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 17px;
@@ -419,7 +419,7 @@ function dataMileAge(mileage) {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background-color: $color-orange;
+    background-color: $color-main;
     opacity: 75%;
     height: 100px;
     width: 32%;
@@ -453,7 +453,7 @@ function dataMileAge(mileage) {
     align-items: center;
     justify-content: center;
     padding: 40px 10px 10px 10px;
-    background-color: $color-orange;
+    background-color: $color-main;
     opacity: 75%;
     height: 120px;
     width: 39vw;

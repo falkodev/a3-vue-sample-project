@@ -64,6 +64,26 @@ module.exports = {
           socialNetworks: 'linkedin',
         },
       },
+      mainColor: {
+        type: 'color',
+        label: 'apostrophe:graphicIdentity.mainColor',
+      },
+      secondaryColor: {
+        type: 'color',
+        label: 'apostrophe:graphicIdentity.secondaryColor',
+      },
+      backgroundColor: {
+        type: 'color',
+        label: 'apostrophe:graphicIdentity.backgroundColor',
+      },
+      textColor: {
+        type: 'color',
+        label: 'apostrophe:graphicIdentity.textColor',
+      },
+      navbarColor: {
+        type: 'color',
+        label: 'apostrophe:graphicIdentity.navbarColor',
+      },
     },
     group: {
       basics: {
@@ -77,6 +97,16 @@ module.exports = {
           'socialUrlInstagram',
           'socialUrlFacebook',
           'socialUrlLinkedin',
+        ],
+      },
+      graphicIdentity: {
+        label: 'apostrophe:graphicIdentity.title',
+        fields: [
+          'mainColor',
+          'secondaryColor',
+          'backgroundColor',
+          'textColor',
+          'navbarColor',
         ],
       },
     },

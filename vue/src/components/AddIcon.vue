@@ -23,7 +23,7 @@ export default {
 @import '/assets/settings.scss';
 
 .t-add-icon {
-  color: $color-purple;
+  color: $color-main;
   width: 30px;
   width: 30px;
 }

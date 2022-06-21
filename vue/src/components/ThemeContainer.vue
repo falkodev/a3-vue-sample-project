@@ -159,7 +159,7 @@ updateCenter()
 }
 
 .t-loaded__title {
-  color: $color-purple;
+  color: $color-main;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 17px;
