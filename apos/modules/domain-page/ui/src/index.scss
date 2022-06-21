@@ -1,5 +1,6 @@
 @import '/modules/content/ui/src/scss/_settings';
 @import './visit.scss';
+@import './modal.scss';
 
 .t-spacer {
   height: 40vh;
@@ -113,10 +114,10 @@
 
   &__phone-link,
   &__web-link {
-    color: $color-black !important;
+    color: $color-black  !important;
 
     :visited {
-      color: $color-black !important;
+      color: $color-black  !important;
     }
   }
 

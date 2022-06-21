@@ -1,6 +1,12 @@
 <template>
-  <div>
-    <div class="t-visit">
+  <div class="t-visit">
+    <Modal
+      :dataObj="dataObject"
+      :modalOpen="modalOpen"
+      :modalIndex="modalIndex"
+      @close-modal="toggleModal"
+    />
+    <div class="t-visit__bloc" v-if="dataObject.itineraryType">
       <div class="t-visit__fixed">
         <h2 class="t-visit__title">{{ dataObject.title }}</h2>
         <IconGeoloc class="t-visit__geoloc" @click="centerMapOnUser" />
@@ -47,7 +53,7 @@
               class="t-step__bloc"
             >
               <div class="t-step__container">
-                <div class="t-step__item">
+                <div class="t-step__item" @click="toggleModal(stepIndex)">
                   <p class="t-step__name">
                     <b> Etape {{ stepIndex + 1 }} :</b> {{ step.title }}
                   </p>
@@ -95,7 +101,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onUpdated, onBeforeMount,  reactive } from 'vue'
+import { ref, computed, onUpdated, onBeforeMount, reactive } from 'vue'
 import {
   LMap,
   LTileLayer,
@@ -106,12 +112,16 @@ import {
 import 'leaflet/dist/leaflet.css'
 import IconArrow from '@/components/icons/IconArrow.vue'
 import IconGeoloc from '@/components/icons/IconGeoloc.vue'
+import Modal from '@/components/Modal.vue'
 
 const props = defineProps(['piece', 'attachments'])
 
 let geojsonFile = reactive({})
 let jsonUrl = reactive({})
 let geojsonPoint = ref(null)
+
+let modalOpen = ref(false)
+let modalIndex = ref(0)
 
 let zoom = ref(17)
 let userCoords = reactive({
@@ -132,6 +142,16 @@ let userLat = computed(() => {
 let userLong = computed(() => {
   return userCoords.longitude
 })
+const toggleModal = (index) => {
+  console.log('toggle modal')
+  if (modalOpen.value == true) {
+    modalOpen.value = false
+  } else {
+    modalOpen.value = true
+  }
+  modalIndex.value = index
+  return
+}
 const getTotalDuration = (arr) => {
   let res = arr
     .reduce((pre, curr) => {
@@ -144,19 +164,16 @@ const getTotalDuration = (arr) => {
     .reduce((pre, curr) => {
       return parseInt(pre) + parseInt(curr)
     }, 0)
-  if(Math.floor(res / 60) > 0){
-    if((res % 60) < 10) {
+  if (Math.floor(res / 60) > 0) {
+    if (res % 60 < 10) {
       return Math.floor(res / 60) + ' h ' + '0' + (res % 60) + ' min'
-    }
-    else {
+    } else {
       return Math.floor(res / 60) + ' h ' + (res % 60) + ' min'
     }
-  }
-  else {
-    if((res % 60) < 10) {
+  } else {
+    if (res % 60 < 10) {
       return '0' + (res % 60) + ' min'
-    }
-    else {
+    } else {
       return (res % 60) + ' min'
     }
   }
@@ -166,8 +183,8 @@ const centerMapOnUser = () => {
   mapCenter.long = userLong.value
 }
 const centerMapOnGeoPoint = () => {
-  mapCenter.lat = geojsonPoint[0]
-  mapCenter.long = geojsonPoint[1]
+  mapCenter.lat = geojsonPoint.value[0]
+  mapCenter.long = geojsonPoint.value[1]
 }
 const setPosition = (pos) => {
   userCoords.latitude = pos.coords.latitude
@@ -206,15 +223,20 @@ onBeforeMount(async () => {
   const response = await fetch(jsonUrl, { method: 'GET' })
   geojsonFile = await response.json()
 
-  geojsonPoint = [ geojsonFile.features.filter(x => x.geometry.type === 'Point')[0].geometry.coordinates[1], geojsonFile.features.filter(x => x.geometry.type === 'Point')[0].geometry.coordinates[0] ]
-
+  geojsonPoint = [
+    geojsonFile.features.filter((x) => x.geometry.type === 'Point')[0].geometry
+      .coordinates[1],
+    geojsonFile.features.filter((x) => x.geometry.type === 'Point')[0].geometry
+      .coordinates[0],
+  ]
 
   centerMapOnGeoPoint()
 
+  console.dir(dataObject.value)
 })
 onUpdated(() => {
   watchUserPos()
-  if(geojsonPoint){
+  if (geojsonPoint.value) {
     centerMapOnGeoPoint()
   }
 })
