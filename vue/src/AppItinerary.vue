@@ -336,6 +336,7 @@ function dataMileAge(mileage) {
 
 <style lang="scss">
 @import './assets/base.css';
+@import '/assets/settings.scss';
 
 .bold {
   font-weight: bold;
