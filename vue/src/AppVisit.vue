@@ -7,20 +7,19 @@
         <div class="t-visit__map t-map__container">
           <l-map
             draggable="false"
-            :minZoom="zoom"
+            :minZoom="zoom - 1"
             :maxZoom="zoom + 2"
-            :center="[userLat, userLong]"
+            :center="[mapCenter.lat, mapCenter.long]"
             v-model="zoom"
             bounceAtZoomLimits="true"
             zoomControl="false"
             @moveend="getUserPos"
           >
-            <!-- :center="[userlat, userLong]" -->
             <l-tile-layer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             ></l-tile-layer>
 
-            <l-geo-json :geojson="geojson" />
+            <l-geo-json :geojson="geojsonFile" />
 
             <l-marker
               v-if="userLat && userLong"
@@ -54,7 +53,9 @@
                   </p>
                   <span class="t-step__icon"></span>
                 </div>
-                <p class="t-step__timing">Sous-étapes</p>
+                <p class="t-step__timing">
+                  {{ getTotalDuration(step.subSteps) }}
+                </p>
               </div>
               <div class="t-media__container">
                 <div
@@ -63,6 +64,7 @@
                   :key="'step' + subStepIndex"
                 >
                   <div
+                    v-if="subStep.image"
                     class="t-media__image"
                     :style="`background-image: url( ${
                       attachmentList.filter(
@@ -70,6 +72,11 @@
                       )[0]._urls.full
                     })`"
                   >
+                    <p class="t-media__info">
+                      {{ subStep.title }}
+                    </p>
+                  </div>
+                  <div v-else class="t-media__image">
                     <p class="t-media__info">
                       {{ subStep.title }}
                     </p>
@@ -88,14 +95,7 @@
 </template>
 
 <script setup>
-import {
-  ref,
-  computed,
-  onUpdated,
-  onBeforeMount,
-  onMounted,
-  reactive,
-} from 'vue'
+import { ref, computed, onUpdated, onBeforeMount,  reactive } from 'vue'
 import {
   LMap,
   LTileLayer,
@@ -109,8 +109,9 @@ import IconGeoloc from '@/components/icons/IconGeoloc.vue'
 
 const props = defineProps(['piece', 'attachments'])
 
-let geojson = reactive({})
-let jsonUrl
+let geojsonFile = reactive({})
+let jsonUrl = reactive({})
+let geojsonPoint = ref(null)
 
 let zoom = ref(17)
 let userCoords = reactive({
@@ -119,16 +120,11 @@ let userCoords = reactive({
 })
 
 let mapCenter = reactive({
-  lat: null,
-  long: null,
+  lat: 0,
+  long: 0,
 })
-
 const dataObject = computed(() => JSON.parse(props.piece))
 const attachmentList = computed(() => JSON.parse(props.attachments))
-
-// const display = (arg) => {
-//   console.log(`arg ====>`, arg)
-// }
 
 let userLat = computed(() => {
   return userCoords.latitude
@@ -136,9 +132,42 @@ let userLat = computed(() => {
 let userLong = computed(() => {
   return userCoords.longitude
 })
+const getTotalDuration = (arr) => {
+  let res = arr
+    .reduce((pre, curr) => {
+      return [
+        ...pre,
+        parseInt(curr.duration.split(':')[0]) * 60 +
+          parseInt(curr.duration.split(':')[1]),
+      ]
+    }, '')
+    .reduce((pre, curr) => {
+      return parseInt(pre) + parseInt(curr)
+    }, 0)
+  if(Math.floor(res / 60) > 0){
+    if((res % 60) < 10) {
+      return Math.floor(res / 60) + ' h ' + '0' + (res % 60) + ' min'
+    }
+    else {
+      return Math.floor(res / 60) + ' h ' + (res % 60) + ' min'
+    }
+  }
+  else {
+    if((res % 60) < 10) {
+      return '0' + (res % 60) + ' min'
+    }
+    else {
+      return (res % 60) + ' min'
+    }
+  }
+}
 const centerMapOnUser = () => {
   mapCenter.lat = userLat.value
   mapCenter.long = userLong.value
+}
+const centerMapOnGeoPoint = () => {
+  mapCenter.lat = geojsonPoint[0]
+  mapCenter.long = geojsonPoint[1]
 }
 const setPosition = (pos) => {
   userCoords.latitude = pos.coords.latitude
@@ -147,6 +176,7 @@ const setPosition = (pos) => {
 const errorGettingPos = (e) => {
   return e
 }
+
 const getUserPos = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(setPosition, errorGettingPos, {
@@ -165,32 +195,27 @@ const watchUserPos = () => {
     })
   }
 }
-onBeforeMount(() => {
+
+onBeforeMount(async () => {
   watchUserPos()
+
   jsonUrl = attachmentList.value.filter(
     (attachment) => attachment.extension === 'geojson',
   )[0]._url
-  // console.log(jsonUrl)
 
-  mapCenter.lat = userLat.value
-  mapCenter.long = userLong.value
-})
+  const response = await fetch(jsonUrl, { method: 'GET' })
+  geojsonFile = await response.json()
 
-onMounted(() => {
-  fetch(jsonUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      geojson = data
-      // console.log(geojson)
-      return data
-    })
-  // console.log('dataObject ===>', dataObject.value)
-  // console.log('attachmentList ===>', attachmentList.value)
-  // console.log('mapCenter', mapCenter)
-  // console.log('userCoords', userCoords)
-  // console.log('geojson', geojson)
+  geojsonPoint = [ geojsonFile.features.filter(x => x.geometry.type === 'Point')[0].geometry.coordinates[1], geojsonFile.features.filter(x => x.geometry.type === 'Point')[0].geometry.coordinates[0] ]
+
+
+  centerMapOnGeoPoint()
+
 })
 onUpdated(() => {
   watchUserPos()
+  if(geojsonPoint){
+    centerMapOnGeoPoint()
+  }
 })
 </script>
