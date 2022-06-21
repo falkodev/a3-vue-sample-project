@@ -12,5 +12,6 @@ import cross from '@/components/icons/IconCross.vue'
 const props = defineProps({
   dataObj: Object,
   modalOpen: Boolean,
+  modalStepIndex: Number,
 })
 </script>
