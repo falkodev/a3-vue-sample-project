@@ -183,7 +183,7 @@ const centerMapOnUser = () => {
   mapCenter.long = userLong.value
 }
 const centerMapOnGeoPoint = () => {
-  if(geojsonPoint){
+  if (geojsonPoint.value) {
     // mapCenter.lat = geojsonPoint.value[0]
     // mapCenter.long = geojsonPoint.value[1]
   }
