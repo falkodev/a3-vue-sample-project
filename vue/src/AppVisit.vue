@@ -95,7 +95,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onUpdated, onBeforeMount,  reactive } from 'vue'
+import { ref, computed, onUpdated, onBeforeMount, reactive } from 'vue'
 import {
   LMap,
   LTileLayer,
@@ -144,19 +144,16 @@ const getTotalDuration = (arr) => {
     .reduce((pre, curr) => {
       return parseInt(pre) + parseInt(curr)
     }, 0)
-  if(Math.floor(res / 60) > 0){
-    if((res % 60) < 10) {
+  if (Math.floor(res / 60) > 0) {
+    if (res % 60 < 10) {
       return Math.floor(res / 60) + ' h ' + '0' + (res % 60) + ' min'
-    }
-    else {
+    } else {
       return Math.floor(res / 60) + ' h ' + (res % 60) + ' min'
     }
-  }
-  else {
-    if((res % 60) < 10) {
+  } else {
+    if (res % 60 < 10) {
       return '0' + (res % 60) + ' min'
-    }
-    else {
+    } else {
       return (res % 60) + ' min'
     }
   }
@@ -166,8 +163,8 @@ const centerMapOnUser = () => {
   mapCenter.long = userLong.value
 }
 const centerMapOnGeoPoint = () => {
-  mapCenter.lat = geojsonPoint[0]
-  mapCenter.long = geojsonPoint[1]
+  mapCenter.lat = geojsonPoint.value[0]
+  mapCenter.long = geojsonPoint.value[1]
 }
 const setPosition = (pos) => {
   userCoords.latitude = pos.coords.latitude
@@ -206,15 +203,18 @@ onBeforeMount(async () => {
   const response = await fetch(jsonUrl, { method: 'GET' })
   geojsonFile = await response.json()
 
-  geojsonPoint = [ geojsonFile.features.filter(x => x.geometry.type === 'Point')[0].geometry.coordinates[1], geojsonFile.features.filter(x => x.geometry.type === 'Point')[0].geometry.coordinates[0] ]
-
+  geojsonPoint = [
+    geojsonFile.features.filter((x) => x.geometry.type === 'Point')[0].geometry
+      .coordinates[1],
+    geojsonFile.features.filter((x) => x.geometry.type === 'Point')[0].geometry
+      .coordinates[0],
+  ]
 
   centerMapOnGeoPoint()
-
 })
 onUpdated(() => {
   watchUserPos()
-  if(geojsonPoint){
+  if (geojsonPoint.value) {
     centerMapOnGeoPoint()
   }
 })
