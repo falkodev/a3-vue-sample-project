@@ -20,7 +20,7 @@
   transform: translateY(32px);
   opacity: 0;
   pointer-events: none;
-  transition: .24s opacity ease, .24s transform ease;
+  transition: 0.24s opacity ease, 0.24s transform ease;
 
   &.t-modal--open {
     opacity: 1;

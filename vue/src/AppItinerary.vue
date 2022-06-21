@@ -210,6 +210,9 @@
 <script setup>
 // import VisitsEvents from './components/VisitsEvents.vue'
 // import VisitsContainer from './components/VisitsContainer.vue'
+import ThemeContainer from './components/ThemeContainer.vue'
+import SyndicateContainer from './components/SyndicateContainer.vue'
+import EventContainer from './components/EventContainer.vue'
 import ValidateButton from './components/ValidateButton.vue'
 import { computed, ref } from 'vue'
 import dayjs from 'dayjs'
