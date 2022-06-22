@@ -1,6 +1,6 @@
 {
   "name": "vinoways-territoire",
-  "version": "1.1.1",
+  "version": "1.1.0",
   "description": "Vinoways Territoire platform",
   "scripts": {
     "start": "cd ./vue && npm run build & cd ./apos && npm run start",

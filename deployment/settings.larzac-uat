@@ -1,4 +1,3 @@
 USER=ec2-user
-REMOTE_SUDO_USER=ec2-user
 SERVER=15.188.246.213
 SSH_OPTIONS="-i deployment/vino-terr-ssh-key.pem -oStrictHostKeyChecking=no"
