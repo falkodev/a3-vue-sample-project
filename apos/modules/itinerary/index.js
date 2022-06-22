@@ -190,6 +190,9 @@ module.exports = {
           'duration',
           'mileage',
         ],
+        if: {
+          itineraryType: 'event',
+        },
       },
       steps: {
         label: 'apostrophe:steps',
