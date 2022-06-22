@@ -6,16 +6,29 @@
       :modalStepIndex="modalStepIndex"
       @close-modal="toggleModal"
     />
-    <div class="t-visit__bloc" v-if="dataObject.itineraryType">
+    <div class="t-visit__bloc">
       <div class="t-visit__fixed">
         <h2 class="t-visit__title">{{ dataObject.title }}</h2>
-        <IconGeoloc class="t-visit__geoloc" @click="centerMapOnUser" />
+        <div class="t-visit__geoloc">
+          <div class="t-visit__geoloc-icon">
+            <IconUserTarget
+              class="t-visit__geoloc-icon-svg"
+              @click="centerMapOnUser"
+            />
+          </div>
+          <div class="t-visit__geoloc-icon">
+            <IconGeoloc
+              class="t-visit__geoloc-icon-svg"
+              @click="centerMapOnGeoPoint"
+            />
+          </div>
+        </div>
         <div class="t-visit__map t-map__container">
           <l-map
             draggable="false"
-            :minZoom="zoom - 1"
+            :minZoom="zoom - 2"
             :maxZoom="zoom + 2"
-            :center="[mapCenter.lat, mapCenter.long]"
+            :center="mapCenter.coords"
             v-model="zoom"
             bounceAtZoomLimits="true"
             zoomControl="false"
@@ -24,8 +37,6 @@
             <l-tile-layer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             ></l-tile-layer>
-
-            <l-geo-json :geojson="geojsonFile" />
 
             <l-marker
               v-if="userLat && userLong"
@@ -37,6 +48,18 @@
                 :iconSize="[50, 50]"
               />
             </l-marker>
+
+            <l-polyline :lat-lngs="geojsonMultiLine.val" color="green">
+            </l-polyline>
+
+            <div v-for="(point,pointI) in geojsonPoints.val" :key="pointI">
+              <l-marker :lat-lng="point.coords">
+                <l-popup>
+                  <h3>{{ point.properties.name }}</h3>
+                  <p>{{ point.properties.desc }}</p>
+                </l-popup>
+              </l-marker>
+            </div>
           </l-map>
         </div>
       </div>
@@ -65,7 +88,10 @@
               </div>
               <div class="t-media__container">
                 <div
-                  class="t-media__item t-media__item--rectangle"
+                  class="t-media__item"
+                  :class="{
+                    't-media__item--rectangle': dataObject.itineraryType,
+                  }"
                   v-for="(subStep, subStepIndex) in step.subSteps"
                   :key="'step' + subStepIndex"
                 >
@@ -101,24 +127,35 @@
 </template>
 
 <script setup>
-import { ref, computed, onUpdated, onBeforeMount, reactive } from 'vue'
+import {
+  ref,
+  computed,
+  onUpdated,
+  onBeforeMount,
+  onMounted,
+  reactive,
+} from 'vue'
 import {
   LMap,
   LTileLayer,
   LMarker,
   LIcon,
-  LGeoJson,
+  LPopup,
+  LPolyline,
 } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
 import IconArrow from '@/components/icons/IconArrow.vue'
+import IconUserTarget from '@/components/icons/IconUserTarget.vue'
 import IconGeoloc from '@/components/icons/IconGeoloc.vue'
 import Modal from '@/components/Modal.vue'
 
 const props = defineProps(['piece', 'attachments'])
 
-let geojsonFile = reactive({})
-let jsonUrl = reactive({})
-let geojsonPoint = ref(null)
+let geojsonFile = ''
+let jsonUrl = ''
+let geojsonPoint = reactive({ val: [] })
+let geojsonPoints = reactive({ val: [] })
+let geojsonMultiLine = reactive({ val: [] })
 
 let modalOpen = ref(false)
 let modalStepIndex = ref(0)
@@ -129,10 +166,11 @@ let userCoords = reactive({
   longitude: 0,
 })
 
+let pointIndex = ref(0)
 let mapCenter = reactive({
-  lat: 0,
-  long: 0,
+  coords: [43, 3.5],
 })
+
 const dataObject = computed(() => JSON.parse(props.piece))
 const attachmentList = computed(() => JSON.parse(props.attachments))
 
@@ -143,7 +181,6 @@ let userLong = computed(() => {
   return userCoords.longitude
 })
 const toggleModal = (index) => {
-  console.log('toggle modal')
   if (modalOpen.value == true) {
     modalOpen.value = false
   } else {
@@ -179,13 +216,16 @@ const getTotalDuration = (arr) => {
   }
 }
 const centerMapOnUser = () => {
-  mapCenter.lat = userLat.value
-  mapCenter.long = userLong.value
+  mapCenter.coords = [userLat.value, userLong.value]
 }
 const centerMapOnGeoPoint = () => {
-  if (geojsonPoint.value) {
-    // mapCenter.lat = geojsonPoint.value[0]
-    // mapCenter.long = geojsonPoint.value[1]
+  pointIndex.value += 1
+  pointIndex.value %= geojsonPoints.val.length - 1
+  if (geojsonPoint.val.length !== 0) {
+    mapCenter.coords = [
+      geojsonPoints.val[pointIndex.value].coords[0],
+      geojsonPoints.val[pointIndex.value].coords[1],
+    ]
   }
 }
 const setPosition = (pos) => {
@@ -225,21 +265,37 @@ onBeforeMount(async () => {
   const response = await fetch(jsonUrl, { method: 'GET' })
   geojsonFile = await response.json()
 
-  geojsonPoint = [
+  geojsonPoint.val = [
     geojsonFile.features.filter((x) => x.geometry.type === 'Point')[0].geometry
       .coordinates[1],
     geojsonFile.features.filter((x) => x.geometry.type === 'Point')[0].geometry
       .coordinates[0],
   ]
 
-  centerMapOnGeoPoint()
+  geojsonMultiLine.val = geojsonFile.features
+    .filter((x) => x.geometry.type === 'MultiLineString')[0]
+    .geometry.coordinates[0].reduce(
+      (prev, curr) => [...prev, [curr[1], curr[0]]],
+      [],
+    )
 
-  console.log('dataObject ===>', dataObject.value)
+  geojsonPoints.val = geojsonFile.features
+    .filter((x) => x.geometry.type === 'Point')
+    .reduce(
+      (prev, curr) => [
+        ...prev,
+        {
+          coords: [curr.geometry.coordinates[1], curr.geometry.coordinates[0]],
+          properties: curr.properties,
+        },
+      ],
+      [],
+    )
+})
+onMounted(() => {
+  centerMapOnGeoPoint()
 })
 onUpdated(() => {
   watchUserPos()
-  if (geojsonPoint.value) {
-    centerMapOnGeoPoint()
-  }
 })
 </script>

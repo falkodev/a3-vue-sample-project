@@ -3,7 +3,7 @@
     <div class="t-modal__container">
       <cross @click="$emit('closeModal')" />
       <h1 class="t-modal__title">Modal Window</h1>
-      <p>{{ modalStepIndex}}</p>
+      <p>{{ modalStepIndex }}</p>
     </div>
   </div>
 </template>

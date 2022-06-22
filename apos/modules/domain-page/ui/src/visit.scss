@@ -32,12 +32,19 @@
 
   &__geoloc {
     position: absolute;
-    top: 32px;
-    right: 25px;
-    height: 48px;
-    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px;
+    top: 24px;
+    right: 24px;
 
-    &--icon {
+    &-icon {
+      height: 48px;
+      width: 48px;
+    }
+
+    &-icon-svg {
       fill: $color-purple;
       cursor: pointer;
     }
@@ -172,11 +179,9 @@
         content: '';
         height: 100%;
         width: 100%;
-        background: linear-gradient(
-          45deg,
-          $color-purple-alpha-20,
-          $color-purple-alpha-30
-        );
+        background: linear-gradient(45deg,
+            $color-purple-alpha-20,
+            $color-purple-alpha-30 );
       }
     }
 
