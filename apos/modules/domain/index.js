@@ -27,15 +27,10 @@ module.exports = {
           max: 1,
         },
       },
-      isAutoGuidedVisit: {
-        label: 'apostrophe:autoGuidedVisit',
-        type: 'boolean',
-      },
       eShop: {
         type: 'url',
         label: 'apostrophe:eShop',
       },
-
       reception: {
         type: 'boolean',
         label: 'apostrophe:reception',
@@ -146,12 +141,6 @@ module.exports = {
           max: 1,
         },
       },
-      track: {
-        type: 'attachment',
-        label: 'apostrophe:visit.track.label',
-        max: 1,
-        fileGroup: 'geojson',
-      },
     },
     remove: ['placeType'],
 
@@ -178,10 +167,6 @@ module.exports = {
       visits: {
         label: 'apostrophe:visits',
         fields: ['_visits'],
-      },
-      visit: {
-        label: 'apostrophe:visit.label',
-        fields: ['visitSteps', 'track'],
       },
     },
   },
