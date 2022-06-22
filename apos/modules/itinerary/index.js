@@ -40,23 +40,38 @@ module.exports = {
         type: 'date',
         required: true,
         label: 'apostrophe:startDate',
+        if: {
+          itineraryType: 'event',
+        },
       },
       endDate: {
         type: 'date',
         label: 'apostrophe:endDate',
+        if: {
+          itineraryType: 'event',
+        },
       },
       startTime: {
         type: 'time',
         label: 'apostrophe:startTime',
+        if: {
+          itineraryType: 'event',
+        },
       },
       endTime: {
         type: 'time',
         label: 'apostrophe:endTime',
+        if: {
+          itineraryType: 'event',
+        },
       },
       duration: {
         type: 'time',
         required: true,
         label: 'apostrophe:duration',
+        if: {
+          itineraryType: 'event',
+        },
       },
       mileage: {
         type: 'float',
@@ -190,9 +205,6 @@ module.exports = {
           'duration',
           'mileage',
         ],
-        if: {
-          itineraryType: 'event',
-        },
       },
       steps: {
         label: 'apostrophe:steps',
