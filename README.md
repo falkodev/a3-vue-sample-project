@@ -576,11 +576,16 @@ Current UAT for Larzac:
   ![](documentation/name_choice.p ng)
 - The new instance will be created in less than one minute
   ![](documentation/instance_created.png)
+- Go the details page of the instance, and click on "Networking". Here, add 2 TCP rules to open ports:
+  - 8080 for apos
+  - 27018 to be able to connect to mongo
+   ![](documentation/networking.png)
 - A ssh connection is available from the terminal icon in the instance
   ![](documentation/ssh_connection.png)
-Connect and run ` sudo yum update && sudo yum install docker && sudo pip3 inst
-  all docker-compose && sudo systemctl enable docker.service && sudo systemctl start docker.s
+Connect and run `sudo yum update && sudo yum install docker && sudo pip3 inst
+  all docker-compose && sudo usermod -a -G docker ec2-user && sudo systemctl enable docker.service && sudo systemctl start docker.s
   ervice && sudo mkdir -p /opt/stagecoach/apps && sudo chown ec2-user /opt/stagecoach/apps`
+- Reboot, wait a minute and connect again. Then run `sudo systemctl status docker.service` to be sure Docker is started.
 - In the code repository, create a new settings file in the `deployment` folder. For instance, `settings.larzac-prod`. The first part of the name has to be `settings` and the ultimate part will design an environment where to deploy. This file will contain the user to connect with, the IP address and ssh options.
 ```bash
 USER=ec2-user # user created by AWS
@@ -593,7 +598,14 @@ It means it is also possible to deploy from a machine (in case Gitlab is down) b
 - Add an environment variable in https://gitlab.com/vino-vibes/vinoways-territoire/-/settings/ci_cd. For example, `MONGO_INITDB_ROOT_PASSWORD_LARZAC_PROD` in our case. Choose to mask it.
   ![](documentation/list_env_var.png)
   ![](documentation/add_env_var.png)
-- Add a script in gitlab-ci.yml for this new environment by using another `deploy` script. Be sure to put the right `$MONGO_INITDB_ROOT_PASSWORD` variable, the right environment variable for `sc` deployment  on the right branch.
+- Add a script in gitlab-ci.yml for this new environment by using another `deploy` script. Be sure to put the right `$MONGO_INITDB_ROOT_PASSWORD` variable, the right environment variable for `sc` deployment on the right branch.
 <br>Create the branch. Add it as a protected branch in https://gitlab.com/vino-vibes/vinoways-territoire/-/settings/repository.
   ![](documentation/branch.png)
+- Create a release commit: on the branch configured in gitlab-ci.yml, edit CHANGELOG.md to add a new version (patch for bug resolution, minor for new changes, major for breaking changes), add the same version to package.json, add a commit message starting with "Release v.xxx" and git push. It will start a pipeline in Gitlab and deploy the site to AWS.
 
+You can connect to the machine with SSH and go to `/opt/stagecoach/apps/[project-name]/current` ("project_name" is "vino-terr-larzac" in this example) to check everything is ok. If not, you can run `make prod` on the server.
+The app is available on the IP address followed by `:8080`:
+
+![](documentation/app.png)
+
+The database will be empty. On a UAT instance, it is possible to run `make defaults && make fixtures`. On a production instance, it is possible to run `make defaults` but it is better to create specific users with strong passwords.
