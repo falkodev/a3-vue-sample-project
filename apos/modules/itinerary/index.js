@@ -38,7 +38,6 @@ module.exports = {
       },
       startDate: {
         type: 'date',
-        required: true,
         label: 'apostrophe:startDate',
         if: {
           itineraryType: 'event',
@@ -67,7 +66,6 @@ module.exports = {
       },
       duration: {
         type: 'time',
-        required: true,
         label: 'apostrophe:duration',
         if: {
           itineraryType: 'event',
@@ -75,7 +73,6 @@ module.exports = {
       },
       mileage: {
         type: 'float',
-        required: true,
         label: 'apostrophe:mileage',
         if: {
           itineraryType: 'event',
