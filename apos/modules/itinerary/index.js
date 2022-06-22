@@ -77,6 +77,9 @@ module.exports = {
         type: 'float',
         required: true,
         label: 'apostrophe:mileage',
+        if: {
+          itineraryType: 'event',
+        },
       },
       description: {
         type: 'string',
