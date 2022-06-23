@@ -39,6 +39,7 @@ module.exports = {
       startDate: {
         type: 'date',
         label: 'apostrophe:startDate',
+        required: true,
         if: {
           itineraryType: 'event',
         },
@@ -46,6 +47,7 @@ module.exports = {
       endDate: {
         type: 'date',
         label: 'apostrophe:endDate',
+        required: true,
         if: {
           itineraryType: 'event',
         },
@@ -53,6 +55,7 @@ module.exports = {
       startTime: {
         type: 'time',
         label: 'apostrophe:startTime',
+        required: true,
         if: {
           itineraryType: 'event',
         },
@@ -60,6 +63,7 @@ module.exports = {
       endTime: {
         type: 'time',
         label: 'apostrophe:endTime',
+        required: true,
         if: {
           itineraryType: 'event',
         },
@@ -67,6 +71,7 @@ module.exports = {
       duration: {
         type: 'time',
         label: 'apostrophe:duration',
+        required: true,
         if: {
           itineraryType: 'event',
         },
