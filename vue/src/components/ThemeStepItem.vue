@@ -84,7 +84,7 @@ function placeTypeIcon(type) {
     poi: 'binoculars',
     domain: 'grap',
   }
-  return `${assetBaseUrl}/modules/content/icons/${img[type]}.png`
+  return `${assetBaseUrl}/modules/content/icons/${img[type]}.svg`
 }
 </script>
 
