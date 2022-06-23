@@ -4,6 +4,13 @@
 
 ### Added
 
+- Graphic chart
+- Fix itinerary bugs
+
+## 1.1.0 - 2022-06-22
+
+### Added
+
 - Production environment for Larzac
 - Documentation updated to deploy new servers
 
