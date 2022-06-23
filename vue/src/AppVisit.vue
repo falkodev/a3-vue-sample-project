@@ -133,6 +133,7 @@ let mapCenter = reactive({
   lat: 0,
   long: 0,
 })
+
 const dataObject = computed(() => JSON.parse(props.piece))
 const attachmentList = computed(() => JSON.parse(props.attachments))
 
