@@ -52,7 +52,7 @@
             <l-polyline :lat-lngs="geojsonMultiLine.val" color="green">
             </l-polyline>
 
-            <div v-for="(point,pointI) in geojsonPoints.val" :key="pointI">
+            <div v-for="(point, pointI) in geojsonPoints.val" :key="pointI">
               <l-marker :lat-lng="point.coords">
                 <l-popup>
                   <h3>{{ point.properties.name }}</h3>
