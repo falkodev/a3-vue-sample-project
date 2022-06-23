@@ -155,6 +155,14 @@
   "globalDocLabel": "Global Content",
   "globalInformations": "Global Informations",
   "goToPage": "Go to page {{ page }}",
+  "graphicIdentity": {
+    "title": "Graphic identity",
+    "mainColor": "Main color",
+    "secondaryColor": "Secondary color",
+    "backgroundColor": "Background color",
+    "textColor": "Text color",
+    "navbarColor": "Navbar color"
+  },
   "guest": "Guest",
   "hideInNavigation": "Hide in Navigation",
   "home": "Home",

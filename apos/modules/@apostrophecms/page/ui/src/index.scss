@@ -15,11 +15,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $color-white;
+  background: $color-header;
   box-shadow: 0 8px 10px -1px rgba(0, 0, 0, 0.1);
   font-family: 'Montserrat', sans-serif;
   font-size: 25px;
-  color: $color-orange;
+  color: $color-text;
 
   .t-header__container {
     z-index: 1;
@@ -37,20 +37,20 @@
       right: 0;
       height: 100%;
       width: 100%;
-      background-color: $color-white;
+      background-color: $color-header;
     }
   }
 
   &__icon {
     width: 36px;
     height: 36px;
-    background: $color-orange;
+    background: $color-text;
   }
 
   &__back {
     justify-self: left;
     mask: url('/modules/content/icons/back.svg') center/contain no-repeat;
-    background: $color-orange;
+    background: $color-text;
     cursor: pointer;
   }
 
@@ -118,7 +118,7 @@
     & > div {
       pointer-events: none;
       height: 3px;
-      background-color: $color-orange;
+      background-color: $color-text;
       transition: 0.5s;
     }
   }
@@ -141,7 +141,7 @@
     flex-direction: column;
     align-items: flex-start;
     row-gap: 16px;
-    background-color: $color-purple;
+    background-color: $color-secondary;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     transform: translateY(calc(-100% - $header-height));
@@ -155,7 +155,7 @@
   &__icon {
     width: 36px;
     height: 36px;
-    background: $color-white;
+    background: $color-text;
     margin-right: 20px;
 
     &--profile {
@@ -187,10 +187,10 @@
     justify-content: center;
     list-style: none;
     a {
-      color: $color-white;
+      color: $color-text;
 
       &:visited {
-        color: $color-white;
+        color: $color-text;
       }
     }
   }
@@ -202,14 +202,14 @@
   padding-top: 32px;
   width: 100%;
   &__link {
-    color: $color-white !important;
+    color: $color-text !important;
     display: flex;
   }
 
   &__icon {
     width: 40px;
     height: 40px;
-    background-color: $color-white;
+    background-color: $color-text;
     background-repeat: no-repeat;
     background-size: contain;
 
@@ -229,6 +229,7 @@
 
 .t-footer {
   position: fixed;
+  box-shadow: 3px 5px 3px 4px $color-text;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -241,8 +242,8 @@
   padding: 0 25px;
   font-size: 11px;
   font-family: 'Montserrat', regular;
-  background: $color-purple;
-  color: $color-white;
+  background: $color-navbar;
+  color: $color-text;
 
   @media (min-width: map-get($breakpoints, 'sm')) {
     padding: 0 25px;
@@ -259,17 +260,17 @@
   &__icon {
     width: 32px;
     height: 32px;
-    background: $color-white;
+    background: $color-text;
   }
 
   &__icon-text {
-    color: $color-white;
+    color: $color-text;
     margin-top: 4px;
     margin-bottom: 0;
   }
 
   &__icon--active {
-    background: $color-orange;
+    background: $color-main;
   }
 
   &__roads {
@@ -317,7 +318,7 @@
   }
 
   &__text {
-    color: $color-white;
+    color: $color-text;
     font-family: 'Montserrat', sans-serif;
     font-size: 2rem;
     font-weight: 600;

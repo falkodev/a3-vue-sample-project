@@ -34,7 +34,7 @@ defineProps({
   font-size: 8px;
 }
 .t-go-icon {
-  color: $color-purple;
+  color: $color-main;
   width: 20px;
 }
 </style>
