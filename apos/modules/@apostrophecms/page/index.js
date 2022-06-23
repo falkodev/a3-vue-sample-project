@@ -17,6 +17,12 @@ module.exports = {
         title: 'Home',
       },
       {
+        slug: '/itinerary',
+        parkedId: 'itinerary',
+        type: 'itinerary-page',
+        title: 'Itinerary',
+      },
+      {
         slug: '/register',
         parkedId: 'register',
         type: 'register-page',
@@ -68,7 +74,6 @@ module.exports = {
       },
     }
   },
-
   helpers(self) {
     return {
       stringify(label) {

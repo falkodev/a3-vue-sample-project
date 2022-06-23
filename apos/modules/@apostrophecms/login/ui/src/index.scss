@@ -11,7 +11,7 @@
   &__icon {
     background: url('/modules/content/icons/home.png') no-repeat;
     background-size: 80%;
-    fill: $color-white;
+    fill: $color-main;
     padding: 10px 10px 10px 10px;
     transform: scale(2);
   }
@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: $color-purple-rgb;
+  background: $color-main;
   position: relative;
 
   &__background {

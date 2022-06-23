@@ -12,6 +12,12 @@ module.exports = {
     quickCreate: false,
   },
 
+  async init(self) {
+    await self.apos.doc.db.createIndex({
+      geoLocation: '2dsphere',
+    })
+  },
+
   fields: {
     add: {
       eShop: {
