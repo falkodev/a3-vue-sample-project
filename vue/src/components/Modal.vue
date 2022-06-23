@@ -4,31 +4,20 @@
       <cross @click="$emit('closeModal')" />
       <h1 class="t-modal__title">{{ dataObj.title }}</h1>
 
-      <div
+      <!-- <div
         v-for="(subStep, subStepIndex) in dataObj._visits[0].steps[
           modalStepIndex
-        ].subSteps[subStepIndex]"
+        ].subSteps[modalSubIndex]"
         :key="subStepIndex"
-      >
-        {{ subStep._id }}
-        {{ subStep.title }}
-        {{ subStep._urls }}
-        <!-- <img
-          v-if="subStep"
-          :src="
-            '/uploads/attachments/' +
-            subStep.image._id +
-            '-' +
-            subStep.image.title +
-            '.' +
-            subStep.image.extension
-          "
-          alt=""
-          class="t-image__container"
-        /> -->
-      </div>
+      > -->
+      <img
+        :src="
+          dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].image
+            ?._urls.original
+        "
+        alt=""
+      />
 
-      <!-- <image  -->
       <p>{{ modalStepIndex }}</p>
     </div>
   </div>
@@ -36,17 +25,14 @@
 
 <script setup>
 import cross from '@/components/icons/IconCross.vue'
-import { onMounted } from '@vue/runtime-core'
+import { ref, onBeforeMount } from 'vue'
 
-onMounted(() => {
+let modalSubIndex = ref(1)
+
+onBeforeMount(() => {
   console.log(
     props.dataObj,
     'hahahahahahahahahahahahahahahahahahahahahahahahahahahahah',
-  )
-
-  console.log(
-    props.dataObj._visits[0].steps[props.modalStepIndex].subSteps[0].image,
-    'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
   )
 })
 const props = defineProps({
