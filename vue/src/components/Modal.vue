@@ -4,13 +4,8 @@
       <cross @click="$emit('closeModal')" />
       <h1 class="t-modal__title">{{ dataObj.title }}</h1>
 
-      <!-- <div
-        v-for="(subStep, subStepIndex) in dataObj._visits[0].steps[
-          modalStepIndex
-        ].subSteps[modalSubIndex]"
-        :key="subStepIndex"
-      > -->
       <img
+        class="imageContent"
         :src="
           dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].image
             ?._urls.original
@@ -18,6 +13,28 @@
         alt=""
       />
 
+      <p>
+        {{
+          dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
+            .contents[0].title
+        }}
+      </p>
+
+      <div
+        v-for="(item, index) in dataObj._visits[0].steps[modalStepIndex]
+          .subSteps[modalSubIndex].contents[0].content.items"
+        :key="index"
+      >
+        <p v-if="item.content">
+          {{ item.content }}
+        </p>
+
+        <div v-for="(image, imageIndex) in item._image" :key="imageIndex">
+          <img class="imageContent" :src="image.attachment._urls.original" />
+        </div>
+      </div>
+
+      <!-- <p>{{ modalContentIndex.title }}</p> -->
       <p>{{ modalStepIndex }}</p>
     </div>
   </div>
@@ -43,3 +60,9 @@ const props = defineProps({
 
 // const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 </script>
+
+<style lang="scss">
+.imageContent {
+  width: 25%;
+}
+</style>
