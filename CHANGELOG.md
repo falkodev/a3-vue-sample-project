@@ -1,11 +1,11 @@
 # Changelog
 
-## 1.1.0 - 2022-06-22
+## 1.1.1 - 2022-06-23
 
 ### Added
 
-- Graphic chart
-- Fix itinerary bugs
+- Add graphic chart
+- Fix itineraries bug
 
 ## 1.1.0 - 2022-06-22
 
