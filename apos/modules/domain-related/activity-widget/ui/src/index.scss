@@ -7,7 +7,7 @@
 
   &__title {
     align-self: flex-start;
-    color: $color-purple;
+    color: $color-main;
     margin-bottom: 10px;
   }
 
@@ -28,7 +28,7 @@
   &__icon {
     width: 25px;
     height: 25px;
-    background-color: $color-orange;
+    background-color: $color-main;
     mask-size: contain;
     mask-position: center;
     mask-repeat: no-repeat;

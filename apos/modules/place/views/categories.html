@@ -5,15 +5,15 @@
       {% set type = item.placeType or item.type %}
       <div class="t-category__heading">
         {% if type === 'wineStore' %}
-          <img src="{{ apos.asset.url('/modules/content/icons/wine-bottle.png') }}" alt="category heading">
+        <div class="t-category__heading-bottle"></div>
         {% elseif type === 'wineBar' %}
-          <img src="{{ apos.asset.url('/modules/content/icons/glass.png') }}" alt="category heading">
+          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/glass.svg') }}" alt="category heading">
         {% elseif type === 'poi' %}
-          <img src="{{ apos.asset.url('/modules/content/icons/binoculars.png') }}" alt="category heading">
+          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/binoculars.svg') }}" alt="category heading">
         {% elseif type === 'domain' %}
-          <img src="{{ apos.asset.url('/modules/content/icons/grap.png') }}" alt="category heading">
+          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/grap.svg') }}" alt="category heading">
         {% else %}
-          <img src="{{ apos.asset.url('/modules/content/icons/purple-map.png') }}" alt="category heading">
+          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/map-black.svg') }}" alt="category heading">
         {% endif %}
         <div class="t-category__title">{{ __t('apostrophe:homePage.' + type) }}</div>
       </div>

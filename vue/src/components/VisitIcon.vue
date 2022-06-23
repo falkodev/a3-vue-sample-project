@@ -31,7 +31,7 @@ const $t = window.apos.itinerary.labels
   font-size: 8px;
 }
 .t-visit-icon {
-  color: $color-purple;
+  color: $color-main;
   width: 20px;
 }
 </style>

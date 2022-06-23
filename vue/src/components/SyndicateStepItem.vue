@@ -93,7 +93,7 @@ function placeTypeIcon(type) {
     poi: 'binoculars',
     domain: 'grap',
   }
-  return `${assetBaseUrl}/modules/content/icons/${img[type]}.png`
+  return `${assetBaseUrl}/modules/content/icons/${img[type]}.svg`
 }
 
 function removeTags(str) {
@@ -119,7 +119,7 @@ function removeTags(str) {
   }
 
   &__title {
-    color: $color-purple;
+    color: $color-main;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 17px;
@@ -148,13 +148,13 @@ function removeTags(str) {
     align-items: center;
     width: 70%;
     border-radius: 15px;
-    border: 1px solid $color-purple;
+    border: 1px solid $color-main;
     background-color: white;
     position: relative;
 
     &--domain {
-      background-color: $color-purple-transparent;
-      color: $color-purple !important;
+      background-color: $color-main-transparent;
+      color: $color-main !important;
     }
   }
   &__indefinite {
@@ -170,12 +170,12 @@ function removeTags(str) {
     font-size: 12px;
     margin: auto;
     padding: 2px 6px;
-    background: $color-purple;
+    background: $color-main;
     border-radius: 15px;
   }
 
   .t-infos {
-    color: $color-purple;
+    color: $color-main;
 
     &__title {
       font-size: 14px;
@@ -202,7 +202,7 @@ function removeTags(str) {
     }
 
     &__place-type {
-      width: 15px;
+      width: 18px;
       margin-left: 5px;
     }
 

@@ -41,7 +41,7 @@
   &__title {
     color: $color-white;
     font-family: 'Montserrat', sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 600;
     text-align: center;
   }
@@ -66,11 +66,11 @@
   padding: 20px 20px 150px 20px;
   position: relative;
   border-radius: 25px;
-  background-color: $color-white;
+  background-color: $color-background;
   z-index: 0;
 
   &__title {
-    color: $color-purple;
+    color: $color-main;
     align-self: flex-start;
   }
 
@@ -79,6 +79,7 @@
     margin-top: 5px;
     margin-bottom: 10px;
     font-size: 12px;
+    color: $color-text;
   }
 
   &__e-shop {
@@ -88,6 +89,7 @@
 
   &__content {
     .t-content {
+      color: $color-text;
       &__schedule {
         display: flex;
         align-items: baseline;
@@ -111,7 +113,7 @@
       &__title {
         display: flex;
         align-self: flex-start;
-        color: $color-purple;
+        color: $color-main;
         margin-bottom: 30px;
       }
 
@@ -128,7 +130,7 @@
         transform: translateY(-2px);
 
         svg {
-          color: $color-orange;
+          color: $color-main;
           vertical-align: text-top;
           width: 20px;
           height: 20px;
@@ -175,10 +177,10 @@
 
       &__phone-link,
       &__web-link {
-        color: $color-black !important;
+        color: $color-text !important;
 
         :visited {
-          color: $color-black !important;
+          color: $color-text !important;
         }
       }
     }
@@ -186,7 +188,7 @@
 
   &-note {
     &__content {
-      color: $color-purple;
+      color: $color-main;
     }
   }
 }

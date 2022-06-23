@@ -158,6 +158,14 @@
   "globalDocLabel": "Configuration générale",
   "globalInformations": "Informations générales",
   "goToPage": "Go to page {{ page }}",
+  "graphicIdentity": {
+    "title": "Identité graphique",
+    "mainColor": "Couleur principale",
+    "secondaryColor": "Couleur secondaire",
+    "backgroundColor": "Couleur d'arrière plan",
+    "textColor": "Couleur du texte",
+    "navbarColor": "Couleur de la navbar"
+  },
   "guest": "Guest",
   "hideInNavigation": "Hide in Navigation",
   "home": "Accueil",
