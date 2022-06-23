@@ -1,5 +1,6 @@
 $color-white: #fff;
 $color-purple: #5357c1;
+$color-purple-transparent: #5357c145;
 $color-purple-rgb: rgba(83, 87, 193, 0.9);
 $color-purple-light: #8264f1;
 $color-purple-logo: #d4d7fb;
@@ -8,6 +9,7 @@ $color-pink: #fe5599;
 $color-green: #0c8;
 $color-green-10: #b9d686;
 $color-green-50: #4d7509;
+$color-green-transparent: #4d750945;
 $color-green-100: #00bf9a30;
 $color-gold: #f7b500;
 $color-orange: #ff8317;
@@ -18,6 +20,14 @@ $color-grey-50: #36414d;
 $color-grey-60: #323232;
 $color-red: #ec0808;
 $color-red-light: #f76161;
+
+$color-main: $color-green-50;
+$color-main-transparent: $color-green-transparent;
+$color-secondary: $color-white;
+$color-text: $color-black;
+$color-background: $color-white;
+$color-header: $color-white;
+$color-navbar: $color-white;
 
 $header-height: 102px;
 $admin-height: 112px;

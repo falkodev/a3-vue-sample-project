@@ -52,6 +52,7 @@ services:
       - ./vue/src:/app/src
       - ./vue/package.json:/app/package.json
       - ./vue/vite.config.js:/app/vite.config.js
+      - ./apos/modules/content/ui/src/scss/_settings.scss:/app/assets/settings.scss
     environment:
       NODE_ENV: ${NODE_ENV:-production}
       VITE_BASE_URL: /vue-app/

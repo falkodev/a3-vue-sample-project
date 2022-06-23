@@ -8,7 +8,8 @@ module.exports = {
     alias: 'itinerary',
     label: 'apostrophe:itinerary.label',
     pluralLabel: 'apostrophe:itinerary.pluralLabel',
-    localized: false,
+    slugPrefix: 'it-',
+    localized: true,
   },
   fields: {
     add: {
@@ -38,30 +39,50 @@ module.exports = {
       },
       startDate: {
         type: 'date',
-        required: true,
         label: 'apostrophe:startDate',
+        required: true,
+        if: {
+          itineraryType: 'event',
+        },
       },
       endDate: {
         type: 'date',
         label: 'apostrophe:endDate',
+        required: true,
+        if: {
+          itineraryType: 'event',
+        },
       },
       startTime: {
         type: 'time',
         label: 'apostrophe:startTime',
+        required: true,
+        if: {
+          itineraryType: 'event',
+        },
       },
       endTime: {
         type: 'time',
         label: 'apostrophe:endTime',
+        required: true,
+        if: {
+          itineraryType: 'event',
+        },
       },
       duration: {
         type: 'time',
-        required: true,
         label: 'apostrophe:duration',
+        required: true,
+        if: {
+          itineraryType: 'event',
+        },
       },
       mileage: {
         type: 'float',
-        required: true,
         label: 'apostrophe:mileage',
+        if: {
+          itineraryType: 'event',
+        },
       },
       description: {
         type: 'string',
@@ -71,6 +92,7 @@ module.exports = {
         type: 'float',
         required: true,
         label: 'apostrophe:price',
+        min: 0,
       },
       image: {
         type: 'attachment',
@@ -82,18 +104,97 @@ module.exports = {
         label: 'apostrophe:steps',
         fields: {
           add: {
+            stepType: {
+              type: 'select',
+              label: 'apostrophe:stepType',
+              choices: [
+                {
+                  label: 'apostrophe:place.label',
+                  value: 'place',
+                },
+                {
+                  label: 'apostrophe:domain',
+                  value: 'domain',
+                },
+              ],
+            },
             _place: {
-              //TODO: when an order is created, check its matching itinerary, get steps with "domain" place and add them to the order
               type: 'relationship',
               label: 'apostrophe:place.label',
+              if: { stepType: 'place' },
+            },
+            _domain: {
+              //TODO: when an order is created, check its matching itinerary, get steps with "domain" place and add them to the order
+              type: 'relationship',
+              label: 'apostrophe:domain',
+              if: { stepType: 'domain' },
+            },
+            duration: {
+              type: 'time',
+              label: 'apostrophe:duration',
+            },
+            content: {
+              type: 'array',
+              label: 'apostrophe:visitType.content.content',
+              max: 1,
+              fields: {
+                add: {
+                  title: {
+                    type: 'string',
+                    label: 'apostrophe:visitType.content.title',
+                  },
+                  presentation: {
+                    type: 'area',
+                    label: 'apostrophe:visitType.content.presentation',
+                    max: 1,
+                    options: {
+                      widgets: {
+                        '@apostrophecms/image': {},
+                        '@apostrophecms/video': {},
+                      },
+                    },
+                  },
+                  urlPodcast: {
+                    type: 'url',
+                    label: 'apostrophe:visitType.content.urlPodcast',
+                  },
+                  content: {
+                    type: 'area',
+                    label: 'apostrophe:visitType.content.singleContent',
+                    required: true,
+                    options: {
+                      widgets: {
+                        '@apostrophecms/rich-text': {},
+                        '@apostrophecms/image': {},
+                      },
+                    },
+                  },
+                  interview: {
+                    type: 'area',
+                    label: 'apostrophe:visitType.content.interview',
+                    options: {
+                      widgets: {
+                        '@apostrophecms/image': {},
+                        '@apostrophecms/video': {},
+                      },
+                    },
+                  },
+                },
+              },
             },
           },
+        },
+        if: {
+          $or: [{ itineraryType: 'theme' }, { itineraryType: 'syndicate' }],
         },
       },
       _visits: {
         type: 'relationship',
         withType: 'visit',
         max: 1,
+        if: {
+          itineraryType: 'event',
+        },
       },
     },
     group: {
@@ -115,7 +216,53 @@ module.exports = {
         label: 'apostrophe:steps',
         fields: ['steps'],
       },
+      visit: {
+        label: 'apostrophe:visitType.pluralLabel',
+        fields: ['_visits'],
+        if: {
+          itineraryType: 'event',
+        },
+      },
     },
+  },
+
+  extendMethods(self) {
+    /* istanbul ignore next */
+    return {
+      getBrowserData(_super, req) {
+        const data = _super(req)
+        data.labels = {
+          add: req.t('apostrophe:add'),
+          see: req.t('apostrophe:see'),
+          more: req.t('apostrophe:more'),
+          less: req.t('apostrophe:less'),
+          free: req.t('apostrophe:free'),
+          domain: req.t('apostrophe:domain'),
+          wineBar: req.t('apostrophe:wineBar'),
+          favorites: req.t('apostrophe:favorites'),
+          wineStore: req.t('apostrophe:wineStore'),
+          visitList: req.t('apostrophe:itinerary.visitList'),
+          autoGuidedVisit: req.t('apostrophe:autoGuidedVisit'),
+          globalInfos: req.t('apostrophe:itinerary.globalInfos'),
+          takeAppointment: req.t('apostrophe:itinerary.takeAppointment'),
+          validateItinerary: req.t('apostrophe:itinerary.validate'),
+          buy: req.t('apostrophe:itinerary.buy'),
+          indefiniteDuration: req.t('apostrophe:itinerary.indefiniteDuration'),
+          visit: req.t('apostrophe:itinerary.visit'),
+          goTo: req.t('apostrophe:itinerary.goTo'),
+          step: req.t('apostrophe:itinerary.step'),
+          seeNearDomains: req.t('apostrophe:itinerary.seeNearDomains'),
+          itinerary: req.t('apostrophe:itinerary.itinerary'),
+          events: req.t('apostrophe:placePage.event'),
+          reserve: req.t('apostrophe:reserve'),
+          start: req.t('apostrophe:itinerary.start'),
+        }
+
+        data.assetBaseUrl = self.apos.asset.getAssetBaseUrl()
+
+        return data
+      },
+    }
   },
 
   handlers(self) {
@@ -132,7 +279,7 @@ module.exports = {
 
             if (!placesIds.length) {
               throw new Error(
-                'No places defined. Please, run the task to fetch places through the defined API, most likey "npm run task --prefix apos -- place:fetch"',
+                'No places defined. Please, run the task to fetch places through the defined API, most likely "npm run task -- place:fetch"',
               )
             }
 

@@ -6,6 +6,7 @@ module.exports = {
     alias: 'activity',
     label: 'apostrophe:activity.label',
     pluralLabel: 'apostrophe:activity.pluralLabel',
+    slugPrefix: 'ac-',
     localized: true,
     quickCreate: false,
   },
