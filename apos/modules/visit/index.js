@@ -5,6 +5,7 @@ module.exports = {
     alias: 'visit',
     label: 'apostrophe:visitType.label',
     pluralLabel: 'apostrophe:visitType.pluralLabel',
+    slugPrefix: 'vi-',
     localized: true,
     quickCreate: false,
   },

@@ -8,6 +8,7 @@ module.exports = {
     alias: 'itinerary',
     label: 'apostrophe:itinerary.label',
     pluralLabel: 'apostrophe:itinerary.pluralLabel',
+    slugPrefix: 'it-',
     localized: true,
   },
   fields: {
