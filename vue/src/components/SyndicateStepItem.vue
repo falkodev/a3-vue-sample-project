@@ -93,7 +93,7 @@ function placeTypeIcon(type) {
     poi: 'binoculars',
     domain: 'grap',
   }
-  return `${assetBaseUrl}/modules/content/icons/${img[type]}.png`
+  return `${assetBaseUrl}/modules/content/icons/${img[type]}.svg`
 }
 
 function removeTags(str) {
@@ -202,7 +202,7 @@ function removeTags(str) {
     }
 
     &__place-type {
-      width: 15px;
+      width: 18px;
       margin-left: 5px;
     }
 
