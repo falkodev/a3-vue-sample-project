@@ -573,7 +573,7 @@ Current UAT for Larzac:
 - Check the location is `eu-west-3`, pick "Linux" and "Amazon Linux 2" as OS
   ![](documentation/os_choice.png)
 - Scroll down, enable the automatic snapshot, choose an instance plan (for reference, for dev and uat, it is advised to choose the a $10 instance with 1 vCPU, for production it is better to choose the $20 instance with 2 vCPUs that can handle more connections), add a meaningful name, add tags that can help to sort instances later
-  ![](documentation/name_choice.p ng)
+  ![](documentation/name_choice.png)
 - The new instance will be created in less than one minute
   ![](documentation/instance_created.png)
 - Go the details page of the instance, and click on "Networking". Here, add 2 TCP rules to open ports:
