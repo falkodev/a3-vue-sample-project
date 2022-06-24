@@ -35,9 +35,20 @@
     {% area data.piece, 'conveniences' %}
     {% area data.piece, 'wineTypes' %}
 
+    {% if data.piece.spokenLanguages %}
+      <h3 class="t-domain__spoken-languages">{{ __t('apostrophe:spokenLanguages') }}</h3>
+      <div class="t-domain__languages">
+        {% for language in data.piece.spokenLanguages %}
+          <div class="t-domain__language">
+            {{ __t('apostrophe:language.' + language) }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
     {% if data.piece.eShop %}
       <a href="{{ data.piece.eShop }}" target="_blank"
-      class="t-place__e-shop t-button t-button--plain t-button--color-white">
+      class="t-place__e-shop t-button t-button--plain t-button--white">
         {{ __t('apostrophe:placePage.toEshop') }}
       </a>
     {% endif %}
@@ -50,8 +61,22 @@
     </div>
 
     <div class="t-domain__actions">
-      <a href="#" class="t-button t-button--plain">{{ __t('apostrophe:placePage.appointment') }}</a>
-      <a href="#" class="t-button t-button--plain">{{ __t('apostrophe:placePage.startVisit') }}</a>
+      <a href="#" class="t-button t-button--plain t-button--white">{{ __t('apostrophe:placePage.appointment') }}</a>
+      <a href="#" class="t-button t-button--plain t-button--white">{{ __t('apostrophe:placePage.startVisit') }}</a>
     </div>
+
+    {% if data.piece._events.length > 0 %}
+      <div class="t-domain__events">
+        <div class="t-domain__events-banner">{{ __t('apostrophe:event.pluralLabel') }}</div>
+
+        {% for result in data.piece._events %}
+
+          {% include "event:event.html" %}
+          
+        {% endfor %}
+
+      </div>
+    {% endif %}
+
   </div>
 {% endblock %}
