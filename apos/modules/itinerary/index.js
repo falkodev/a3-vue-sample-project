@@ -146,12 +146,12 @@ module.exports = {
                   presentation: {
                     type: 'area',
                     label: 'apostrophe:visitType.content.presentation',
-                    max: 1,
                     options: {
                       widgets: {
                         '@apostrophecms/image': {},
                         '@apostrophecms/video': {},
                       },
+                      max: 1,
                     },
                   },
                   urlPodcast: {
@@ -256,6 +256,7 @@ module.exports = {
           events: req.t('apostrophe:placePage.event'),
           reserve: req.t('apostrophe:reserve'),
           start: req.t('apostrophe:itinerary.start'),
+          exit: req.t('apostrophe:quit'),
         }
 
         data.assetBaseUrl = self.apos.asset.getAssetBaseUrl()
