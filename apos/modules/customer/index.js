@@ -44,6 +44,7 @@ module.exports = {
         fileGroup: 'images',
       },
       newsletter: {
+        label: 'apostrophe:registerPage.newsletter',
         type: 'boolean',
       },
     },

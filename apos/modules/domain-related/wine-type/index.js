@@ -10,6 +10,20 @@ module.exports = {
     quickCreate: false,
   },
 
+  fields: {
+    add: {
+      color: {
+        type: 'color',
+        label: 'apostrophe:wineType.color',
+      },
+    },
+    group: {
+      basics: {
+        fields: ['color'],
+      },
+    },
+  },
+
   methods(self) {
     return {
       async setDefaultWineTypes() {
