@@ -4,6 +4,7 @@
       :dataObj="dataObject"
       :modalOpen="modalOpen"
       :modalStepIndex="modalStepIndex"
+      :modalSubIndex="modalSubIndex"
       @close-modal="toggleModal"
     />
     <div class="t-visit__bloc">
@@ -159,6 +160,7 @@ let geojsonMultiLine = reactive({ val: [] })
 
 let modalOpen = ref(false)
 let modalStepIndex = ref(0)
+let modalSubIndex = ref(1)
 
 let zoom = ref(17)
 let userCoords = reactive({
