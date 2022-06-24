@@ -51,8 +51,8 @@
     </div>
     <div class="t-step__center">
       <div
-        @click="seeProximityRef = !seeProximityRef"
         class="t-step__proximity"
+        @click="seeProximityRef = !seeProximityRef"
       >
         {{ $t.seeNearDomains }}
       </div>
@@ -73,8 +73,8 @@
 import { ref } from 'vue'
 import VisitItem from './ThemeStepItem.vue'
 import VisitIcon from './VisitIcon.vue'
-// import Content from './Content.vue'
 import GoIcon from './GoIcon.vue'
+
 defineProps({
   id: Number,
   step: Object,
@@ -86,6 +86,7 @@ const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 const isPay = true
 const seeProximityRef = ref(false)
+
 function placeTypeIcon(type) {
   const img = {
     wineStore: 'wine-bottle',
@@ -102,7 +103,7 @@ function removeTags(str) {
 </script>
 
 <style lang="scss" scoped>
-@import '/assets/settings.scss';
+@import '../assets/settings.scss';
 
 .t-step {
   position: relative;
@@ -157,6 +158,7 @@ function removeTags(str) {
       color: $color-main !important;
     }
   }
+
   &__indefinite {
     font-size: 13px;
     color: $color-grey-50;
