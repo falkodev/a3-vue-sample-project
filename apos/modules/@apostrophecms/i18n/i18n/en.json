@@ -648,6 +648,11 @@
     "labelName": "name of wineType",
     "valueName": "value of wineType"
   },
+  "userIcons": {
+    "visit": "Visit",
+    "goto": "Go",
+    "favorite": "Favorites"
+  },
   "domainVisit": "Domain visit",
   "tasting": "Tasting",
   "directSale": "Direct sale",

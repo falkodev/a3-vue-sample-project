@@ -1,0 +1,26 @@
+@import '~/modules/content/ui/src/scss/_settings.scss';
+
+.t-icons-wrapper {
+  
+    display:flex;
+}
+
+.t-icon {
+
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+
+  &__text {
+    color: $color-white;
+    font-size: 0.8rem;
+    margin-top: 0px; 
+  }
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+}
