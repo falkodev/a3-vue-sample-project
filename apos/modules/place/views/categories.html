@@ -28,7 +28,7 @@
 
     <div class="t-category__items">
       {% for item in result %}
-      <a href="{{ item._url }}" class="t-category__item t-home">
+        <a href="{{ item._url }}" class="t-category__item t-home">
         {% set image = apos.attachment.url(item.image) if item.image else
         apos.asset.url('/modules/content/images/default-domain.jpg') %}
         <div class="t-home__img {{ 't-home__img--large' if type === 'itinerary' }}"
