@@ -1,0 +1,17 @@
+{% if result._domains.length > 0 %}
+  <div class="t-events__field">{{ result._domains[0].title }}</div>
+{% endif %}
+
+{% if result.city %}
+  <div class="t-events__field">{{ result.city }}</div>
+{% endif %}
+
+{% if result.startDate and result.endDate %}
+  <div class="t-events__field">{{ __t('apostrophe:event.from') }} {{ result.startDate | date("DD/MM/YYYY")}} {{ __t('apostrophe:event.to') }} {{ result.endDate | date("DD/MM/YYYY")}}</div>
+{% elif result.startDate %}
+  <div class="t-events__field">{{ __t('apostrophe:event.the') }} {{ result.startDate | date("DD/MM/YYYY")}} </div>
+{% endif %}
+
+{% if result.visitPrice %}
+  <div class="t-events__field">{{ result.visitPrice }} €</div>
+{% endif %}

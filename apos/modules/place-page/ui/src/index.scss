@@ -2,6 +2,7 @@
 
 .t-spacer-place {
   height: 40vh;
+
   @media (min-width: map-get($breakpoints, 'md')) {
     min-height: 60vh;
   }
@@ -11,6 +12,7 @@
   .t-spacer-place {
     height: 42vh;
   }
+
   .t-background-place__container {
     margin-top: 18vh;
   }
@@ -36,6 +38,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &--event {
+      margin-top: 5vh !important;
+    }
   }
 
   &__title {
@@ -44,6 +50,11 @@
     font-size: 2rem;
     font-weight: 600;
     text-align: center;
+    line-height: 3rem;
+
+    &--event {
+      font-size: 1.5rem !important;
+    }
   }
 
   &__place {
@@ -94,6 +105,7 @@
         display: flex;
         align-items: baseline;
         gap: 5px;
+        margin-bottom: -5px;
 
         .t-schedule {
           &__icon {
@@ -134,6 +146,12 @@
           vertical-align: text-top;
           width: 20px;
           height: 20px;
+        }
+
+        &--up {
+          svg {
+            transform: translateY(-3px);
+          }
         }
       }
 

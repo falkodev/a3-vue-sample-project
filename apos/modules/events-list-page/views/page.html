@@ -1,0 +1,9 @@
+{% extends "@apostrophecms/page:layout.html" %}
+{% block main %}
+
+  <div class="t-events-list">
+    <p class="t-events-list__title">{{ __t('apostrophe:event.pluralLabel').toUpperCase() }}</p>
+      {% component 'event:list' %}
+  </div>
+
+{% endblock %}

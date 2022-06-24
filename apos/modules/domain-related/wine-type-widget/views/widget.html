@@ -3,7 +3,7 @@
   <ul class="t-activities__list">
     {% for type in data.widget._wineTypes %}
       <li class="t-place__content t-content__item">
-        <span class="t-content__icon">{% include "content:grape.svg" %}</span>
+        <span class="t-content__icon t-content__icon--up" style="fill: {{type.color}}">{% include "content:bottle.svg" %}</span>
         <span class="t-activities__text">{{ type.title }}</span>
       </li>
     {% endfor %}

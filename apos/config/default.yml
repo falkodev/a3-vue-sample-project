@@ -38,6 +38,8 @@ activities:
     image: organic.svg
   - title: apostrophe:bedAndBreakfast
     image: bed.svg
+  - title: apostrophe:childrensActivities
+    image: children.svg
 
 conveniences:
   - title: apostrophe:picnicArea
@@ -48,6 +50,8 @@ conveniences:
     image: pets.svg
   - title: apostrophe:restorations
     image: restoration.svg
+  - title: apostrophe:disabledAccess
+    image: wheelchair.svg
 
 wineLabels:
   - title: apostrophe:organicWines
@@ -63,7 +67,12 @@ wineLabels:
 
 wineTypes:
   - title: apostrophe:red
+    color: red
   - title: apostrophe:rose
+    color: pink
   - title: apostrophe:white
+    color: yellow
   - title: apostrophe:soft
+    color: green
   - title: apostrophe:effervesent
+    color: blue
