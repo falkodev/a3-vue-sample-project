@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <style lang="scss">
-@import '/assets/settings.scss';
+@import '../assets/settings.scss';
 
 .t-validate {
   z-index: 99;
