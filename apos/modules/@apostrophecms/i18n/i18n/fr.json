@@ -646,6 +646,11 @@
     "valueName": "Value du label de vin (nom en anglais)",
     "tagColor": "Couleur assignée à ce label"
   },
+  "userIcons": {
+    "visit": "Visite",
+    "goto": "Y aller",
+    "favorite": "Favoris"
+  },
   "convenience": {
     "label": "Commodité",
     "pluralLabel": "Commodités",

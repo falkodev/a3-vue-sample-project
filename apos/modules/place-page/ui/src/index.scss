@@ -8,7 +8,7 @@
   }
 }
 
-.apos-admin-bar-wrapper ~ [data-apos-refreshable] {
+.apos-admin-bar-wrapper~[data-apos-refreshable] {
   .t-spacer-place {
     height: 42vh;
   }
@@ -23,7 +23,7 @@
   background-attachment: fixed;
   background-position: 100% 15%;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: contain;
   position: fixed;
   right: 0;
   left: 0;
@@ -34,7 +34,7 @@
 
   &__container {
     margin: auto;
-    margin-top: 10vh;
+    margin-top: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,6 +69,12 @@
       fill: $color-white;
     }
   }
+
+  &__icons {
+    align-self: flex-end;
+    margin-top: 40px;
+  }
+
 }
 
 .t-place {
@@ -188,7 +194,7 @@
         align-items: flex-start;
         min-height: 30px;
 
-        .t-content__web-link + .apos-area p {
+        .t-content__web-link+.apos-area p {
           margin: 0;
         }
       }
