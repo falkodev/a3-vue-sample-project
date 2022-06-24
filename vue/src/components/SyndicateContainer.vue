@@ -48,7 +48,7 @@ const props = defineProps({
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 const { piece } = toRefs(props)
 const itinerary = piece.value
-const zoom = 10
+let zoom = 10
 let center = reactive({})
 let centerLoaded = reactive(false)
 const icon = renderIcon({
@@ -103,7 +103,7 @@ updateCenter()
 </script>
 
 <style lang="scss">
-@import '/assets/settings.scss';
+@import '../assets/settings.scss';
 
 .t-syndicate {
   margin-top: 36px;
@@ -129,6 +129,7 @@ updateCenter()
     }
   }
 }
+
 .t-spacer-syndicate {
   height: 20vh;
   @media (min-width: map-get($breakpoints, 'md')) {

@@ -72,8 +72,8 @@
       </div>
       <div class="t-general-infos__container">
         <div
-          class="t-info-half"
           v-if="data._visits[0]"
+          class="t-info-half"
           style="width: 32%; height: 100px"
         >
           <div class="t-info-half__logo-container">
@@ -121,8 +121,8 @@
         </div>
 
         <div
-          class="t-info-half"
           v-if="data._visits[0]"
+          class="t-info-half"
           style="width: 32%; height: 100px"
         >
           <div class="t-info-half__logo-container">
@@ -192,7 +192,7 @@
         </div>
       </div>
     </div>
-    <ValidateButton :buttonText="buttonText" :buttonLink="buttonLink" />
+    <ValidateButton :buttonLink="buttonLink" :buttonText="buttonText" />
     <SyndicateContainer
       v-if="data.itineraryType === 'syndicate'"
       :piece="data"
@@ -248,6 +248,7 @@ function updateItinerary(itinerary) {
   refLastStep.value = data.steps[data.steps.length - 1]
   refItineraryDuration.value = data.steps
 }
+
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
   () => refStartStep?.value?.place?.address?.items[0]?.content,
@@ -309,6 +310,7 @@ function formatDate(infos) {
   endDate = dayjs(endDate).format('DD/MM/YYYY')
   return 'Du ' + startDate + '\n au ' + endDate
 }
+
 function dataDescription() {
   return descriptionRef.value
     ? data.description
@@ -334,7 +336,7 @@ function dataMileAge(mileage) {
 
 <style lang="scss">
 @import './assets/base.css';
-@import '/assets/settings.scss';
+@import './assets/settings.scss';
 
 .bold {
   font-weight: bold;
@@ -492,6 +494,7 @@ function dataMileAge(mileage) {
     }
   }
 }
+
 .t-spacer-circulade {
   height: 20vh;
   @media (min-width: map-get($breakpoints, 'md')) {
