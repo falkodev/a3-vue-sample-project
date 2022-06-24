@@ -64,6 +64,7 @@
 import HeartIcon from './HeartIcon.vue'
 import BinIcon from './BinIcon.vue'
 import AddIcon from './AddIcon.vue'
+
 const props = defineProps({
   id: Number,
   step: Object,
@@ -89,7 +90,7 @@ function placeTypeIcon(type) {
 </script>
 
 <style lang="scss">
-@import '/assets/settings.scss';
+@import '../assets/settings.scss';
 
 .t-visit {
   margin: 16px 0;
@@ -135,9 +136,11 @@ function placeTypeIcon(type) {
     display: flex;
     flex-direction: column;
   }
+
   &__bin {
     display: none;
   }
+
   .t-infos {
     color: $color-main;
 

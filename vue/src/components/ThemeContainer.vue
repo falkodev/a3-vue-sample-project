@@ -64,7 +64,7 @@ const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 const { piece } = toRefs(props)
 const itinerary = piece.value
 const removedSteps = reactive([])
-const zoom = 10
+let zoom = 10
 let center = reactive({})
 let centerLoaded = reactive(false)
 const icon = renderIcon({
@@ -140,7 +140,7 @@ updateCenter()
 </script>
 
 <style lang="scss">
-@import '/assets/settings.scss';
+@import '../assets/settings.scss';
 
 .t-steps {
   margin-top: 36px;

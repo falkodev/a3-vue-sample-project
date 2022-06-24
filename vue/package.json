@@ -16,6 +16,7 @@
   "author": "Vinovibes Team",
   "dependencies": {
     "@vitejs/plugin-vue": "^2.2.4",
+    "dayjs": "^1.11.3",
     "pinia": "^2.0.11",
     "sass": "^1.50.1",
     "vite": "^2.9.9",
