@@ -23,6 +23,7 @@ module.exports = {
   },
   'component/locale-switcher': {},
   'component/wine-labels': {},
+  'component/user-icons': {},
   'component/snackbar': {
     webpack: {
       extensions: {
