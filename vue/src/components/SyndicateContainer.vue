@@ -28,6 +28,7 @@
         :key="step"
         :status="true"
         :step="step"
+        :title="itineraryTitle"
       />
     </div>
     <div class="t-spacer-syndicate"></div>
@@ -35,7 +36,7 @@
 </template>
 
 <script setup>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, ref } from 'vue'
 import { LMap, LMarker, LTileLayer } from '@vue-leaflet/vue-leaflet'
 import VisitItem from './SyndicateStepItem.vue'
 import { icon as renderIcon } from 'leaflet'
@@ -44,7 +45,7 @@ import 'leaflet/dist/leaflet.css'
 const props = defineProps({
   piece: Object,
 })
-
+const itineraryTitle = ref(props.piece.title)
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 const { piece } = toRefs(props)
 const itinerary = piece.value
@@ -121,12 +122,10 @@ updateCenter()
 
 .t-syndicate {
   &__step {
-    &-title {
-      color: $color-main;
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: 17px;
-    }
+    color: $color-main;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 17px;
   }
 }
 

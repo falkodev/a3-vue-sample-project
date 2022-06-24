@@ -313,6 +313,7 @@
   "provideButtonLabel": "Provide a Button Label",
   "previousPage": "Previous Page",
   "public": "Public",
+  "quit": "Exit",
   "modernBuild": "Public-facing modern JavaScript and Sass",
   "ie11Build": "Public-facing modern JavaScript and Sass (IE11 build)",
   "publish": "Publish",
