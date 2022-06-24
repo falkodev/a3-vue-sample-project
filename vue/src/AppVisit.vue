@@ -16,7 +16,7 @@
               @click="centerMapOnUser"
             />
           </div>
-          <div class="t-visit__geoloc-icon">
+          <div class="t-visit__geoloc-icon" id="geoloc">
             <IconGeoloc
               class="t-visit__geoloc-icon-svg"
               @click="centerMapOnGeoPoint"
@@ -52,7 +52,7 @@
             <l-polyline :lat-lngs="geojsonMultiLine.val" color="green">
             </l-polyline>
 
-            <div v-for="(point,pointI) in geojsonPoints.val" :key="pointI">
+            <div v-for="(point, pointI) in geojsonPoints.val" :key="pointI">
               <l-marker :lat-lng="point.coords">
                 <l-popup>
                   <h3>{{ point.properties.name }}</h3>
@@ -162,8 +162,8 @@ let modalStepIndex = ref(0)
 
 let zoom = ref(17)
 let userCoords = reactive({
-  latitude: 0,
-  longitude: 0,
+  latitude: '',
+  longitude: '',
 })
 
 let pointIndex = ref(0)
@@ -272,7 +272,7 @@ onBeforeMount(async () => {
       .coordinates[0],
   ]
 
-  geojsonMultiLine.val = geojsonFile.features
+  geojsonMultiLine.val = await geojsonFile.features
     .filter((x) => x.geometry.type === 'MultiLineString')[0]
     .geometry.coordinates[0].reduce(
       (prev, curr) => [...prev, [curr[1], curr[0]]],
@@ -291,9 +291,22 @@ onBeforeMount(async () => {
       ],
       [],
     )
+
+  if (geojsonPoint.val.length !== 0) {
+    mapCenter.coords = [
+      geojsonPoints.val[pointIndex.value].coords[0],
+      geojsonPoints.val[pointIndex.value].coords[1],
+    ]
+  }
+  if (dataObject.value.latitude && dataObject.value.longitude) {
+    mapCenter.coords = [dataObject.value.latitude, dataObject.value.longitude]
+  }
 })
+
 onMounted(() => {
-  centerMapOnGeoPoint()
+  document.querySelector('#geoloc').click()
+
+  document.getElementById('geoloc').click()
 })
 onUpdated(() => {
   watchUserPos()
