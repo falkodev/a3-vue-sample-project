@@ -167,6 +167,8 @@
     "navbarColor": "Couleur de la navbar"
   },
   "guest": "Guest",
+  "helpLongitude": "Attention, la valeur doit être comprise entre -180 et 180",
+  "helpLatitude": "Attention, la valeur doit être comprise entre -90 et 90",
   "hideInNavigation": "Hide in Navigation",
   "home": "Accueil",
   "homePage": {
