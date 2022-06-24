@@ -42,7 +42,7 @@
         </div>
         <div v-if="isPay" class="t-infos__buttons">
           <GoIcon :lat="step.place.latitude" :lon="step.place.longitude" />
-          <VisitIcon v-if="step.content.length" />
+          <VisitIcon :title="title" :data="step" v-if="step.content.length" />
         </div>
       </div>
       <div class="t-step__indefinite">
@@ -79,6 +79,7 @@ defineProps({
   id: Number,
   step: Object,
   status: Boolean,
+  title: String,
 })
 defineEmits(['addStep', 'removeStep'])
 
