@@ -1,25 +1,25 @@
 <template>
   <div class="t-modal" :class="{ 't-modal--open': props.modalOpen }">
     <div class="t-modal__container">
-      <cross @click="$emit('closeModal')" />
       <h1 class="t-modal__title">{{ dataObj.title }}</h1>
 
       <img
-        class="imageContent"
+        class="t-imageContent"
         :src="
-          dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].image
-            ?._urls.original
+          dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
+            .contents[0].presentation.items[0]._image[0].attachment._urls.max
         "
         alt=""
       />
 
-      <p>
-        {{
-          dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
-            .contents[0].title
-        }}
-      </p>
-
+      <div class="t-titleContent">
+        <p>
+          {{
+            dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
+              .contents[0].title
+          }}
+        </p>
+      </div>
       <div
         v-for="(item, index) in dataObj._visits[0].steps[modalStepIndex]
           .subSteps[modalSubIndex].contents[0].content.items"
@@ -34,14 +34,12 @@
         </div>
       </div>
 
-      <!-- <p>{{ modalContentIndex.title }}</p> -->
-      <p>{{ modalStepIndex }}</p>
+      <button>suivant</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import cross from '@/components/icons/IconCross.vue'
 import { ref, onBeforeMount } from 'vue'
 
 let modalSubIndex = ref(1)
@@ -62,7 +60,18 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-.imageContent {
-  width: 25%;
+.t-imageContent {
+  width: 100%;
+  height: 240px;
+}
+
+.t-titleContent {
+  font-size: 20px;
+  margin-left: 33px;
+  margin-top: 72px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: left;
+  width: 100%;
 }
 </style>
