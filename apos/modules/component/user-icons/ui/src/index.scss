@@ -1,17 +1,15 @@
 @import '~/modules/content/ui/src/scss/_settings.scss';
 
 .t-icons-wrapper {
-
   display: flex;
 }
 
 .t-icon {
-
   &__color {
     color: $color-main;
   }
 
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 10px 0 10px;
