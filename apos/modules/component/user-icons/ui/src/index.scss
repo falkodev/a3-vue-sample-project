@@ -1,11 +1,15 @@
 @import '~/modules/content/ui/src/scss/_settings.scss';
 
 .t-icons-wrapper {
-  
-    display:flex;
+
+  display: flex;
 }
 
 .t-icon {
+
+  &__color {
+    color: $color-main;
+  }
 
   display:flex;
   flex-direction: column;
@@ -16,7 +20,7 @@
   &__text {
     color: $color-white;
     font-size: 0.8rem;
-    margin-top: 0px; 
+    margin-top: 0px;
   }
 
   svg {
