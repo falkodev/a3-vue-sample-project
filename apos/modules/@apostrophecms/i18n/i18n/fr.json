@@ -1,4 +1,5 @@
 {
+  "addAocLogo": "Ajouter les logos des AOC",
   "addContent": "Ajouter widget",
   "addItem": "Add Item",
   "addWidgetType": "Ajouter widget {{ label }}",
@@ -481,7 +482,7 @@
     "description": "Description de l'événement",
     "bookingConditions": "Conditions de réservation",
     "image": "Photo de couverture",
-    "date":"Date de l'événement",
+    "date": "Date de l'événement",
     "dates": "Dates :",
     "cancellationPolicy": "Politique d'annulation",
     "cancellationPolicyMessage": "Permettre le remboursement total si annulation du client avant 24h.",

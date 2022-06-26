@@ -64,6 +64,12 @@ module.exports = {
           socialNetworks: 'linkedin',
         },
       },
+      aocLogos: {
+        label: 'apostrophe:addAocLogo',
+        type: 'attachment',
+        required: 'true',
+        fileGroup: 'images',
+      },
     },
     group: {
       basics: {
