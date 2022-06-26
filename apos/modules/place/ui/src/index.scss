@@ -6,8 +6,7 @@
     align-items: center;
 
     &-bottle {
-      mask: url('/modules/content/icons/wine-bottle.svg') center/contain
-        no-repeat;
+      mask: url('/modules/content/icons/wine-bottle.svg') center/contain no-repeat;
       color: $color-main;
     }
   }
