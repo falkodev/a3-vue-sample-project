@@ -24,6 +24,76 @@ module.exports = {
         type: 'url',
         label: 'apostrophe:eShop',
       },
+      spokenLanguages: {
+        type: 'checkboxes',
+        label: 'apostrophe:spokenLanguages',
+        choices: [
+          {
+            label: 'apostrophe:language.french',
+            value: 'french',
+          },
+          {
+            label: 'apostrophe:language.english',
+            value: 'english',
+          },
+          {
+            label: 'apostrophe:language.deutch',
+            value: 'deutch',
+          },
+          {
+            label: 'apostrophe:language.italian',
+            value: 'italian',
+          },
+          {
+            label: 'apostrophe:language.spanish',
+            value: 'spanish',
+          },
+          {
+            label: 'apostrophe:language.portuguese',
+            value: 'portuguese',
+          },
+          {
+            label: 'apostrophe:language.dutch',
+            value: 'dutch',
+          },
+          {
+            label: 'apostrophe:language.chinese',
+            value: 'chinese',
+          },
+          {
+            label: 'apostrophe:language.japanese',
+            value: 'japanese',
+          },
+          {
+            label: 'apostrophe:language.swedish',
+            value: 'swedish',
+          },
+          {
+            label: 'apostrophe:language.finnish',
+            value: 'finnish',
+          },
+          {
+            label: 'apostrophe:language.flemish',
+            value: 'flemish',
+          },
+          {
+            label: 'apostrophe:language.russian',
+            value: 'russian',
+          },
+          {
+            label: 'apostrophe:language.greek',
+            value: 'greek',
+          },
+          {
+            label: 'apostrophe:language.polish',
+            value: 'polish',
+          },
+          {
+            label: 'apostrophe:language.danish',
+            value: 'danish',
+          },
+        ],
+      },
 
       reception: {
         type: 'boolean',
@@ -89,6 +159,11 @@ module.exports = {
         },
       },
 
+      _events: {
+        type: 'relationship',
+        withType: 'event',
+      },
+
       activities: {
         type: 'area',
         label: 'apostrophe:activity.pluralLabel',
@@ -136,8 +211,6 @@ module.exports = {
         },
       },
     },
-    remove: ['placeType'],
-
     group: {
       basics: {
         fields: ['eShop'],
@@ -156,13 +229,19 @@ module.exports = {
           'visitPrice',
           'activities',
           'conveniences',
+          'spokenLanguages',
         ],
       },
       visits: {
         label: 'apostrophe:visits',
         fields: ['_visits'],
       },
+      events: {
+        label: 'apostrophe:event.pluralLabel',
+        fields: ['_events'],
+      },
     },
+    remove: ['placeType'],
   },
 
   columns: {
