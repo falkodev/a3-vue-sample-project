@@ -1,5 +1,4 @@
 export default () => {
-
   let element, style, favoriteIcon
 
   if (document.querySelector('.t-icon__color')) {
@@ -12,15 +11,12 @@ export default () => {
   }
 
   if (element && favoriteIcon) {
-
     const svg = document.querySelector('[data-icon-favorite] .t-icon__image')
 
     favoriteIcon.addEventListener('click', () => {
-
       const fill = svg.style.fill
 
       svg.style.fill = fill === 'white' ? style.color : 'white'
-
     })
   }
 }

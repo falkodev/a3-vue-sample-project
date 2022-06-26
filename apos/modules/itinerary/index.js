@@ -92,7 +92,7 @@ module.exports = {
         type: 'float',
         required: true,
         label: 'apostrophe:price',
-        min: 0,
+        min: -0.001,
       },
       image: {
         type: 'attachment',
