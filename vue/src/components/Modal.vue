@@ -7,14 +7,9 @@
         <b>{{ dataObj.title }}</b>
       </h1>
 
-      <!-- <video width="400" height="350" controls>
-        {{
-          dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
-            .contents[0].presentation.items[0].video.url
-        }}
-      </video> -->
-
       <iframe
+        width="700px"
+        height="240"
         class="t-modal__video"
         frameborder="0"
         allow="autoplay; fullscreen"
@@ -58,10 +53,29 @@
           ></div>
         </template>
       </template>
-      <button @click="modalSubIndex++" class="t-modal__button">suivant</button>
+
+      <iframe
+        width="700px"
+        height="240"
+        class="t-modal__video"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        :src="
+          dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
+            .contents[0].interview.items[0].video.url
+        "
+      ></iframe>
+
+      <!-- <div
+        class="t-modal__Content"
+        :style="`background-image: url(${dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].contents[0].interview.items[0]._image[0].attachment._urls.max})`"
+      ></div> -->
+
+      <!-- <button @click="modalSubIndex++" class="t-modal__button">suivant</button>
       <button @click="modalSubIndex--" class="t-modal__button">
         précedent
-      </button>
+      </button> -->
     </div>
   </div>
 </template>
@@ -75,28 +89,18 @@ onBeforeMount(() => {
     props.dataObj,
     'hahahahahahahahahahahahahahahahahahahahahahahahahahahahah',
   )
-
-  // console.log(
-  //   props.dataObj._visits[0].steps[props.modalStepIndex].subSteps[
-  //     props.modalSubIndex
-  //   ].contents[0].presentation.items[0].video.url,
-  //   'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
-  // )
 })
 const props = defineProps({
   dataObj: Object,
   modalOpen: Boolean,
   modalStepIndex: Number,
-  // modalSubIndex: Number,
+  modalSubIndex: Number,
 })
 
 // const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 </script>
 
 <style lang="scss">
-.t-modal__video {
-  width: 100%;
-}
 .t-modal__title {
   font-size: 25px;
   font-weight: bold;
