@@ -1,0 +1,77 @@
+{% extends "@apostrophecms/page:layout.html" %}
+
+{% block main %}
+<div class="t-spacer-event"></div>
+
+<div class="t-background-place" {% if data.piece.image -%}
+  style="background-image: url('{{ apos.attachment.url(data.piece.image) }}');" {% endif -%}>
+  <div class="t-background-place__container t-background-place__container--event">
+    <a class="t-footer__icon-wrapper t-footer__icon-wrapper--event" href="/events-list">
+      <div class="t-footer__events t-footer__icon"></div>
+    </a>
+    <div class="t-background-place__title">{{ data.piece.title }}</div>
+    <div class="t-background-place__title t-background-place__title--event">{{ data.piece.eventType }}</div>
+  </div>
+</div>
+
+<div class="t-place t-domain">
+  <div class="t-event__banner">{{ __t('apostrophe:event.label') }}</div>
+  <h2 class="t-domain__title t-event__title">{{ data.piece.title }}</h2>
+  <div class="t-place__description">{% area data.piece, 'description' %}</div>
+  
+  {% if data.piece.startDate and data.piece.endDate %}
+    <div class="t-event__field"><span class="t-event__icon">{% include "content:calendar.svg" %}</span><span class="t-event--bold">{{ __t('apostrophe:event.dates') }}</span> {{ __t('apostrophe:event.from') }} {{ data.piece.startDate | date("DD/MM/YYYY") }} {{ __t('apostrophe:event.to') }} {{ data.piece.endDate | date("DD/MM/YYYY") }}</div>
+  {% elif data.piece.startDate %}
+    <div class="t-event__field"><span class="t-event__icon">{% include "content:calendar.svg" %}</span><span class="t-event--bold">{{ __t('apostrophe:event.dates') }}</span> {{ __t('apostrophe:event.the') }} {{ data.piece.startDate | date("DD/MM/YYYY") }} </div>
+  {% endif %}
+
+  {% if data.piece.startTime and data.piece.endTime %}
+    <div class="t-event__field"><span class="t-event__icon">{% include "content:clock.svg" %}</span><span class="t-event--bold">{{ __t('apostrophe:placePage.openingDaysAndHours') }}</span> {{ __t('apostrophe:event.fromItem') }} {{ data.piece.startTime | truncate(5, true, "") }} {{ __t('apostrophe:event.toItem') }} {{ data.piece.endTime | truncate(5, true, "") }}</div>
+  {% elif data.piece.startDate %}
+    <div class="t-event__field"><span class="t-event__icon">{% include "content:clock.svg" %}</span><span class="t-event--bold">{{ __t('apostrophe:placePage.openingDaysAndHours') }}</span> {{ __t('apostrophe:event.the') }} {{ data.piece.startDate | date("DD/MM/YYYY") }} </div>
+  {% endif %}
+
+
+  {% if data.piece.address.items[0].content %}
+    <div class="t-event__field">
+      <span class="t-event__icon">{% include "content:address.svg" %}</span><span class="t-event--bold">{{ __t('apostrophe:address') }}</span>
+      <div class="t-event--area">{% area data.piece, 'address' %}</div> 
+    </div>
+  {% endif -%}
+
+  {% if data.piece.city %}
+    <div class="t-event__field t-event__field--city"><span class="t-event--bold">{{ __t('apostrophe:city') }}</span> : {{ data.piece.city }}</div>
+  {% endif %}
+  
+  {% if data.piece.visitPrice %}
+    <div class="t-event__field"><span class="t-event__icon">{% include "content:euro.svg" %}</span><span class="t-event--bold">{{ __t('apostrophe:visitPrice') }}</span> {{ data.piece.visitPrice }} €</div>
+  {% endif %}
+  
+  {% if data.piece.exactNumberOfPeople %}
+    <div class="t-event__field">
+      <span class="t-event__icon">{% include "content:users.svg" %}</span>
+      <span class="t-event--bold">{{ __t('apostrophe:event.numberOfParticipants') }} </span>
+      {{ data.piece.exactNumberOfPeople }}
+    </div>
+  {% elif data.piece.numberMinOfPeople %}
+    <div class="t-event__field">
+      <span class="t-event__icon">{% include "content:users.svg" %}</span>
+      <span class="t-event--bold">{{ __t('apostrophe:event.fromItem') }} </span>
+      {{ data.piece.numberMinOfPeople }} {{ __t('apostrophe:event.toItem') }} {{ data.piece.numberMaxOfPeople }}
+    </div>
+  {% endif %}
+
+  {% area data.piece, 'conveniences' %}
+
+  {% if data.piece.eShop %}
+  <a href="{{ data.piece.eShop }}" target="_blank"
+    class="t-place__e-shop t-button t-button--plain t-button--color-white">
+    {{ __t('apostrophe:placePage.toEshop') }}
+  </a>
+  {% endif %}
+ 
+</div>
+<a href="#" class="t-event__booking">
+  {{ __t('apostrophe:booking') }}
+</a>
+{% endblock %}

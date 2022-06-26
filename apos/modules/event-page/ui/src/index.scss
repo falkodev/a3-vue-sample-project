@@ -1,0 +1,80 @@
+@import '/modules/content/ui/src/scss/_settings';
+
+.t-spacer-event {
+  height: 32vh;
+
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 32vh;
+  }
+}
+
+.t-event {
+  position: relative;
+
+  &__title {
+    margin-top: 40px;
+  }
+
+  &__banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: $color-main;
+    color: white;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  &__field {
+    display: flex;
+    align-items: center;
+    color: $color-black;
+    font-size: 1rem;
+    text-align: left;
+    margin: 5px 0 5px 0;
+
+    &--city {
+      margin-left: 30px;
+      margin-bottom: 25px;
+      margin-top: 10px;
+    }
+  }
+
+  &--bold {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &--area {
+    transform: translateY(14px);
+  }
+
+  &__icon {
+    margin-right: 10px;
+
+    svg {
+      color: $color-main;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__booking {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    height: 50px;
+    width: 100%;
+    background-color: $color-main;
+    color: $color-white;
+    position: fixed;
+    bottom: $footer-height;
+  }
+}

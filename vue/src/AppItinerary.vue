@@ -22,11 +22,11 @@
 
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
-      {{ dataDescription() }}..
+      {{ dataDescription() }}...
       <span class="bold" @click="descriptionRef = !descriptionRef"
         >{{ $t.see }}
-        <span v-if="descriptionRef" class="bold">{{ $t.less }}..</span>
-        <span v-else class="bold">{{ $t.more }}..</span>
+        <span v-if="descriptionRef" class="bold">{{ $t.less }}</span>
+        <span v-else class="bold">{{ $t.more }}</span>
       </span>
     </div>
 
@@ -336,7 +336,7 @@ function dataMileAge(mileage) {
 
 <style lang="scss">
 @import './assets/base.css';
-@import './assets/settings.scss';
+@import '../assets/settings.scss';
 
 .bold {
   font-weight: bold;
