@@ -1,5 +1,5 @@
 <template>
-  <div class="t-col">
+  <div class="t-col" @click="contentRef = true">
     <svg
       class="t-visit-icon"
       fill="currentColor"
@@ -14,10 +14,26 @@
     </svg>
     {{ $t.visit }}
   </div>
+  <Content
+    :title="title"
+    :piece="data"
+    v-if="contentRef"
+    @leaveModal="leaveModal"
+  />
 </template>
 
 <script setup>
+import Content from './ContentModal.vue'
+import { ref } from 'vue'
+const contentRef = ref(false)
 const $t = window.apos.itinerary.labels
+defineProps({
+  data: Object,
+  title: String,
+})
+function leaveModal() {
+  contentRef.value = false
+}
 </script>
 
 <style lang="scss" scoped>
