@@ -21,8 +21,13 @@
 
 .t-partnerships {
   margin-bottom: 120px;
+  margin-top: 120px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 30px;
+
+  &__logo {
+    height: 30px;
+    width: 30px;
+  }
 }
