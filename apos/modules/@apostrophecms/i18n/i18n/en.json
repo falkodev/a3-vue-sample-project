@@ -1,4 +1,5 @@
 {
+  "addAocLogo": "Add AOC logos",
   "addContent": "Add Content",
   "addItem": "Add Item",
   "addWidgetType": "Add {{ label }}",
@@ -682,7 +683,7 @@
     "en": "English"
   },
   "languages": "Languages",
-   "language": {
+  "language": {
     "french": "🇫🇷 French",
     "english": "🇬🇧 English",
     "deutch": "🇩🇪 Deutch",
