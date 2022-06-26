@@ -1,0 +1,45 @@
+@import '/modules/content/ui/src/scss/_settings';
+
+.t-spacer-events {
+  height: 15vh;
+
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 15vh;
+  }
+}
+
+.t-events {
+  margin-bottom: 20px !important;
+  width: auto;
+  height: auto;
+  border-radius: 0px !important;
+  line-height: 2rem;
+
+  &__img {
+    width: 350px !important;
+    height: 245px !important;
+  }
+
+  &__title {
+    color: $color-white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__subtitle {
+    color: $color-main;
+    font-size: 1.8rem;
+    font-weight: bold;
+    align-self: baseline;
+    margin: 20px 0 10px 0;
+  }
+
+  &__field {
+    color: $color-white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 0 5px 0;
+  }
+}
