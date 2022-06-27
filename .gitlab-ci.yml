@@ -40,6 +40,10 @@ test:
     - npm run install:app
   script:
     - npm run test:apos
+  only:
+    refs:
+      - larzac-uat
+      - larzac-prod
 
 manual_test:
   stage: test
