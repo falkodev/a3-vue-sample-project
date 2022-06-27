@@ -2,8 +2,8 @@
   <div class="t-modal" :class="{ 't-modal--open': modalOpen }">
     <div class="t-modal__container">
       <!-- <cross @click="$emit('closeModal')" /> -->
-      <h1 class="t-modal__title">{{ dataObj.title }}</h1>
-      <cross @click="$emit('close-modal', modalSubIndex)" />
+      <!-- <h1 class="t-modal__title">{{ dataObj.title }}</h1> -->
+      <cross @click="$emit('close-modal', 0)" />
 
       <h1 class="t-modal__title">
         <b>{{ dataObj.title }}</b>
@@ -11,7 +11,7 @@
 
       <template
         v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
-          .subSteps[modalSubIndex].contents[0].presentation.items[0]"
+          .subSteps[modalSubIndex].contents[0].presentation.items"
         :key="itemIndex"
       >
         <div class="t-modal__video" v-if="item.video">
@@ -19,25 +19,28 @@
             frameborder="0"
             allow="autoplay; fullscreen"
             allowfullscreen
-            :src="video.url"
+            :src="item.video.url"
           ></iframe>
         </div>
 
-        <div
-          v-if="item._image"
-          class="t-modal__content"
-          :style="`background-image: url(${_image[0].attachment._urls.max})`"
-        ></div>
+        <template v-if="item._image">
+          <div
+            class="t-modal__content"
+            v-for="(image, imageIndex) in item._image"
+            :key="imageIndex"
+            :style="`background-image: url(${image.attachment._urls.max})`"
+          ></div>
+        </template>
       </template>
 
-      <iframe
-        margin-top="40px"
-        src="https://anchor.fm/mas-de-la-sranne/embed/episodes/Anglais-Transition-3-Mas-de-la-Sranne-e1kd130"
-        height="102px"
-        width="400px"
-        frameborder="0"
-        scrolling="no"
-      ></iframe>
+      <div class="t-modal__podcast">
+        <iframe
+          margin-top="40px"
+          src="https://anchor.fm/mas-de-la-sranne/embed/episodes/Anglais-Transition-3-Mas-de-la-Sranne-e1kd130"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+      </div>
 
       <div class="t-modal__contentTitle">
         <b>
@@ -86,20 +89,20 @@
         :style="`background-image: url(${dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].contents[0].interview.items[0]._image[0].attachment._urls.max})`"
       ></div> -->
 
-      <!-- <div class="t-modal__button">
-        <div @click="modalSubIndex++" class="t-modal__button--content">
+      <div class="t-modal__button">
+        <div @click="$emit('dec-sub-index')" class="t-modal__button--content">
+          Précédent
+        </div>
+        <div @click="$emit('inc-sub-index')" class="t-modal__button--content">
           Suivant
         </div>
-        <div @click="modalSubIndex--" class="t-modal__button--content">
-          Précedent
-        </div>
-      </div> -->
-      <button @click="$emit('dec-sub-index')" class="t-modal__button">
+      </div>
+      <!-- <button @click="$emit('dec-sub-index')" class="t-modal__button">
         suivant
       </button>
       <button @click="$emit('inc-sub-index')" class="t-modal__button">
         précedent
-      </button>
+      </button> -->
     </div>
   </div>
 </template>
@@ -121,6 +124,7 @@ const props = defineProps({
 
 <style lang="scss">
 @import '/assets/settings.scss';
+
 .t-modal__title {
   font-size: 25px;
   font-weight: bold;
@@ -136,15 +140,16 @@ const props = defineProps({
 
 .t-modal__contentTitle {
   font-size: 20px;
-  margin-left: 33px;
-  margin-top: 72px;
+  padding-left: 33px;
+  margin-top: 40px;
   margin-bottom: 30px;
   display: flex;
   justify-content: left;
   width: 100%;
   font-weight: bold;
   &--resume {
-    margin-left: 33px;
+    padding-left: 33px;
+    padding-right: 33px;
     display: flex;
     justify-content: left;
     width: 100%;
@@ -168,6 +173,7 @@ const props = defineProps({
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-bottom: calc($footer-height + 30px);
 
   &--content {
     background-color: $color-orange;
@@ -195,5 +201,22 @@ const props = defineProps({
   height: 100%;
   top: 0;
   left: 0;
+}
+
+.t-modal__podcast {
+  position: relative;
+  overflow: hidden;
+  padding-top: 150px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.t-modal__podcast iframe {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 </style>
