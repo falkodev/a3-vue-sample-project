@@ -7,18 +7,17 @@
         <b>{{ dataObj.title }}</b>
       </h1>
 
-      <iframe
-        width="700px"
-        height="240"
-        class="t-modal__video"
-        frameborder="0"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-        :src="
-          dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
-            .contents[0].presentation.items[0].video.url
-        "
-      ></iframe>
+      <div class="t-modal__video">
+        <iframe
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+          :src="
+            dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
+              .contents[0].presentation.items[0].video.url
+          "
+        ></iframe>
+      </div>
 
       <!-- <div
         class="t-modal__Content"
@@ -56,8 +55,6 @@
 
       <div class="t-modal__video">
         <iframe
-          width="100%"
-          height="240"
           frameborder="0"
           allow="autoplay; fullscreen"
           allowfullscreen
@@ -129,12 +126,11 @@ const props = defineProps({
   justify-content: left;
   width: 100%;
   font-weight: bold;
-
   &--resume {
+    margin-left: 33px;
     display: flex;
     justify-content: left;
     width: 100%;
-    margin-left: 33px;
     color: $color-grey-70;
   }
 }
@@ -169,7 +165,18 @@ const props = defineProps({
   }
 }
 .t-modal__video {
+  position: relative;
+  overflow: hidden;
+  padding-top: 100%;
   width: 100%;
   margin-top: 40px;
+}
+
+.t-modal__video iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 </style>
