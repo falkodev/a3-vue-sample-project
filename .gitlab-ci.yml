@@ -33,6 +33,19 @@ release:
 
 test:
   stage: test
+  needs:
+    - release
+  before_script:
+    - npm install --location=global jest
+    - npm run install:app
+  script:
+    - npm run test:apos
+
+manual_test:
+  stage: test
+  rules:
+    - when: manual
+      allow_failure: false
   before_script:
     - npm install --location=global jest
     - npm run install:app
