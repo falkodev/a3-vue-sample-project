@@ -157,6 +157,7 @@
       overflow: hidden;
       background-color: $color-purple-logo;
       color: $color-purple;
+      cursor: pointer;
 
       &--rectangle {
         min-width: 280px;
@@ -179,11 +180,9 @@
         content: '';
         height: 100%;
         width: 100%;
-        background: linear-gradient(
-          45deg,
-          $color-purple-alpha-20,
-          $color-purple-alpha-30
-        );
+        background: linear-gradient(45deg,
+            $color-purple-alpha-20,
+            $color-purple-alpha-30 );
       }
     }
 
