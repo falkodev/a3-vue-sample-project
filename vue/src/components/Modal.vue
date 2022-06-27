@@ -112,18 +112,16 @@
 </template>
 
 <script setup>
-import { onBeforeMount } from 'vue'
 import cross from '@/components/icons/IconCross.vue'
 
-onBeforeMount(() => {
-  // console.log('props.dataObj ===>', props.dataObj)
+const props = defineProps({
+  dataObj: Object,
+  modalOpen: Boolean,
+  modalStepIndex: Number,
+  modalSubIndex: Number,
 })
-// const props = defineProps({
-//   dataObj: Object,
-//   modalOpen: Boolean,
-//   modalStepIndex: Number,
-//   modalSubIndex: Number,
-// })
+
+console.log(props)
 </script>
 
 <style lang="scss">
