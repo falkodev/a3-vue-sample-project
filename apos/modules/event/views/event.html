@@ -1,0 +1,10 @@
+<a href="{{ result._url }}" class="t-events">
+  {% set image = apos.attachment.url(result.image) if result.image else
+  apos.asset.url('/modules/content/images/default-event.jpg') %}
+  <div class="t-home__img t-events__img" style="background-image: url({{ image }})">
+    <div class="t-events__title">{{ result.title }}</div>
+
+    {% include "event-content.html" %}
+
+  </div>
+</a>

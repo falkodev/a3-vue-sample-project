@@ -11,7 +11,7 @@
   &__icon {
     background: url('/modules/content/icons/home.png') no-repeat;
     background-size: 80%;
-    fill: $color-white;
+    fill: $color-main;
     padding: 10px 10px 10px 10px;
     transform: scale(2);
   }
@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: $color-purple-rgb;
+  background: $color-main;
   position: relative;
 
   &__background {
@@ -46,14 +46,11 @@
   }
 
   &__bottom-sentence {
-    position: fixed;
     width: 250px;
     color: $color-white;
     font-size: 11px;
-    bottom: 10px;
-    left: 50%;
     text-align: center;
-    transform: translateX(-50%);
+    margin-bottom: 30px;
   }
 }
 
@@ -63,7 +60,7 @@
   font-size: 15px;
   background: none;
   margin-top: 40px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 
   &__sentence {
     margin: auto;

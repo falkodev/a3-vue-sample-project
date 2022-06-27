@@ -64,6 +64,7 @@
 import HeartIcon from './HeartIcon.vue'
 import BinIcon from './BinIcon.vue'
 import AddIcon from './AddIcon.vue'
+
 const props = defineProps({
   id: Number,
   step: Object,
@@ -84,12 +85,12 @@ function placeTypeIcon(type) {
     poi: 'binoculars',
     domain: 'grap',
   }
-  return `${assetBaseUrl}/modules/content/icons/${img[type]}.png`
+  return `${assetBaseUrl}/modules/content/icons/${img[type]}.svg`
 }
 </script>
 
 <style lang="scss">
-@import '/assets/settings.scss';
+@import '../assets/settings.scss';
 
 .t-visit {
   margin: 16px 0;
@@ -121,13 +122,13 @@ function placeTypeIcon(type) {
     flex-direction: column;
     width: 60%;
     border-radius: 15px;
-    border: 1px solid $color-purple;
+    border: 1px solid $color-main;
     background-color: white;
     position: relative;
 
     &--domain {
-      background-color: $color-purple-transparent;
-      color: $color-purple !important;
+      background-color: $color-main-transparent;
+      color: $color-main !important;
     }
   }
 
@@ -135,11 +136,13 @@ function placeTypeIcon(type) {
     display: flex;
     flex-direction: column;
   }
+
   &__bin {
     display: none;
   }
+
   .t-infos {
-    color: $color-purple;
+    color: $color-main;
 
     &__title {
       font-size: 12px;
@@ -171,7 +174,7 @@ function placeTypeIcon(type) {
       font-size: 10px;
       padding: 2px 4px;
       display: flex;
-      border: 1px solid $color-purple;
+      border: 1px solid $color-main;
       border-radius: 20px;
     }
 

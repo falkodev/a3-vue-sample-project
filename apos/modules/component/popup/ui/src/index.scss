@@ -3,9 +3,9 @@
 .t-popup {
   border-style: solid;
   border-color: rgba(255, 0, 0, 0);
-  background-color: $color-grey-20;
+  background-color: $color-secondary;
   border-radius: 16px;
-  box-shadow: 10px 5px 5px $color-grey-30;
+  box-shadow: 10px 5px 5px $color-secondary;
   z-index: 100;
   transition: 0.5s opacity ease, transform 0.5s ease;
   transform: translateY(24px);
@@ -24,7 +24,7 @@
   top: 30vw;
 
   &__message {
-    color: $color-purple;
+    color: $color-main;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
@@ -37,7 +37,7 @@
   }
 
   &__button {
-    background-color: $color-orange;
+    background-color: $color-main;
     position: relative;
     border: none;
     border-radius: 7px;

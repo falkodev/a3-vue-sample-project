@@ -28,6 +28,8 @@
 6. [Tests](#6)<br>
 7. [Fixtures and defaults](#7)<br>
 8. [CI/CD and deployments](#8)<br>
+   8.1 [Deploy a release](#8-1)<br>
+   8.2 [Create a new instance](#8-2)<br>
 
 <a id="1"></a>
 
@@ -255,11 +257,11 @@ Simplified view of `layout.html`:
 ```html
 {% block beforeMain %} {# the header is defined here, no need to override in most cases #} {% endblock %}
 {% block main %}
-  {#
-    Usually, your page templates in the @apostrophecms/pages module will override
-    this block. It is safe to assume this is where your page-specific content
-    should go.
-  #}
+{#
+Usually, your page templates in the @apostrophecms/pages module will override
+this block. It is safe to assume this is where your page-specific content
+should go.
+#}
 {% endblock %}
 {% block afterMain %} {# the footer is defined here, no need to override in most cases #} {% endblock %}
 ```
@@ -272,17 +274,17 @@ Then any page will extend `layout.html` and override the `main` block. Example w
 {% set fileBackground = apos.attachment.url(data.global.backgroundImage) %}
 
 {% block main %}
-  <div class="t-background" style="background-image: url('{{ fileBackground }}');"></div>
+<div class="t-background" style="background-image: url('{{ fileBackground }}');"></div>
 
-  <div class="t-places-categories">
-    {% component 'place:categories' %}
-  </div>
+<div class="t-places-categories">
+  {% component 'place:categories' %}
+</div>
 
-  <div class="t-partnerships">
-    <div class="t-partnership">Logos AOC</div>
-    <div class="t-partnership">Logos AOC</div>
-    <div class="t-partnership">Logos AOC</div>
-  </div>
+<div class="t-partnerships">
+  <div class="t-partnership">Logos AOC</div>
+  <div class="t-partnership">Logos AOC</div>
+  <div class="t-partnership">Logos AOC</div>
+</div>
 {% endblock %}
 ```
 
@@ -342,18 +344,18 @@ It is possible to import the pop-up with `@/popup` thanks an addition to the def
 ```js
 // in apos/modules/component/modules.js
 'component/popup': {
-    webpack: {
-      extensions: {
-        popupAlias: {
-          resolve: {
-            alias: {
-              '@/popup': path.join(__dirname, './popup/public'),
-            },
+  webpack: {
+    extensions: {
+      popupAlias: {
+        resolve: {
+          alias: {
+            '@/popup': path.join(__dirname, './popup/public'),
           },
         },
       },
     },
   },
+},
 ```
 
 <a id="5-1-6"></a>
@@ -367,18 +369,18 @@ Languages are called "locales" in Apostrophe and they are defined in `apos/modul
 
 ```js
 options: {
-    defaultLocale: 'fr',
+  defaultLocale: 'fr',
     locales: {
-      fr: {
-        label: 'Français',
+    fr: {
+      label: 'Français',
         prefix: '/fr',
-      },
-      en: {
-        label: 'English',
+    },
+    en: {
+      label: 'English',
         prefix: '/en',
-      },
     },
   },
+},
 ```
 
 To enable this draft/live workflow, a module has to be "localized". Example with the "place" module:
@@ -386,9 +388,9 @@ To enable this draft/live workflow, a module has to be "localized". Example with
 ```js
 options: {
   alias: 'place',
-  label: 'apostrophe:place.label',
-  pluralLabel: 'apostrophe:place.pluralLabel',
-  localized: true,
+    label: 'apostrophe:place.label',
+    pluralLabel: 'apostrophe:place.pluralLabel',
+    localized: true,
 },
 ```
 
@@ -552,6 +554,12 @@ is `docker-compose exec vino-terr-apos npm run defaults` or locally `cd apos && 
 
 UAT and production environments are deployed to AWS Lightsail servers, executing docker-compose.
 
+Find existing instances in https://lightsail.aws.amazon.com/ls/webapp/home/instances after logging in with Pascal's AWS account.
+
+<a id="8-1"></a>
+
+### 8.1 Deploy a release [&#x2B06;](#contents)
+
 Here are the steps to deploy a release:
 - upgrade package.json version
 - create a new entry in CHANGELOG.md with this new version, the current date and a changes sum up
@@ -562,6 +570,48 @@ This will trigger a pipeline that will :
 - run tests
 - deploy the version to the AWS server following the configuration in the "deployment" folder in this repository
 
-Current UAT for Larzac:
-- IP address: http://15.188.246.213:8080
-- Configuration and SSH connection: https://lightsail.aws.amazon.com/ls/webapp/eu-west-3/instances/vino-terr-larzac-uat/connect?# (log in with Pascal's AWS account)
+<a id="8-2"></a>
+
+### 8.2 Create a new instance [&#x2B06;](#contents)
+
+- Go to https://lightsail.aws.amazon.com/ls/webapp/home/instances, log in and create a new instance
+  ![](documentation/instance_creation.png)
+- Check the location is `eu-west-3`, pick "Linux" and "Amazon Linux 2" as OS
+  ![](documentation/os_choice.png)
+- Scroll down, enable the automatic snapshot, choose an instance plan (for reference, for dev and uat, it is advised to choose the a $10 instance with 1 vCPU, for production it is better to choose the $20 instance with 2 vCPUs that can handle more connections), add a meaningful name, add tags that can help to sort instances later
+  ![](documentation/name_choice.png)
+- The new instance will be created in less than one minute
+  ![](documentation/instance_created.png)
+- Go the details page of the instance, and click on "Networking". Here, add 2 TCP rules to open ports:
+  - 8080 for apos
+  - 27018 to be able to connect to mongo
+    ![](documentation/networking.png)
+- A ssh connection is available from the terminal icon in the instance
+  ![](documentation/ssh_connection.png)
+  Connect and run `sudo yum update && sudo yum install docker && sudo pip3 inst
+  all docker-compose && sudo usermod -a -G docker ec2-user && sudo systemctl enable docker.service && sudo systemctl start docker.s
+  ervice && sudo mkdir -p /opt/stagecoach/apps && sudo chown ec2-user /opt/stagecoach/apps`
+- Reboot, wait a minute and connect again. Then run `sudo systemctl status docker.service` to be sure Docker is started.
+- In the code repository, create a new settings file in the `deployment` folder. For instance, `settings.larzac-prod`. The first part of the name has to be `settings` and the ultimate part will design an environment where to deploy. This file will contain the user to connect with, the IP address and ssh options.
+```bash
+USER=ec2-user # user created by AWS
+SERVER=15.236.144.185 # IP address provided by AWS
+SSH_OPTIONS="-i deployment/vino-terr-ssh-key.pem -oStrictHostKeyChecking=no" # SSH file automatically created by gitlab-ci.yml
+```
+As the name in the example is `settings.larzac-prod`, when gitlab-ci.yml launches the command `sc-deploy larzac-prod`, it will use this file.
+It means it is also possible to deploy from a machine (in case Gitlab is down) by installing `stagecoach` (https://github.com/apostrophecms/stagecoach), downloading the SSH file from AWS by clicking on "Download default key" on the instance page and running `sc-deploy name-of-the-env`
+![](documentation/settings.png)
+- Add an environment variable in https://gitlab.com/vino-vibes/vinoways-territoire/-/settings/ci_cd. For example, `MONGO_INITDB_ROOT_PASSWORD_LARZAC_PROD` in our case. Generate a random password and choose to mask it. It will be used to create the root database user and you will need it to connect to the DB later.
+  ![](documentation/list_env_var.png)
+  ![](documentation/add_env_var.png)
+- Add a script in gitlab-ci.yml for this new environment by using another `deploy` script. Be sure to put the same variable you created in the previous step (e.g: `MONGO_INITDB_ROOT_PASSWORD_LARZAC_PROD`), the right environment variable for `sc` deployment (e.g: `stagecoach/bin/sc-deploy larzac-prod`) on the right branch (e.g: `larzac-prod`).
+  <br>Create the branch. Add it as a protected branch in https://gitlab.com/vino-vibes/vinoways-territoire/-/settings/repository.
+  ![](documentation/branch.png)
+- Create a release commit: on the branch configured in gitlab-ci.yml, edit CHANGELOG.md to add a new version (patch for bug resolution, minor for new changes, major for breaking changes), add the same version to package.json, add a commit message starting with "Release v.xxx" and git push. It will start a pipeline in Gitlab and deploy the site to AWS.
+
+You can connect to the machine with SSH and go to `/opt/stagecoach/apps/[project-name]/current` ("project_name" is "vino-terr-larzac" in this example) to check everything is ok. If not, you can run `make prod` on the server.
+The app is available on the IP address followed by `:8080`:
+
+![](documentation/app.png)
+
+The database will be empty. On a UAT instance, it is possible to run `make defaults && make fixtures`. On a production instance, it is possible to run `make defaults` but it is better to create specific users with strong passwords.
