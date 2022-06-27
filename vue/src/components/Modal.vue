@@ -32,7 +32,22 @@
         </template>
       </template>
 
-      <!-- s -->
+      <template
+        v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
+          .subSteps[modalSubIndex].contents"
+      >
+        <template v-if="item.urlPodcast">
+          <div class="t-modal__podcast"
+          :key="itemIndex">
+            <iframe
+              margin-top="40px"
+              :src="item.urlPodcast"
+              frameborder="0"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </template>
+      </template>
 
       <div class="t-modal__contentTitle">
         <b>
@@ -64,22 +79,30 @@
         </template>
       </template>
 
-      <div class="t-modal__video">
-        <iframe
-          frameborder="0"
-          allow="autoplay; fullscreen"
-          allowfullscreen
-          :src="
-            dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
-              .contents[0].interview.items[0].video.url
-          "
-        ></iframe>
-      </div>
+      <template
+        v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
+          .subSteps[modalSubIndex].contents[0].interview.items"
+      >
+        <div class="t-modal__video" v-if="item.video"
+        :key="itemIndex">
+          <iframe
 
-      <!-- <div
-        class="t-modal__Content"
-        :style="`background-image: url(${dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].contents[0].interview.items[0]._image[0].attachment._urls.max})`"
-      ></div> -->
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            allowfullscreen
+            :src="item.video.url"
+          ></iframe>
+        </div>
+
+        <template v-if="item._image">
+          <div
+            v-for="(image, imageIndex) in item._image"
+            :key="imageIndex"
+            class="t-modal__image"
+            :style="`background-image: url(${image.attachment._urls.max})`"
+          ></div>
+        </template>
+      </template>
 
       <div class="t-modal__button">
         <div @click="$emit('dec-sub-index')" class="t-modal__button--content">
@@ -89,12 +112,6 @@
           Suivant
         </div>
       </div>
-      <!-- <button @click="$emit('dec-sub-index')" class="t-modal__button">
-        suivant
-      </button>
-      <button @click="$emit('inc-sub-index')" class="t-modal__button">
-        précedent
-      </button> -->
     </div>
   </div>
 </template>
@@ -104,14 +121,14 @@ import { onBeforeMount } from 'vue'
 import cross from '@/components/icons/IconCross.vue'
 
 onBeforeMount(() => {
-  console.log('props.dataObj ===>', props.dataObj)
+  // console.log('props.dataObj ===>', props.dataObj)
 })
-const props = defineProps({
-  dataObj: Object,
-  modalOpen: Boolean,
-  modalStepIndex: Number,
-  modalSubIndex: Number,
-})
+// const props = defineProps({
+//   dataObj: Object,
+//   modalOpen: Boolean,
+//   modalStepIndex: Number,
+//   modalSubIndex: Number,
+// })
 </script>
 
 <style lang="scss">
