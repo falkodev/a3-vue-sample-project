@@ -1,5 +1,5 @@
 <template>
-  <div class="t-modal" :class="{ 't-modal--open': props.modalOpen }">
+  <div class="t-modal" :class="{ 't-modal--open': modalOpen }">
     <div class="t-modal__container">
       <cross @click="$emit('close-modal', modalSubIndex)" />
 
