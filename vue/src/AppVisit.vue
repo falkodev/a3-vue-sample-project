@@ -97,13 +97,14 @@
                   }"
                   v-for="(subStep, subStepIndex) in step.subSteps"
                   :key="'step' + subStepIndex"
+                  @click="toggleModal(stepIndex, subStepIndex)"
                 >
                   <div
                     v-if="subStep.image"
                     class="t-media__image"
                     :style="`background-image: url( ${
                       attachmentList.filter(
-                        (attachment) => attachment.name === subStep.image.name,
+                        (attachment) => attachment.name === subStep.image.name
                       )[0]._urls.full
                     })`"
                   >
@@ -177,13 +178,14 @@ let userLat = computed(() => {
 let userLong = computed(() => {
   return userCoords.longitude
 })
-const toggleModal = (index) => {
+const toggleModal = (stepIndex, subIndex) => {
   if (modalOpen.value == true) {
     modalOpen.value = false
   } else {
     modalOpen.value = true
   }
-  modalStepIndex.value = index
+  modalStepIndex.value = stepIndex
+  modalSubIndex.value = subIndex
   return
 }
 const incModalSubIndex = () => {

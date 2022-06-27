@@ -1,8 +1,6 @@
 <template>
   <div class="t-modal" :class="{ 't-modal--open': modalOpen }">
     <div class="t-modal__container">
-      <!-- <cross @click="$emit('closeModal')" /> -->
-      <!-- <h1 class="t-modal__title">{{ dataObj.title }}</h1> -->
       <cross @click="$emit('close-modal', 0)" />
 
       <h1 class="t-modal__title">
@@ -37,8 +35,7 @@
           .subSteps[modalSubIndex].contents"
       >
         <template v-if="item.urlPodcast">
-          <div class="t-modal__podcast"
-          :key="itemIndex">
+          <div class="t-modal__podcast" :key="itemIndex">
             <iframe
               margin-top="40px"
               :src="item.urlPodcast"
@@ -83,10 +80,8 @@
         v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
           .subSteps[modalSubIndex].contents[0].interview.items"
       >
-        <div class="t-modal__video" v-if="item.video"
-        :key="itemIndex">
+        <div class="t-modal__video" v-if="item.video" :key="itemIndex">
           <iframe
-
             frameborder="0"
             allow="autoplay; fullscreen"
             allowfullscreen
