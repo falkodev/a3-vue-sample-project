@@ -26,12 +26,12 @@
       ></div> -->
 
       <div class="t-modal__contentTitle">
-        <p>
+        <b>
           {{
             dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
               .contents[0].title
           }}
-        </p>
+        </b>
       </div>
       <template
         v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
@@ -54,28 +54,33 @@
         </template>
       </template>
 
-      <iframe
-        width="700px"
-        height="240"
-        class="t-modal__video"
-        frameborder="0"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-        :src="
-          dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
-            .contents[0].interview.items[0].video.url
-        "
-      ></iframe>
+      <div class="t-modal__video">
+        <iframe
+          width="100%"
+          height="240"
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+          :src="
+            dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
+              .contents[0].interview.items[0].video.url
+          "
+        ></iframe>
+      </div>
 
       <!-- <div
         class="t-modal__Content"
         :style="`background-image: url(${dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].contents[0].interview.items[0]._image[0].attachment._urls.max})`"
       ></div> -->
 
-      <!-- <button @click="modalSubIndex++" class="t-modal__button">suivant</button>
-      <button @click="modalSubIndex--" class="t-modal__button">
-        précedent
-      </button> -->
+      <!-- <div class="t-modal__button">
+        <div @click="modalSubIndex++" class="t-modal__button--content">
+          Suivant
+        </div>
+        <div @click="modalSubIndex--" class="t-modal__button--content">
+          Précedent
+        </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -101,6 +106,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
+@import '/assets/settings.scss';
 .t-modal__title {
   font-size: 25px;
   font-weight: bold;
@@ -122,12 +128,14 @@ const props = defineProps({
   display: flex;
   justify-content: left;
   width: 100%;
+  font-weight: bold;
 
   &--resume {
     display: flex;
     justify-content: left;
     width: 100%;
     margin-left: 33px;
+    color: $color-grey-70;
   }
 }
 
@@ -141,8 +149,27 @@ const props = defineProps({
 }
 
 .t-modal__button {
+  width: 100%;
   margin-top: 40px;
   margin-bottom: 40px;
-  background-color: orangered;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  &--content {
+    background-color: $color-orange;
+    width: 81px;
+    height: 25px;
+    border-radius: 13px;
+    color: $color-white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+  }
+}
+.t-modal__video {
+  width: 100%;
+  margin-top: 40px;
 }
 </style>
