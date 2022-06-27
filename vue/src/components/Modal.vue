@@ -7,17 +7,26 @@
         <b>{{ dataObj.title }}</b>
       </h1>
 
-      <div class="t-modal__video">
-        <iframe
-          frameborder="0"
-          allow="autoplay; fullscreen"
-          allowfullscreen
-          :src="
-            dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
-              .contents[0].presentation.items[0].video.url
-          "
-        ></iframe>
-      </div>
+      <template
+        v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
+          .subSteps[modalSubIndex].contents[0].presentation.items[0]"
+        :key="itemIndex"
+      >
+        <div class="t-modal__video" v-if="item.video">
+          <iframe
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            allowfullscreen
+            :src="video.url"
+          ></iframe>
+        </div>
+
+        <div
+          v-if="item._image"
+          class="t-modal__content"
+          :style="`background-image: url(${_image[0].attachment._urls.max})`"
+        ></div>
+      </template>
 
       <iframe
         margin-top="40px"
@@ -28,11 +37,6 @@
         scrolling="no"
       ></iframe>
 
-      <!-- <div
-        class="t-modal__Content"
-        :style="`background-image: url(${dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].contents[0].presentation.items[0]._image[0].attachment._urls.max})`"
-      ></div> -->
-
       <div class="t-modal__contentTitle">
         <b>
           {{
@@ -41,6 +45,7 @@
           }}
         </b>
       </div>
+
       <template
         v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
           .subSteps[modalSubIndex].contents[0].content.items"
@@ -119,7 +124,7 @@ const props = defineProps({
   margin-bottom: 42px;
   padding-top: 55px;
 }
-.t-modal__Content {
+.t-modal__content {
   width: 100%;
   height: 240px;
   background-size: cover;
