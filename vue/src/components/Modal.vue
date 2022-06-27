@@ -19,6 +19,15 @@
         ></iframe>
       </div>
 
+      <iframe
+        margin-top="40px"
+        src="https://anchor.fm/mas-de-la-sranne/embed/episodes/Anglais-Transition-3-Mas-de-la-Sranne-e1kd130"
+        height="102px"
+        width="400px"
+        frameborder="0"
+        scrolling="no"
+      ></iframe>
+
       <!-- <div
         class="t-modal__Content"
         :style="`background-image: url(${dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].contents[0].presentation.items[0]._image[0].attachment._urls.max})`"
