@@ -8,6 +8,7 @@ module.exports = {
     alias: 'itinerary',
     label: 'apostrophe:itinerary.label',
     pluralLabel: 'apostrophe:itinerary.pluralLabel',
+    slugPrefix: 'it-',
     localized: true,
   },
   fields: {
@@ -38,30 +39,50 @@ module.exports = {
       },
       startDate: {
         type: 'date',
-        required: true,
         label: 'apostrophe:startDate',
+        required: true,
+        if: {
+          itineraryType: 'event',
+        },
       },
       endDate: {
         type: 'date',
         label: 'apostrophe:endDate',
+        required: true,
+        if: {
+          itineraryType: 'event',
+        },
       },
       startTime: {
         type: 'time',
         label: 'apostrophe:startTime',
+        required: true,
+        if: {
+          itineraryType: 'event',
+        },
       },
       endTime: {
         type: 'time',
         label: 'apostrophe:endTime',
+        required: true,
+        if: {
+          itineraryType: 'event',
+        },
       },
       duration: {
         type: 'time',
-        required: true,
         label: 'apostrophe:duration',
+        required: true,
+        if: {
+          itineraryType: 'event',
+        },
       },
       mileage: {
         type: 'float',
-        required: true,
         label: 'apostrophe:mileage',
+        if: {
+          itineraryType: 'event',
+        },
       },
       description: {
         type: 'string',
@@ -71,7 +92,7 @@ module.exports = {
         type: 'float',
         required: true,
         label: 'apostrophe:price',
-        min: 0,
+        min: -0.001,
       },
       image: {
         type: 'attachment',
@@ -125,12 +146,12 @@ module.exports = {
                   presentation: {
                     type: 'area',
                     label: 'apostrophe:visitType.content.presentation',
-                    max: 1,
                     options: {
                       widgets: {
                         '@apostrophecms/image': {},
                         '@apostrophecms/video': {},
                       },
+                      max: 1,
                     },
                   },
                   urlPodcast: {
@@ -235,6 +256,7 @@ module.exports = {
           events: req.t('apostrophe:placePage.event'),
           reserve: req.t('apostrophe:reserve'),
           start: req.t('apostrophe:itinerary.start'),
+          exit: req.t('apostrophe:quit'),
         }
 
         data.assetBaseUrl = self.apos.asset.getAssetBaseUrl()

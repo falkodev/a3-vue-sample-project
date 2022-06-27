@@ -42,7 +42,7 @@
         </div>
         <div v-if="isPay" class="t-infos__buttons">
           <GoIcon :lat="step.place.latitude" :lon="step.place.longitude" />
-          <VisitIcon v-if="step.content.length" />
+          <VisitIcon :title="title" :data="step" v-if="step.content.length" />
         </div>
       </div>
       <div class="t-step__indefinite">
@@ -51,8 +51,8 @@
     </div>
     <div class="t-step__center">
       <div
-        @click="seeProximityRef = !seeProximityRef"
         class="t-step__proximity"
+        @click="seeProximityRef = !seeProximityRef"
       >
         {{ $t.seeNearDomains }}
       </div>
@@ -73,12 +73,13 @@
 import { ref } from 'vue'
 import VisitItem from './ThemeStepItem.vue'
 import VisitIcon from './VisitIcon.vue'
-// import Content from './Content.vue'
 import GoIcon from './GoIcon.vue'
+
 defineProps({
   id: Number,
   step: Object,
   status: Boolean,
+  title: String,
 })
 defineEmits(['addStep', 'removeStep'])
 
@@ -86,6 +87,7 @@ const $t = window.apos.itinerary.labels
 const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 const isPay = true
 const seeProximityRef = ref(false)
+
 function placeTypeIcon(type) {
   const img = {
     wineStore: 'wine-bottle',
@@ -93,7 +95,7 @@ function placeTypeIcon(type) {
     poi: 'binoculars',
     domain: 'grap',
   }
-  return `${assetBaseUrl}/modules/content/icons/${img[type]}.png`
+  return `${assetBaseUrl}/modules/content/icons/${img[type]}.svg`
 }
 
 function removeTags(str) {
@@ -102,7 +104,7 @@ function removeTags(str) {
 </script>
 
 <style lang="scss" scoped>
-@import '/assets/settings.scss';
+@import '../assets/settings.scss';
 
 .t-step {
   position: relative;
@@ -119,7 +121,7 @@ function removeTags(str) {
   }
 
   &__title {
-    color: $color-purple;
+    color: $color-main;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 17px;
@@ -148,15 +150,16 @@ function removeTags(str) {
     align-items: center;
     width: 70%;
     border-radius: 15px;
-    border: 1px solid $color-purple;
+    border: 1px solid $color-main;
     background-color: white;
     position: relative;
 
     &--domain {
-      background-color: $color-purple-transparent;
-      color: $color-purple !important;
+      background-color: $color-main-transparent;
+      color: $color-main !important;
     }
   }
+
   &__indefinite {
     font-size: 13px;
     color: $color-grey-50;
@@ -170,12 +173,12 @@ function removeTags(str) {
     font-size: 12px;
     margin: auto;
     padding: 2px 6px;
-    background: $color-purple;
+    background: $color-main;
     border-radius: 15px;
   }
 
   .t-infos {
-    color: $color-purple;
+    color: $color-main;
 
     &__title {
       font-size: 14px;
@@ -202,7 +205,7 @@ function removeTags(str) {
     }
 
     &__place-type {
-      width: 15px;
+      width: 18px;
       margin-left: 5px;
     }
 

@@ -74,19 +74,19 @@
         :style="`background-image: url(${dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].contents[0].interview.items[0]._image[0].attachment._urls.max})`"
       ></div> -->
 
-      <!-- <button @click="modalSubIndex++" class="t-modal__button">suivant</button>
-      <button @click="modalSubIndex--" class="t-modal__button">
+      <button @click="$emit('dec-sub-index')" class="t-modal__button">
+        suivant
+      </button>
+      <button @click="$emit('inc-sub-index')" class="t-modal__button">
         précedent
-      </button> -->
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onBeforeMount } from 'vue'
+import { onBeforeMount } from 'vue'
 import cross from '@/components/icons/IconCross.vue'
-
-let modalSubIndex = ref(1)
 
 onBeforeMount(() => {
   console.log('props.dataObj ===>', props.dataObj)
@@ -97,8 +97,6 @@ const props = defineProps({
   modalStepIndex: Number,
   modalSubIndex: Number,
 })
-
-// const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 </script>
 
 <style lang="scss">
