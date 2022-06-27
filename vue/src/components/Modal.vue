@@ -33,14 +33,22 @@
         </template>
       </template>
 
-      <div class="t-modal__podcast">
-        <iframe
-          margin-top="40px"
-          src="https://anchor.fm/mas-de-la-sranne/embed/episodes/Anglais-Transition-3-Mas-de-la-Sranne-e1kd130"
-          frameborder="0"
-          scrolling="no"
-        ></iframe>
-      </div>
+      <template
+        v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
+          .subSteps[modalSubIndex].contents"
+        :key="itemIndex"
+      >
+        <template v-if="item.urlPodcast">
+          <div class="t-modal__podcast">
+            <iframe
+              margin-top="40px"
+              :src="item.urlPodcast"
+              frameborder="0"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </template>
+      </template>
 
       <div class="t-modal__contentTitle">
         <b>
@@ -113,14 +121,14 @@ import { onBeforeMount } from 'vue'
 import cross from '@/components/icons/IconCross.vue'
 
 onBeforeMount(() => {
-  console.log('props.dataObj ===>', props.dataObj)
+  // console.log('props.dataObj ===>', props.dataObj)
 })
-const props = defineProps({
-  dataObj: Object,
-  modalOpen: Boolean,
-  modalStepIndex: Number,
-  modalSubIndex: Number,
-})
+// const props = defineProps({
+//   dataObj: Object,
+//   modalOpen: Boolean,
+//   modalStepIndex: Number,
+//   modalSubIndex: Number,
+// })
 </script>
 
 <style lang="scss">
