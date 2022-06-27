@@ -1,0 +1,23 @@
+{% if data.page.slug === '/' %}
+  {% for result in data.result %}
+    {% if loop.first %}
+      {% include "first-event.html" %}
+    {%endif %}
+  {% endfor %}
+{% else %}
+
+  {% for result in data.result %}
+
+    {% if loop.first %}
+      <div class="t-events__subtitle">{{ __t('apostrophe:event.eventA').toUpperCase() }} {{ __t('apostrophe:event.firstEvent') }}</div>
+      {% include "event.html" %}
+      <div class="t-events__subtitle">{{ __t('apostrophe:event.eventA').toUpperCase() }} {{ __t('apostrophe:event.nextEvent') }}</div>
+    {% else %}
+      {% include "event.html" %}
+    {% endif %}
+
+  {% endfor %}
+  
+  <div class="t-spacer-events"></div>
+
+{% endif %}

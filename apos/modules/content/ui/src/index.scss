@@ -31,13 +31,13 @@ $form-container: 320px;
   width: fit-content;
 
   &--plain {
-    background-color: $color-orange;
+    background-color: $color-main;
     border: none;
   }
 
   &--outlined {
     background-color: transparent;
-    border: 2px solid $color-orange;
+    border: 2px solid $color-secondary;
   }
 
   &--block {
@@ -48,7 +48,7 @@ $form-container: 320px;
     font-weight: 600;
   }
 
-  &--color-white {
+  &--white {
     color: $color-white !important;
   }
 }

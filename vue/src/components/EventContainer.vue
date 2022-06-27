@@ -15,7 +15,7 @@ import { LMap, LTileLayer } from '@vue-leaflet/vue-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { reactive } from 'vue'
 
-const zoom = 10
+let zoom = 10
 let center = reactive({ lat: 45.12, lon: 8.13 })
 </script>
 
@@ -23,6 +23,7 @@ let center = reactive({ lat: 45.12, lon: 8.13 })
 .t-event {
   margin-top: 36px;
 }
+
 .t-app-event__map {
   position: fixed;
   top: 12vh;

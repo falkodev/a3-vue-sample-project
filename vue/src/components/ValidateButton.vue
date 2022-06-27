@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <style lang="scss">
-@import '/assets/settings.scss';
+@import '../assets/settings.scss';
 
 .t-validate {
   z-index: 99;
@@ -20,7 +20,7 @@ defineProps({
   bottom: 80px;
   left: 0;
   right: 0;
-  background: $color-orange;
+  background: $color-main;
   color: $color-white;
   text-align: center;
   padding: 20px;

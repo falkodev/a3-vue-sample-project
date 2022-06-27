@@ -1,6 +1,7 @@
 {% extends "@apostrophecms/page:layout.html" %}
 
 {% set fileBackground = apos.attachment.url(data.global.backgroundImage) %}
+{% set aocLogos = apos.attachment.url(data.global.aocLogos) %}
 
 {% block main %}
   <div class="t-background" style="background-image: url('{{ fileBackground }}');"></div>
@@ -10,8 +11,6 @@
   </div>
 
   <div class="t-partnerships">
-    <div class="t-partnership">Logos AOC</div>
-    <div class="t-partnership">Logos AOC</div>
-    <div class="t-partnership">Logos AOC</div>
+    <div class="t-partnerships__logo" style="background-image: url('{{ aocLogos }}');"></div>
   </div>
 {% endblock %}

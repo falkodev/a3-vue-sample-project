@@ -6,6 +6,8 @@
       :modalStepIndex="modalStepIndex"
       :modalSubIndex="modalSubIndex"
       @close-modal="toggleModal"
+      @inc-sub-index="incModalSubIndex"
+      @dec-sub-index="decModalSubIndex"
     />
     <div class="t-visit__bloc">
       <div class="t-visit__fixed">
@@ -128,14 +130,7 @@
 </template>
 
 <script setup>
-import {
-  ref,
-  computed,
-  onUpdated,
-  onBeforeMount,
-  onMounted,
-  reactive,
-} from 'vue'
+import { ref, computed, onBeforeMount, reactive } from 'vue'
 import {
   LMap,
   LTileLayer,
@@ -191,6 +186,25 @@ const toggleModal = (index) => {
   modalStepIndex.value = index
   return
 }
+const incModalSubIndex = () => {
+  if (
+    modalSubIndex.value <
+    dataObject.value._visits[0].steps[modalStepIndex.value].subSteps.length - 1
+  ) {
+    modalSubIndex.value++
+  } else {
+    modalSubIndex.value = 0
+  }
+}
+const decModalSubIndex = () => {
+  if (modalSubIndex.value > 0) {
+    modalSubIndex.value--
+  } else {
+    modalSubIndex.value =
+      dataObject.value._visits[0].steps[modalStepIndex.value].subSteps.length -
+      1
+  }
+}
 const getTotalDuration = (arr) => {
   let res = arr
     .reduce((pre, curr) => {
@@ -221,7 +235,6 @@ const centerMapOnUser = () => {
   mapCenter.coords = [userLat.value, userLong.value]
 }
 const centerMapOnGeoPoint = () => {
-  pointIndex.value += 1
   pointIndex.value %= geojsonPoints.val.length - 1
   if (geojsonPoint.val.length !== 0) {
     mapCenter.coords = [
@@ -229,6 +242,7 @@ const centerMapOnGeoPoint = () => {
       geojsonPoints.val[pointIndex.value].coords[1],
     ]
   }
+  pointIndex.value += 1
 }
 const setPosition = (pos) => {
   userCoords.latitude = pos.coords.latitude
@@ -303,14 +317,5 @@ onBeforeMount(async () => {
   if (dataObject.value.latitude && dataObject.value.longitude) {
     mapCenter.coords = [dataObject.value.latitude, dataObject.value.longitude]
   }
-})
-
-onMounted(() => {
-  document.querySelector('#geoloc').click()
-
-  document.getElementById('geoloc').click()
-})
-onUpdated(() => {
-  watchUserPos()
 })
 </script>
