@@ -1,6 +1,8 @@
 <template>
   <div class="t-modal" :class="{ 't-modal--open': modalOpen }">
     <div class="t-modal__container">
+      <!-- <cross @click="$emit('closeModal')" /> -->
+      <h1 class="t-modal__title">{{ dataObj.title }}</h1>
       <cross @click="$emit('close-modal', modalSubIndex)" />
 
       <h1 class="t-modal__title">
@@ -49,12 +51,12 @@
       <template
         v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
           .subSteps[modalSubIndex].contents[0].content.items"
-        :key="itemIndex"
       >
         <p
           class="t-modal__contentTitle--resume"
           v-if="item.content"
           v-html="item.content"
+          :key="itemIndex"
         ></p>
 
         <template v-if="item._image">
@@ -92,6 +94,12 @@
           Précedent
         </div>
       </div> -->
+      <button @click="$emit('dec-sub-index')" class="t-modal__button">
+        suivant
+      </button>
+      <button @click="$emit('inc-sub-index')" class="t-modal__button">
+        précedent
+      </button>
     </div>
   </div>
 </template>
@@ -101,10 +109,7 @@ import { onBeforeMount } from 'vue'
 import cross from '@/components/icons/IconCross.vue'
 
 onBeforeMount(() => {
-  console.log(
-    props.dataObj,
-    'hahahahahahahahahahahahahahahahahahahahahahahahahahahahah',
-  )
+  console.log('props.dataObj ===>', props.dataObj)
 })
 const props = defineProps({
   dataObj: Object,
@@ -112,8 +117,6 @@ const props = defineProps({
   modalStepIndex: Number,
   modalSubIndex: Number,
 })
-
-// const assetBaseUrl = window.apos.itinerary.assetBaseUrl
 </script>
 
 <style lang="scss">

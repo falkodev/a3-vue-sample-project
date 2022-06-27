@@ -1,0 +1,34 @@
+{% macro displayIcons(iconsArray) %}
+
+<div class="t-icons-wrapper">
+
+  {% for icon in iconsArray %}
+
+  {% if icon[0] !== 'goto' %}
+  <div class="t-icon" data-icon-{{ icon[0] }}>
+
+    <div class="t-icon__image" style='fill: {{ icon[1] }}'>
+      {% include "content:" + (icon[0]) + ".svg" %}
+    </div>
+    <p class="t-icon__text">{{ __t('apostrophe:userIcons.' + icon[0]) }}</p>
+
+  </div>
+
+  {% else %}
+
+  <a class="t-icon" href='http://maps.google.com/maps?ll={{data.piece.latitude}},{{data.piece.longitude}}'>
+
+    <div class="t-icon__image" style='fill: {{ icon[1] }}'>
+      {% include "content:" + (icon[0]) + ".svg" %}
+    </div>
+    <p class="t-icon__text">{{ __t('apostrophe:userIcons.' + icon[0]) }}</p>
+  </a>
+  <div class="t-icon__color"></div>
+
+  {% endif %}
+
+  {% endfor %}
+
+</div>
+
+{% endmacro %}

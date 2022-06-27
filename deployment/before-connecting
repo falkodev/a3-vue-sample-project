@@ -4,6 +4,7 @@
 grep version package.json | awk -F \" '{print $4}' > apos/release-id
 
 # build dist folder for vue and put it in apos folder
+cp apos/modules/content/ui/src/scss/_settings.scss vue/src/assets/settings.scss
 npm run build --prefix vue
 mkdir -p apos/public/vue-app
 cp -R vue/dist/* apos/public/vue-app

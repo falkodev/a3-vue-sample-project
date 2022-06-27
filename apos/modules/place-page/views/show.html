@@ -1,4 +1,5 @@
 {% extends "@apostrophecms/page:layout.html" %}
+{% import "component/user-icons:index.html" as userIcons with context %}
 
 {% block main %}
 
@@ -12,6 +13,9 @@
         <div class="t-background-place__place">
           {{ __t('apostrophe:' + data.piece.placeType) }}
           {% include "content:grape.svg" %}
+        </div>
+        <div class="t-background-place__icons">
+          {{ userIcons.displayIcons([ ["goto", "white"], ["favorite", "white"] ]) }}
         </div>
       </div>
     </div>

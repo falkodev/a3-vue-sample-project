@@ -12,6 +12,7 @@ module.exports = {
     alias: 'place',
     label: 'apostrophe:place.label',
     pluralLabel: 'apostrophe:place.pluralLabel',
+    slugPrefix: 'pl-',
     localized: true,
   },
 
@@ -79,10 +80,16 @@ module.exports = {
       longitude: {
         type: 'float',
         required: true,
+        help: 'apostrophe:helpLongitude',
+        min: -180,
+        max: 180,
       },
       latitude: {
         type: 'float',
         required: true,
+        help: 'apostrophe:helpLatitude',
+        min: -90,
+        max: 90,
       },
       duration: {
         type: 'time',

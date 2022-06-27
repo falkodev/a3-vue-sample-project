@@ -52,6 +52,18 @@ module.exports = {
         type: 'customer-page',
         title: 'Customer',
       },
+      {
+        slug: '/event',
+        parkedId: 'event',
+        type: 'event-page',
+        title: 'Event',
+      },
+      {
+        slug: '/events-list',
+        parkedId: 'eventsList',
+        type: 'events-list-page',
+        title: 'EventsList',
+      },
     ],
     templateData: {
       loggedInMsg: 'loggedInMsg',

@@ -22,11 +22,11 @@
 
     <div class="t-app-itinerary__title">{{ data.title }}</div>
     <div class="t-app-itinerary__description">
-      {{ dataDescription() }}..
+      {{ dataDescription() }}...
       <span class="bold" @click="descriptionRef = !descriptionRef"
         >{{ $t.see }}
-        <span v-if="descriptionRef" class="bold">{{ $t.less }}..</span>
-        <span v-else class="bold">{{ $t.more }}..</span>
+        <span v-if="descriptionRef" class="bold">{{ $t.less }}</span>
+        <span v-else class="bold">{{ $t.more }}</span>
       </span>
     </div>
 
@@ -72,8 +72,8 @@
       </div>
       <div class="t-general-infos__container">
         <div
-          class="t-info-half"
           v-if="data._visits[0]"
+          class="t-info-half"
           style="width: 32%; height: 100px"
         >
           <div class="t-info-half__logo-container">
@@ -121,8 +121,8 @@
         </div>
 
         <div
-          class="t-info-half"
           v-if="data._visits[0]"
+          class="t-info-half"
           style="width: 32%; height: 100px"
         >
           <div class="t-info-half__logo-container">
@@ -192,7 +192,7 @@
         </div>
       </div>
     </div>
-    <ValidateButton :buttonText="buttonText" :buttonLink="buttonLink" />
+    <ValidateButton :buttonLink="buttonLink" :buttonText="buttonText" />
     <SyndicateContainer
       v-if="data.itineraryType === 'syndicate'"
       :piece="data"
@@ -250,6 +250,7 @@ function updateItinerary(itinerary) {
   refLastStep.value = data.steps[data.steps.length - 1]
   refItineraryDuration.value = data.steps
 }
+
 const refStartStep = ref(data.steps[0])
 const startStep = computed(
   () => refStartStep?.value?.place?.address?.items[0]?.content,
@@ -311,6 +312,7 @@ function formatDate(infos) {
   endDate = dayjs(endDate).format('DD/MM/YYYY')
   return 'Du ' + startDate + '\n au ' + endDate
 }
+
 function dataDescription() {
   return descriptionRef.value
     ? data.description
@@ -336,12 +338,12 @@ function dataMileAge(mileage) {
 
 <style lang="scss">
 @import './assets/base.css';
-@import '/assets/settings.scss';
+@import './assets/settings.scss';
 
 .bold {
   font-weight: bold;
   cursor: pointer;
-  color: var(--vt-c-black);
+  color: $color-black;
 }
 
 .t-image {
@@ -359,7 +361,7 @@ function dataMileAge(mileage) {
   }
 
   .t-eventsAnnonce {
-    background-color: $color-orange;
+    background-color: $color-main;
     height: 35px;
     width: 100%;
     display: flex;
@@ -381,7 +383,7 @@ function dataMileAge(mileage) {
 
   &__title {
     font-size: 25px;
-    color: $color-purple;
+    color: $color-main;
     font-weight: bold;
   }
 
@@ -389,7 +391,7 @@ function dataMileAge(mileage) {
     margin-top: 36px;
     font-size: 15px;
     line-height: 25px;
-    color: var(--vt-c-black);
+    color: var($color-text);
   }
 }
 
@@ -399,7 +401,7 @@ function dataMileAge(mileage) {
 
 .t-general-infos {
   &__title {
-    color: $color-orange;
+    color: $color-main;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 17px;
@@ -421,7 +423,7 @@ function dataMileAge(mileage) {
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background-color: $color-orange;
+    background-color: $color-main;
     opacity: 75%;
     height: 100px;
     width: 32%;
@@ -455,7 +457,7 @@ function dataMileAge(mileage) {
     align-items: center;
     justify-content: center;
     padding: 40px 10px 10px 10px;
-    background-color: $color-orange;
+    background-color: $color-main;
     opacity: 75%;
     height: 120px;
     width: 39vw;
@@ -494,6 +496,7 @@ function dataMileAge(mileage) {
     }
   }
 }
+
 .t-spacer-circulade {
   height: 20vh;
   @media (min-width: map-get($breakpoints, 'md')) {

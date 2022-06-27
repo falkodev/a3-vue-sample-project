@@ -5,127 +5,71 @@
 .t-spacer {
   height: 40vh;
 
-  @media (min-width: map-get($breakpoints, 'md')) {
-    min-height: 60vh;
-  }
-}
+  .t-spacer-domain {
+    height: 32vh;
 
-.t-background-domain {
-  min-height: 40vh;
-  background-attachment: fixed;
-  background-position: 100% 15%;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  position: fixed;
-  right: 0;
-  left: 0;
-
-  @media (min-width: map-get($breakpoints, 'md')) {
-    min-height: 60vh;
-  }
-
-  &__container {
-    margin: auto;
-    margin-top: 10vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-.t-domain {
-  &__tags-domain {
-    width: 100%;
-    margin-top: 5px;
-    margin-right: 5px;
-  }
-
-  &__title {
-    color: $color-purple;
-  }
-
-  &__description {
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    font-size: 12px;
-  }
-
-  &__icon svg {
-    color: $color-orange;
-    vertical-align: text-top;
-    width: 20px;
-    height: 20px;
-  }
-
-  &__schedule {
-    display: flex;
-    align-items: baseline;
-    gap: 5px;
-
-    .t-schedule {
-      &__icon {
-        margin-right: 7px;
-      }
-
-      &__title {
-        font-size: 15px;
-      }
-
-      &__content {
-        font-size: 12px;
-      }
+    @media (min-width: map-get($breakpoints, 'md')) {
+      min-height: 60vh;
     }
   }
 
-  &__e-shop {
-    margin-top: 35px;
-    margin-bottom: 20px;
-  }
+  .t-domain {
+    &__tags-domain {
+      width: 100%;
+      margin-top: 15px;
+      margin-right: 5px;
+    }
 
-  &__access {
-    .t-access {
-      &__title {
+    &__title {
+      color: $color-main;
+    }
+
+    &__spoken-languages {
+      color: $color-main;
+      align-self: flex-start;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    &__languages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    &__language {
+      border: 1px $color-grey-40 solid;
+      border-radius: 15px;
+      padding: 4px 6px 4px 6px;
+    }
+
+    &__events {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      &-banner {
+        margin: auto;
+        margin-bottom: 20px;
         display: flex;
-        align-self: flex-start;
-        color: $color-purple;
-        margin-bottom: 10px;
-      }
-
-      &__list {
-        list-style-type: none;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 30px;
-        padding-left: 20px;
-      }
-
-      &__category {
-        font-weight: 600;
-        margin-left: 12px;
-      }
-
-      &__content {
-        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+        width: 100%;
+        background-color: #ff8317;
+        color: white;
+        font-size: 17px;
       }
     }
-  }
-
-  &__phone-link,
-  &__web-link {
-    color: $color-black !important;
-
-    :visited {
-      color: $color-black !important;
-    }
-  }
-
-  &__actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 30px;
   }
 }
