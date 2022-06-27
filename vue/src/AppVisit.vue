@@ -4,6 +4,7 @@
       :dataObj="dataObject"
       :modalOpen="modalOpen"
       :modalStepIndex="modalStepIndex"
+      :modalSubIndex="modalSubIndex"
       @close-modal="toggleModal"
     />
     <div class="t-visit__bloc">
@@ -100,7 +101,7 @@
                     class="t-media__image"
                     :style="`background-image: url( ${
                       attachmentList.filter(
-                        (attachment) => attachment.name === subStep.image.name
+                        (attachment) => attachment.name === subStep.image.name,
                       )[0]._urls.full
                     })`"
                   >
@@ -130,9 +131,7 @@
 import {
   ref,
   computed,
-  onUpdated,
   onBeforeMount,
-  onMounted,
   reactive,
 } from 'vue'
 import {
@@ -159,6 +158,7 @@ let geojsonMultiLine = reactive({ val: [] })
 
 let modalOpen = ref(false)
 let modalStepIndex = ref(0)
+let modalSubIndex = ref(0)
 
 let zoom = ref(17)
 let userCoords = reactive({
@@ -219,7 +219,6 @@ const centerMapOnUser = () => {
   mapCenter.coords = [userLat.value, userLong.value]
 }
 const centerMapOnGeoPoint = () => {
-  pointIndex.value += 1
   pointIndex.value %= geojsonPoints.val.length - 1
   if (geojsonPoint.val.length !== 0) {
     mapCenter.coords = [
@@ -227,6 +226,7 @@ const centerMapOnGeoPoint = () => {
       geojsonPoints.val[pointIndex.value].coords[1],
     ]
   }
+  pointIndex.value += 1
 }
 const setPosition = (pos) => {
   userCoords.latitude = pos.coords.latitude
@@ -302,16 +302,4 @@ onBeforeMount(async () => {
     mapCenter.coords = [dataObject.value.latitude, dataObject.value.longitude]
   }
 })
-
-onMounted(() => {
-  document.querySelector('#geoloc').click()
-
-  document.getElementById('geoloc').click()
-})
-onUpdated(() => {
-  watchUserPos()
-})
-
-  centerMapOnUser()
-  centerMapOnGeoPoint()
 </script>
