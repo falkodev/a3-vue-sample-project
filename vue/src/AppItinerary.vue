@@ -233,11 +233,16 @@ const buttonText = computed(() => {
       : 'itinerary'
     : 'buy'
 })
-const itineraryType = ref(data.itineraryType)
+// const itineraryType = ref(data.itineraryType)
 const buttonLink = computed(() => {
-  return itineraryType.value === 'syndicate'
-    ? lauchItinerary(data.steps)
-    : 'link'
+  // return itineraryType.value === 'syndicate'
+  //   ? lauchItinerary(data.steps)
+  //   : 'link'
+  if (`${data.slug}` === 'circulade-vigneronne') {
+    return `${data.slug}/visit`
+  } else {
+    return '#'
+  }
 })
 
 const $t = window.apos.itinerary.labels
@@ -268,30 +273,30 @@ const itineraryDuration = computed(() =>
     : data.duration,
 )
 
-function lauchItinerary(steps) {
-  const baseUrl = 'https://www.google.com/maps/dir/?api=1'
-  const origin = steps[0].place.latitude + '%2C' + steps[0].place.longitude
-  let waypoints = ''
-  for (let index = 1; index < steps.length - 1; index++) {
-    let tempLat = steps[index].place.latitude
-    let tempLon = steps[index].place.longitude
-    waypoints = waypoints + '|' + tempLat + '%2C' + tempLon
-  }
-  const destination =
-    steps[steps.length - 1].place.latitude +
-    '%2C' +
-    steps[steps.length - 1].place.longitude
+// function lauchItinerary(steps) {
+//   const baseUrl = 'https://www.google.com/maps/dir/?api=1'
+//   const origin = steps[0].place.latitude + '%2C' + steps[0].place.longitude
+//   let waypoints = ''
+//   for (let index = 1; index < steps.length - 1; index++) {
+//     let tempLat = steps[index].place.latitude
+//     let tempLon = steps[index].place.longitude
+//     waypoints = waypoints + '|' + tempLat + '%2C' + tempLon
+//   }
+//   const destination =
+//     steps[steps.length - 1].place.latitude +
+//     '%2C' +
+//     steps[steps.length - 1].place.longitude
 
-  return (
-    baseUrl +
-    '&origin=' +
-    origin +
-    '&waypoints=' +
-    waypoints +
-    '&destination=' +
-    destination
-  )
-}
+//   return (
+//     baseUrl +
+//     '&origin=' +
+//     origin +
+//     '&waypoints=' +
+//     waypoints +
+//     '&destination=' +
+//     destination
+//   )
+// }
 
 function calculateItineraryDuration(steps) {
   let hours = 0

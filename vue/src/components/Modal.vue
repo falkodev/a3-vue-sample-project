@@ -12,9 +12,8 @@
       <template
         v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
           .subSteps[modalSubIndex].contents[0].presentation.items"
-        :key="itemIndex"
       >
-        <div class="t-modal__video" v-if="item.video">
+        <div class="t-modal__video" v-if="item.video" :key="itemIndex">
           <iframe
             frameborder="0"
             allow="autoplay; fullscreen"
@@ -33,14 +32,7 @@
         </template>
       </template>
 
-      <div class="t-modal__podcast">
-        <iframe
-          margin-top="40px"
-          src="https://anchor.fm/mas-de-la-sranne/embed/episodes/Anglais-Transition-3-Mas-de-la-Sranne-e1kd130"
-          frameborder="0"
-          scrolling="no"
-        ></iframe>
-      </div>
+      <!-- s -->
 
       <div class="t-modal__contentTitle">
         <b>
