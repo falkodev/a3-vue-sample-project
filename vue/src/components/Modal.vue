@@ -1,6 +1,7 @@
 <template>
   <div class="t-modal" :class="{ 't-modal--open': modalOpen }">
     <div class="t-modal__container">
+    <cross @click="$emit('closeModal')" />
       <h1 class="t-modal__title">{{ dataObj.title }}</h1>
 
       <img
@@ -41,6 +42,7 @@
 
 <script setup>
 import { ref, onBeforeMount } from 'vue'
+import cross from '@/components/icons/IconCross.vue'
 
 let modalSubIndex = ref(1)
 
