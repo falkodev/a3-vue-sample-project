@@ -72,22 +72,29 @@
         </template>
       </template>
 
-      <div class="t-modal__video">
-        <iframe
-          frameborder="0"
-          allow="autoplay; fullscreen"
-          allowfullscreen
-          :src="
-            dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex]
-              .contents[0].interview.items[0].video.url
-          "
-        ></iframe>
-      </div>
+      <template
+        v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
+          .subSteps[modalSubIndex].contents[0].interview.items"
+        :key="itemIndex"
+      >
+        <div class="t-modal__video" v-if="item.video">
+          <iframe
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            allowfullscreen
+            :src="item.video.url"
+          ></iframe>
+        </div>
 
-      <!-- <div
-        class="t-modal__Content"
-        :style="`background-image: url(${dataObj._visits[0].steps[modalStepIndex].subSteps[modalSubIndex].contents[0].interview.items[0]._image[0].attachment._urls.max})`"
-      ></div> -->
+        <template v-if="item._image">
+          <div
+            v-for="(image, imageIndex) in item._image"
+            :key="imageIndex"
+            class="t-modal__image"
+            :style="`background-image: url(${image.attachment._urls.max})`"
+          ></div>
+        </template>
+      </template>
 
       <div class="t-modal__button">
         <div @click="$emit('dec-sub-index')" class="t-modal__button--content">
@@ -97,12 +104,6 @@
           Suivant
         </div>
       </div>
-      <!-- <button @click="$emit('dec-sub-index')" class="t-modal__button">
-        suivant
-      </button>
-      <button @click="$emit('inc-sub-index')" class="t-modal__button">
-        précedent
-      </button> -->
     </div>
   </div>
 </template>
