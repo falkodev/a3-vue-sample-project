@@ -1,7 +1,7 @@
 <template>
   <div class="t-modal" :class="{ 't-modal--open': modalOpen }">
     <div class="t-modal__container">
-      <cross @click="$emit('close-modal', 0)" />
+      <cross @click="$emit('close-modal', 0, 0)" />
 
       <h1 class="t-modal__title">
         <b>{{ dataObj.title }}</b>
@@ -9,7 +9,7 @@
 
       <template
         v-for="(item, itemIndex) in dataObj._visits[0].steps[modalStepIndex]
-          .subSteps[modalSubIndex].contents[0].presentation.items"
+          .subSteps[modalSubIndex]?.contents[0]?.presentation.items"
       >
         <div class="t-modal__video" v-if="item.video" :key="itemIndex">
           <iframe
