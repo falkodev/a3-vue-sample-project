@@ -79,7 +79,7 @@
               class="t-step__bloc"
             >
               <div class="t-step__container">
-                <div class="t-step__item" @click="toggleModal(stepIndex)">
+                <div class="t-step__item" @click="toggleModal(stepIndex, 0)">
                   <p class="t-step__name">
                     <b> Etape {{ stepIndex + 1 }} :</b> {{ step.title }}
                   </p>
@@ -160,32 +160,31 @@ let modalSubIndex = ref(0)
 
 let zoom = ref(17)
 let userCoords = reactive({
-  latitude: '',
-  longitude: '',
+  latitude: 42.5,
+  longitude: 3.575,
 })
 
 let pointIndex = ref(0)
 let mapCenter = reactive({
-  coords: [43, 3.5],
+  coords: [42, 3.575],
 })
 
 const dataObject = computed(() => JSON.parse(props.piece))
 const attachmentList = computed(() => JSON.parse(props.attachments))
 
-let userLat = computed(() => {
-  return userCoords.latitude
-})
-let userLong = computed(() => {
-  return userCoords.longitude
-})
+let userLat = computed(() => userCoords.latitude)
+let userLong = computed(() => userCoords.longitude)
+
 const toggleModal = (stepIndex, subIndex) => {
   if (modalOpen.value == true) {
     modalOpen.value = false
   } else {
     modalOpen.value = true
   }
-  modalStepIndex.value = stepIndex
-  modalSubIndex.value = subIndex
+  if(modalStepIndex && modalSubIndex){
+    modalStepIndex.value = stepIndex
+    modalSubIndex.value = subIndex
+  }
   return
 }
 const incModalSubIndex = () => {
