@@ -114,15 +114,12 @@
 <script setup>
 import cross from '@/components/icons/IconCross.vue'
 
-const props = defineProps({
+defineProps({
   dataObj: Object,
   modalOpen: Boolean,
   modalStepIndex: Number,
   modalSubIndex: Number,
 })
-
-console.log(props)
-// needed to avoid 'unused vars'
 </script>
 
 <style lang="scss">
