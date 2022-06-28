@@ -208,8 +208,6 @@
 </template>
 
 <script setup>
-// import VisitsEvents from './components/VisitsEvents.vue'
-// import VisitsContainer from './components/VisitsContainer.vue'
 import ThemeContainer from './components/ThemeContainer.vue'
 import SyndicateContainer from './components/SyndicateContainer.vue'
 import EventContainer from './components/EventContainer.vue'
@@ -233,11 +231,8 @@ const buttonText = computed(() => {
       : 'itinerary'
     : 'buy'
 })
-// const itineraryType = ref(data.itineraryType)
+
 const buttonLink = computed(() => {
-  // return itineraryType.value === 'syndicate'
-  //   ? lauchItinerary(data.steps)
-  //   : 'link'
   if (`${data.slug}` === 'circulade-vigneronne') {
     return `${data.slug}/visit`
   } else {
@@ -272,31 +267,6 @@ const itineraryDuration = computed(() =>
     ? calculateItineraryDuration(refItineraryDuration.value)
     : data.duration,
 )
-
-// function lauchItinerary(steps) {
-//   const baseUrl = 'https://www.google.com/maps/dir/?api=1'
-//   const origin = steps[0].place.latitude + '%2C' + steps[0].place.longitude
-//   let waypoints = ''
-//   for (let index = 1; index < steps.length - 1; index++) {
-//     let tempLat = steps[index].place.latitude
-//     let tempLon = steps[index].place.longitude
-//     waypoints = waypoints + '|' + tempLat + '%2C' + tempLon
-//   }
-//   const destination =
-//     steps[steps.length - 1].place.latitude +
-//     '%2C' +
-//     steps[steps.length - 1].place.longitude
-
-//   return (
-//     baseUrl +
-//     '&origin=' +
-//     origin +
-//     '&waypoints=' +
-//     waypoints +
-//     '&destination=' +
-//     destination
-//   )
-// }
 
 function calculateItineraryDuration(steps) {
   let hours = 0
