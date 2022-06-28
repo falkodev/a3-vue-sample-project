@@ -104,7 +104,7 @@
                     class="t-media__image"
                     :style="`background-image: url( ${
                       attachmentList.filter(
-                        (attachment) => attachment.name === subStep.image.name
+                        (attachment) => attachment.name === subStep.image.name,
                       )[0]._urls.full
                     })`"
                   >
