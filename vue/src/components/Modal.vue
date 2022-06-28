@@ -122,6 +122,7 @@ const props = defineProps({
 })
 
 console.log(props)
+// needed to avoid 'unused vars'
 </script>
 
 <style lang="scss">

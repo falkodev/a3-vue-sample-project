@@ -79,7 +79,7 @@
               class="t-step__bloc"
             >
               <div class="t-step__container">
-                <div class="t-step__item" @click="toggleModal(stepIndex, 0)">
+                <div class="t-step__item" @click="toggleModal(stepIndex, modalSubIndex)">
                   <p class="t-step__name">
                     <b> Etape {{ stepIndex + 1 }} :</b> {{ step.title }}
                   </p>
