@@ -522,7 +522,9 @@
     "step": "Step",
     "seeNearDomains": "See near domains",
     "itinerary": "Road itinerary",
-    "start": "Start"
+    "start": "Start",
+    "previous": "Previous",
+    "next": "Next"
   },
   "customer": "customer",
   "customers": "customers",

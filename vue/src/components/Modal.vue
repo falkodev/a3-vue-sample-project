@@ -101,10 +101,10 @@
 
       <div class="t-modal__button">
         <div @click="$emit('dec-sub-index')" class="t-modal__button--content">
-          Précédent
+          {{ labels.previous }}
         </div>
         <div @click="$emit('inc-sub-index')" class="t-modal__button--content">
-          Suivant
+          {{ labels.next }}
         </div>
       </div>
     </div>
@@ -119,6 +119,7 @@ defineProps({
   modalOpen: Boolean,
   modalStepIndex: Number,
   modalSubIndex: Number,
+  labels : Object,
 })
 </script>
 

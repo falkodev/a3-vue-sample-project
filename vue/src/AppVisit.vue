@@ -5,6 +5,7 @@
       :modalOpen="modalOpen"
       :modalStepIndex="modalStepIndex"
       :modalSubIndex="modalSubIndex"
+      :labels="$t"
       @close-modal="toggleModal"
       @inc-sub-index="incModalSubIndex"
       @dec-sub-index="decModalSubIndex"
@@ -79,7 +80,10 @@
               class="t-step__bloc"
             >
               <div class="t-step__container">
-                <div class="t-step__item" @click="toggleModal(stepIndex, modalSubIndex)">
+                <div
+                  class="t-step__item"
+                  @click="toggleModal(stepIndex, modalSubIndex)"
+                >
                   <p class="t-step__name">
                     <b> Etape {{ stepIndex + 1 }} :</b> {{ step.title }}
                   </p>
@@ -148,6 +152,8 @@ import Modal from '@/components/Modal.vue'
 
 const props = defineProps(['piece', 'attachments'])
 
+const $t = window.apos.itinerary.labels
+
 let geojsonFile = ''
 let jsonUrl = ''
 let geojsonPoint = reactive({ val: [] })
@@ -181,7 +187,7 @@ const toggleModal = (stepIndex, subIndex) => {
   } else {
     modalOpen.value = true
   }
-  if(modalStepIndex && modalSubIndex){
+  if (modalStepIndex && modalSubIndex) {
     modalStepIndex.value = stepIndex
     modalSubIndex.value = subIndex
   }
