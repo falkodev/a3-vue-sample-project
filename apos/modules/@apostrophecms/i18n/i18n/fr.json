@@ -593,7 +593,8 @@
     "choices": "Ce domaine propose",
     "infos": "Informations et accès",
     "event": "Événement",
-    "note": "Note générale :"
+    "note": "Note générale :",
+    "helpPhone": "Veuillez utiliser le format international (+33 pour la France)"
   },
   "startDate": "Date début",
   "endDate": "Date fin",
