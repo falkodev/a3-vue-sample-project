@@ -1,5 +1,4 @@
 {% import "component/wine-labels:index.html" as wineLabels %}
-
 {% for result in data.result %}
   <div class="t-category">
     {% if result[0] %}
@@ -7,19 +6,19 @@
     {% set type = item.placeType or item.type %}
       <div class="t-category__heading">
         {% if type === 'wineStore' %}
-          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/wine-bottle.svg') }}"
+        <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/wine-bottle.svg') }}"
           alt="category heading">
         {% elseif type === 'wineBar' %}
-          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/glass.svg') }}"
+        <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/glass.svg') }}"
           alt="category heading">
         {% elseif type === 'poi' %}
-          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/binoculars.svg') }}"
+        <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/binoculars.svg') }}"
           alt="category heading">
         {% elseif type === 'domain' %}
-          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/grap.svg') }}"
+        <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/grap.svg') }}"
           alt="category heading">
         {% else %}
-          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/map-black.svg') }}"
+        <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/map-black.svg') }}"
           alt="category heading">
         {% endif %}
         <div class="t-category__title">{{ __t('apostrophe:homePage.' + type) }}</div>
@@ -28,28 +27,29 @@
 
     <div class="t-category__items">
       {% for item in result %}
-        <a href="{{ item._url }}" class="t-category__item t-home">
-        {% set image = apos.attachment.url(item.image) if item.image else
-        apos.asset.url('/modules/content/images/default-domain.jpg') %}
-        <div class="t-home__img {{ 't-home__img--large' if type === 'itinerary' }}"
-          style="background-image: url({{ image }})">
-          {% if type === "itinerary" and item.itineraryType === "event" %}
-            <div class="t-home__banner">{{ __t('apostrophe:placePage.event') }}</div>
-          {% endif %}
-          <div class="t-home__title">{{ item.title }}</div>
-        </div>
-
-        {% if item.type === "domain" %}
-          <div class="t-home__tags">
-            <div class="t-wine-tag">
-              {% for label in item.wineLabels.items[0]._wineLabels %}
-                {{ wineLabels.wineTag(label.title, label.color, 'small') }}
-              {% endfor %}
+        {% if item.reception != false %}
+          <a href="{{ item._url }}" class="t-category__item t-home">
+            {% set image = apos.attachment.url(item.image) if item.image else
+            apos.asset.url('/modules/content/images/default-domain.jpg') %}
+            <div class="t-home__img {{ 't-home__img--large' if type === 'itinerary' }}"
+              style="background-image: url({{ image }})">
+              {% if type === "itinerary" and item.itineraryType === "event" %}
+                <div class="t-home__banner">{{ __t('apostrophe:placePage.event') }}</div>
+              {% endif %}
+              <div class="t-home__title">{{ item.title }}</div>
             </div>
-          </div>
-        {% endif %}
 
-      </a>
+            {% if item.wineLabels.items.length != 0 %}
+              <div class="t-home__tags">
+                <div class="t-wine-tag">
+                  {% for label in item.wineLabels.items[0]._wineLabels %}
+                    {{ wineLabels.wineTag(label.title, label.color, 'small') }}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          </a>
+        {% endif %}
       {% endfor %}
 
       {% if result.length >= 5 %}
@@ -63,7 +63,7 @@
   {% if loop.last %}
     <div class="t-events-first-event">
       {% component 'event:list' %}
-    </div>  
+    </div>
   {%endif %}
 
 {% endfor %}

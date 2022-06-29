@@ -6,7 +6,6 @@
   overflow: auto;
   margin-top: 10px;
   white-space: nowrap;
-  justify-content: flex-end;
 
   @media (min-width: map-get($breakpoints, 'md')) {
     justify-content: center;

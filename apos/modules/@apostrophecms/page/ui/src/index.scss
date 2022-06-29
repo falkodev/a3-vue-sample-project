@@ -230,7 +230,7 @@
 .t-footer {
   position: fixed;
   box-shadow: 3px 5px 3px 4px $color-text;
-  z-index: 1;
+  z-index: 45;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -318,7 +318,7 @@
   }
 
   &__text {
-    color: $color-text;
+    color: $color-white;
     font-family: 'Montserrat', sans-serif;
     font-size: 2rem;
     font-weight: 600;

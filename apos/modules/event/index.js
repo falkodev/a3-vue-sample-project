@@ -41,12 +41,10 @@ module.exports = {
       },
 
       description: {
-        type: 'area',
         label: 'apostrophe:event.description',
+        type: 'area',
         options: {
-          widgets: {
-            'collapse-rich-text': {},
-          },
+          'collapse-rich-text': {},
           max: 1,
         },
       },

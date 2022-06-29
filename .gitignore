@@ -18,3 +18,4 @@ mocks
 cypress/screenshots
 cypress/videos
 cypress/fixtures/example.json
+.vscode/settings.json
