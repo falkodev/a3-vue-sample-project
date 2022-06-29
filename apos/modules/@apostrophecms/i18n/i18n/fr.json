@@ -534,7 +534,9 @@
     "step": "Étape",
     "seeNearDomains": "Voir domaines à proximité",
     "itinerary": "Itinéraire routier",
-    "start": "Commencer"
+    "start": "Commencer",
+    "pevious": "Précédent",
+    "next": "Suivant"
   },
   "customer": "Client",
   "customers": "Clients",
@@ -715,7 +717,6 @@
   "restorations": "Restaurations",
   "phoneNumber": "Numéro de téléphone public",
   "phoneNumberAppointment": "Numéro de téléphone pour la prise de rendez-vous",
-
   "eShop": "Lien vers l'e-boutique",
   "openingDaysAndHours": "Jours et heures d'ouverture",
   "locales": {

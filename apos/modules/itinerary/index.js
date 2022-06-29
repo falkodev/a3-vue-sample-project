@@ -257,6 +257,8 @@ module.exports = {
           reserve: req.t('apostrophe:reserve'),
           start: req.t('apostrophe:itinerary.start'),
           exit: req.t('apostrophe:quit'),
+          previous: req.t('apostrophe:itinerary.previous'),
+          next: req.t('apostrophe:itinerary.next'),
         }
 
         data.assetBaseUrl = self.apos.asset.getAssetBaseUrl()
