@@ -3,9 +3,9 @@
 .t-background {
   min-height: 35vh;
   background-attachment: fixed;
-  background-position: 50% 15%;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   transition: 0.32s ease height;
 
   @media (min-width: map-get($breakpoints, 'sm')) {
