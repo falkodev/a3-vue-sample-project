@@ -172,7 +172,7 @@ let userCoords = reactive({
 
 let pointIndex = ref(0)
 let mapCenter = reactive({
-  coords: [42, 3.575],
+  coords: [42.5, 3.575],
 })
 
 const dataObject = computed(() => JSON.parse(props.piece))
