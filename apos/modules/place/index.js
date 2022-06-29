@@ -35,6 +35,16 @@ module.exports = {
         },
         required: true,
       },
+      wineLabels: {
+        type: 'area',
+        label: 'apostrophe:wineLabel.pluralLabel',
+        options: {
+          widgets: {
+            'domain-related/wine-label': {},
+          },
+          max: 1,
+        },
+      },
       image: {
         type: 'attachment',
         label: 'apostrophe:image',
@@ -51,14 +61,9 @@ module.exports = {
         },
       },
       phoneNumber: {
-        type: 'area',
+        type: 'string',
         label: 'apostrophe:phoneNumber',
-        options: {
-          widgets: {
-            '@apostrophecms/rich-text': {},
-          },
-          max: 1,
-        },
+        help: 'apostrophe:placePage.helpPhone',
       },
       website: {
         type: 'area',
@@ -99,35 +104,17 @@ module.exports = {
         label: 'apostrophe:duration',
         required: true,
       },
-      labels: {
-        type: 'array',
-        titleField: 'name',
-        fields: {
-          add: {
-            name: {
-              type: 'string',
-            },
-          },
-        },
-      },
     },
     group: {
       basics: {
-        fields: [
-          'placeType',
-          'image',
-          'longitude',
-          'latitude',
-          'duration',
-          'labels',
-        ],
+        fields: ['placeType', 'wineLabels'],
       },
       widgets: {
         label: 'apostrophe:presentation',
         fields: [
-          'placeType',
           'description',
           'image',
+          'duration',
           'phoneNumber',
           'openingDaysAndHours',
           'website',

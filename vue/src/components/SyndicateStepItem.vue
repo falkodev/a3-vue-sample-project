@@ -37,7 +37,7 @@
             v-if="step.place.description.items[0].content"
             class="t-infos__description"
           >
-            {{ removeTags(step.place.description.items[0].content) }}
+            {{ removeTags(step?.place?.description?.items[0]?.content) }}
           </div>
         </div>
         <div v-if="isPay" class="t-infos__buttons">

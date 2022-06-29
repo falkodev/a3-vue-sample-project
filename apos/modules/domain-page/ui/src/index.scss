@@ -11,7 +11,7 @@
 .t-domain {
   &__tags-domain {
     width: 100%;
-    margin-top: 15px;
+    margin-bottom: 15px;
     margin-right: 5px;
   }
 
@@ -61,7 +61,7 @@
       justify-content: center;
       height: 36px;
       width: 100%;
-      background-color: #ff8317;
+      background-color: $color-main;
       color: white;
       font-size: 17px;
     }

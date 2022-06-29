@@ -16,13 +16,20 @@
   cursor: pointer;
 
   &__text {
-    color: $color-white;
+    color: $color-black;
     font-size: 0.8rem;
-    margin-top: 0px;
+    margin-top: -6px;
   }
 
   svg {
     width: 30px;
     height: 30px;
+  }
+
+  &__hidden {
+    &--latitude,
+    &--longitude {
+      display: none;
+    }
   }
 }
