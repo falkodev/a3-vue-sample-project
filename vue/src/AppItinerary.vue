@@ -233,7 +233,7 @@ const buttonText = computed(() => {
 })
 
 const buttonLink = computed(() => {
-  if ( data.itineraryType === 'event') {
+  if (data.itineraryType === 'event') {
     return `${data.slug}/visit`
   } else {
     return '#'
