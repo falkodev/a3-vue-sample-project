@@ -119,7 +119,7 @@ defineProps({
   modalOpen: Boolean,
   modalStepIndex: Number,
   modalSubIndex: Number,
-  labels : Object,
+  labels: Object,
 })
 </script>
 
