@@ -53,7 +53,12 @@ require('apostrophe')({
     place: {},
     'place-page': {},
     domain: {},
-    'domain-page': {},
+    'domain-page': {
+      extend: '@apostrophecms/piece-page-type',
+      options: {
+        label: 'apostrophe:domainPage',
+      },
+    },
     'register-page': {},
     component: {
       options: {
@@ -74,8 +79,12 @@ require('apostrophe')({
     customer: {},
     'customer-page': {},
     order: {},
-    'collapse-rich-text-widget': {
-      extend: '@apostrophecms/rich-text-widget',
+    place: {},
+    'place-page': {
+      extend: '@apostrophecms/piece-page-type',
+      options: {
+        label: 'apostrophe:placePage.pageName',
+      },
     },
     visit: {},
   },

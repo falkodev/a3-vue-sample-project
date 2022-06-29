@@ -1,7 +1,6 @@
 export default async () => {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      console.log('apos.mode ====> ', apos.mode)
       if (apos.mode === 'production') {
         navigator.serviceWorker
           .register('/sw.js')
@@ -16,7 +15,6 @@ export default async () => {
       }
     })
   }
-
   // Download Vue app
   const vueFolder = '/vue-app/'
   const manifest = await fetch(`${vueFolder}manifest.json`)

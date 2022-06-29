@@ -20,6 +20,13 @@ module.exports = {
 
   fields: {
     add: {
+      description: {
+        type: 'area',
+        options: {
+          'collapse-rich-text': {},
+          max: 1,
+        },
+      },
       eShop: {
         type: 'url',
         label: 'apostrophe:eShop',
