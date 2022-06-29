@@ -581,7 +581,8 @@
     "choices": "This area offers",
     "infos": "Information and access",
     "event": "Event",
-    "note": "General note:"
+    "note": "General note:", 
+    "helpPhone": "Please use the international format (+33 for France)"
   },
   "startDate": "start date",
   "endDate": "end date",

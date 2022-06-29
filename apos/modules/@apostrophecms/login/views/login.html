@@ -1,6 +1,7 @@
 {% extends data.outerLayout %}
 {% import "component/locale-switcher:index.html" as localeSwitcher with context %}
-{% set fileBackground = apos.attachment.url(data.global.backgroundImageLogin) %}
+{% set fileBackground = apos.attachment.url(data.global.backgroundImageLogin) if data.global.backgroundImageLogin else
+apos.asset.url('/modules/content/images/default-login.jpg') %}
 
 {% block main %}
   <div class="t-sign__background" style="background-image: url('{{ fileBackground }}');">
