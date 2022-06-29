@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.3 - 2022-06-29
+
+### Added
+
+- Add steps and substep page
+- Add content modal
+
+### Fixed
+
+- Fix bug css
+
 ## 1.1.2 - 2022-06-27
 
 ### Fixed
