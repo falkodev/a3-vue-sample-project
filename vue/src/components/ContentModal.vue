@@ -59,8 +59,6 @@ function removeTags(str) {
   return str?.toString().replace(/(<([^>]+)>)/gi, '')
 }
 defineEmits(['leaveModal'])
-
-console.log('DATA--------------------------------', props.piece)
 </script>
 
 <style scoped lang="scss">
@@ -87,13 +85,13 @@ console.log('DATA--------------------------------', props.piece)
     }
   }
   &__itinerary {
-    color: $color-purple;
+    color: $color-main;
     font-size: 1.5rem;
     font-weight: bold;
   }
 
   &__title {
-    color: $color-purple;
+    color: $color-main;
     font-size: 1rem;
     font-weight: bold;
   }
@@ -120,8 +118,8 @@ console.log('DATA--------------------------------', props.piece)
   }
 
   &__exit {
-    color: $color-purple;
-    border: 1px solid $color-purple;
+    color: $color-main;
+    border: 1px solid $color-main;
     padding: 1px 5px 1px 5px;
     border-radius: 12px;
     margin-bottom: 30px;

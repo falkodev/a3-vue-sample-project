@@ -280,7 +280,6 @@ function calculateItineraryDuration(steps) {
 }
 
 function formatDate(infos) {
-  console.log(data.startDate)
   let startDate = infos.startDate
   let endDate = infos.endDate
   startDate = dayjs(startDate).format('DD/MM/YYYY')
