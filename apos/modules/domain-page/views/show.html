@@ -6,29 +6,26 @@
 
   <div class="t-background-place"
   {% if data.piece.image -%} style="background-image: url('{{ apos.attachment.url(data.piece.image) }}');" {% endif -%}>
-    <div class="t-background-place__container">
-      <div class="t-background-place__title">{{ data.piece.title }}</div>
-      <div class="t-background-place__place">
-        {{ __t('apostrophe:' + data.piece.type) }}
-        {% include "content:grape.svg" %}
-      </div>
-      <div class="t-domain__tags-domain">
-        {% area data.piece, 'wineLabels' %}
-      </div>
-      <div class="t-background-place__icons">
-        {{ userIcons.displayIcons([ ["visit", "white"], ["goto", "white"], ["favorite", "white"] ]) }}
-      </div>
+    <div class="t-background-place__icons">
+      {{ userIcons.displayIcons([ ["visit", "black"], ["goto", "black"], ["favorite", "black"] ]) }}
     </div>
   </div>
 
   <div class="t-place t-domain">
     <h2 class="t-domain__title">{{ data.piece.title }}</h2>
+    <div class="t-background-place__place">
+      {{ __t('apostrophe:' + data.piece.type) }}
+      {% include "content:grape.svg" %}
+    </div>
+    <div class="t-domain__tags-domain">
+      {% area data.piece, 'wineLabels' %}
+    </div>
     <div class="t-place__description">{% area data.piece, 'description' %}</div>
 
     <div class="t-place__content t-content">
     {% if data.piece.openingDaysAndHours.items[0].content %}
       <div class="t-content__schedule t-schedule">
-       {% include "place-page:openingSchedule.html" %}
+        {% include "place-page:openingSchedule.html" %}
       </div>
     {% else %}
       {% area data.piece, 'openingDaysAndHours' %}
@@ -39,7 +36,7 @@
     {% area data.piece, 'conveniences' %}
     {% area data.piece, 'wineTypes' %}
 
-    {% if data.piece.spokenLanguages %}
+    {% if data.piece.spokenLanguages[0] %}
       <h3 class="t-domain__spoken-languages">{{ __t('apostrophe:spokenLanguages') }}</h3>
       <div class="t-domain__languages">
         {% for language in data.piece.spokenLanguages %}
@@ -65,7 +62,7 @@
     </div>
 
     <div class="t-domain__actions">
-      <a href="#" class="t-button t-button--plain t-button--white">{{ __t('apostrophe:placePage.appointment') }}</a>
+      {# <a href="tel:{{ data.piece.phoneNumberAppointment | trim }}" class="t-button t-button--plain t-button--white">{{ __t('apostrophe:placePage.appointment') }}</a> #}
       <a href="#" class="t-button t-button--plain t-button--white">{{ __t('apostrophe:placePage.startVisit') }}</a>
     </div>
 

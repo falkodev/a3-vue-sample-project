@@ -450,7 +450,6 @@
   "visibility": "Visibility",
   "visitPrice": "Visit price :",
   "visitPriceSimple": "Visit price",
-  "visit": "Visit",
   "website": "Link to the website",
   "willMoveImageToArchive": "This will move the image to the archive.",
   "yes": "Yes",
@@ -586,7 +585,8 @@
     "infos": "Information and access",
     "event": "Event",
     "note": "General note:",
-    "name": "Place page"
+    "name": "Place page",
+    "helpPhone": "Please use the international format (+33 for France)"
   },
   "startDate": "start date",
   "endDate": "end date",

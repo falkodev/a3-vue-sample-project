@@ -456,7 +456,6 @@
   "visibility": "Visibilité",
   "visitPrice": "Prix en euros :",
   "visitPriceSimple": "Prix en euros",
-  "visit": "Visite",
   "website": "Lien vers le site web",
   "willMoveImageToArchive": "This will move the image to the archive.",
   "yes": "Oui",
@@ -597,7 +596,8 @@
     "infos": "Informations et accès",
     "event": "Événement",
     "note": "Note générale :",
-    "pageName": "Page lieux"
+    "pageName": "Page lieux",
+    "helpPhone": "Veuillez utiliser le format international (+33 pour la France)"
   },
   "startDate": "Date début",
   "endDate": "Date fin",
