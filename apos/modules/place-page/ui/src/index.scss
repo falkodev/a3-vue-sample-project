@@ -8,23 +8,19 @@
   }
 }
 
-.apos-admin-bar-wrapper ~ [data-apos-refreshable] {
+.apos-admin-bar-wrapper~[data-apos-refreshable] {
   .t-spacer-place {
     height: 42vh;
-  }
-
-  .t-background-place__container {
-    margin-top: 18vh;
   }
 }
 
 .t-background-place {
+  position: relative;
   min-height: 40vh;
   background-attachment: fixed;
-  background-position: 100% 15%;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
-  position: fixed;
+  background-size: cover;
   right: 0;
   left: 0;
 
@@ -32,25 +28,17 @@
     min-height: 60vh;
   }
 
-  &__container {
-    margin: auto;
-    margin-top: 5vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &--event {
-      margin-top: 5vh !important;
-    }
-  }
-
   &__title {
     color: $color-white;
+    padding: 0px 5px 0px 5px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
     font-family: 'Montserrat', sans-serif;
     font-size: 2rem;
     font-weight: 600;
     text-align: center;
     line-height: 3rem;
+    margin-top: 15px;
 
     &--event {
       font-size: 1.5rem !important;
@@ -58,7 +46,8 @@
   }
 
   &__place {
-    color: $color-white;
+    color: $color-main;
+    text-align: center;
     font-family: 'Friends', 'Regular';
     font-size: 20px;
     margin-top: 8px;
@@ -71,8 +60,13 @@
   }
 
   &__icons {
-    align-self: flex-end;
-    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    opacity: 0.7;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 }
 
@@ -106,6 +100,7 @@
   &__content {
     .t-content {
       color: $color-text;
+
       &__schedule {
         display: flex;
         align-items: baseline;
@@ -193,17 +188,17 @@
         align-items: flex-start;
         min-height: 30px;
 
-        .t-content__web-link + .apos-area p {
+        .t-content__web-link+.apos-area p {
           margin: 0;
         }
       }
 
       &__phone-link,
       &__web-link {
-        color: $color-text !important;
+        color: $color-text  !important;
 
         :visited {
-          color: $color-text !important;
+          color: $color-text  !important;
         }
       }
     }

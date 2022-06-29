@@ -8,16 +8,14 @@
   {% area data.piece, 'address' %}
 {% endif -%}
 
-{% if data.piece.phoneNumber.items[0].content %}
+{% if data.piece.phoneNumber != true %}
   <li class="t-content__item">
     <a class="t-content__phone-link" href="tel:{{ data.piece.phoneNumber }}">
       <span class="t-content__icon">{% include "content:phone.svg" %}</span>
       <span class="t-content__category">{{ __t('apostrophe:phone') }}</span>
-      <span class="t-content__data">{% area data.piece, 'phoneNumber' %}</span>
+      <span class="t-content__data">{{ data.piece.phoneNumber }}</span>
     </a>
   </li>
-{% else %}
-  {% area data.piece, 'phoneNumber' %}
 {% endif -%}
 
 {% if data.piece.website.items[0].content %}
