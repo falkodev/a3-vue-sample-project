@@ -23,6 +23,12 @@ module.exports = {
         title: 'Itinerary',
       },
       {
+        slug: '/place',
+        parkedId: 'place',
+        type: 'place-page',
+        title: 'Place',
+      },
+      {
         slug: '/register',
         parkedId: 'register',
         type: 'register-page',
@@ -64,11 +70,9 @@ module.exports = {
       loggedOutMsg: 'loggedOutMsg',
     },
   },
-
   init(self) {
     self.enableBrowserData('public')
   },
-
   extendMethods() {
     return {
       getBrowserData(_super, req) {

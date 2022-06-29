@@ -19,10 +19,10 @@ register:
 categories:
   - label: apostrophe:wineStore
     value: wineStore
-    searchTerm: 'caviste'
+    searchTerm: "caviste"
   - label: apostrophe:wineBar
     value: wineBar
-    searchTerm: 'bar à vins'
+    searchTerm: "bar à vins"
   - label: apostrophe:poi
     value: poi
     searchTerm: "lieu d'intérêt"

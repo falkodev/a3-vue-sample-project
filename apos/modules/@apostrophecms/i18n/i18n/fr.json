@@ -104,6 +104,7 @@
   "doesNotExistYet": "Does Not Exist Yet",
   "doesNotExistYetDescription": "The document does not exist yet as {{ mode }} in the {{ locale }} locale.",
   "domain": "Domaine",
+  "domainPage": "Page domaine",
   "domains": "Domaines",
   "presentation": "Présentation",
   "download": "Download",
@@ -455,7 +456,6 @@
   "visibility": "Visibilité",
   "visitPrice": "Prix en euros :",
   "visitPriceSimple": "Prix en euros",
-  "visit": "Visite",
   "website": "Lien vers le site web",
   "willMoveImageToArchive": "This will move the image to the archive.",
   "yes": "Oui",
@@ -533,7 +533,9 @@
     "step": "Étape",
     "seeNearDomains": "Voir domaines à proximité",
     "itinerary": "Itinéraire routier",
-    "start": "Commencer"
+    "start": "Commencer",
+    "previous": "Précédent",
+    "next": "Suivant"
   },
   "customer": "Client",
   "customers": "Clients",
@@ -594,6 +596,7 @@
     "infos": "Informations et accès",
     "event": "Événement",
     "note": "Note générale :",
+    "pageName": "Page lieux",
     "helpPhone": "Veuillez utiliser le format international (+33 pour la France)"
   },
   "startDate": "Date début",
@@ -626,6 +629,27 @@
     "assessment": "Appréciations données",
     "setting": "Réglages",
     "myAccount": "Mon compte"
+  },
+  "visit": {
+    "label": "Visite",
+    "pluralLabel": "Visites",
+    "labelTitle": "Éditer la visite",
+    "subLabel": "Étape",
+    "subLabelPlural": "Étapes",
+    "duration": "Durée (en minutes)",
+    "longitude": "Longitude",
+    "latitude": "Latitude",
+    "subStep": {
+      "help": "Rentrez le type de votre sous-étape",
+      "label": "Sous-étape",
+      "title": "Titre",
+      "photo": "Photo",
+      "downloadable": "Téléchargeable"
+    },
+    "track": {
+      "label": "Tracé GPS",
+      "pluralLabel": "Tracés GPS"
+    }
   },
   "domainType": {
     "label": "Domaine",
@@ -693,7 +717,6 @@
   "restorations": "Restaurations",
   "phoneNumber": "Numéro de téléphone public",
   "phoneNumberAppointment": "Numéro de téléphone pour la prise de rendez-vous",
-
   "eShop": "Lien vers l'e-boutique",
   "openingDaysAndHours": "Jours et heures d'ouverture",
   "locales": {
