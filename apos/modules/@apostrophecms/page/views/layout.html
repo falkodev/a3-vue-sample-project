@@ -18,13 +18,13 @@
       {% else %}
         <div class="t-header__geoloc t-header__icon"></div>
       {% endif %}
-      <div class="t-header__logo">
+      <a href="/" class="t-header__logo">
         {% if data.global.logo %}
           <img alt="logo-site" src="{{ apos.attachment.url(data.global.logo) }}">
         {% else %}
           {{ __t('apostrophe:layout.logoPlaceholder') }}
         {% endif %}
-      </div>
+      </a>
 
       <div class="t-header__right">
         <div class="t-header__search t-header__icon"></div>

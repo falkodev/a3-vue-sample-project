@@ -3,48 +3,47 @@
 
 {% block main %}
 
-  {# <div class="t-place__container"> #}
-    <div class="t-spacer-place"></div>
+  <div class="t-spacer-place"></div>
 
-    <div class="t-background-place"
-    {% if data.piece.image -%} style="background-image: url('{{ apos.attachment.url(data.piece.image) }}');" {% endif -%}>
-      <div class="t-background-place__container">
-        <div class="t-background-place__title">{{ data.piece.title }}</div>
-        <div class="t-background-place__place">
-          {{ __t('apostrophe:' + data.piece.placeType) }}
-          {% include "content:grape.svg" %}
-        </div>
-        <div class="t-background-place__icons">
-          {{ userIcons.displayIcons([ ["goto", "white"], ["favorite", "white"] ]) }}
-        </div>
-      </div>
+  <div class="t-background-place" 
+  {% if data.piece.image -%}
+    style="background-image: url('{{ apos.attachment.url(data.piece.image) }}');" {% endif -%}>
+    <div class="t-background-place__icons">
+      {{ userIcons.displayIcons([ ["goto", "black"], ["favorite", "black"] ]) }}
+    </div>
+  </div>
+
+  <div class="t-place">
+    <h2 class="t-domain__title">{{ data.piece.title }}</h2>
+    <div class="t-background-place__place">
+      {{ __t('apostrophe:' + data.piece.placeType) }}
+      {% include "content:grape.svg" %}
+    </div>
+    <div class="t-domain__tags-domain">
+      {% area data.piece, 'wineLabels' %}
+    </div>
+    <div class="t-place__description">{% area data.piece, 'description' %}</div>
+    <div class="t-place__content t-content">
+      <ul class="t-content__list">
+
+        {% if data.piece.openingDaysAndHours.items[0].content -%}
+          <li class="t-content__schedule t-schedule">
+            {% include "openingSchedule.html" %}
+          </li>
+        {% else %}
+          {% area data.piece, 'openingDaysAndHours' %}
+        {% endif -%}
+
+        {% include "contactInformation.html" %}
+      </ul>
     </div>
 
-    <div class="t-place">
-      <h2 class="t-place__title">{{ data.piece.title }}</h2>
-      <div class="t-place__description">{% area data.piece, 'description' %}</div>
-      <div class="t-place__content t-content">
-        <ul class="t-content__list">
-
-          {% if data.piece.openingDaysAndHours.items[0].content -%}
-            <li class="t-content__schedule t-schedule">
-              {% include "openingSchedule.html" %}
-            </li>
-          {% else %}
-            {% area data.piece, 'openingDaysAndHours' %}
-          {% endif -%}
-
-          {% include "contactInformation.html" %}
-        </ul>
+    {% if data.piece.note %}
+      <div class="t-place-note">
+        <h3 class="t-place-note__title">{{ __t('apostrophe:placePage.note') }}</h3>
+        <h2 class="t-place-note__content">{{ data.piece.note }}/ 5</h2>
       </div>
+    {% endif %}
+  </div>
 
-      {% if data.piece.note %}
-        <div class="t-place-note">
-          <h3 class="t-place-note__title">{{ __t('apostrophe:placePage.note') }}</h3>
-          <h2 class="t-place-note__content">{{ data.piece.note }}/ 5</h2>
-        </div>
-      {% endif %}
-    </div>
-
-  {# </div> #}
 {% endblock %}

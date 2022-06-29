@@ -124,14 +124,9 @@ module.exports = {
       },
 
       phoneNumberAppointment: {
-        type: 'area',
+        type: 'string',
         label: 'apostrophe:phoneNumberAppointment',
-        options: {
-          widgets: {
-            '@apostrophecms/rich-text': {},
-          },
-          max: 1,
-        },
+        help: 'apostrophe:placePage.helpPhone',
         if: {
           reception: true,
         },
@@ -224,6 +219,7 @@ module.exports = {
         fields: [
           'reception',
           'isAutoGuidedVisit',
+          'duration',
           'phoneNumberAppointment',
           'openingDaysAndHours',
           'visitPrice',
