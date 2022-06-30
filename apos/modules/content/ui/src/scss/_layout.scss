@@ -16,19 +16,14 @@ main {
   flex-grow: 1;
 }
 
-[data-apos-refreshable] {
-  position: relative;
-  top: $admin-height;
-}
-
 .apos-admin-bar-spacer {
   margin-bottom: 0;
   display: none;
 }
 
-.apos-admin-bar-wrapper ~ [data-apos-refreshable] .t-wrapper {
+.apos-admin-bar-wrapper~[data-apos-refreshable] .t-wrapper {
   position: relative;
-  top: $header-height;
+  top: calc($admin-height + $header-height);
 }
 
 .t-wrapper {

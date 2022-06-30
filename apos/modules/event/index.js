@@ -44,7 +44,9 @@ module.exports = {
         label: 'apostrophe:event.description',
         type: 'area',
         options: {
-          'collapse-rich-text': {},
+          widgets: {
+            'collapse-rich-text': {},
+          },
           max: 1,
         },
       },

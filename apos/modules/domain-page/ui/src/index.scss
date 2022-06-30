@@ -1,80 +1,37 @@
 @import '/modules/content/ui/src/scss/_settings';
-@import './visit.scss';
-@import './modal.scss';
 
-.t-spacer {
-  height: 40vh;
+.t-spacer-domain {
+  height: 32vh;
 
-  .t-spacer-domain {
-    height: 32vh;
+  @media (min-width: map-get($breakpoints, 'md')) {
+    min-height: 60vh;
+  }
+}
 
-    @media (min-width: map-get($breakpoints, 'md')) {
-      min-height: 60vh;
-    }
+.t-domain {
+  &__tags-domain {
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 5px;
   }
 
-  .t-domain {
-    &__tags-domain {
-      width: 100%;
-      margin-top: 15px;
-      margin-right: 5px;
-    }
+  &__title {
+    color: $color-main;
+  }
 
-    &__title {
-      color: $color-main;
-    }
+  &__spoken-languages {
+    color: $color-main;
+    align-self: flex-start;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
 
-    &__spoken-languages {
-      color: $color-main;
-      align-self: flex-start;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-
-    &__actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    &__languages {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    &__language {
-      border: 1px $color-grey-40 solid;
-      border-radius: 15px;
-      padding: 4px 6px 4px 6px;
-    }
-
-    &__events {
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-
-      &-banner {
-        margin: auto;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 36px;
-        width: 100%;
-        background-color: #ff8317;
-        color: white;
-        font-size: 17px;
-      }
-
-      background-color: $color-main;
-      color: white;
-      font-size: 17px;
-    }
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
   }
 
   &__languages {
@@ -104,7 +61,7 @@
       justify-content: center;
       height: 36px;
       width: 100%;
-      background-color: #ff8317;
+      background-color: $color-main;
       color: white;
       font-size: 17px;
     }
