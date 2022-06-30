@@ -30,7 +30,7 @@
 
   &__title {
     color: $color-white;
-    padding: 0px 5px 0px 5px;
+    padding: 0 5px;
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     font-family: 'Montserrat', sans-serif;
@@ -48,7 +48,7 @@
   &__place {
     color: $color-main;
     text-align: center;
-    font-family: 'Friends', 'Regular';
+    font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     margin-top: 8px;
 
@@ -187,7 +187,7 @@
         align-items: flex-start;
         min-height: 30px;
 
-        .t-content__web-link+.apos-area p {
+        .t-content__web-link + .apos-area p {
           margin: 0;
         }
       }
