@@ -90,9 +90,7 @@ module.exports = {
       },
       price: {
         type: 'float',
-        required: true,
         label: 'apostrophe:price',
-        min: -0.001,
       },
       image: {
         type: 'attachment',
