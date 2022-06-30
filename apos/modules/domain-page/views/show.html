@@ -6,9 +6,16 @@
 
   <div class="t-background-place"
   {% if data.piece.image -%} style="background-image: url('{{ apos.attachment.url(data.piece.image) }}');" {% endif -%}>
+
+  {% if data.piece.reception %}
     <div class="t-background-place__icons">
       {{ userIcons.displayIcons([ ["visit", "black"], ["goto", "black"], ["favorite", "black"] ]) }}
     </div>
+  {% else %}
+    <div class="t-background-place__icons">
+      {{ userIcons.displayIcons([ ["goto", "black"], ["favorite", "black"] ]) }}
+    </div>
+  {% endif %}
   </div>
 
   <div class="t-place t-domain">
