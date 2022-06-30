@@ -34,7 +34,7 @@
             />
           </div>
           <div
-            v-if="step.place.description.items[0].content"
+            v-if="step?.place?.description?.items[0]?.content"
             class="t-infos__description"
           >
             {{ removeTags(step?.place?.description?.items[0]?.content) }}
