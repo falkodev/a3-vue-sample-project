@@ -26,7 +26,7 @@ release:
       - larzac-prod
     variables:
       # Run only when commit message starts with "Release v."
-      - $CI_MERGE_REQUEST_TITLE =~ /^Release v.*/
+      - $CI_COMMIT_MESSAGE =~ /^Release v.*/
     changes:
       - CHANGELOG.md
       - package.json
