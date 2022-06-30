@@ -33,8 +33,6 @@ release:
 
 test:
   stage: test
-  needs:
-    - release
   before_script:
     - npm install --location=global jest
     - npm run install:app
