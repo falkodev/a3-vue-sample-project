@@ -2,8 +2,8 @@
 {% for result in data.result %}
   <div class="t-category">
     {% if result[0] %}
-      {% set item = result[0] %}
-      {% set type = item.placeType or item.type %}
+    {% set item = result[0] %}
+    {% set type = item.placeType or item.type %}
       <div class="t-category__heading">
         {% if type === 'wineStore' %}
         <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/wine-bottle.svg') }}"
