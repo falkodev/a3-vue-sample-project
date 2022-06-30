@@ -15,23 +15,26 @@ release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   script:
-    - echo "CI_MERGE_REQUEST_TITLE"
-    - echo "$CI_MERGE_REQUEST_TITLE"
     - echo "running release_job for $TAG"
   release:
-    tag_name: '$CI_MERGE_REQUEST_TITLE'
-    description: '$CI_MERGE_REQUEST_TITLE'
+    tag_name: '$CI_COMMIT_MESSAGE'
+    description: '$CI_COMMIT_MESSAGE'
     ref: '$CI_COMMIT_SHA'
   only:
     refs:
       - larzac-uat
       - larzac-prod
     variables:
-      # Run only when merge request title starts with "Release v.".
-      - $CI_MERGE_REQUEST_TITLE =~ /^Release v.*/
+      # Run only when commit message starts with "Release v"
+      - $CI_COMMIT_MESSAGE =~ /^Release v.*/
+    changes:
+      - CHANGELOG.md
+      - package.json
 
 test:
   stage: test
+  needs:
+    - release
   before_script:
     - npm install --location=global jest
     - npm run install:app
