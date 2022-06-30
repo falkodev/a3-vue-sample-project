@@ -1,10 +1,5 @@
 image: node:16
 
-stages:
-  - release
-  - test
-  - deploy
-
 cache:
   key: npm
   policy: pull-push
@@ -12,7 +7,6 @@ cache:
     - .npm/
 
 release:
-  stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   script:
     - echo "running release_job for $TAG"
@@ -32,7 +26,6 @@ release:
       - package.json
 
 test:
-  stage: test
   needs:
     - release
   before_script:
@@ -46,7 +39,6 @@ test:
       - larzac-prod
 
 manual_test:
-  stage: test
   rules:
     - when: manual
       allow_failure: true
@@ -57,7 +49,6 @@ manual_test:
     - npm run test:apos
 
 deploy_larzac_uat:
-  stage: deploy
   needs:
     - test
   before_script:
@@ -82,7 +73,6 @@ deploy_larzac_uat:
     - larzac-uat
 
 deploy_larzac_prod:
-  stage: deploy
   needs:
     - test
   before_script:
