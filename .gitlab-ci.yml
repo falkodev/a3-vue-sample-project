@@ -17,7 +17,7 @@ release:
   script:
     - echo "running release_job for $TAG"
   release:
-    tag_name: '$CI_COMMIT_MESSAGE'
+    tag_name: '$v0.$CI_PIPELINE_IID'
     description: 'v0.$CI_PIPELINE_IID'
     ref: '$CI_COMMIT_SHA'
   only:
@@ -25,8 +25,8 @@ release:
       - larzac-uat
       - larzac-prod
     variables:
-      # Run only when commit message starts with "v."
-      - $CI_COMMIT_MESSAGE =~ /^v.*/
+      # Run only when commit message starts with "Release v."
+      - $CI_MERGE_REQUEST_TITLE =~ /^Release v.*/
     changes:
       - CHANGELOG.md
       - package.json
