@@ -8,19 +8,19 @@
   }
 }
 
-.apos-admin-bar-wrapper~[data-apos-refreshable] {
+.apos-admin-bar-wrapper ~ [data-apos-refreshable] {
   .t-spacer-place {
     height: 42vh;
   }
 }
 
 .t-background-place {
-  position: relative;
   min-height: 40vh;
   background-attachment: fixed;
-  background-position: center;
+  background-position: 50% 15%;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  position: fixed;
   right: 0;
   left: 0;
 
@@ -65,8 +65,6 @@
     justify-content: center;
     background-color: white;
     opacity: 0.7;
-    padding-top: 5px;
-    padding-bottom: 5px;
   }
 }
 
@@ -156,6 +154,7 @@
       }
 
       &__category {
+        min-width: 80px;
         font-weight: 600;
         margin-left: 12px;
 
@@ -195,10 +194,10 @@
 
       &__phone-link,
       &__web-link {
-        color: $color-text  !important;
+        color: $color-text !important;
 
         :visited {
-          color: $color-text  !important;
+          color: $color-text !important;
         }
       }
     }
