@@ -4,6 +4,11 @@
 
 ### Fixed
 
+- fix bug gitlabci
+## 1.2.1 - 2022-06-30
+
+### Fixed
+
 - Fix bug css
 ## 1.2.0 - 2022-06-30
 
