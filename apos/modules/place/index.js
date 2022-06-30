@@ -22,7 +22,6 @@ module.exports = {
         type: 'select',
         label: 'apostrophe:place.type',
         choices: 'setChoices',
-        def: 'domain',
         required: true,
       },
       description: {
