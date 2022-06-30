@@ -25,7 +25,7 @@ release:
       - larzac-uat
       - larzac-prod
     variables:
-      # Run only when commit message starts with "Release v"
+      # Run only when commit message starts with "Release v".
       - $CI_COMMIT_MESSAGE =~ /^Release v.*/
     changes:
       - CHANGELOG.md
