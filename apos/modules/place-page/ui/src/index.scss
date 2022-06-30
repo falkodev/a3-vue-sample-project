@@ -8,7 +8,7 @@
   }
 }
 
-.apos-admin-bar-wrapper ~ [data-apos-refreshable] {
+.apos-admin-bar-wrapper~[data-apos-refreshable] {
   .t-spacer-place {
     height: 42vh;
   }
@@ -187,7 +187,7 @@
         align-items: flex-start;
         min-height: 30px;
 
-        .t-content__web-link + .apos-area p {
+        .t-content__web-link+.apos-area p {
           margin: 0;
         }
       }
