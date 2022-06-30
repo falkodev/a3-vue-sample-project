@@ -24,7 +24,7 @@ module.exports = {
         type: 'area',
         options: {
           widgets: {
-          'collapse-rich-text': {},
+            'collapse-rich-text': {},
           },
           max: 1,
         },

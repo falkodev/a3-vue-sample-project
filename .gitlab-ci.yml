@@ -17,15 +17,15 @@ release:
   script:
     - echo "running release_job for $TAG"
   release:
-    tag_name: 'v0.$CI_PIPELINE_IID'
-    description: 'v0.$CI_PIPELINE_IID'
+    tag_name: '$CI_MERGE_REQUEST_TITLE'
+    description: '$CI_MERGE_REQUEST_TITLE'
     ref: '$CI_COMMIT_SHA'
   only:
     refs:
       - larzac-uat
       - larzac-prod
     variables:
-      # Run only when commit message starts with "Release v"
+      # Run only when merge request title starts with "Release v.".
       - $CI_MERGE_REQUEST_TITLE =~ /^Release v.*/
     changes:
       - CHANGELOG.md
@@ -59,7 +59,7 @@ manual_test:
 deploy_larzac_uat:
   stage: deploy
   needs:
-    #- release
+    - release
     - test
   before_script:
     - apt-get update -y && apt-get -y install rsync
