@@ -563,7 +563,7 @@ Find existing instances in https://lightsail.aws.amazon.com/ls/webapp/home/insta
 Here are the steps to deploy a release:
 - upgrade package.json version
 - create a new entry in CHANGELOG.md with this new version, the current date and a changes sum up
-- create a MR on the target branch (e.g: larzac-uat to deploy on UAT for Larzac) with a commit starting with "Release v" and the defined version
+- create a MR on the target branch (e.g: larzac-uat to deploy on UAT for Larzac) with a commit starting with "v." and the defined version
 
 This will trigger a pipeline that will :
 - create a new release on Gitlab (available in https://gitlab.com/vino-vibes/vinoways-territoire/-/releases)
