@@ -15,6 +15,8 @@ release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   script:
+    - echo "CI_MERGE_REQUEST_TITLE"
+    - echo "$CI_MERGE_REQUEST_TITLE"
     - echo "running release_job for $TAG"
   release:
     tag_name: '$CI_MERGE_REQUEST_TITLE'
@@ -49,7 +51,7 @@ manual_test:
   stage: test
   rules:
     - when: manual
-      allow_failure: false
+      allow_failure: true
   before_script:
     - npm install --location=global jest
     - npm run install:app
