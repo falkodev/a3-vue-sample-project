@@ -67,7 +67,6 @@ module.exports = {
       aocLogos: {
         label: 'apostrophe:addAocLogo',
         type: 'attachment',
-        required: 'true',
         fileGroup: 'images',
       },
     },
