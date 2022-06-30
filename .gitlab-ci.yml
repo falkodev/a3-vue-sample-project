@@ -29,14 +29,9 @@ release:
     variables:
       # Run only when merge request title starts with "Release v.".
       - $CI_MERGE_REQUEST_TITLE =~ /^Release v.*/
-    changes:
-      - CHANGELOG.md
-      - package.json
 
 test:
   stage: test
-  needs:
-    - release
   before_script:
     - npm install --location=global jest
     - npm run install:app
@@ -61,7 +56,6 @@ manual_test:
 deploy_larzac_uat:
   stage: deploy
   needs:
-    - release
     - test
   before_script:
     - apt-get update -y && apt-get -y install rsync
@@ -87,7 +81,6 @@ deploy_larzac_uat:
 deploy_larzac_prod:
   stage: deploy
   needs:
-    - release
     - test
   before_script:
     - apt-get update -y && apt-get -y install rsync
