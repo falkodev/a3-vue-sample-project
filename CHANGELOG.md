@@ -5,6 +5,7 @@
 ### Fixed
 
 - Fix bug css
+
 ## 1.2.0 - 2022-06-30
 
 ### Added
