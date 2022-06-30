@@ -15,26 +15,23 @@ release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   script:
+    - echo "CI_MERGE_REQUEST_TITLE"
+    - echo "$CI_MERGE_REQUEST_TITLE"
     - echo "running release_job for $TAG"
   release:
-    tag_name: 'v0.$CI_PIPELINE_IID'
-    description: 'v0.$CI_PIPELINE_IID'
+    tag_name: '$CI_MERGE_REQUEST_TITLE'
+    description: '$CI_MERGE_REQUEST_TITLE'
     ref: '$CI_COMMIT_SHA'
   only:
     refs:
       - larzac-uat
       - larzac-prod
     variables:
-      # Run only when commit message starts with "Release v"
-      - $CI_COMMIT_MESSAGE =~ /^Release v.*/
-    changes:
-      - CHANGELOG.md
-      - package.json
+      # Run only when merge request title starts with "Release v.".
+      - $CI_MERGE_REQUEST_TITLE =~ /^Release v.*/
 
 test:
   stage: test
-  needs:
-    - release
   before_script:
     - npm install --location=global jest
     - npm run install:app
@@ -49,7 +46,7 @@ manual_test:
   stage: test
   rules:
     - when: manual
-      allow_failure: false
+      allow_failure: true
   before_script:
     - npm install --location=global jest
     - npm run install:app
@@ -59,7 +56,6 @@ manual_test:
 deploy_larzac_uat:
   stage: deploy
   needs:
-    - release
     - test
   before_script:
     - apt-get update -y && apt-get -y install rsync
@@ -85,7 +81,6 @@ deploy_larzac_uat:
 deploy_larzac_prod:
   stage: deploy
   needs:
-    - release
     - test
   before_script:
     - apt-get update -y && apt-get -y install rsync
