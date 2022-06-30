@@ -15,6 +15,7 @@ release:
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   script:
+    - echo "CI_MERGE_REQUEST_TITLE: $CI_MERGE_REQUEST_TITLE"
     - echo "running release_job for $TAG"
   release:
     tag_name: '$CI_MERGE_REQUEST_TITLE'
