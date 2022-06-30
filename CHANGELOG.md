@@ -10,7 +10,7 @@
 
 ### Added
 
-- Add steps and substep page
+- Add steps and sub-step page
 - Add content modal
 
 ## 1.1.3 - 2022-06-29
