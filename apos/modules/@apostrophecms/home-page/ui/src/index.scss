@@ -1,12 +1,26 @@
 @import '~/modules/content/ui/src/scss/_settings.scss';
 
 .t-background {
-  min-height: 35vh;
-  background-attachment: fixed;
-  background-position: 50% 15%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  transition: 0.32s ease height;
+  @supports (-webkit-touch-callout: none) {
+    display: block;
+    min-height: 35vh;
+    background-position: 50% 15%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    right: 0;
+    left: 0;
+  }
+
+  @supports not (-webkit-touch-callout: none) {
+    min-height: 35vh;
+    background-attachment: fixed;
+    background-position: 50% 15%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 0.32s ease height;
+  }
 
   @media (min-width: map-get($breakpoints, 'sm')) {
     min-height: 60vh;
