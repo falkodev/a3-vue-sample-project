@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.6 - 2022-07-01
+
+### Fixed
+
+- Fix symbolic link for uploads and database
+
 ## 1.2.5 - 2022-07-01
 
 ### Fixed
