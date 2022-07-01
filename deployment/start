@@ -1,11 +1,11 @@
 #!/bin/bash
 
-mkdir -p ../../mongo/data/db
-mkdir -p $HERE/mongo/data
-ln -sfn $HERE/../../mongo/data/db $HERE/mongo/data
+sudo mkdir -p ../../mongo/data/db
+sudo mkdir -p $HERE/mongo/data
+sudo ln -sfn $HERE/../../mongo/data/db $HERE/mongo/data
 
-mkdir -p ../../uploads
-cp -r $HERE/../../uploads $HERE/apos/public
+sudo mkdir -p ../../uploads
+sudo cp -r $HERE/../../uploads $HERE/apos/public
 echo "ApostropheCMS attachments restored"
 
 PROJECT=vino-terr-larzac

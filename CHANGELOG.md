@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.4 - 2022-07-01
+
+### Fixed
+
+- Fix mongo backup in remote server
+
 ## 1.2.3 - 2022-07-01
 
 ### Fixed
