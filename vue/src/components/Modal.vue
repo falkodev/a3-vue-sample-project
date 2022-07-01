@@ -124,7 +124,7 @@ defineProps({
 </script>
 
 <style lang="scss">
-@import '/assets/settings.scss';
+@import '../assets/settings.scss';
 
 .t-modal__title {
   font-size: 25px;
