@@ -81,6 +81,7 @@
   "description": "Description",
   "disabled": "Disabled",
   "disableAccount": "Delete account",
+  "disabledAccess": "Access for disabled people",
   "discardChanges": "Discard Changes",
   "discardChangesPrompt": "Do you want to discard changes?",
   "discardChangesToDocTypePrompt": "Do you want to discard changes to this {{ type }}?",
