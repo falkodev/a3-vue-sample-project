@@ -3,7 +3,13 @@
 @import './modal.scss';
 
 .t-spacer-domain {
-  height: 32vh;
+  @supports (-webkit-touch-callout: none) {
+    height: 0;
+  }
+
+  @supports not (-webkit-touch-callout: none) {
+    height: 32vh;
+  }
 
   @media (min-width: map-get($breakpoints, 'md')) {
     min-height: 60vh;
