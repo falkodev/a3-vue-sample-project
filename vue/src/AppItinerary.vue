@@ -216,7 +216,7 @@ import { computed, ref } from 'vue'
 import dayjs from 'dayjs'
 
 const props = defineProps({
-  piece: Object,
+  piece: String,
 })
 const data = JSON.parse(props.piece)
 if (!window.apos.user) {
@@ -275,8 +275,7 @@ function calculateItineraryDuration(steps) {
     hours = hours + dayjs(`2000-01-01 ${step.duration}`).$H
     minutes = minutes + dayjs(`2000-01-01 ${step.duration}`).$M
   })
-  let duration = `${hours}:${minutes}`
-  return duration
+  return `${hours}:${minutes}`
 }
 
 function formatDate(infos) {
@@ -312,7 +311,7 @@ function dataMileAge(mileage) {
 
 <style lang="scss">
 @import './assets/base.css';
-@import '../assets/settings.scss';
+@import './assets/settings.scss';
 
 .bold {
   font-weight: bold;

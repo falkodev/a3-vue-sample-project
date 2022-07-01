@@ -92,11 +92,14 @@
   }
 
   &__title {
+    width: 95%;
     color: $color-white;
     white-space: normal;
+    font-weight: bold;
     text-align: center;
-    padding: 0 8px 0 8px;
     word-break: break-word;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
   }
 
   &__tags {

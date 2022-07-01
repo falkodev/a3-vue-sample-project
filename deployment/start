@@ -1,5 +1,13 @@
 #!/bin/bash
 
+mkdir -p ../../mongo/data/db
+mkdir -p $HERE/mongo/data
+ln -sfn $HERE/../../mongo/data/db $HERE/mongo/data
+
+mkdir -p ../../uploads
+cp -r $HERE/../../uploads $HERE/apos/public
+echo "ApostropheCMS attachments restored"
+
 PROJECT=vino-terr-larzac
 DIR=/opt/stagecoach/apps/$PROJECT
 DEPLOYMENTS=$DIR/deployments
