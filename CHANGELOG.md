@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- Readme Ci/Deploy updated
+- Readme CI/Deploy updated
 
 ## 1.2.2 - 2022-07-01
 
