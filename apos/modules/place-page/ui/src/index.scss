@@ -8,7 +8,7 @@
   }
 }
 
-.apos-admin-bar-wrapper~[data-apos-refreshable] {
+.apos-admin-bar-wrapper ~ [data-apos-refreshable] {
   .t-spacer-place {
     height: 42vh;
   }
@@ -36,10 +36,7 @@
     position: fixed;
     right: 0;
     left: 0;
-
   }
-
-
 
   @media (min-width: map-get($breakpoints, 'md')) {
     min-height: 60vh;
@@ -204,7 +201,7 @@
         align-items: flex-start;
         min-height: 30px;
 
-        .t-content__web-link+.apos-area p {
+        .t-content__web-link + .apos-area p {
           margin: 0;
         }
       }
