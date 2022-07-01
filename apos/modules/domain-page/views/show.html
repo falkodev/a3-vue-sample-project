@@ -70,7 +70,7 @@
 
     <div class="t-domain__actions">
       {# <a href="tel:{{ data.piece.phoneNumberAppointment | trim }}" class="t-button t-button--plain t-button--white">{{ __t('apostrophe:placePage.appointment') }}</a> #}
-      <a href="#" class="t-button t-button--plain t-button--white">{{ __t('apostrophe:placePage.startVisit') }}</a>
+      <a href="{{data.url}}/visit" class="t-button t-button--plain t-button--white">{{ __t('apostrophe:placePage.startVisit') }}</a>
     </div>
 
     {% if data.piece._events.length > 0 %}
@@ -85,6 +85,5 @@
 
       </div>
     {% endif %}
-
   </div>
 {% endblock %}

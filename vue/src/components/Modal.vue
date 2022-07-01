@@ -153,6 +153,7 @@ defineProps({
     padding-right: 33px;
     display: flex;
     justify-content: left;
+    flex-direction: column;
     width: 100%;
     color: $color-grey-70;
   }
