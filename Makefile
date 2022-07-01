@@ -24,6 +24,15 @@ dev-logs:
 prod:
 	NODE_ENV=production docker-compose -f docker-compose.remote.yml --compatibility up -d --build
 
+local-prod:
+	make kill && \
+	cp apos/modules/content/ui/src/scss/_settings.scss vue/src/assets/settings.scss && \
+  npm run build --prefix vue && \
+  rm -rf apos/public/vue-app && \
+  mkdir -p apos/public/vue-app && \
+  cp -R vue/dist/* apos/public/vue-app && \
+  NODE_ENV=production docker-compose -f docker-compose.remote.yml --compatibility up -d --build && make logs
+
 logs-mongo:
 	docker logs vino-terr-mongo -f
 

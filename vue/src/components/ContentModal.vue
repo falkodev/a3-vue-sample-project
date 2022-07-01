@@ -26,14 +26,14 @@
 
     <div class="t-content__items">
       <div
-        class="t-content__text"
         v-for="item in props.piece.content[0].content.items"
         :key="item"
+        class="t-content__text"
       >
         <div v-if="item.type === '@apostrophecms/rich-text'">
           {{ removeTags(item.content) }}
         </div>
-        <div class="t-content__image-container" v-else>
+        <div v-else class="t-content__image-container">
           <img
             :src="item._image[0].attachment._urls.max"
             alt=""
@@ -55,14 +55,16 @@ const props = defineProps({
   piece: Object,
   title: String,
 })
+
 function removeTags(str) {
   return str?.toString().replace(/(<([^>]+)>)/gi, '')
 }
+
 defineEmits(['leaveModal'])
 </script>
 
-<style scoped lang="scss">
-@import '/assets/settings.scss';
+<style lang="scss" scoped>
+@import '../assets/settings.scss';
 
 .t-content {
   display: flex;
@@ -84,6 +86,7 @@ defineEmits(['leaveModal'])
       min-height: 15vh;
     }
   }
+
   &__itinerary {
     color: $color-main;
     font-size: 1.5rem;
