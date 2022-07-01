@@ -6,13 +6,11 @@ HERE=`pwd`
 make db-dump
 echo "DB saved"
 
-cp -r $HERE/apos/public/uploads/attachments $HERE/../../uploads
+sudo cp -r $HERE/apos/public/uploads/attachments $HERE/../../uploads
 echo "ApostropheCMS attachments saved"
 
 docker-compose stop
 docker rm --force vino-terr-mongo
 docker rm --force vino-terr-apos
 
-# echo "Prune docker images and volumes"
-# docker image prune -a --force && docker system prune --force && docker volume prune --force && docker network prune --force
 echo "Site stopped"
