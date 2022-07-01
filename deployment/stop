@@ -3,8 +3,8 @@
 HERE=`pwd`
 
 # save db
-#docker exec vino-terr-mongo sh -c 'mongodump --archive -u root -p k8fQRwR4' > ../../db/backup-$(date +"%FT%H%M").agz
-#echo "DB saved"
+make db-dump
+echo "DB saved"
 
 cp -r $HERE/apos/public/uploads/attachments $HERE/../../uploads
 echo "ApostropheCMS attachments saved"

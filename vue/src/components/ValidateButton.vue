@@ -6,7 +6,7 @@
 const $t = window.apos.itinerary.labels
 
 defineProps({
-  buttonText: Object,
+  buttonText: String,
   buttonLink: String,
 })
 </script>

@@ -1,5 +1,12 @@
 # Changelog
 
+
+## 1.2.2 - 2022-07-01
+
+### Fixed
+
+- Fix itinerary page in production environment: service worker configuration updated
+
 ## 1.2.1 - 2022-06-30
 
 ### Fixed
