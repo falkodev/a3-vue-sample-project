@@ -8,21 +8,38 @@
   }
 }
 
-.apos-admin-bar-wrapper ~ [data-apos-refreshable] {
+.apos-admin-bar-wrapper~[data-apos-refreshable] {
   .t-spacer-place {
     height: 42vh;
   }
 }
 
 .t-background-place {
-  min-height: 40vh;
-  background-attachment: fixed;
-  background-position: 50% 15%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: fixed;
-  right: 0;
-  left: 0;
+  @supports (-webkit-touch-callout: none) {
+    display: block;
+    min-height: 40vh;
+    background-position: 50% 15%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    right: 0;
+    left: 0;
+  }
+
+  @supports not (-webkit-touch-callout: none) {
+    min-height: 40vh;
+    background-attachment: fixed;
+    background-position: 50% 15%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: fixed;
+    right: 0;
+    left: 0;
+
+  }
+
+
 
   @media (min-width: map-get($breakpoints, 'md')) {
     min-height: 60vh;
@@ -187,7 +204,7 @@
         align-items: flex-start;
         min-height: 30px;
 
-        .t-content__web-link + .apos-area p {
+        .t-content__web-link+.apos-area p {
           margin: 0;
         }
       }

@@ -15,11 +15,8 @@
       </div>
 
     {% else %}
-      <div class="t-icon__hidden--latitude">{{ data.piece.latitude }}</div>
-      <div class="t-icon__hidden--longitude">{{ data.piece.longitude }}</div>
-
+      
       <a class="t-icon" id="gotoLink" href="https://www.google.com/maps/dir/?api=1&destination={{ data.piece.latitude }},{{ data.piece.longitude }}">
-
         <div class="t-icon__image" style='fill: {{ icon[1] }}'>
           {% include "content:" + (icon[0]) + ".svg" %}
         </div>

@@ -42,7 +42,7 @@
         </div>
         <div v-if="isPay" class="t-infos__buttons">
           <GoIcon :lat="step.place.latitude" :lon="step.place.longitude" />
-          <VisitIcon :title="title" :data="step" v-if="step.content.length" />
+          <VisitIcon v-if="step.content?.length" :data="step" :title="title" />
         </div>
       </div>
       <div class="t-step__indefinite">
