@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.5 - 2022-07-01
+
+### Fixed
+
+- Fix redirect visit domain and flex-direction content visit
+
 ## 1.2.4 - 2022-07-01
 
 ### Fixed
