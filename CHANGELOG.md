@@ -1,6 +1,10 @@
 # Changelog
 
+## 1.2.3 - 2022-07-01
 
+### Fixed
+
+- Readme Ci/Deploy updated
 ## 1.2.2 - 2022-07-01
 
 ### Fixed
