@@ -27,7 +27,6 @@
 
     <div class="t-category__items">
       {% for item in result %}
-        {% if item.reception != false %}
           <a href="{{ item._url }}" class="t-category__item t-home">
             {% set image = apos.attachment.url(item.image) if item.image else
             apos.asset.url('/modules/content/images/default-domain.jpg') %}
@@ -49,7 +48,6 @@
               </div>
             {% endif %}
           </a>
-        {% endif %}
       {% endfor %}
 
       {% if result.length >= 5 %}

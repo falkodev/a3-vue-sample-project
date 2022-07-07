@@ -116,6 +116,7 @@ module.exports = {
         if: {
           reception: true,
         },
+        def: false,
       },
 
       openingDaysAndHours: {
@@ -159,7 +160,7 @@ module.exports = {
         type: 'relationship',
         withType: 'visit',
         if: {
-          reception: true,
+          isAutoGuidedVisit: true,
         },
       },
 
