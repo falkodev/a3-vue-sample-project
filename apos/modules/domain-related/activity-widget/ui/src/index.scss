@@ -38,4 +38,10 @@
       height: 30px;
     }
   }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }

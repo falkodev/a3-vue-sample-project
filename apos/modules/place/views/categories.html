@@ -49,11 +49,10 @@
             {% endif %}
           </a>
       {% endfor %}
-
-      {% if result.length >= 5 %}
-        <a href="" class="t-category__more">
-          {{ __t('apostrophe:seeMore') }}
-        </a>
+      {% if result.length >= 1 and type !== 'itinerary' %}
+          <a href="/{{data.locale}}/places-list?place={{type}}" class="t-place-category__more">
+            {{ __t('apostrophe:seeMore') }}
+          </a>
       {% endif %}
     </div>
   </div>
