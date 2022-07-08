@@ -41,6 +41,12 @@ module.exports = {
         title: 'Domain',
       },
       {
+        slug: '/places-list',
+        parkedId: 'places-list',
+        type: 'places-list-page',
+        title: 'places-list',
+      },
+      {
         slug: '/place',
         parkedId: 'place',
         type: 'place-page',

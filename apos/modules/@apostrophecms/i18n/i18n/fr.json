@@ -595,6 +595,8 @@
     "choices": "Ce domaine propose",
     "infos": "Informations et accès",
     "event": "Événement",
+    "title": "Les lieux",
+    "toDiscover": "A découvrir aussi",
     "note": "Note générale :",
     "pageName": "Page lieux",
     "helpPhone": "Veuillez utiliser le format international (+33 pour la France)"

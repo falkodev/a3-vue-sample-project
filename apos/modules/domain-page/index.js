@@ -6,6 +6,9 @@ module.exports = {
   },
   methods(self) {
     return {
+      beforeIndex(req) {
+        req.notFound = true
+      },
       async visitPage(req) {
         const piece = await self.apos.domain
           .find(req, { slug: req.params.slug })
