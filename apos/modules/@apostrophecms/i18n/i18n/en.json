@@ -100,6 +100,7 @@
   "documentSaved": "Document saved.",
   "doesNotExistYet": "Does Not Exist Yet",
   "doesNotExistYetDescription": "The document does not exist yet as {{ mode }} in the {{ locale }} locale.",
+  "domains": "domains",
   "domainPresentation": "Domain presentation",
   "presentation": "Presentation",
   "download": "Download",
@@ -585,6 +586,8 @@
     "choices": "This area offers",
     "infos": "Information and access",
     "event": "Event",
+    "title": "Places",
+    "toDiscover": "Also to be discovered",
     "note": "General note:",
     "name": "Place page",
     "helpPhone": "Please use the international format (+33 for France)"
@@ -647,8 +650,8 @@
   },
   "address": "Address:",
   "addressSimple": "Adress",
-  "wineStore": "Wine Store",
-  "wineBar": "Restaurant & Wine Bars",
+  "wineStore": "Wine store",
+  "wineBar": "Restaurant & wine bars",
   "poi": "Point Of Interest",
   "activity": {
     "label": "Activity",

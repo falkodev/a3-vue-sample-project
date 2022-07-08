@@ -1,0 +1,59 @@
+{% import "component/wine-labels:index.html" as wineLabels %}
+
+<p class="t-place__main-title">{{ __t('apostrophe:placePage.title') | upper }}</p>
+
+{% for result in data.result %}
+  <div class="t-category">
+    {% if result[0] %}
+    {% set item = result[0] %}
+    {% set type = item.placeType or item.type %}
+      <div class="t-category__heading">
+        {% if type === 'wineStore' %}
+          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/wine-bottle.svg') }}"
+          alt="category heading">
+        {% elseif type === 'wineBar' %}
+          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/glass.svg') }}"
+          alt="category heading">
+        {% elseif type === 'poi' %}
+          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/binoculars.svg') }}"
+          alt="category heading">
+        {% elseif type === 'domain' %}
+          <img class="t-category__heading-icon" src="{{ apos.asset.url('/modules/content/icons/grap.svg') }}"
+          alt="category heading">
+        {% endif %}
+        <div class="t-category__title">{{ __t('apostrophe:homePage.' + type) }}</div>
+      </div>
+    {% endif %}
+
+    <div class="t-category__items">
+      {% for item in result %}
+        <a href="{{ item._url }}" class="t-category__item t-home">
+        {% set image = apos.attachment.url(item.image) if item.image else
+        apos.asset.url('/modules/content/images/default-domain.jpg') %}
+        <div class="t-home__img" style="background-image: url({{ image }})">
+          <div class="t-home__title">{{ item.title }}</div>
+        </div>
+
+        {% if item.type === "domain" %}
+          <div class="t-home__tags">
+            <div class="t-wine-tag">
+              {% for label in item.wineLabels.items[0]._wineLabels %}
+                {{ wineLabels.wineTag(label.title, label.color, 'small') }}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+      </a>
+      {% endfor %}
+
+      {% if result.length >= 1 %}
+        <a href="/{{data.locale}}/places-list?place={{type}}" class="t-place-category__more">
+          {{ __t('apostrophe:seeMore') }}
+        </a>
+      {% endif %}
+    
+    </div>
+  </div>
+
+{% endfor %}

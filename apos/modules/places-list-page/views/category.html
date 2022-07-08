@@ -1,0 +1,32 @@
+<div id="place" class="t-places-categories">
+  {% for result in data.result %}
+    {% if loop.index !== loop.length %}
+      <div class="t-place-category">
+        {% if result[0] %}
+          {% set item = result[0] %}
+          {% if item.placeType === "domain" %}
+            <div class="t-place-category__main-title">{{__t('apostrophe:domain') | upper }}</div>
+          {% elseif item.placeType === 'wineStore' %}
+          <div class="t-place-category__main-title">{{__t('apostrophe:wineStore') | upper }}</div>
+          {% elseif item.placeType === 'wineBar' %}
+            <div class="t-place-category__main-title">{{__t('apostrophe:wineBar') | upper }}</div>
+          {% elseif item.placeType === 'poi' %}
+            <div class="t-place-category__main-title">{{__t('apostrophe:place:pluralLabel') | upper }}</div>
+          {% endif %}
+          <div class="t-category__second-title">{{__t('apostrophe:placePage:toDiscover') }}</div>
+          <div class="t-category__items-list">
+            {% for item in result %}
+              <a href="{{ item._url }}" class="t-category__item">
+                {% set image = apos.attachment.url(item.image) if item.image else apos.asset.url('/modules/content/images/default-domain.jpg') %}
+                <div class="t-category__image-wide" style="background-image: url({{ image }})">
+                  <div class="t-place__title">{{ item.title }}</div>
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
