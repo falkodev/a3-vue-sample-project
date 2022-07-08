@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.0 - 2022-07-01
+
+### Added
+
+- place page and place list
+
+### Fixed
+
+- Fix symbolic link for uploads and database
+
+
 ## 1.2.6 - 2022-07-01
 
 ### Fixed
