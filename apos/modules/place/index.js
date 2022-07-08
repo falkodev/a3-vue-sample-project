@@ -51,7 +51,7 @@ module.exports = {
       },
       address: {
         type: 'area',
-        label: 'apostrophe:addressSimple',
+        label: 'apostrophe:address',
         options: {
           widgets: {
             '@apostrophecms/rich-text': {},
@@ -156,6 +156,7 @@ module.exports = {
           ...categories.map((category) =>
             self.find(req, { placeType: category.value }).limit(5).toArray(),
           ),
+          self.apos.itinerary.find(req).limit(5).toArray(),
         ])
         return { result }
       },
