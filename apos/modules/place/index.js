@@ -156,7 +156,6 @@ module.exports = {
           ...categories.map((category) =>
             self.find(req, { placeType: category.value }).limit(5).toArray(),
           ),
-          self.apos.itinerary.find(req).limit(5).toArray(),
         ])
         return { result }
       },
