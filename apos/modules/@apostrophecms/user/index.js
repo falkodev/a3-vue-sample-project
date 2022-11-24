@@ -70,7 +70,7 @@ module.exports = {
                   ...self.newInstance(),
                   ...userType,
                   fixtures: true,
-                  password: 'vino01',
+                  password: 'pass01',
                 }),
               ),
             )

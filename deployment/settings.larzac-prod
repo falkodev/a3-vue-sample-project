@@ -1,3 +1,3 @@
 USER=ec2-user
 SERVER=15.236.144.185
-SSH_OPTIONS="-i deployment/vino-terr-ssh-key.pem -oStrictHostKeyChecking=no"
+SSH_OPTIONS="-i deployment/sample-project-ssh-key.pem -oStrictHostKeyChecking=no"

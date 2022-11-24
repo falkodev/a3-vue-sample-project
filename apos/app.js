@@ -1,7 +1,7 @@
 const config = require('config')
 const appName = process.env.NODE_APP_INSTANCE
-  ? `vino-terr-${process.env.NODE_APP_INSTANCE}`
-  : 'vino-terr'
+  ? `sample-project-${process.env.NODE_APP_INSTANCE}`
+  : 'sample-project'
 
 require('apostrophe')({
   shortName: appName,

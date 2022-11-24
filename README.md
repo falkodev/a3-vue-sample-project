@@ -1,4 +1,4 @@
-# Vinoways Territoire
+# Sample project
 
 <a id="contents"></a>
 
@@ -27,15 +27,12 @@
    5.6 [Adminer](#5-6)<br>
 6. [Tests](#6)<br>
 7. [Fixtures and defaults](#7)<br>
-8. [CI/CD and deployments](#8)<br>
-   8.1 [Deploy a release](#8-1)<br>
-   8.2 [Create a new instance](#8-2)<br>
 
 <a id="1"></a>
 
 ## 1 Context [&#x2B06;](#contents)
 
-This project contains backend and frontend for Vinoways Territoire. The designs are hosted here: https://xd.adobe.com/view/64694451-3659-4266-b6a9-f80f680b178c-313a/grid
+This project contains backend and frontend for Sample project.
 
 The app will enable wine syndicates to import and edit domains and places to visit for itineraries and events they configure and sell.
 <br>Customers can create an account, and login to book and buy those.
@@ -67,10 +64,10 @@ First, you need to have docker and docker-compose installed and launched on your
 
 ```yml
 mongoDB:
-  dockerUri: mongodb://root:XXX@vino-terr-mongo:27017/vino-terr-YYY?authSource=admin
+  dockerUri: mongodb://root:XXX@sample-project-mongo:27017/sample-project-YYY?authSource=admin
 ```
 
-`XXX` being the content of `MONGO_INITDB_ROOT_PASSWORD` and `YYY` the syndicate name (most probably `larzac`)
+`XXX` being the content of `MONGO_INITDB_ROOT_PASSWORD` and `YYY` the syndicate name (most probably `region`)
 
 - run `docker-compose up`
 
@@ -80,7 +77,7 @@ mongoDB:
 
 The first time you run `docker-compose up`, all Docker images will be downloaded and built.
 
-There is a dependency between the containers `vino-terr-apos` and `vino-terr-mongo`: the DB needs to be started to
+There is a dependency between the containers `sample-project-apos` and `sample-project-mongo`: the DB needs to be started to
 enable the server to start (otherwise, Apostrophe does not have access to Mongo and is stuck). However, on the first
 run, some time is spent to create database users. Apostrophe tries to connect to Mongo during a certain period of time,
 but on the first run, this timeout expires before Mongo is ready to accept connections. So, read the logs and wait for
@@ -112,7 +109,7 @@ Run:
 - `docker-compose ps` for running instances
 - `docker-compose stop` or `docker-compose kill` for stopping the containers
 - `docker-compose build` to rebuild images
-- `docker-compose exec container-name sh` to log into a container (i.e: `docker-compose exec vino-terr-apos sh` to log
+- `docker-compose exec container-name sh` to log into a container (i.e: `docker-compose exec sample-project-apos sh` to log
   into the server container)
 
 Additionally, there is a Makefile. Therefore, these commands are available:
@@ -304,7 +301,7 @@ The frontend code is always in the `index.js` file of the `src/ui/` folder of a 
 
 #### 5.1.5 Custom components [&#x2B06;](#contents)
 
-Custom components can be found in `apos/modules/component`. Standard modules are traditionnally declared in `apos/app.js` but these are defined in `apos/modules/component/modules.js`.
+Custom components can be found in `apos/modules/component`. Standard modules are traditionally declared in `apos/app.js` but these are defined in `apos/modules/component/modules.js`.
 
 These components are meant to be reused in the project.
 
@@ -483,7 +480,7 @@ Outside of the Docker network, the port exposed is 27018 (in order not to mess w
 machine). Therefore, you can connect to GUI tools such as MongoDB Compass or Robo3T through `mongodb://localhost:27018`
 and indicate in the authentication settings the `root` credentials.
 
-To log into the container, you can run `docker-compose exec vino-terr-mongo bash` and then `mongo -u root`. Insert
+To log into the container, you can run `docker-compose exec sample-project-mongo bash` and then `mongo -u root`. Insert
 the `root` password when it is asked and you have access to the mongo shell.
 
 <a id="5-4"></a>
@@ -517,13 +514,13 @@ Example of usage:
 
 ```yml
 System  : MongoDB
-Server  : vino-terr-mongo
+Server  : sample-project-mongo
 Username: root
 Password: XXX
-Database: vino-terr-YYY
+Database: sample-project-YYY
 ```
 
-`XXX` being the content of `MONGO_INITDB_ROOT_PASSWORD` and `YYY` the syndicate name (most probably `larzac`)
+`XXX` being the content of `MONGO_INITDB_ROOT_PASSWORD` and `YYY` the syndicate name (most probably `region`)
 
 <a id="6"></a>
 ## 6 Tests [&#x2B06;](#contents)
@@ -534,7 +531,7 @@ They can be launched locally by running `npm run test` on root level or through 
 
 For cypress, run `npm run cy:open` to visualize tests. The CI version is available with `npm run cy:run`.
 
-If a watch mode is needed during development for backend: `docker-compose exec vino-terr-apos npm run test:watch` or `cd server && npm run test:watch`
+If a watch mode is needed during development for backend: `docker-compose exec sample-project-apos npm run test:watch` or `cd server && npm run test:watch`
 
 <a id="7"></a>
 
@@ -543,75 +540,7 @@ If a watch mode is needed during development for backend: `docker-compose exec v
 A set of fixtures has been configured to start the application with fake data.
 
 Locally, you can run `cd apos && npm run fixtures`. Through Docker (after the containers have started with `make`), the
-command is `docker-compose exec vino-terr-apos npm run fixtures`.
+command is `docker-compose exec sample-project-apos npm run fixtures`.
 
 For default values, such as activities, wine labels, ..., the command
-is `docker-compose exec vino-terr-apos npm run defaults` or locally `cd apos && npm run defaults`.
-
-<a id="8"></a>
-
-## 8 CI/CD and deployments [&#x2B06;](#contents)
-
-UAT and production environments are deployed to AWS Lightsail servers, executing docker-compose.
-
-Find existing instances in https://lightsail.aws.amazon.com/ls/webapp/home/instances after logging in with Pascal's AWS account.
-
-<a id="8-1"></a>
-
-### 8.1 Deploy a release [&#x2B06;](#contents)
-
-Here are the steps to deploy a release:
-- upgrade package.json version
-- create a new entry in CHANGELOG.md with this new version, the current date and a changes sum up
-- create a MR on the target branch (e.g: larzac-uat to deploy on UAT for Larzac) with a commit starting with "Release v." and the defined version
-
-This will trigger a pipeline that will :
-- create a new release on Gitlab (available in https://gitlab.com/vino-vibes/vinoways-territoire/-/releases)
-- run tests
-- deploy the version to the AWS server following the configuration in the "deployment" folder in this repository
-
-<a id="8-2"></a>
-
-### 8.2 Create a new instance [&#x2B06;](#contents)
-
-- Go to https://lightsail.aws.amazon.com/ls/webapp/home/instances, log in and create a new instance
-  ![](documentation/instance_creation.png)
-- Check the location is `eu-west-3`, pick "Linux" and "Amazon Linux 2" as OS
-  ![](documentation/os_choice.png)
-- Scroll down, enable the automatic snapshot, choose an instance plan (for reference, for dev and uat, it is advised to choose the a $10 instance with 1 vCPU, for production it is better to choose the $20 instance with 2 vCPUs that can handle more connections), add a meaningful name, add tags that can help to sort instances later
-  ![](documentation/name_choice.png)
-- The new instance will be created in less than one minute
-  ![](documentation/instance_created.png)
-- Go the details page of the instance, and click on "Networking". Here, add 2 TCP rules to open ports:
-  - 8080 for apos
-  - 27018 to be able to connect to mongo
-    ![](documentation/networking.png)
-- A ssh connection is available from the terminal icon in the instance
-  ![](documentation/ssh_connection.png)
-  Connect and run `sudo yum update && sudo yum install docker && sudo pip3 inst
-  all docker-compose && sudo usermod -a -G docker ec2-user && sudo systemctl enable docker.service && sudo systemctl start docker.s
-  ervice && sudo mkdir -p /opt/stagecoach/apps && sudo chown ec2-user /opt/stagecoach/apps`
-- Reboot, wait a minute and connect again. Then run `sudo systemctl status docker.service` to be sure Docker is started.
-- In the code repository, create a new settings file in the `deployment` folder. For instance, `settings.larzac-prod`. The first part of the name has to be `settings` and the ultimate part will design an environment where to deploy. This file will contain the user to connect with, the IP address and ssh options.
-```bash
-USER=ec2-user # user created by AWS
-SERVER=15.236.144.185 # IP address provided by AWS
-SSH_OPTIONS="-i deployment/vino-terr-ssh-key.pem -oStrictHostKeyChecking=no" # SSH file automatically created by gitlab-ci.yml
-```
-As the name in the example is `settings.larzac-prod`, when gitlab-ci.yml launches the command `sc-deploy larzac-prod`, it will use this file.
-It means it is also possible to deploy from a machine (in case Gitlab is down) by installing `stagecoach` (https://github.com/apostrophecms/stagecoach), downloading the SSH file from AWS by clicking on "Download default key" on the instance page and running `sc-deploy name-of-the-env`
-![](documentation/settings.png)
-- Add an environment variable in https://gitlab.com/vino-vibes/vinoways-territoire/-/settings/ci_cd. For example, `MONGO_INITDB_ROOT_PASSWORD_LARZAC_PROD` in our case. Generate a random password and choose to mask it. It will be used to create the root database user and you will need it to connect to the DB later.
-  ![](documentation/list_env_var.png)
-  ![](documentation/add_env_var.png)
-- Add a script in gitlab-ci.yml for this new environment by using another `deploy` script. Be sure to put the same variable you created in the previous step (e.g: `MONGO_INITDB_ROOT_PASSWORD_LARZAC_PROD`), the right environment variable for `sc` deployment (e.g: `stagecoach/bin/sc-deploy larzac-prod`) on the right branch (e.g: `larzac-prod`).
-  <br>Create the branch. Add it as a protected branch in https://gitlab.com/vino-vibes/vinoways-territoire/-/settings/repository.
-  ![](documentation/branch.png)
-- Create a release commit: on the branch configured in gitlab-ci.yml, edit CHANGELOG.md to add a new version (patch for bug resolution, minor for new changes, major for breaking changes), add the same version to package.json, add a commit message starting with "Release v.xxx" and git push. It will start a pipeline in Gitlab and deploy the site to AWS.
-
-You can connect to the machine with SSH and go to `/opt/stagecoach/apps/[project-name]/current` ("project_name" is "vino-terr-larzac" in this example) to check everything is ok. If not, you can run `make prod` on the server.
-The app is available on the IP address followed by `:8080`:
-
-![](documentation/app.png)
-
-The database will be empty. On a UAT instance, it is possible to run `make defaults && make fixtures`. On a production instance, it is possible to run `make defaults` but it is better to create specific users with strong passwords.
+is `docker-compose exec sample-project-apos npm run defaults` or locally `cd apos && npm run defaults`.

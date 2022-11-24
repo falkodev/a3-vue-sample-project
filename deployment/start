@@ -10,7 +10,7 @@ sudo mkdir -p ../../uploads
 sudo cp -r $HERE/../../uploads $HERE/apos/public
 echo "ApostropheCMS attachments restored"
 
-PROJECT=vino-terr-larzac
+PROJECT=sample-project-region
 DIR=/opt/stagecoach/apps/$PROJECT
 DEPLOYMENTS=$DIR/deployments
 KEEP=5

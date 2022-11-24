@@ -1,4 +1,4 @@
-PROJECT=vino-terr-larzac
+PROJECT=sample-project-region
 DIR=/opt/stagecoach/apps/$PROJECT
 ADJUST_PATH=':'
 SSH_PORT=22

@@ -11,7 +11,7 @@ placesAPI:
       url: photo
 
 mongoDB:
-  uri: mongodb://127.0.0.1:27017/vino-terr-larzac
+  uri: mongodb://127.0.0.1:27017/sample-project-region
 
 register:
   minPasswordLength: 6
@@ -62,7 +62,7 @@ wineLabels:
     color: red
   - title: apostrophe:natureAndAdvance
     color: pink
-  - title: apostrophe:terraVittis
+  - title: apostrophe:landVittis
     color: green
 
 wineTypes:

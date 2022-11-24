@@ -87,7 +87,7 @@
 
 ### Added
 
-- Production environment for Larzac
+- Production environment for region
 - Documentation updated to deploy new servers
 
 ## 1.0.0 - 2022-06-14

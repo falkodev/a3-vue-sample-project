@@ -1,25 +1,25 @@
 {
   "name": "apos",
   "version": "1.0.0",
-  "description": "Apostrophe CMS platform for Vinoways Territoire",
+  "description": "Apostrophe CMS platform for Sample project",
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "dev": "NODE_ENV=development NODE_APP_INSTANCE=larzac nodemon --no-deprecation",
+    "dev": "NODE_ENV=development NODE_APP_INSTANCE=region nodemon --no-deprecation",
     "build": "NODE_ENV=production node app @apostrophecms/asset:build",
-    "defaults": "NODE_ENV=development NODE_APP_INSTANCE=larzac node --no-deprecation app @apostrophecms/db:defaults",
-    "fixtures": "NODE_ENV=development NODE_APP_INSTANCE=larzac node --no-deprecation app @apostrophecms/db:fixtures",
-    "migrate": "NODE_ENV=production NODE_APP_INSTANCE=larzac node app @apostrophecms/migration:migrate",
+    "defaults": "NODE_ENV=development NODE_APP_INSTANCE=region node --no-deprecation app @apostrophecms/db:defaults",
+    "fixtures": "NODE_ENV=development NODE_APP_INSTANCE=region node --no-deprecation app @apostrophecms/db:fixtures",
+    "migrate": "NODE_ENV=production NODE_APP_INSTANCE=region node app @apostrophecms/migration:migrate",
     "sw": "workbox injectManifest modules/content/workbox-config.js",
-    "prod": "npm run migrate && npm run sw && NODE_ENV=production NODE_APP_INSTANCE=larzac node app",
+    "prod": "npm run migrate && npm run sw && NODE_ENV=production NODE_APP_INSTANCE=region node app",
     "release": "npm install && npm run build && node app @apostrophecms/migration:migrate",
     "lint": "prettier --write '**/*.{js,css,scss}' --config ../package.json --ignore-path ../.prettierignore",
-    "test": "NODE_ENV=development NODE_APP_INSTANCE=larzac jest",
-    "test:coverage": "NODE_ENV=development NODE_APP_INSTANCE=larzac jest --coverage --colors",
-    "test:watch": "NODE_ENV=development NODE_APP_INSTANCE=larzac jest --watchAll --verbose",
+    "test": "NODE_ENV=development NODE_APP_INSTANCE=region jest",
+    "test:coverage": "NODE_ENV=development NODE_APP_INSTANCE=region jest --coverage --colors",
+    "test:watch": "NODE_ENV=development NODE_APP_INSTANCE=region jest --watchAll --verbose",
     "test:dev": "NODE_ENV=development NODE_APP_INSTANCE=test node app @apostrophecms/db:reset && npm run test:fixtures && NODE_ENV=development NODE_APP_INSTANCE=test nodemon --no-deprecation",
     "test:fixtures": "NODE_ENV=development NODE_APP_INSTANCE=test node app --no-deprecation place:fetch && NODE_ENV=development NODE_APP_INSTANCE=test node --no-deprecation app @apostrophecms/db:fixtures",
-    "task": "NODE_ENV=development NODE_APP_INSTANCE=larzac node app"
+    "task": "NODE_ENV=development NODE_APP_INSTANCE=region node app"
   },
   "nodemonConfig": {
     "delay": 100,
@@ -41,7 +41,7 @@
     ],
     "ext": "json, js, html, scss, vue"
   },
-  "author": "Vinovibes Team",
+  "author": "Dev Team",
   "dependencies": {
     "apostrophe": "^3.22.1",
     "config": "^3.3.7",

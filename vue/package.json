@@ -1,7 +1,7 @@
 {
   "name": "vue",
   "version": "1.0.0",
-  "description": "Vue app for Vinoways Territoire",
+  "description": "Vue app for Sample project",
   "main": "main.js",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
@@ -13,7 +13,7 @@
     "test:e2e:ci": "start-server-and-test preview http://127.0.0.1:5050/ 'cypress run'",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
-  "author": "Vinovibes Team",
+  "author": "Dev Team",
   "dependencies": {
     "@types/leaflet": "^1.7.10",
     "@vitejs/plugin-vue": "^2.2.4",

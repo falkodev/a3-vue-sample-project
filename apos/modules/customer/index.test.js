@@ -60,7 +60,7 @@ describe('customer', () => {
     firstName: 'Roland',
     lastName: 'Garros',
     birthDate: '1888-10-06',
-    password: 'vino01',
+    password: 'pass01',
     fixtures: true,
   }
 

@@ -1,7 +1,7 @@
 {
-  "name": "vinoways-territoire",
+  "name": "sample-project",
   "version": "1.3.1",
-  "description": "Vinoways Territoire platform",
+  "description": "Sample project platform",
   "scripts": {
     "start": "cd ./vue && npm run build & cd ./apos && npm run start",
     "dev": "cd ./vue && npm run build:watch & cd ./apos && npm run dev",
@@ -32,7 +32,7 @@
     "type": "git",
     "url": ""
   },
-  "author": "Vinovibes Team",
+  "author": "Dev Team",
   "prettier": {
     "printWidth": 80,
     "semi": false,

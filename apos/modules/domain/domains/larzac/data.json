@@ -604,20 +604,20 @@
     }
   },
   {
-    "title": "Braujou Xavier - Domaine La Terrasse d'Élise",
+    "title": "Braujou Xavier - Domaine La étendue d'Élise",
     "placeType": "domain",
     "address": "1320 Chemin de Capion, Aniane",
     "longitude": 3.583900599999999,
     "latitude": 43.6646324,
-    "slug": "braujou-xavier-domaine-la-terrasse-d-élise",
+    "slug": "braujou-xavier-domaine-la-étendue-d-élise",
     "visibility": "public",
     "archived": false,
     "image": {
       "_id": "cl1f0x8f8002cnup5ooclu8e7",
       "group": "images",
       "createdAt": "2022-03-31T13:19:31.909Z",
-      "name": "braujou-xavier-domaine-la-terrasse-d-élise",
-      "title": "braujou xavier domaine la terrasse d élise",
+      "name": "braujou-xavier-domaine-la-étendue-d-élise",
+      "title": "braujou xavier domaine la étendue d élise",
       "extension": "jpg",
       "type": "attachment",
       "docIds": [],
@@ -632,22 +632,22 @@
     "photoRef": "Aap_uEDtM6o28a-kiZpFodBrVp60aq9pvCebxZnIZ7Bhodudg83ZeNI6CsMHJjp9fWjv7oK8Jf514gCzt9kPL_vgiNrwpQZyvStwiTBU00LsAd6vWPMpumkPhkG4V3l8iPyPW5RyVHyYxHhpgTB4HjXm7AjEVZxtc8wfCRKig1MX1JiedtQU",
     "metaType": "doc",
     "createdAt": "2022-03-31T13:19:31.911Z",
-    "titleSortified": "braujou xavier domaine la terrasse d élise",
+    "titleSortified": "braujou xavier domaine la étendue d élise",
     "updatedAt": "2022-03-31T13:19:31.911Z",
     "updatedBy": {
       "title": "System Task"
     },
-    "highSearchText": "braujou xavier domaine la terrasse d élise braujou xavier domaine la terrasse d élise",
+    "highSearchText": "braujou xavier domaine la étendue d élise braujou xavier domaine la étendue d élise",
     "highSearchWords": [
       "braujou",
       "xavier",
       "domaine",
       "la",
-      "terrasse",
+      "étendue",
       "d",
       "élise"
     ],
-    "lowSearchText": "braujou xavier domaine la terrasse d élise braujou xavier domaine la terrasse d élise",
+    "lowSearchText": "braujou xavier domaine la étendue d élise braujou xavier domaine la étendue d élise",
     "searchSummary": "",
     "geoLocation": {
       "type": "Point",
@@ -832,20 +832,20 @@
     }
   },
   {
-    "title": "Domaine Croix de Saint-Privat à Aniane / Vin Bio AOC Terrasses du Larzac",
+    "title": "Domaine Croix de Saint-Privat à Aniane / boisson Bio AOC étendues du region",
     "placeType": "domain",
     "address": "554 Av. de Saint-Guilhem, Aniane",
     "longitude": 3.5779749,
     "latitude": 43.6965941,
-    "slug": "domaine-croix-de-saint-privat-à-aniane-vin-bio-aoc-terrasses-du-larzac",
+    "slug": "domaine-croix-de-saint-privat-à-aniane-boisson-bio-aoc-étendues-du-region",
     "visibility": "public",
     "archived": false,
     "image": {
       "_id": "cl1f0xa45002knup5vdpu1vje",
       "group": "images",
       "createdAt": "2022-03-31T13:19:34.231Z",
-      "name": "domaine-croix-de-saint-privat-à-aniane-vin-bio-aoc-terrasses-du-larzac",
-      "title": "domaine croix de saint privat à aniane vin bio aoc terrasses du larzac",
+      "name": "domaine-croix-de-saint-privat-à-aniane-boisson-bio-aoc-étendues-du-region",
+      "title": "domaine croix de saint privat à aniane boisson bio aoc étendues du region",
       "extension": "jpg",
       "type": "attachment",
       "docIds": [],
@@ -860,12 +860,12 @@
     "photoRef": "Aap_uEBqMF8h9ed6NhMf2FKsO78pklSsKJJH6j6hRF5Q4umEYiZMeQNikgPrqorbvYUgRWgMXz3vUfhGiiO0GhD7S-KFHX8vCPUVGrjbatKNIg3l78K29hISuXuO4yhIFr_sGQ8pQrZHPDYO9VttqaXAAqbG1fFyuA1v_pdTeNuuwBnOe4ZB",
     "metaType": "doc",
     "createdAt": "2022-03-31T13:19:34.232Z",
-    "titleSortified": "domaine croix de saint privat à aniane vin bio aoc terrasses du larzac",
+    "titleSortified": "domaine croix de saint privat à aniane boisson bio aoc étendues du region",
     "updatedAt": "2022-03-31T13:19:34.232Z",
     "updatedBy": {
       "title": "System Task"
     },
-    "highSearchText": "domaine croix de saint privat à aniane vin bio aoc terrasses du larzac domaine croix de saint privat à aniane vin bio aoc terrasses du larzac",
+    "highSearchText": "domaine croix de saint privat à aniane boisson bio aoc étendues du region domaine croix de saint privat à aniane boisson bio aoc étendues du region",
     "highSearchWords": [
       "domaine",
       "croix",
@@ -874,14 +874,14 @@
       "privat",
       "à",
       "aniane",
-      "vin",
+      "boisson",
       "bio",
       "aoc",
-      "terrasses",
+      "étendues",
       "du",
-      "larzac"
+      "region"
     ],
-    "lowSearchText": "domaine croix de saint privat à aniane vin bio aoc terrasses du larzac domaine croix de saint privat à aniane vin bio aoc terrasses du larzac",
+    "lowSearchText": "domaine croix de saint privat à aniane boisson bio aoc étendues du region domaine croix de saint privat à aniane boisson bio aoc étendues du region",
     "searchSummary": "",
     "geoLocation": {
       "type": "Point",

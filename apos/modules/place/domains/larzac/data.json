@@ -1092,20 +1092,20 @@
     }
   },
   {
-    "title": "Le Midi Vin",
+    "title": "Le Midi boisson",
     "placeType": "wineBar",
     "address": "All. de l'Esplanade, Montarnaud",
     "longitude": 3.700034,
     "latitude": 43.650012,
-    "slug": "le-midi-vin",
+    "slug": "le-midi-boisson",
     "visibility": "public",
     "archived": false,
     "image": {
       "_id": "cl1f0wrsu0019nup5tyrm9yn5",
       "group": "images",
       "createdAt": "2022-03-31T13:19:10.473Z",
-      "name": "le-midi-vin",
-      "title": "le midi vin",
+      "name": "le-midi-boisson",
+      "title": "le midi boisson",
       "extension": "jpg",
       "type": "attachment",
       "docIds": [],
@@ -1120,18 +1120,18 @@
     "photoRef": "Aap_uEBDqgJIKWfYl-KEetZ1oukAJRLefmmGIasww_kZkdpIorJD2rAT0cduFTecluwjQkGCPXKkBwNwhqBxHQ0giwJPXk0jW6ipJjoiNuMR4Z6IvT78JmlPLvVyeeHyBtDtH-NyKC6V6uUYXwlmJb1TTv4nsKt3DGA6zDp_dUMMHd78j78w",
     "metaType": "doc",
     "createdAt": "2022-03-31T13:19:10.475Z",
-    "titleSortified": "le midi vin",
+    "titleSortified": "le midi boisson",
     "updatedAt": "2022-03-31T13:19:10.475Z",
     "updatedBy": {
       "title": "System Task"
     },
-    "highSearchText": "le midi vin le midi vin",
+    "highSearchText": "le midi boisson le midi boisson",
     "highSearchWords": [
       "le",
       "midi",
-      "vin"
+      "boisson"
     ],
-    "lowSearchText": "le midi vin le midi vin",
+    "lowSearchText": "le midi boisson le midi boisson",
     "searchSummary": "",
     "geoLocation": {
       "type": "Point",
@@ -1240,12 +1240,12 @@
     }
   },
   {
-    "title": "La Terrasse du Mimosa",
+    "title": "La étendue du Mimosa",
     "placeType": "wineBar",
     "address": "23 Pl. de l'Horloge, Montpeyroux",
     "longitude": 3.5053592,
     "latitude": 43.6958959,
-    "slug": "la-terrasse-du-mimosa",
+    "slug": "la-étendue-du-mimosa",
     "visibility": "public",
     "archived": false,
     "image": null,
@@ -1253,19 +1253,19 @@
     "photoRef": "Aap_uEDErDzrCTUFm4UjtxEGez1GiwqkUSPX4wb3j_dsz9fH_3wSnAaFT7HqUr0bW4R1Viw8SygCA7K4s78hE7LI2xP1AH_AKMLkNtiMAz4tdD32csfcF-DybEOztNZ_EWzFjoIho0Yer0zzM23-y-veVmN1kgOp9lLIMqMfmdWDlkzlJxvT",
     "metaType": "doc",
     "createdAt": "2022-03-31T13:19:14.849Z",
-    "titleSortified": "la terrasse du mimosa",
+    "titleSortified": "la étendue du mimosa",
     "updatedAt": "2022-03-31T13:19:14.849Z",
     "updatedBy": {
       "title": "System Task"
     },
-    "highSearchText": "la terrasse du mimosa la terrasse du mimosa",
+    "highSearchText": "la étendue du mimosa la étendue du mimosa",
     "highSearchWords": [
       "la",
-      "terrasse",
+      "étendue",
       "du",
       "mimosa"
     ],
-    "lowSearchText": "la terrasse du mimosa la terrasse du mimosa",
+    "lowSearchText": "la étendue du mimosa la étendue du mimosa",
     "searchSummary": "",
     "geoLocation": {
       "type": "Point",

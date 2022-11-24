@@ -22,8 +22,8 @@ release:
     ref: '$CI_COMMIT_SHA'
   only:
     refs:
-      - larzac-uat
-      - larzac-prod
+      - region-uat
+      - region-prod
     variables:
       # Run only when commit message starts with "Release v."
       - $CI_COMMIT_MESSAGE =~ /^Release v.*/
@@ -42,8 +42,8 @@ test:
     - npm run test:apos
   only:
     refs:
-      - larzac-uat
-      - larzac-prod
+      - region-uat
+      - region-prod
 
 manual_test:
   stage: test
@@ -56,7 +56,7 @@ manual_test:
   script:
     - npm run test:apos
 
-deploy_larzac_uat:
+deploy_region_uat:
   stage: deploy
   needs:
     - test
@@ -67,21 +67,21 @@ deploy_larzac_uat:
     - echo "$SSH_PRIVATE_KEY_AWS" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "NODE_APP_INSTANCE=larzac" > .env
+    - echo "NODE_APP_INSTANCE=region" > .env
     - echo "MONGO_INITDB_ROOT_USERNAME=root" >> .env
-    - echo "MONGO_INITDB_ROOT_PASSWORD=$MONGO_INITDB_ROOT_PASSWORD_LARZAC_UAT" >> .env
-    - touch deployment/vino-terr-ssh-key.pem
-    - echo "$SSH_PRIVATE_KEY_AWS" > deployment/vino-terr-ssh-key.pem
+    - echo "MONGO_INITDB_ROOT_PASSWORD=$MONGO_INITDB_ROOT_PASSWORD_region_UAT" >> .env
+    - touch deployment/sample-project-ssh-key.pem
+    - echo "$SSH_PRIVATE_KEY_AWS" > deployment/sample-project-ssh-key.pem
     - echo "mongoDB:" > apos/config/local.yml
-    - 'echo "  dockerUri: mongodb://root:$MONGO_INITDB_ROOT_PASSWORD_LARZAC_UAT@vino-terr-mongo:27017/vino-terr-larzac?authSource=admin" >> apos/config/local.yml'
+    - 'echo "  dockerUri: mongodb://root:$MONGO_INITDB_ROOT_PASSWORD_region_UAT@sample-project-mongo:27017/sample-project-region?authSource=admin" >> apos/config/local.yml'
     - git clone https://github.com/punkave/stagecoach
     - npm run install:app
   script:
-    - stagecoach/bin/sc-deploy larzac-uat
+    - stagecoach/bin/sc-deploy region-uat
   only:
-    - larzac-uat
+    - region-uat
 
-deploy_larzac_prod:
+deploy_region_prod:
   stage: deploy
   needs:
     - test
@@ -92,16 +92,16 @@ deploy_larzac_prod:
     - echo "$SSH_PRIVATE_KEY_AWS" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - echo "NODE_APP_INSTANCE=larzac" > .env
+    - echo "NODE_APP_INSTANCE=region" > .env
     - echo "MONGO_INITDB_ROOT_USERNAME=root" >> .env
-    - echo "MONGO_INITDB_ROOT_PASSWORD=$MONGO_INITDB_ROOT_PASSWORD_LARZAC_PROD" >> .env
-    - touch deployment/vino-terr-ssh-key.pem
-    - echo "$SSH_PRIVATE_KEY_AWS" > deployment/vino-terr-ssh-key.pem
+    - echo "MONGO_INITDB_ROOT_PASSWORD=$MONGO_INITDB_ROOT_PASSWORD_region_PROD" >> .env
+    - touch deployment/sample-project-ssh-key.pem
+    - echo "$SSH_PRIVATE_KEY_AWS" > deployment/sample-project-ssh-key.pem
     - echo "mongoDB:" > apos/config/local.yml
-    - 'echo "  dockerUri: mongodb://root:$MONGO_INITDB_ROOT_PASSWORD_LARZAC_PROD@vino-terr-mongo:27017/vino-terr-larzac?authSource=admin" >> apos/config/local.yml'
+    - 'echo "  dockerUri: mongodb://root:$MONGO_INITDB_ROOT_PASSWORD_region_PROD@sample-project-mongo:27017/sample-project-region?authSource=admin" >> apos/config/local.yml'
     - git clone https://github.com/punkave/stagecoach
     - npm run install:app
   script:
-    - stagecoach/bin/sc-deploy larzac-prod
+    - stagecoach/bin/sc-deploy region-prod
   only:
-    - larzac-prod
+    - region-prod

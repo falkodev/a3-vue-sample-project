@@ -10,7 +10,7 @@ describe('Header', () => {
     cy.get('[data-menu-icon]').click()
     cy.get('[href="/en/login"]').click()
     cy.get('[data-input-username]').type('syndicat')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('form').submit()
     cy.wait('@login')
 
@@ -30,7 +30,7 @@ describe('Header', () => {
     cy.wait(750)
     cy.visit('/fr/login')
     cy.get('[data-input-username]').type('syndicat')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     // cy.get('.t-button').should('contain', 'Se connecter').click()
     cy.get('form').submit()
 

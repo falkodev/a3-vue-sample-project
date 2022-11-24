@@ -23,7 +23,7 @@ describe('Register', () => {
 
   it('should enable register if valid credentials', () => {
     cy.get('[data-input-email]').type('testmail@mail.fr')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('[data-input-lastname]').type('newman')
     cy.get('[data-input-firstname]').type('paul')
     cy.get('[data-input-birthdate]').type('2000-05-17')
@@ -49,7 +49,7 @@ describe('Register', () => {
   })
 
   it('should reject register if empty email', () => {
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('[data-input-firstname]').type('paul')
     cy.get('[data-input-lastname]').type('newman')
     cy.get('[data-input-birthdate]').type('2000-05-17')
@@ -78,7 +78,7 @@ describe('Register', () => {
 
   it('should reject register if empty lastname', () => {
     cy.get('[data-input-email]').type('testmail@mail.fr')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('[data-input-firstname]').type('paul')
     cy.get('[data-input-birthdate]').type('2000-05-17')
     cy.get('[data-checkmark-personal-data]').click()
@@ -92,7 +92,7 @@ describe('Register', () => {
 
   it('should reject register if empty firstname', () => {
     cy.get('[data-input-email]').type('testmail@mail.fr')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('[data-input-lastname]').type('newman')
     cy.get('[data-input-birthdate]').type('2000-05-17')
     cy.get('[data-checkmark-personal-data]').click()
@@ -106,7 +106,7 @@ describe('Register', () => {
 
   it('should reject register if empty birthdate', () => {
     cy.get('[data-input-email]').type('testmail@mail.fr')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('[data-input-lastname]').type('newman')
     cy.get('[data-input-firstname]').type('paul')
     cy.get('[data-checkmark-personal-data]').click()
@@ -120,7 +120,7 @@ describe('Register', () => {
 
   it('should reject register if conditions are not accepted', () => {
     cy.get('[data-input-email]').type('testmail@mail.fr')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('[data-input-lastname]').type('newman')
     cy.get('[data-input-firstname]').type('paul')
     cy.get('[data-input-birthdate]').type('2000-05-17')
@@ -155,7 +155,7 @@ describe('Register', () => {
 
   it('should reject register if email already exists', () => {
     cy.get('[data-input-email]').type('testmail@mail.fr')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('[data-input-lastname]').type('newman')
     cy.get('[data-input-firstname]').type('paul')
     cy.get('[data-input-birthdate]').type('2000-05-17')
@@ -170,7 +170,7 @@ describe('Register', () => {
 
   it('should reject register if invalid legal age', () => {
     cy.get('[data-input-email]').type('testmail@mail.fr')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('[data-input-lastname]').type('newman')
     cy.get('[data-input-firstname]').type('paul')
     cy.get('[data-input-birthdate]').type('2020-05-17')

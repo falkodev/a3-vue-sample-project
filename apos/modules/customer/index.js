@@ -211,7 +211,7 @@ module.exports = {
                 firstName: 'Henri',
                 lastName: 'Cochet',
                 birthDate: '1901-12-14',
-                password: 'vino01',
+                password: 'pass01',
                 image: uploadedImages[0],
               },
               {
@@ -219,7 +219,7 @@ module.exports = {
                 firstName: 'René',
                 lastName: 'Lacoste',
                 birthDate: '1904-07-02',
-                password: 'vino01',
+                password: 'pass01',
                 image: uploadedImages[1],
               },
               {
@@ -227,7 +227,7 @@ module.exports = {
                 firstName: 'Jean',
                 lastName: 'Borotra',
                 birthDate: '1898-08-13',
-                password: 'vino01',
+                password: 'pass01',
                 image: uploadedImages[2],
               },
               {
@@ -235,7 +235,7 @@ module.exports = {
                 firstName: 'Jacques',
                 lastName: 'Brugnon',
                 birthDate: '1895-05-11',
-                password: 'vino01',
+                password: 'pass01',
                 image: uploadedImages[3],
               },
             ]

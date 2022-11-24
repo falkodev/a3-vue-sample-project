@@ -1,12 +1,12 @@
 version: '3.7'
 
 networks:
-  vinovibes:
-    name: vinovibes
+  project-test:
+    name: project-test
 
 services:
-  vino-terr-mongo:
-    container_name: vino-terr-mongo
+  sample-project-mongo:
+    container_name: sample-project-mongo
     build: mongo
     init: true
     ports:
@@ -14,7 +14,7 @@ services:
     volumes:
       - ./mongo/data/db:/data/db
     environment:
-      MONGO_INITDB_DATABASE: vino-terr
+      MONGO_INITDB_DATABASE: sample-project
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD:
       MONGO_INITDB_USER_USERNAME: app-admin
@@ -30,10 +30,10 @@ services:
         condition: on-failure
         max_attempts: 3
     networks:
-      - vinovibes
+      - project-test
 
-  vino-terr-apos:
-    container_name: vino-terr-apos
+  sample-project-apos:
+    container_name: sample-project-apos
     build: apos
     init: true
     volumes:
@@ -46,14 +46,14 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - vino-terr-mongo
+      - sample-project-mongo
     environment:
       APOS_DEV:
       NODE_ENV: ${NODE_ENV:-production}
       NODE_APP_INSTANCE: ${NODE_APP_INSTANCE:?NODE_APP_INSTANCE is mandatory}
       HOST: docker
       MONGO_DB:
-      WAIT_HOSTS: vino-terr-mongo:27017
+      WAIT_HOSTS: sample-project-mongo:27017
     healthcheck:
       test: node healthcheck
     deploy:
@@ -65,4 +65,4 @@ services:
         condition: on-failure
         max_attempts: 3
     networks:
-      - vinovibes
+      - project-test

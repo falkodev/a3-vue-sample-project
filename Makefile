@@ -34,13 +34,13 @@ local-prod:
   NODE_ENV=production docker-compose -f docker-compose.remote.yml --compatibility up -d --build && make logs
 
 logs-mongo:
-	docker logs vino-terr-mongo -f
+	docker logs sample-project-mongo -f
 
 logs-apos:
-	docker logs vino-terr-apos -f
+	docker logs sample-project-apos -f
 
 logs-vue:
-	docker logs vino-terr-vue -f
+	docker logs sample-project-vue -f
 
 logs:
 	make logs-apos & make logs-vue
@@ -52,13 +52,13 @@ db-restore:
 	mongo/scripts/restore.sh
 
 test:
-	make kill && docker-compose up -d && docker-compose exec vino-terr-apos npm run test:coverage && make kill
+	make kill && docker-compose up -d && docker-compose exec sample-project-apos npm run test:coverage && make kill
 
 test-watch:
-	make kill && docker-compose up -d && docker-compose exec vino-terr-apos npm run test:coverage -- --watchAll && make kill
+	make kill && docker-compose up -d && docker-compose exec sample-project-apos npm run test:coverage -- --watchAll && make kill
 
 fixtures:
-	docker-compose exec vino-terr-apos npm run fixtures
+	docker-compose exec sample-project-apos npm run fixtures
 
 defaults:
-	docker-compose exec vino-terr-apos npm run defaults
+	docker-compose exec sample-project-apos npm run defaults

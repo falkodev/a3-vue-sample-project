@@ -10,7 +10,7 @@ sudo cp -r $HERE/apos/public/uploads/attachments $HERE/../../uploads
 echo "ApostropheCMS attachments saved"
 
 docker-compose stop
-docker rm --force vino-terr-mongo
-docker rm --force vino-terr-apos
+docker rm --force sample-project-mongo
+docker rm --force sample-project-apos
 
 echo "Site stopped"

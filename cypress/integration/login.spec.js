@@ -28,7 +28,7 @@ describe('Login', () => {
       .should('contain', 'Required field')
 
     cy.get('[data-input-username]').type('helloworld')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('form').submit()
     cy.get('.t-form__errors')
       .should('be.visible')
@@ -40,7 +40,7 @@ describe('Login', () => {
     cy.get('[data-input-username]').clear()
     cy.get('[data-input-password]').clear()
     cy.get('[data-input-username]').type('syndicat')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('form').submit()
     cy.wait('@login')
     cy.wait(1500)
@@ -70,7 +70,7 @@ describe('Login', () => {
   })
 
   it('should reject auth if empty username', () => {
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('form').submit()
     cy.wait(500)
 
@@ -81,7 +81,7 @@ describe('Login', () => {
 
   it('should reject auth if wrong username', () => {
     cy.get('[data-input-username]').type('helloworld')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('form').submit()
     cy.wait('@login')
     cy.wait(500)
@@ -111,7 +111,7 @@ describe('Login', () => {
 
   it('should enable auth if valid credentials', () => {
     cy.get('[data-input-username]').type('syndicat')
-    cy.get('[data-input-password]').type('vino01')
+    cy.get('[data-input-password]').type('pass01')
     cy.get('form').submit()
     cy.wait('@login')
     cy.wait(1500)
@@ -123,7 +123,7 @@ describe('Login', () => {
 
   it('should reject auth if too many attemps', () => {
     cy.get('[data-input-username]').type('syndicat')
-    cy.get('[data-input-password]').type('vino02')
+    cy.get('[data-input-password]').type('pass02')
     cy.get('form').submit()
     cy.wait('@login')
 
