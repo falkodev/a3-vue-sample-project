@@ -21,7 +21,6 @@
     background-position: center;
   }
 
-
   &__title {
     display: flex;
     align-items: center;
@@ -53,7 +52,6 @@
     justify-content: center;
   }
 
-
   &__more {
     display: flex;
     align-items: center;
@@ -70,7 +68,7 @@
     color: $color-text;
     font-size: 20px;
     font-weight: bolder;
-    margin-left: 20px
+    margin-left: 20px;
   }
 }
 
