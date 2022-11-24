@@ -11,7 +11,7 @@ describe('customer', () => {
             {
               title: 'René Lacoste',
               type: 'customer',
-              email: 'rene@roland-garros.fr',
+              email: 'rene_at_roland-garros.fr',
               firstName: 'René',
               lastName: 'Lacoste',
               birthDate: '1898-08-13',

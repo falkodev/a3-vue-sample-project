@@ -207,7 +207,7 @@ module.exports = {
 
             const customers = [
               {
-                email: 'henri@roland-garros.fr',
+                email: 'henri_at_roland-garros.fr',
                 firstName: 'Henri',
                 lastName: 'Cochet',
                 birthDate: '1901-12-14',
@@ -215,7 +215,7 @@ module.exports = {
                 image: uploadedImages[0],
               },
               {
-                email: 'rene@roland-garros.fr',
+                email: 'rene_at_roland-garros.fr',
                 firstName: 'René',
                 lastName: 'Lacoste',
                 birthDate: '1904-07-02',
@@ -223,7 +223,7 @@ module.exports = {
                 image: uploadedImages[1],
               },
               {
-                email: 'jean@roland-garros.fr',
+                email: 'jean_at_roland-garros.fr',
                 firstName: 'Jean',
                 lastName: 'Borotra',
                 birthDate: '1898-08-13',
@@ -231,7 +231,7 @@ module.exports = {
                 image: uploadedImages[2],
               },
               {
-                email: 'jacques@roland-garros.fr',
+                email: 'jacques_at_roland-garros.fr',
                 firstName: 'Jacques',
                 lastName: 'Brugnon',
                 birthDate: '1895-05-11',
