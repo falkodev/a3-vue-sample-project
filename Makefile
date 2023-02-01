@@ -16,7 +16,7 @@ rebuild:
 	NODE_ENV=development docker-compose build --no-cache
 
 dev:
-	make kill && NODE_ENV=development docker-compose up -d
+	make kill && NODE_ENV=development docker-compose up -d --remove-orphans
 
 dev-logs:
 	make kill && NODE_ENV=development docker-compose up -d && make logs
